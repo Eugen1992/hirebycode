@@ -1,0 +1,30 @@
+<div class="form-group form-inline">
+  <div class="import-search">
+    <label for="exampleInputEmail1">Enter your user name for github:</label>
+    <input class="form-control" required ng-model="searchedUser"/>
+    <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
+  </div>
+</div>
+<div class="import-projectsList">
+  <ul class="list-group"  ng-show="userFound">
+    <li class="list-group-item clearfix" ng-repeat="repo in userRepos">
+      {{repo.name}}
+      <button class="btn btn-primary pull-right" ng-click="import(repo)" ng-hide="repo.imported">Import</button>
+      <button class="btn btn-primary pull-right" disabled="disabled" ng-click="import(repo)" ng-show="repo.imported">Imported</button>
+    </li>
+  </ul>
+  <div class="panel import-message panel-warning" ng-hide="userFound">
+    Sorry, no user found.
+  </div>
+</div>
+<div class="import-importedRepos">
+  <ul class="list-group">
+    <li class="list-group-item clearfix raw" ng-repeat="repo in importedRepos">
+      <span class="col-xs-6">{{repo.user}}</span>
+      <span class="col-xs-6 clearfix">
+        {{repo.name}}
+        <button type="button" class="pull-right btn btn-danger" ng-click="deleteRepo(repo)">Delete</button>
+      </span>
+    </li>
+  </ul>
+</div>

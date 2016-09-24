@@ -10,6 +10,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('/home', {
       url: "/",
       templateUrl: "client/views/partials/home.html",
-      controller: "ImportController"
+      controller: "HomeController"
     })
+    .state('/user-home', {
+      url: "/account",
+      templateUrl: "client/views/partials/userHome.html",
+      controller: "UserHomeController"
+    })
+  .state('/github-login', {
+    url: '/github-login',
+    templateUrl: "client/views/partials/githubLogin.html",
+    controller: "GithubLoginController"
+  });
 });

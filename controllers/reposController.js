@@ -33,9 +33,11 @@ function controller(app) {
     if (login) {
       newRepo = new Repo({
         name: req.body.name,
-        developer: req.session.login
+        developer: req.session.login,
+        description: req.body.description,
+        skills: req.body.skills,
+        languages: req.body.skills
       });
-
       newRepo.save(function(err) {
         if (err) {
           res.sendStatus(500);

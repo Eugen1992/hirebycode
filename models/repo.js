@@ -3,7 +3,10 @@ var Schema = mongoose.Schema;
 
 var repoScheme = new Schema({
   developer: String,
-  name: String
+  name: String,
+  languages: [String],
+  description: String,
+  skills: [String]
 });
 
 // the schema is useless so far

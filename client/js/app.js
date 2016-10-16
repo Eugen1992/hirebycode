@@ -17,9 +17,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "client/views/partials/userHome.html",
       controller: "UserHomeController"
     })
-  .state('/github-login', {
-    url: '/github-login',
-    templateUrl: "client/views/partials/githubLogin.html",
-    controller: "GithubLoginController"
-  });
+    .state('/importing', {
+      url: "/importing/:id",
+      templateUrl: "client/views/partials/importing.html",
+      controller: "ImportController",
+      params: {name: '', data: {}}
+    
+    })
+    .state('/github-login', {
+      url: '/github-login',
+      templateUrl: "client/views/partials/githubLogin.html",
+      controller: "GithubLoginController"
+    });
 });

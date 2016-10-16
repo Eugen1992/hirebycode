@@ -3,24 +3,33 @@ app.service('ReposService', ReposService);
 
 function ReposService ($q, $http, $filter) {
   var baseUrl = '/api/repos';
+  var fetched = false;
   var repos;
-  
-  this.search = function (user) {
-    return $http.get('https://api.github.com/users/' + user + '/repos');
-  }
+  console.log('creating service');
+
   this.getUserRepos = function () {
-    var promise = $http.get(baseUrl + '/user');
+    var defer;
+    var promise;
+    if (fetched) {
+      promise = $q.when(repos);
+    } else {
+      defer = $q.defer();
+      promise = defer.promise;
+      
+      fetch().then(function (response) {
+        repos = response.data;
+        fetched = true;
+        defer.resolve(repos);
+      });  
+    }
     
-    promise.then(function (response) {
-      repos = response.data;
-    });
     return promise;
   }
   this.getCurrentRepos = function () {
     return repos;
   }
-  this.import = function (userName, repoName) {    
-    return $http.post(baseUrl, {name: repoName});
+  this.import = function (repo) {
+    return $http.post(baseUrl, repo);
   }
   this.getImported = function () {    
     return $http.get(baseUrl);
@@ -36,11 +45,32 @@ function ReposService ($q, $http, $filter) {
     
     return deletePromise;
   }
+  this.getByProviderId = function (repoProviderId) {
+    var defer = $q.defer();
+    var promise = defer.promise;
+    var repo;
+    
+    repoProviderId = Number(repoProviderId);
+    
+    if (fetched) {
+      repo = $filter('filter')(repos, {id: repoProviderId}, true)[0];
+      defer.resolve(repo);
+    } else {
+      this.getUserRepos().then(function () {
+        repo = $filter('filter')(repos, {id: repoProviderId}, true)[0];
+        defer.resolve(repo);
+      });
+    }
+    
+    return promise;
+  }
+  function fetch () {
+    return $http.get(baseUrl + '/user');
+  }
   function deleteById(repoId) {
     var repo = $filter('filter')(repos, {_id: repoId}, true)[0];
     
     return deleteByModel(repo);
-    
   }
   function deleteByModel(repo) {
     return $http.delete(baseUrl + '/' + repo._id).then(function () {

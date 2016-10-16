@@ -23,7 +23,6 @@ function controller(app) {
     });
   });
 }
-
 function getUserData(token, callback) {
   var parsedResponse = querystring.parse(token);
   var options = {

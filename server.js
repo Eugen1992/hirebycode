@@ -2,10 +2,12 @@ var session = require('express-session');
 var express = require('express');
 var server = express();
 
-var underscore = _ = require("underscore");
-var bodyParser = require("body-parser");
+var underscore = _ = require('underscore');
+var bodyParser = require('body-parser');
 var localDB = 'mongodb://localhost:27017';
 
+var passport = require('passport');
+var GitHubStrategy = require('passport-github').Strategy;
 
 server.use(session({secret:'very secret'}));
 server.use(bodyParser.json());
@@ -27,6 +29,17 @@ server.use(session({
   saveUninitialized: true,
   resave: true
 }));
+
+server.use(passport.initialize())
+server.use(passport.session())
+
+passport.serializeuser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeuser(function(user, done) {
+  done(null, user);
+});
 
 server.use('/client', express.static(process.env.PWD + '/client'));
 server.use('/node_modules', express.static(process.env.PWD + '/node_modules'));

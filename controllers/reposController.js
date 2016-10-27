@@ -9,7 +9,7 @@ function controller(app) {
     
     if (login) {
       formReposList(login).then(function (data) {
-        clientResponse.sendStatus(JSON.stringify(data));
+        clientResponse.send(JSON.stringify(data));
       });
     } else {
       clientResponse.sendStatus(500);

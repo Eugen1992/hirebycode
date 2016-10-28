@@ -2,28 +2,16 @@ AuthService.$inject = ['$q', '$http', '$window'];
 app.service('AuthService', AuthService);
 
 function AuthService ($q, $http, $window) {
-  function buildUrl () {
-    var url = 'https://github.com/login/oauth/authorize';
-    var clientId = '11ab72fc5d5b195ee720';
-    var redirectUrl = 'http://www.hirebycode.me/api/auth/github-login';
-    
-    url += '?client_id=' + clientId;
-    url += '&scope=user';
-    url += '&redirectUrl=' + redirectUrl;
-    
-    return url;
-  }
-  
   this.github = function () {
     var deferred = $q.defer();
 
     openPopup(deferred);
     
     return deferred.promise;  
-  }
+  };
   
   function postCode (code, deferred) {
-    $http.post('/api/auth/github', {code: code}).then(function (response) {
+    $http.get('/api/auth/github?code=' + code).then(function (response) {
       deferred.resolve(response.data);
     });
   }
@@ -43,5 +31,17 @@ function AuthService ($q, $http, $window) {
       }
       $window.removeEventListener('message', messageHandler);
     });
+  }
+
+  function buildUrl () {
+    var url = 'https://github.com/login/oauth/authorize';
+    var clientId = '11ab72fc5d5b195ee720';
+    var redirectUrl = 'http://www.hirebycode.me/api/auth/github-login';
+
+    url += '?client_id=' + clientId;
+    url += '&scope=user';
+    url += '&redirectUrl=' + redirectUrl;
+
+    return url;
   }
 }

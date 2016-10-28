@@ -5,7 +5,7 @@ function AuthService ($q, $http, $window) {
   function buildUrl () {
     var url = 'https://github.com/login/oauth/authorize';
     var clientId = '11ab72fc5d5b195ee720';
-    var redirectUrl = 'http://www.hirebycode.me/#/github-login';
+    var redirectUrl = 'http://www.hirebycode.me/api/auth/github-login';
     
     url += '?client_id=' + clientId;
     url += '&scope=user';

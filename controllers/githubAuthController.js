@@ -17,7 +17,6 @@ function controller(app) {
       function handleUserData (userData) {
         clientRequest.session.email = userData.email;
         clientRequest.session.login = userData.login;
-        console.log(userData.login);
         clientResponse.sendStatus(200);
       }
     });

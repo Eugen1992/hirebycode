@@ -2,6 +2,8 @@ var session = require('express-session');
 var express = require('express');
 var server = express();
 
+var User = require('./models/user');
+
 var bodyParser = require('body-parser');
 var localDB = 'mongodb://localhost:27017';
 
@@ -26,6 +28,23 @@ server.use(session({
 }));
 
 require('./config/passport.js')(server);
+
+server.use('/api/repos/*', function (req, res, next) {
+  var token = req.headers.authorization;
+  if (req.headers.authorization) {
+    User.findOne({token: req.headers.authorization}, function (err, user) {
+      if (err) {
+        res.sendStatus(500);
+      }
+      req.login = user.githubLogin;
+      next();  
+    });
+    
+  } else {
+    res.sendStatus(401);
+  }
+  
+});
 
 reposController.controller(server);
 githubAuthController.controller(server);

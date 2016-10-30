@@ -1,7 +1,7 @@
-AuthService.$inject = ['$q', '$http', '$window'];
+AuthService.$inject = ['$q', '$http', '$window', 'UserService'];
 app.service('AuthService', AuthService);
 
-function AuthService ($q, $http, $window) {
+function AuthService ($q, $http, $window, userService) {
   this.github = function () {
     var deferred = $q.defer();
 
@@ -12,10 +12,11 @@ function AuthService ($q, $http, $window) {
   
   function postCode (code, deferred) {
     $http.get('/api/auth/github?code=' + code).then(function (response) {
+      userService.setToken(response.data.token);
+      userService.setUser(response.data.user);
       deferred.resolve(response.data);
     });
   }
-  
   function openPopup (deferred) {
     var url = buildUrl();
     var popupX = ($window.outerWidth - 500) / 2;

@@ -1,6 +1,6 @@
 var app = angular.module('showroom', ['ui.router']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   //
   // For any unmatched url, redirect to /state1
   $urlRouterProvider.otherwise("/");
@@ -29,4 +29,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "client/views/partials/githubLogin.html",
       controller: "GithubLoginController"
     });
+  
+  $httpProvider.interceptors.push('ApiInterceptorService');
 });

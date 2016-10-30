@@ -5,7 +5,7 @@ var _ = require('underscore');
 
 function controller(app) {
   app.get("/api/repos/user", function(clientRequest, clientResponse) { 
-    var login =  clientRequest.session.login;
+    var login =  clientRequest.login;
     
     if (login) {
       formReposList(login).then(function (data) {
@@ -14,7 +14,6 @@ function controller(app) {
     } else {
       clientResponse.sendStatus(500);
     }
-    
   });
   app.delete("/api/repos/:id", function(req, res) {
     Repo.find({ _id: req.params.id}).remove(function (err) {

@@ -7,28 +7,44 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   //
   // Now set up the states
   $stateProvider
-    .state('/home', {
+    .state('home', {
       url: "/",
       templateUrl: "client/views/partials/home.html",
       controller: "HomeController"
     })
-    .state('/user-home', {
+    .state('authorized', {
+      abstract: true,
+      template: '<ui-view/>'
+    })
+    .state('user-home', {
+      parent: 'authorized',
       url: "/account",
       templateUrl: "client/views/partials/userHome.html",
       controller: "UserHomeController"
     })
-    .state('/importing', {
+    .state('importing', {
+      parent: 'authorized',
       url: "/importing/:id",
       templateUrl: "client/views/partials/importing.html",
       controller: "ImportController",
       params: {name: '', data: {}}
-    
     })
-    .state('/github-login', {
+    .state('github-login', {
       url: '/github-login',
       templateUrl: "client/views/partials/githubLogin.html",
       controller: "GithubLoginController"
     });
-  
+
   $httpProvider.interceptors.push('ApiInterceptorService');
+});
+
+angular.module('showroom').run(function($rootScope, $state, UserService){
+  $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
+    console.log(to);
+    if (to.parent === 'authorized' && !UserService.isLoggedIn()) {
+      $state.go('home');
+      // redirect back to login
+      //$location.path('/login');
+    }
+  });
 });

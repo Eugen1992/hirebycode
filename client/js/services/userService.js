@@ -11,6 +11,9 @@ function UserService ($q, $window) {
   this.getToken = function () {
     return $window.localStorage.getItem('token');
   }
+  this.isLoggedIn = function () {
+    return !!$window.localStorage.getItem('token');
+  }
   this.getUser = function () { 
     return JSON.parse($window.localStorage.getItem('user'));
   }

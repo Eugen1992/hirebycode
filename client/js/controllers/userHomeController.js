@@ -5,7 +5,7 @@ function UserHomeController ($scope, repos, $http, $state) {
   $scope.searchedUser = $state.params.login;
   getRepos();
   $scope.import = function (repo) {
-    $state.go('/importing', {id: repo.id, name: repo.name, data: repo});
+    $state.go('importing', {id: repo.id, name: repo.name, data: repo});
   }
   $scope.deleteRepo = function (repoToDelete) {
     repos.delete({_id: repoToDelete._id})

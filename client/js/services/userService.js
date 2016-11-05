@@ -17,4 +17,8 @@ function UserService ($q, $window) {
   this.getUser = function () { 
     return JSON.parse($window.localStorage.getItem('user'));
   }
+  this.logOut = function () {
+    $window.localStorage.removeItem('token');
+    $window.localStorage.removeItem('user');
+  }
 }

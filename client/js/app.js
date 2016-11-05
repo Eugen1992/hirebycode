@@ -40,11 +40,9 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
 angular.module('showroom').run(function($rootScope, $state, UserService){
   $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
-    console.log(to);
     if (to.parent === 'authorized' && !UserService.isLoggedIn()) {
-      $state.go('home');
-      // redirect back to login
-      //$location.path('/login');
+        ev.preventDefault();
+        $state.go('home');
     }
   });
 });

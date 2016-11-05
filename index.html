@@ -12,13 +12,17 @@
     <script src="/client/js/services/userService.js"></script>
     <script src="/client/js/services/reposService.js"></script>
     <script src="/client/js/services/authService.js"></script>
+    <script src="/client/js/controllers/headerController.js"></script>
     <script src="/client/js/controllers/homeController.js"></script>
     <script src="/client/js/controllers/userHomeController.js"></script>
     <script src="/client/js/controllers/importController.js"></script>
     <script src="/client/js/controllers/githubLoginController.js"></script>
   </head>
   <body ng-app="showroom">
-    <header class="header"></header>
+    <header class="header clearfix" ng-controller="HeaderController">
+        <button class="btn btn-success pull-right" ng-hide="isLoggedIn">Log In</button>
+        <button class="btn btn-default pull-right" ng-show="isLoggedIn" ng-click="logOut()">Log Out</button>
+    </header>
     <main ui-view class="container-fluid">
     </main>
   </body>

@@ -39,11 +39,9 @@ server.use('/api/repos/*', function (req, res, next) {
       req.login = user.githubLogin;
       next();  
     });
-    
   } else {
     res.sendStatus(401);
   }
-  
 });
 
 reposController.controller(server);

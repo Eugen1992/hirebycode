@@ -5,7 +5,6 @@ function ReposService ($q, $http, $filter) {
   var baseUrl = '/api/repos';
   var fetched = false;
   var repos;
-  console.log('creating service');
 
   this.getUserRepos = function () {
     var defer;

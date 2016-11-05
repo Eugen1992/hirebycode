@@ -29,6 +29,8 @@ function ImportController ($scope, $filter, repos, $http, $state, $stateParams) 
       return skill.name;
     });
     $scope.newRepo.skills = pickedSkills;
-    repos.import($scope.newRepo);
+    repos.import($scope.newRepo).then(function () {
+      $state.go('user-home');
+    });
   }
 }

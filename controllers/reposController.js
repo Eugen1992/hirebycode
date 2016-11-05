@@ -26,13 +26,13 @@ function controller(app) {
   });
 
   app.post("/api/repos", function(req, res) {
-    var login = req.session.login;
+    var login = req.login;
     var newRepo;
     
     if (login) {
       newRepo = new Repo({
         name: req.body.name,
-        developer: req.session.login,
+        developer: req.login,
         description: req.body.description,
         skills: req.body.skills,
         languages: req.body.skills

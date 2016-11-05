@@ -20,7 +20,7 @@
   </head>
   <body ng-app="showroom">
     <header class="header clearfix" ng-controller="HeaderController">
-        <button class="btn btn-success pull-right" ng-hide="isLoggedIn">Log In</button>
+        <button class="btn btn-success pull-right" ng-hide="isLoggedIn" ng-click="logIn()">Log In</button>
         <button class="btn btn-default pull-right" ng-show="isLoggedIn" ng-click="logOut()">Log Out</button>
     </header>
     <main ui-view class="container-fluid">

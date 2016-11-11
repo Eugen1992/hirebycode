@@ -11,6 +11,12 @@ function UserService ($q, $window) {
   this.getToken = function () {
     return $window.localStorage.getItem('token');
   }
+  this.getProviderToken = function () {
+    return $window.localStorage.getItem('providerToken');
+  }
+  this.setProviderToken = function (token) {
+    return $window.localStorage.setItem('providerToken', token);
+  }
   this.isLoggedIn = function () {
     return !!$window.localStorage.getItem('token');
   }

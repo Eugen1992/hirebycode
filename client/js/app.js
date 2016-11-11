@@ -24,9 +24,16 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('importing', {
       parent: 'authorized',
-      url: "/importing/:id",
+      url: "/import/:id",
       templateUrl: "client/views/partials/importing.html",
       controller: "ImportController",
+      params: {name: '', data: {}}
+    })
+    .state('edit', {
+      parent: 'authorized',
+      url: "/edit/:id",
+      templateUrl: "client/views/partials/edit.html",
+      controller: "EditController",
       params: {name: '', data: {}}
     })
     .state('github-login', {

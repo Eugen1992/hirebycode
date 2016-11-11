@@ -63,6 +63,24 @@ function ReposService ($q, $http, $filter) {
     
     return promise;
   }
+  this.getRepoByHbcId = function (hbcId) {
+    var defer = $q.defer();
+    var promise = defer.promise;
+
+    var repo;
+    
+    if (fetched) {
+      repo = $filter('filter')(repos, {_id: hbcId}, true)[0];
+      defer.resolve(repo);
+    } else {
+      this.getUserRepos().then(function () {
+        repo = $filter('filter')(repos, {_id: hbcId}, true)[0];
+        defer.resolve(repo);
+      });
+    }
+    
+    return promise;
+  }
   function fetch () {
     return $http.get(baseUrl + '/user');
   }

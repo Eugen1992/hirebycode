@@ -1,12 +1,18 @@
-HomeController.$inject = ['$scope', 'ReposService', 'AuthService', '$http', '$state'];
+HomeController.$inject = ['$scope', 'ReposService', 'AuthService', 'UserService', '$http', '$state'];
 angular.module('showroom').controller('HomeController',  HomeController);
 
-function HomeController ($scope, repos, auth, $http, $state) {
+function HomeController ($scope, repos, auth, user, $http, $state) {
   $scope.import = function () {
-    auth.github().then(function (login) {
-        $state.go('user-home');
-    }, function (err) {
-        console.log('error');
-    });
+    if (user.isLoggedIn()) {
+      $state.go('user-home');
+    } else {
+      auth.github().then(function () {
+          $state.go('user-home');
+        },
+        function (err) {
+          console.log('error');
+      });
+    }
+    
   }
 }

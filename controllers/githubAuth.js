@@ -25,12 +25,18 @@ function controller(app) {
             if (err) {
               res.sendStatus(500);
             } else {      
-              res.status(200).json({token: token});
+              res.status(200).json({
+                githubToken: req.user.accessToken,
+                token: token
+              });
             }
           });  
         } else {          
           token = user.token;
-          res.status(200).json({token:token});
+          res.status(200).json({
+                githubToken: req.user.accessToken,
+                token: token
+              });
         }
       });
   });

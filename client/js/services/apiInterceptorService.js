@@ -5,7 +5,10 @@ function ApiInterceptorService ($rootScope, userService) {
     var service = this;
     service.request = function(config) {
         var token = userService.getToken();
-        if (token) {
+        if (config.url.indexOf('github') !== -1) {
+            return config;
+        }
+        if (token && !config.headers.authorization) {
             config.headers.authorization = token;
         }
         return config;

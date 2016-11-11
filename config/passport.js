@@ -11,6 +11,8 @@ module.exports = function(server) {
       callbackURL: 'http://www.hirebycode.me/api/auth/github/callback'
     },
     function(accessToken, refreshToken, profile, done) {
+      profile.accessToken = accessToken;
+    
       done(null, profile);
   }));
 

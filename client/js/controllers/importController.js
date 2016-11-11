@@ -3,7 +3,7 @@ angular.module('showroom').controller('ImportController',  ImportController);
 
 function ImportController ($scope, $filter, repos, $http, $state, $stateParams) {
   $scope.newRepo = {
-    description: 'SOme description'
+    description: 'Some description'
   };
   
   $scope.skills = [

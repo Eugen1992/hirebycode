@@ -1,9 +1,8 @@
 <section class="repoEdit-container well">
   <h2>{{repo.name}}</h2>
-  <h3>Please tell us about your project</h3>
   <form>
     <div class="form-group">
-      <label for="exampleInputEmail1">Please, describe a project and what you did here</label>
+      <label for="exampleInputEmail1">Describtion:  </label>
       <input class="form-control" placeholder="Description..." ng-model="newRepo.description">
     </div>
     <div class="checkbox" ng-repeat="skill in skills">
@@ -13,4 +12,9 @@
     </div>
     <button type="submit" class="btn btn-default" ng-click="submit()">Submit</button>
   </form>
+  <div class="repoEdit-content">
+    <div class="fs-row" ng-repeat="item in repoContent">
+      <span>{{item.name}}</span>
+    </div>
+  </div>
 </section>

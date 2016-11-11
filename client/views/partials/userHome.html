@@ -4,7 +4,7 @@
       {{repo.name}}
       <button class="btn btn-primary pull-right" ng-click="import(repo)" ng-hide="repo.imported">Import</button>
       <span ng-show="repo.imported" class="pull-right">
-        <span class="label label-info userHome-importedLabel" ng-show="repo.imported">Imported</span>
+        <span class="btn btn-info userHome-importedLabel" ng-show="repo.imported" ng-click="editRepo(repo)">Edit</span>
         <button class="btn btn-warning"  ng-class="{disabled: repo.isDeleting}" ng-click="deleteRepo(repo)">Remove</button>  
       </span>
       

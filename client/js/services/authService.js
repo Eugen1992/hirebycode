@@ -14,6 +14,7 @@ function AuthService ($q, $http, $window, userService) {
     $http.get('/api/auth/github?code=' + code).then(function (response) {
       userService.setToken(response.data.token);
       userService.setUser(response.data.user);
+      userService.setProviderToken(response.data.githubToken);
       deferred.resolve(response.data);
     });
   }

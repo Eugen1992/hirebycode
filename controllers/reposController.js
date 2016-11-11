@@ -102,6 +102,7 @@ function getReposFromDb (userName) {
       if (error) {
         reject();
       } else {
+        console.log(importedRepos);
         resolve(importedRepos);  
       }
     });

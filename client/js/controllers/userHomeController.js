@@ -13,9 +13,12 @@ function UserHomeController ($scope, repos, $http, $state) {
         getRepos();
       },
       function () {
-      
+        
     });
-  } 
+  }
+  $scope.editRepo = function (repo) {
+    $state.go('edit', {id: repo._id});
+  }
   function getRepos() {
     repos.getUserRepos()
       .then(function (repos) {

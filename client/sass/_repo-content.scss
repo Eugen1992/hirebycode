@@ -1,0 +1,18 @@
+.repoContent-fsIcon {
+  vertical-align: middle;
+  width: 24px;
+  height: 20px;
+}
+.repoContent-fsRow {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: solid 1px grey;
+  border-top: none;
+  background-color: white;
+}
+.repoContent-fsRow:hover {
+  background-color: #f5f5f5;
+}
+.repoContent-fsRow:first-child {
+  border-top: solid 1px grey;
+}

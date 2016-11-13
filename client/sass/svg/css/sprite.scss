@@ -1,0 +1,24 @@
+%svg-common {
+	background: url("svg/sprite.css-9e7368eb.svg") no-repeat;
+}
+
+.svg-client--svg--dir {
+	@extend %svg-common;
+	background-position: 0 0;
+}
+
+.svg-client--svg--dir-dims {
+	width: 48px;
+	height: 48px;
+}
+
+.svg-client--svg--file {
+	@extend %svg-common;
+	background-position: 100% 0;
+}
+
+.svg-client--svg--file-dims {
+	width: 48px;
+	height: 48px;
+}
+

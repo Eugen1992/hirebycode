@@ -1,3 +1,3 @@
-angular.module('showroom').component({
-
+angular.module('showroom').component('projectContent', {
+  
 });

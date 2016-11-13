@@ -7,7 +7,9 @@ function EditController ($scope, orderBy, $state, $stateParams, repos, github) {
     $scope.repo = repo;
     $scope.isLoading = false;
     github.getRepoContent(repo).then(function (content) {
-      $scope.repoContent = filterByType(content);
+      $scope.shownContent = filterByType(content);
+      console.log(content);
+      $scope.contentType = 'dir';
     });
   });
   function filterByType (content) {
@@ -16,5 +18,9 @@ function EditController ($scope, orderBy, $state, $stateParams, repos, github) {
     });
 
     return filteredContent;
+  }
+
+  $scope.showContent = function (type, path) {
+    $scope.shownContent;
   }
 }

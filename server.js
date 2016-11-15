@@ -11,6 +11,14 @@ var reposController = require('./controllers/reposController.js');
 var githubAuthController = require('./controllers/githubAuth.js');
 var authMiddleware = require('./middleware/authMiddleware.js');
 
+var expressHbs = require('express3-handlebars');
+
+process.env.PWD = process.cwd();
+
+
+server.engine('hbs', expressHbs({extname:'hbs'}));
+server.set('view engine', 'hbs');
+
 server.use(session({secret:'very secret'}));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: false}));
@@ -18,7 +26,7 @@ server.use(bodyParser.urlencoded({extended: false}));
 var mongoose = require('mongoose');
 mongoose.connect(localDB);
 
-process.env.PWD = process.cwd();
+
 
 server.use(session({
   secret: 'Super Secret Session Key',

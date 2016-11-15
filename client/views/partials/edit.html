@@ -15,13 +15,24 @@
 </section>
 <section class="repoEdit-container well">
   <div class="repoEdit-content">
-    <div class="repoContent-fsRow" 
-    ng-repeat="item in shownContent" 
-    ng-click="showContent(item.type, item.git_url)">
+    <div class="repoContent-fsRow" ng-if="currentPath.length" ng-click="goUpFolders()">
       <svg class="repoContent-fsIcon">
-        <use xlink:href="{{'#client--svg--' + item.type}}" class="svg-client--svg--dir"/>
+          <use xlink:href="#client--svg--back"/>
+      </svg>
+      <span>...</span>
+    </div>
+    <div ng-if="contentType === 'dir'" class="repoContent-fsRow"
+    ng-repeat="item in dirContent" 
+    ng-click="showContent(item)">
+      <svg class="repoContent-fsIcon">
+        <use xlink:href="{{'#client--svg--' + item.type}}"/>
       </svg>
       <span>{{item.name}}</span>
+    </div>
+    <div class="repoContent-code" ng-if="contentType === 'file'">
+      <pre><code class="js" id="code">
+        {{fileContent}}
+      </code></pre>
     </div>
   </div>
 </section>

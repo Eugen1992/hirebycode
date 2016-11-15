@@ -27,7 +27,7 @@ module.exports = function(grunt) {
           // Target basics 
         expand: true,
         src: ['client/svg/*.svg'],
-        dest: 'client/sass/svg',
+        dest: 'client/svg-sprite',
         // Target options
         options: {
           mode: {
@@ -40,7 +40,19 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    svginjector: {
+      example: {
+        options: {
+          container: '#svg-icons',
+          mode: 'prepend'
+        },
+        files: {
+          'client/icons.js': 'client/svg-sprite/symbol/svg/sprite.symbol.svg'
+        }
+      }
     }
+
   });
   
 
@@ -49,7 +61,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-svg-sprite');
+  grunt.loadNpmTasks('grunt-svginjector');
 
   grunt.registerTask('default', ['sass', 'watch:sass']);
+  grunt.registerTask('svg-icons', ['svg_sprite', 'svginjector']);
 
 };

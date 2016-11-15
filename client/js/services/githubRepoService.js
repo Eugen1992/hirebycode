@@ -14,5 +14,16 @@ function GithubRepoService ($http, user) {
       repoContent = response.data;
       return response.data;
     });
+  },
+  this.getContent = function (repo, path) {
+    var url = repo.contents_url.replace('{+path}', path);
+    return $http.get(url, {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': 'token ' + user.getProviderToken()
+      }
+    }).then(function (response) {
+      return response.data;
+    });
   }
 }

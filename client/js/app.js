@@ -34,7 +34,11 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       url: "/edit/:id",
       templateUrl: "client/views/partials/edit.html",
       controller: "EditController",
-      params: {name: '', data: {}}
+      resolve: {
+        repo: function (ReposService, $stateParams, $q) {
+          return ReposService.getRepoByHbcId($stateParams.id);
+        }
+      }
     })
     .state('github-login', {
       url: '/github-login',
@@ -51,5 +55,9 @@ angular.module('showroom').run(function($rootScope, $state, UserService){
         ev.preventDefault();
         $state.go('home');
     }
+  });
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+    console.log(event);
+    console.log(error);
   });
 });

@@ -22,6 +22,7 @@ function UserHomeController ($scope, repos, $http, $state) {
   function getRepos() {
     repos.getUserRepos()
       .then(function (repos) {
+        console.log(repos);
         $scope.userRepos = repos;
         $scope.userFound = true;
       }, function () {

@@ -1,6 +1,8 @@
 @import "home";
 @import "user-home";
-@import "color-me-sass";
+@import "vendor/color-me-sass";
+@import "vendor/tomorrow-highlight";
+@import "vendor/higlight-default";
 @import "header";
 @import "svg/css/sprite";
 @import "repo-content";

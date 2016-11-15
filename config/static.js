@@ -5,7 +5,8 @@ module.exports = function (app) {
   app.use('/node_modules', express.static(process.env.PWD + '/node_modules'));
   app.get('*', function(req, res) {
     if (req.url.indexOf('/api/') === -1) {
-      res.sendfile(process.env.PWD + '/index.html');
+    	res.render('index');
+      //res.sendfile(process.env.PWD + '/index.html');
     }
   });
 };

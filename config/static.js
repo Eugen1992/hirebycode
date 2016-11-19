@@ -6,7 +6,6 @@ module.exports = function (app) {
   app.get('*', function(req, res) {
     if (req.url.indexOf('/api/') === -1) {
     	res.render('index');
-      //res.sendfile(process.env.PWD + '/index.html');
     }
   });
 };

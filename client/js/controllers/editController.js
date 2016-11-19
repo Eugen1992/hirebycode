@@ -17,14 +17,6 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
 
     return filteredContent;
   }
-  $scope.$watch('contentType', function (newVal, oldVal) {
-    if (newVal === 'file') {
-      setTimeout(function () {
-        console.log($element[0].getElementsByTagName('code'));
-        hljs.highlightBlock($element[0].getElementsByTagName('code')[0]);
-      }, 1000);
-    }
-  });
   $scope.showContent = function (contentSource) {
     var contentType = contentSource.type;
     
@@ -33,7 +25,9 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
       if (contentType === 'dir') {
         $scope.dirContent = filterByType(data);  
       } else {
+        console.log(data);
         $scope.fileContent = atob(data.content);
+        $scope.fileType = data.name.split('.').pop();
       }
       
       $scope.currentPath += contentSource.path;

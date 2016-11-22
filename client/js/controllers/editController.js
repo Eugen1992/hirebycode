@@ -1,7 +1,7 @@
-EditController.$inject = ['$scope', '$element', 'orderByFilter', '$state', '$stateParams', 'GithubRepoService', 'repo'];
+EditController.$inject = ['$scope', '$element', 'orderByFilter', '$state', '$stateParams', 'GithubRepoService', 'repo', 'SkillsService'];
 angular.module('showroom').controller('EditController', EditController);
 
-function EditController ($scope, $element, orderBy, $state, $stateParams, github, repo) {
+function EditController ($scope, $element, orderBy, $state, $stateParams, github, repo, skills) {
   $scope.currentPath = '';
   $scope.isLoading = true;
   $scope.repo = repo;
@@ -9,6 +9,10 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
   github.getRepoContent(repo).then(function (content) {
     $scope.dirContent = filterByType(content);
     $scope.contentType = 'dir';
+  });
+  skills.getSkills().then(function (skills) {
+    $scope.skills = skills;
+    console.log(skills);
   });
   function filterByType (content) {
     var filteredContent = orderBy(content, function (item) {

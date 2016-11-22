@@ -5,9 +5,7 @@ angular.module('showroom').directive('srHighlight', function () {
       language: '@language'
     },
     controller: function ($scope, $element, $timeout) {
-      $timeout(function () {
-        hljs.highlightBlock($element[0]);
-      }, 500);
+      hljs.highlightBlock($element[0]);
     }
   }
 });

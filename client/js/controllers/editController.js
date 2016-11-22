@@ -21,7 +21,6 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
     var contentType = contentSource.type;
     
     github.getContent($scope.repo, contentSource.path).then(function (data) {
-      $scope.contentType = contentType;
       if (contentType === 'dir') {
         $scope.dirContent = filterByType(data);  
       } else {
@@ -29,7 +28,7 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
         $scope.fileContent = atob(data.content);
         $scope.fileType = data.name.split('.').pop();
       }
-      
+      $scope.contentType = contentType;
       $scope.currentPath += contentSource.path;
     });
   }

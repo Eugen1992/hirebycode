@@ -30,9 +30,7 @@
       <span>{{item.name}}</span>
     </div>
     <div class="repoContent-code" ng-if="contentType === 'file'">
-      <pre><code sr-highlight class="js" id="code">
-        {{fileContent}}
-      </code></pre>
+      <sr-file-content content="fileContent" language={{fileType}}></sr-file-content>
     </div>
   </div>
 </section>

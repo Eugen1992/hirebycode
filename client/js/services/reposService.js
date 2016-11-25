@@ -44,6 +44,9 @@ function ReposService ($q, $http, $filter) {
     
     return deletePromise;
   }
+  this.update = function (repo) {
+    return $http.put(baseUrl + '/' + repo.hbcId, repo);
+  }
   this.getByProviderId = function (repoProviderId) {
     var defer = $q.defer();
     var promise = defer.promise;
@@ -70,11 +73,11 @@ function ReposService ($q, $http, $filter) {
     var repo;
     
     if (fetched) {
-      repo = $filter('filter')(repos, {_id: hbcId}, true)[0];
+      repo = $filter('filter')(repos, {hbcId: hbcId}, true)[0];
       defer.resolve(repo);
     } else {
       this.getUserRepos().then(function () {
-        repo = $filter('filter')(repos, {_id: hbcId}, true)[0];
+        repo = $filter('filter')(repos, {hbcId: hbcId}, true)[0];
         defer.resolve(repo);
       });
     }
@@ -85,12 +88,12 @@ function ReposService ($q, $http, $filter) {
     return $http.get(baseUrl + '/user');
   }
   function deleteById(repoId) {
-    var repo = $filter('filter')(repos, {_id: repoId}, true)[0];
+    var repo = $filter('filter')(repos, {hbcId: repoId}, true)[0];
     
     return deleteByModel(repo);
   }
   function deleteByModel(repo) {
-    return $http.delete(baseUrl + '/' + repo._id).then(function () {
+    return $http.delete(baseUrl + '/' + repo.hbcId).then(function () {
       repo.imported = false;
     });
   }

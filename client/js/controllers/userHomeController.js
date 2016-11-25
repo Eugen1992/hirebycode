@@ -8,7 +8,7 @@ function UserHomeController ($scope, repos, $http, $state) {
     $state.go('importing', {id: repo.id, name: repo.name, data: repo});
   }
   $scope.deleteRepo = function (repoToDelete) {
-    repos.delete({_id: repoToDelete._id})
+    repos.delete({hbcId: repoToDelete.hbcId})
       .then(function () {
         getRepos();
       },
@@ -17,12 +17,11 @@ function UserHomeController ($scope, repos, $http, $state) {
     });
   }
   $scope.editRepo = function (repo) {
-    $state.go('edit', {id: repo._id});
+    $state.go('edit', {id: repo.hbcId});
   }
   function getRepos() {
     repos.getUserRepos()
       .then(function (repos) {
-        console.log(repos);
         $scope.userRepos = repos;
         $scope.userFound = true;
       }, function () {

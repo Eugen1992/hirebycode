@@ -1,7 +1,7 @@
-EditController.$inject = ['$scope', '$element', 'orderByFilter', '$state', '$stateParams', 'GithubRepoService', 'repo', 'SkillsService'];
+EditController.$inject = ['$scope', '$element', 'orderByFilter', '$state', '$stateParams', 'GithubRepoService', 'repo', 'SkillsService', 'ReposService'];
 angular.module('showroom').controller('EditController', EditController);
 
-function EditController ($scope, $element, orderBy, $state, $stateParams, github, repo, skills) {
+function EditController ($scope, $element, orderBy, $state, $stateParams, github, repo, skills, repos) {
   $scope.currentPath = '';
   $scope.isLoading = true;
   $scope.repo = repo;
@@ -11,8 +11,7 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
     $scope.contentType = 'dir';
   });
   skills.getSkills().then(function (skills) {
-    $scope.skills = skills;
-    console.log(skills);
+    $scope.skills = formSkillsList(skills, $scope.repo);
   });
   function filterByType (content) {
     var filteredContent = orderBy(content, function (item) {
@@ -44,5 +43,24 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
       $scope.contentType = 'dir';
       $scope.currentPath = path;
     }); 
-  } 
+  }
+  $scope.submit = function () {
+    $scope.repo.hbcData.languages = getEnteredSkills($scope.skills);
+    repos.update($scope.repo);
+  }
+  function getEnteredSkills (skills) {
+    return skills.map(function (skill) {
+      if (skill.used) {
+        return skill.name;
+      }
+    });
+  }
+  function formSkillsList (skillsArray, repo) {
+    return skillsArray.map(function(skillName) {
+      return {
+        name: skillName,
+        used: repo.hbcData.languages.indexOf(skillName) > -1
+      };
+    });
+  }
 }

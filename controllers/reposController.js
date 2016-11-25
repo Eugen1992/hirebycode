@@ -49,8 +49,24 @@ function controller(app) {
     }
     
   });
+  app.put("/api/repos/:id", function(req, res) {
+    var login = req.login;
+    var repo;
+    
+    if (login) {
+      Repo.update({_id: req.params.id}, req.body.hbcData, 
+        function(err, numberAffected, rawResponse) {
+         if (err) {
+          res.sendStatus(500);
+         } else {
+          res.sendStatus(200);
+         }
+      });
+    } else {
+      res.sendStatus(500);
+    }
+  });
 }
-
 function formReposList (userName) {
   var promise = new Promise(function (resolveListFormed, rejectListFormed) {
     var dbPromise = getReposFromDb(userName);
@@ -66,8 +82,9 @@ function formReposList (userName) {
           return repo.name === importedRepo.name;
         });
         if (githubRepo) {
-          githubRepo.imported = true;  
-          Object.assign(githubRepo, importedRepo);
+          githubRepo.imported = true;
+          githubRepo.hbcId = importedRepo._id;
+          githubRepo.hbcData = importedRepo;
         }
         
       });

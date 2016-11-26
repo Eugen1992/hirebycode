@@ -48,6 +48,9 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
     $scope.repo.hbcData.languages = getEnteredSkills($scope.skills);
     repos.update($scope.repo);
   }
+  $scope.toggleMode = function () {
+    $state.go();
+  }
   function getEnteredSkills (skills) {
     return skills.map(function (skill) {
       if (skill.used) {

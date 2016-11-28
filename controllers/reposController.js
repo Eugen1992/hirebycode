@@ -4,6 +4,15 @@ var request = require('request');
 var _ = require('underscore');
 
 function controller(app) {
+  app.get("/api/repos/", function(req, res) {
+    Repo.find({}).exec(function (error, importedRepos) {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        res.send(importedRepos);
+      }
+    });
+  });
   app.get("/api/repos/user", function(clientRequest, clientResponse) { 
     var login =  clientRequest.login;
     
@@ -32,10 +41,11 @@ function controller(app) {
     if (login) {
       newRepo = new Repo({
         name: req.body.name,
+        providerId: req.body.providerId,
         developer: req.login,
         description: req.body.description,
-        skills: req.body.skills,
-        languages: req.body.skills
+        plans: req.body.plans,
+        languages: req.body.languages
       });
       newRepo.save(function(err) {
         if (err) {
@@ -43,7 +53,7 @@ function controller(app) {
         } else {      
           res.status(200).json(newRepo);
         }
-      });  
+      });
     } else {
       res.sendStatus(500);
     }
@@ -54,7 +64,7 @@ function controller(app) {
     var repo;
     
     if (login) {
-      Repo.update({_id: req.params.id}, req.body.hbcData, 
+      Repo.update({_id: req.params.id}, req.body, 
         function(err, numberAffected, rawResponse) {
          if (err) {
           res.sendStatus(500);
@@ -79,7 +89,7 @@ function formReposList (userName) {
       importedRepos.forEach(function (importedRepo) {
         importedRepo = importedRepo.toObject();
         var githubRepo = _.find(reposFromGithub, function (repo) {
-          return repo.name === importedRepo.name;
+          return repo.id === importedRepo.providerId;
         });
         if (githubRepo) {
           githubRepo.imported = true;

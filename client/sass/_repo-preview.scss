@@ -1,0 +1,19 @@
+.repoPreview {
+  border: solid 1px #d3d3d3;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.repoPreview-bottomLine {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.repoPreview-language {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 11px;
+}

@@ -2,6 +2,10 @@ HomeController.$inject = ['$scope', 'ReposService', 'AuthService', 'UserService'
 angular.module('showroom').controller('HomeController',  HomeController);
 
 function HomeController ($scope, repos, auth, user, $http, $state) {
+  repos.getMostRecent().then(function (recentRepos) {
+    console.log(recentRepos);
+    $scope.repos = recentRepos;
+  });
   $scope.import = function () {
     if (user.isLoggedIn()) {
       $state.go('user-home');
@@ -13,6 +17,5 @@ function HomeController ($scope, repos, auth, user, $http, $state) {
           console.log('error');
       });
     }
-    
   }
 }

@@ -1,0 +1,17 @@
+<section class="repoEdit-container well">
+  <div>
+    <h2>{{repo.name}}</h2>
+    <div class="form-group">
+      <b for="exampleInputEmail1">What I did and what I learned with this project:  </b>
+      <article class="">{{$ctrl.repo.description}}</article>
+    </div>
+    <div class="form-group">
+      <b>What I plan to do and learn:  </b>
+      <article class="">{{$ctrl.repo.plans}}</article>
+    </div>
+    <b for="exampleInputEmail1">Languages used:  </b>
+    <ul class="list-group" ng-repeat="language in $ctrl.repo.languages">
+      <li class="list-group-item list-group-item-success">{{language}}</li>
+    </ul>
+  </div>
+</section>

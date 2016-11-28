@@ -40,11 +40,33 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         }
       }
     })
+    .state('edit-preview', {
+      parent: 'authorized',
+      url: "/edit/:id/preview",
+      templateUrl: "client/views/partials/editPreview.html",
+      controller: "EditController",
+      resolve: {
+        repo: function (ReposService, $stateParams, $q) {
+          return ReposService.getRepoByHbcId($stateParams.id);
+        }
+      }
+    })
     .state('github-login', {
       url: '/github-login',
       templateUrl: "client/views/partials/githubLogin.html",
       controller: "GithubLoginController"
+    })
+    .state('repo-details', {
+      url: '/repo-details/:id',
+      templateUrl: "client/views/partials/repoDetails.html",
+      controller: "RepoDetailsController",
+      resolve: {
+        repo: function (ReposService, $stateParams, $q) {
+          return ReposService.getRepoByHbcId($stateParams.id);
+        }
+      }
     });
+
 
   $httpProvider.interceptors.push('ApiInterceptorService');
 });

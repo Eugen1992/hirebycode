@@ -1,0 +1,12 @@
+<article ng-repeat="repo in $ctrl.repos">
+  <div class="repoPreview">
+    <h3>{{repo.name}}</h3>
+    <div>{{repo.description}}</div>
+    <div class="repoPreview-bottomLine">
+      <div>
+        <div class="label label-info repoPreview-language" ng-repeat="lang in repo.languages">{{lang}}</div>
+      </div>
+      <button class="btn btn-primary" ng-click="$ctrl.seeDetails(repo._id)">See details</button>
+    </div>  
+  </div>
+</article>

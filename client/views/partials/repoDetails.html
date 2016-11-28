@@ -1,10 +1,4 @@
-<section class="repoEdit-container well">
-  <h2>{{repo.name}}</h2>
-  <div class="clearfix">
-    <button class="btn btn-primary pull-right" ng-click="switchToPreview()">See public version</button>
-  </div>
-  <repo-form repo="repo.hbcData" submit-callback="submit()"></repo-form>
-</section>
+<repo-details ng-if="repo" repo="repo.hbcData"></repo-details>
 <section class="repoEdit-container well">
   <div class="repoEdit-content">
     <div class="repoContent-fsRow" ng-if="currentPath.length" ng-click="goUpFolders()">

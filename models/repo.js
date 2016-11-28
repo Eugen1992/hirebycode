@@ -2,11 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var repoScheme = new Schema({
-  developer: String,
   name: String,
+  developer: String,
+  providerId: Number,
   languages: [String],
   description: String,
-  skills: [String]
+  plans: String
 });
 
 // the schema is useless so far

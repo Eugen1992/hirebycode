@@ -1,11 +1,8 @@
-EditController.$inject = ['$scope', '$element', 'orderByFilter', '$state', '$stateParams', 'GithubRepoService', 'repo', 'SkillsService', 'ReposService'];
-angular.module('showroom').controller('EditController', EditController);
+RepoDetailsController.$inject = ['$scope', '$state', 'repo', 'GithubRepoService', 'orderByFilter'];
+angular.module('showroom').controller('RepoDetailsController', RepoDetailsController);
 
-function EditController ($scope, $element, orderBy, $state, $stateParams, github, repo, skills, repos) {
-  $scope.currentPath = '';
-  $scope.isLoading = true;
+function RepoDetailsController ($scope, $state, repo, github, orderBy) {
   $scope.repo = repo;
-  $scope.isLoading = false;
   github.getRepoContent(repo).then(function (content) {
     $scope.dirContent = filterByType(content);
     $scope.contentType = 'dir';
@@ -29,7 +26,6 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
       }
       $scope.contentType = contentType;
       $scope.currentPath = contentSource.path;
-      console.log($scope.currentPath);
     });
   }
   $scope.goUpFolders = function () {
@@ -40,14 +36,5 @@ function EditController ($scope, $element, orderBy, $state, $stateParams, github
       $scope.contentType = 'dir';
       $scope.currentPath = path;
     }); 
-  }
-  $scope.submit = function () {
-    repos.update($scope.repo);
-  }
-  $scope.switchToPreview = function () {
-    $state.go('edit-preview', {id: repo.hbcId});
-  }
-  $scope.switchToEdit = function () {
-    $state.go('edit', {id: repo.hbcId});
   }
 }

@@ -39,7 +39,6 @@ server.use(session({
 require('./config/passport.js')(server);
 
 server.use('/api/repos/*', authMiddleware);
-server.use('/api/repos', authMiddleware);
 
 reposController.controller(server);
 githubAuthController.controller(server);

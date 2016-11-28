@@ -1,9 +1,8 @@
 <section class="repoEdit-container well">
-  <h2>{{repo.name}}</h2>
   <div class="clearfix">
-    <button class="btn btn-primary pull-right" ng-click="switchToPreview()">See public version</button>
+    <button type="submit" class="btn btn-primary pull-right" ng-click="switchToEdit()">Back to edit</button>
   </div>
-  <repo-form repo="repo.hbcData" submit-callback="submit()"></repo-form>
+  <repo-details ng-if="repo" repo="repo.hbcData"></repo-details>
 </section>
 <section class="repoEdit-container well">
   <div class="repoEdit-content">

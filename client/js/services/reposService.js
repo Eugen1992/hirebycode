@@ -28,24 +28,35 @@ function ReposService ($q, $http, $filter) {
     return repos;
   }
   this.import = function (repo) {
-    return $http.post(baseUrl, repo);
+    var dataToSend = repo.hbcData;
+    
+    dataToSend.providerId = repo.id;
+    dataToSend.name = repo.name;
+
+    return $http.post(baseUrl, dataToSend);
   }
-  this.getImported = function () {    
-    return $http.get(baseUrl);
+  this.getImported = function () {
+    return $http.get(baseUrl).then(function(response) {
+      return response.data;
+    });
   }
   this.delete = function (options) {
     var deletePromise;
     
     if (options.repo) {
       deletePromise = deleteByModel(options.repo);
-    } else if (options._id) {
-      deletePromise = deleteById(options._id);
+    } else if (options.hbcId) {
+      deletePromise = deleteById(options.hbcId);
     }
     
     return deletePromise;
   }
   this.update = function (repo) {
-    return $http.put(baseUrl + '/' + repo.hbcId, repo);
+    var dataToSend = repo.hbcData;
+    return $http.put(baseUrl + '/' + repo.hbcId, dataToSend);
+  }
+  this.getMostRecent = function () {
+    return this.getImported();
   }
   this.getByProviderId = function (repoProviderId) {
     var defer = $q.defer();

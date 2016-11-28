@@ -8,7 +8,6 @@ angular.module('showroom').directive('srFileContent', function () {
     },
     link: function ($scope, $element) {
       $scope.$watch('content', function() {
-        console.log('watched!');
         hljs.highlightBlock($element[0]);
      });
       

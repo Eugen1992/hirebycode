@@ -3,3 +3,15 @@
   background-color: $blueRoyal;
   margin-bottom: 20px;
 }
+.header-logo {
+  border-radius: 5px;
+  padding: 5px;
+  border: solid 2px white;
+  cursor: pointer;
+  margin: 0;
+  display: inline-block;
+  color: white;
+}
+.header-button {
+  margin-left: 20px;
+}

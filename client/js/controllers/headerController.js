@@ -14,6 +14,9 @@ function HeaderController ($scope, $state, user, auth) {
         console.log('error');
     });
   }
+  $scope.goToAccount = function () {
+    $state.go('user-home');
+  }
   $scope.$watch(function() {
     return user.isLoggedIn();
   }, function () {

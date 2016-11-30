@@ -35,8 +35,8 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: "client/views/partials/edit.html",
       controller: "EditController",
       resolve: {
-        repo: function (ReposService, $stateParams, $q) {
-          return ReposService.getRepoByHbcId($stateParams.id);
+        repo: function (UserReposService, $stateParams, $q) {
+          return UserReposService.getRepoByHbcId($stateParams.id);
         }
       }
     })
@@ -46,8 +46,8 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: "client/views/partials/editPreview.html",
       controller: "EditController",
       resolve: {
-        repo: function (ReposService, $stateParams, $q) {
-          return ReposService.getRepoByHbcId($stateParams.id);
+        repo: function (UserReposService, $stateParams, $q) {
+          return UserReposService.getRepoByHbcId($stateParams.id);
         }
       }
     })

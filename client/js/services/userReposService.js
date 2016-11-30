@@ -1,15 +1,29 @@
-ReposService.$inject = ['$q', '$http', '$filter'];
-app.service('ReposService', ReposService);
+UserReposService.$inject = ['$q', '$http', '$filter'];
+app.service('UserReposService', UserReposService);
 
-function ReposService ($q, $http, $filter) {
-  var baseUrl = '/api/repos';
+function UserReposService ($q, $http, $filter) {
+  var baseUrl = '/api/user/repos';
   var fetched = false;
   var repos;
 
-  this.getMostRecent = function () {
-    return this.getImported();
+  this.getUserRepos = function () {
+    var defer;
+    var promise;
+    if (fetched) {
+      promise = $q.when(repos);
+    } else {
+      defer = $q.defer();
+      promise = defer.promise;
+      
+      fetch().then(function (response) {
+        repos = response.data;
+        fetched = true;
+        defer.resolve(repos);
+      });  
+    }
+    
+    return promise;
   }
-
   this.getCurrentRepos = function () {
     return repos;
   }
@@ -41,9 +55,6 @@ function ReposService ($q, $http, $filter) {
     var dataToSend = repo.hbcData;
     return $http.put(baseUrl + '/' + repo.hbcId, dataToSend);
   }
-  this.getMostRecent = function () {
-    return this.getImported();
-  }
   this.getByProviderId = function (repoProviderId) {
     var defer = $q.defer();
     var promise = defer.promise;
@@ -69,12 +80,20 @@ function ReposService ($q, $http, $filter) {
 
     var repo;
     
-    return $http.get(baseUrl + '/' + hbcId).then(function (response) {
-      return response.data;
-    })
+    if (fetched) {
+      repo = $filter('filter')(repos, {hbcId: hbcId}, true)[0];
+      defer.resolve(repo);
+    } else {
+      this.getUserRepos().then(function () {
+        repo = $filter('filter')(repos, {hbcId: hbcId}, true)[0];
+        defer.resolve(repo);
+      });
+    }
+    
+    return promise;
   }
   function fetch () {
-    return $http.get(baseUrl + '/user');
+    return $http.get(baseUrl);
   }
   function deleteById(repoId) {
     var repo = $filter('filter')(repos, {hbcId: repoId}, true)[0];

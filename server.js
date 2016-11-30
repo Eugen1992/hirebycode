@@ -8,6 +8,7 @@ var localDB = 'mongodb://localhost:27017';
 var passport = require('passport');
 
 var reposController = require('./controllers/reposController.js');
+var userReposController = require('./controllers/userReposController.js');
 var githubAuthController = require('./controllers/githubAuth.js');
 var skillsController = require('./controllers/skillsController.js');
 
@@ -38,11 +39,13 @@ server.use(session({
 
 require('./config/passport.js')(server);
 
-server.use('/api/repos/*', authMiddleware);
+server.use('/api/user/repos', authMiddleware);
+server.use('/api/user/repos/*', authMiddleware);
 
 reposController.controller(server);
 githubAuthController.controller(server);
 skillsController.controller(server);
+userReposController.controller(server);
 
 require('./config/static.js')(server);
 

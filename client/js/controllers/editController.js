@@ -1,4 +1,4 @@
-EditController.$inject = ['$scope', '$element', 'orderByFilter', '$state', '$stateParams', 'GithubRepoService', 'repo', 'SkillsService', 'ReposService'];
+EditController.$inject = ['$scope', '$element', 'orderByFilter', '$state', '$stateParams', 'GithubRepoService', 'repo', 'SkillsService', 'UserReposService'];
 angular.module('showroom').controller('EditController', EditController);
 
 function EditController ($scope, $element, orderBy, $state, $stateParams, github, repo, skills, repos) {

@@ -1,4 +1,4 @@
-ImportController.$inject = ['$scope', '$filter', 'ReposService', '$http', '$state', '$stateParams'];
+ImportController.$inject = ['$scope', '$filter', 'UserReposService', '$http', '$state', '$stateParams'];
 angular.module('showroom').controller('ImportController',  ImportController);
 
 function ImportController ($scope, $filter, repos, $http, $state, $stateParams) {

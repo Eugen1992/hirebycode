@@ -1,4 +1,4 @@
-UserHomeController.$inject = ['$scope', 'ReposService', '$http', '$state'];
+UserHomeController.$inject = ['$scope', 'UserReposService', '$http', '$state'];
 angular.module('showroom').controller('UserHomeController',  UserHomeController);
 
 function UserHomeController ($scope, repos, $http, $state) {

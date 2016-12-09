@@ -7,7 +7,8 @@ var repoScheme = new Schema({
   providerId: Number,
   languages: [String],
   description: String,
-  plans: String
+  plans: String,
+  contentsUrl: String
 });
 
 // the schema is useless so far

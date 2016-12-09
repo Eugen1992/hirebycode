@@ -33,6 +33,7 @@ function controller(app) {
       newRepo = new Repo({
         name: req.body.name,
         providerId: req.body.providerId,
+        contentsUrl: req.body.contentsUrl,
         developer: req.login,
         description: req.body.description,
         plans: req.body.plans,

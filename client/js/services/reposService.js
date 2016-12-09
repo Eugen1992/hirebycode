@@ -18,6 +18,7 @@ function ReposService ($q, $http, $filter) {
     
     dataToSend.providerId = repo.id;
     dataToSend.name = repo.name;
+    dataToSend.contentsUrl = repo.contentsUrl;
 
     return $http.post(baseUrl, dataToSend);
   }

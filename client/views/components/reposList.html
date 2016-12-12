@@ -1,6 +1,9 @@
 <article ng-repeat="repo in $ctrl.repos">
   <div class="repoPreview">
-    <h3>{{repo.name}}</h3>
+    <div>
+      <h3 class="repoPreview-name">{{repo.name}}</h3>
+      <small class="pull-right">Posted: {{repo.createdAt | date}}</small>
+    </div>
     <div>{{repo.description}}</div>
     <div class="repoPreview-bottomLine">
       <div>

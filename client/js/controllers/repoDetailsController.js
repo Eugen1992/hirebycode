@@ -3,6 +3,7 @@ angular.module('showroom').controller('RepoDetailsController', RepoDetailsContro
 
 function RepoDetailsController ($scope, $state, repo, github, orderBy) {
   $scope.repo = repo;
+  console.log(repo);
   github.getRepoContent(repo).then(function (content) {
     $scope.dirContent = filterByType(content);
     $scope.contentType = 'dir';

@@ -8,7 +8,8 @@ var repoScheme = new Schema({
   languages: [String],
   description: String,
   plans: String,
-  contentsUrl: String
+  contents_url: String,
+  createdAt: Number
 });
 
 // the schema is useless so far

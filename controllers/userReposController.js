@@ -28,16 +28,17 @@ function controller(app) {
   app.post("/api/user/repos", function(req, res) {
     var login = req.login;
     var newRepo;
-    
+
     if (login) {
       newRepo = new Repo({
         name: req.body.name,
         providerId: req.body.providerId,
-        contentsUrl: req.body.contentsUrl,
+        contents_url: req.body.contents_url,
         developer: req.login,
         description: req.body.description,
         plans: req.body.plans,
-        languages: req.body.languages
+        languages: req.body.languages,
+        createdAt: req.body.createdAt
       });
       newRepo.save(function(err) {
         if (err) {

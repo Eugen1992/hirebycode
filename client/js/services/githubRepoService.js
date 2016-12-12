@@ -4,9 +4,8 @@ angular.module('showroom').service('GithubRepoService', GithubRepoService);
 function GithubRepoService ($http, user) {
   var repoContent;
   this.getRepoContent = function (repo) {
-    console.log(repo.providerId);
-    //var url = repo.contents_url.replace('/{+path}', '');
-    var url = 'https://api.github.com/repos/Eugen1992/bee-medicine/contents';
+    var url = repo.contents_url.replace('/{+path}', '');
+    //var url = 'https://api.github.com/repos/Eugen1992/bee-medicine/contents';
     return $http.get(url, {
       headers: {
         'Accept': 'application/vnd.github.v3+json',

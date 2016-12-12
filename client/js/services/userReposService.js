@@ -32,13 +32,10 @@ function UserReposService ($q, $http, $filter) {
     
     dataToSend.providerId = repo.id;
     dataToSend.name = repo.name;
+    dataToSend.contents_url = repo.contents_url;
+    dataToSend.createdAt = new Date().getTime();
 
     return $http.post(baseUrl, dataToSend);
-  }
-  this.getImported = function () {
-    return $http.get(baseUrl).then(function(response) {
-      return response.data;
-    });
   }
   this.delete = function (options) {
     var deletePromise;

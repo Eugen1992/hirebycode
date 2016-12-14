@@ -9,6 +9,7 @@ var repoScheme = new Schema({
   description: String,
   plans: String,
   contents_url: String,
+  contactInfo: String,
   createdAt: Number
 });
 

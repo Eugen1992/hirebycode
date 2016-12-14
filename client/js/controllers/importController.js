@@ -7,7 +7,8 @@ function ImportController ($scope, $filter, repos, $http, $state, $stateParams) 
     $scope.repo.hbcData = {
       languages: [],
       description: '',
-      plans: ''
+      plans: '',
+      contactInfo: ''
     };
   });;
   $scope.submit = function () {

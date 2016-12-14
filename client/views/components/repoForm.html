@@ -13,5 +13,9 @@
       <input type="checkbox" ng-model="skill.used"> {{skill.name}}
     </label>
   </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Contact info:</label><br/>
+    <textarea class="form-control" placeholder="When someone will want to hire you by your code, they will need a way to contact you." ng-model="$ctrl.repo.contactInfo"></textarea>
+  </div>
   <button type="submit" class="btn btn-default" ng-click="$ctrl.submit()">Submit</button>
 </form>

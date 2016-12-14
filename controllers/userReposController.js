@@ -6,7 +6,7 @@ var _ = require('underscore');
 function controller(app) {
   app.get("/api/user/repos", function(clientRequest, clientResponse) { 
     var login =  clientRequest.login;
-    
+
     if (login) {
       formReposList(login).then(function (data) {
         clientResponse.send(JSON.stringify(data));
@@ -28,7 +28,7 @@ function controller(app) {
   app.post("/api/user/repos", function(req, res) {
     var login = req.login;
     var newRepo;
-
+    console.log(req.body.contactInfo);
     if (login) {
       newRepo = new Repo({
         name: req.body.name,
@@ -38,7 +38,8 @@ function controller(app) {
         description: req.body.description,
         plans: req.body.plans,
         languages: req.body.languages,
-        createdAt: req.body.createdAt
+        createdAt: new Date().getTime(),
+        contactInfo: req.body.contactInfo
       });
       newRepo.save(function(err) {
         if (err) {

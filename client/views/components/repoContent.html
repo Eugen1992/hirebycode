@@ -1,0 +1,22 @@
+<div>
+  <div class="repoContent-fsRow" ng-if="$ctrl.currentPath.length" ng-click="$ctrl.goUpFolders()">
+    <svg class="repoContent-fsIcon">
+        <use xlink:href="#client--svg--back"/>
+    </svg>
+    <span>...</span>
+  </div>
+  <div 
+    ng-if="$ctrl.contentType === 'dir'" 
+    class="repoContent-fsRow" 
+    ng-repeat="item in $ctrl.dirContent" 
+    ng-click="$ctrl.showContent(item)"
+  >
+    <svg class="repoContent-fsIcon">
+      <use xlink:href="{{'#client--svg--' + item.type}}" />
+    </svg>
+    <span>{{item.name}}</span>
+  </div>
+  <div class="repoContent-code" ng-if="$ctrl.contentType === 'file'">
+    <sr-file-content content="$ctrl.fileContent" language={{$ctrl.fileType}}></sr-file-content>
+  </div>
+</div>

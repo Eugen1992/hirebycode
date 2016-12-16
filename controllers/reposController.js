@@ -1,4 +1,5 @@
 var Repo = require('../models/repo');
+var User = require('../models/user');
 var Promise = require('promise');
 var request = require('request');
 var _ = require('underscore');
@@ -11,6 +12,13 @@ function controller(app) {
       } else {
         res.send(importedRepos);
       }
+    });
+  });
+  app.get("/api/repos/contacts/:userId", function (req, res) {
+    User.getContactsById(req.params.userId).then(function (contacts) {
+      res.send(contacts);
+    }, function () {
+      res.sendStatus(500);
     });
   });
   app.get("/api/repos/:id", function(req, res) {

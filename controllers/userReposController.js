@@ -5,10 +5,10 @@ var _ = require('underscore');
 
 function controller(app) {
   app.get("/api/user/repos", function(clientRequest, clientResponse) { 
-    var login =  clientRequest.login;
-
-    if (login) {
-      formReposList(login).then(function (data) {
+    var userId =  clientRequest.userId;
+    var providerLogin = clientRequest.login;
+    if (userId) {
+      formReposList(userId, providerLogin).then(function (data) {
         clientResponse.send(JSON.stringify(data));
       });
     } else {
@@ -34,7 +34,7 @@ function controller(app) {
         name: req.body.name,
         providerId: req.body.providerId,
         contents_url: req.body.contents_url,
-        developer: req.login,
+        developer: req.userId,
         description: req.body.description,
         plans: req.body.plans,
         languages: req.body.languages,
@@ -71,10 +71,10 @@ function controller(app) {
     }
   });
 }
-function formReposList (userName) {
+function formReposList (userId, providerLogin) {
   var promise = new Promise(function (resolveListFormed, rejectListFormed) {
-    var dbPromise = getReposFromDb(userName);
-    var githubReposPromise = getReposFromGithub(userName);
+    var dbPromise = getReposFromDb(userId);
+    var githubReposPromise = getReposFromGithub(providerLogin);
     var importedRepos;
     Promise.all([dbPromise, githubReposPromise]).then(function (responses) {
       var importedRepos = responses[0];

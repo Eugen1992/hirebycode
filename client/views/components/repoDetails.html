@@ -1,6 +1,6 @@
 <section class="repoEdit-container well">
   <div>
-    <h2>{{repo.name}}</h2>
+    <h2>{{$ctrl.repo.name}}</h2>
     <div class="form-group">
       <b for="exampleInputEmail1">What I did and what I learned with this project:  </b>
       <article class="">{{$ctrl.repo.description}}</article>
@@ -17,5 +17,6 @@
       If you like this project you might reach it's author with contacts below:
       <p>{{$ctrl.repo.contactInfo}}</p>
     </div>
+    <sr-repo-contacts user-id="$ctrl.repo.developer"></sr-repo-contacts>
   </div>
 </section>

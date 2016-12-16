@@ -7,6 +7,7 @@ module.exports = function (req, res, next) {
       if (err) {
         res.sendStatus(500);
       }
+      req.userId = user._id;
       req.login = user.githubLogin;
       next();  
     });

@@ -2,12 +2,26 @@
   angular.module('showroom').service('UserDetailsService', UserDetailsService);
 
   UserDetailsService.$inject = ['$http']
-  function UserDetailsService ($http) {
+  function UserDetailsService ($http, $q) {
     var userData;
+    var fetched = false;
     this.fetchUserDetails = function () {
-      return $http.get('/api/user/details').then(function(response) {
-        userData = response.data;
-        return userData;
+      if (fetched) {
+        return $q(function (resolve) {
+          resolve(userData);
+        });
+      } else {
+        return $http.get('/api/user/details').then(function(response) {
+          userData = response.data;
+          fetched = true;
+          return userData;
+        });
+      }
+    }
+    this.getContactsById = function (userId) {
+      return $http.get('/api/repos/contacts/' + userId).then(function(response) {
+        console.log(response)
+          return response.data;
       });
     }
     this.updateUserDetails = function (data) {

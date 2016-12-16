@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = require('mongodb').ObjectId
 
 var userSchema = new Schema({
   githubId: String,
@@ -18,6 +19,13 @@ userSchema.statics.updateContacts = function (contacts, login) {
 userSchema.statics.getContacts = function (login) {
   return this.find({ 
     githubLogin: login 
+  }).limit(1).then(function (user) {
+    return user[0].contacts;
+  });
+}
+userSchema.statics.getContactsById = function (userId) {
+  return this.find({ 
+    '_id': ObjectId(userId)
   }).limit(1).then(function (user) {
     return user[0].contacts;
   });

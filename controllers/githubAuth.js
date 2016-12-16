@@ -24,19 +24,19 @@ function controller(app) {
           newUser.save(function(err) {
             if (err) {
               res.sendStatus(500);
-            } else {      
+            } else {
               res.status(200).json({
                 githubToken: req.user.accessToken,
                 token: token
               });
             }
           });  
-        } else {          
+        } else {
           token = user.token;
           res.status(200).json({
-                githubToken: req.user.accessToken,
-                token: token
-              });
+            githubToken: req.user.accessToken,
+            token: token
+          });
         }
       });
   });

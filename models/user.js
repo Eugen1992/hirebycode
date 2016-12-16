@@ -4,12 +4,24 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   githubId: String,
   githubLogin: String,
-  token: String
+  token: String,
+  contacts: String
 });
 
-// the schema is useless so far
-// we need to create a model using it
+userSchema.statics.updateContacts = function (contacts, login) {
+  return this.find({ 
+    githubLogin: login 
+  }).limit(1).update({
+    contacts: contacts
+  });
+}
+userSchema.statics.getContacts = function (login) {
+  return this.find({ 
+    githubLogin: login 
+  }).limit(1).then(function (user) {
+    return user[0].contacts;
+  });
+}
 var User = mongoose.model('User', userSchema);
 
-// make this available to our users in our Node applications
 module.exports = User;

@@ -9,6 +9,7 @@ var passport = require('passport');
 
 var reposController = require('./controllers/reposController.js');
 var userReposController = require('./controllers/userReposController.js');
+var userDetailsController = require('./controllers/userDetailsController.js');
 var githubAuthController = require('./controllers/githubAuth.js');
 var skillsController = require('./controllers/skillsController.js');
 
@@ -41,11 +42,13 @@ require('./config/passport.js')(server);
 
 server.use('/api/user/repos', authMiddleware);
 server.use('/api/user/repos/*', authMiddleware);
+server.use('/api/user/details', authMiddleware);
 
 reposController.controller(server);
 githubAuthController.controller(server);
 skillsController.controller(server);
 userReposController.controller(server);
+userDetailsController.controller(server);
 
 require('./config/static.js')(server);
 

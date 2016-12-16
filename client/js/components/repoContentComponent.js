@@ -10,7 +10,7 @@
   RepoContentController.$inject = ['orderByFilter', 'GithubRepoService'];
 
   function RepoContentController (orderBy, github) {
-    this.$onInit = function() {
+    this.$onInit = function () {
       github.getRepoContent(this.repo).then(function (content) {
         this.dirContent = filterByType(content);
         this.contentType = 'dir';

@@ -1,5 +1,7 @@
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
+var User = require('../models/user.js');
 
 module.exports = function(server) {
   server.use(passport.initialize());
@@ -15,6 +17,20 @@ module.exports = function(server) {
     
       done(null, profile);
   }));
+
+  passport.use(new LocalStrategy({
+      usernameField: 'login',
+      passwordField: 'password',
+      session: false
+    },
+    function (username, password, done) {
+      User.findOne({ login: username, password: password }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        return done(null, user);
+      });
+    }
+  ));
 
   passport.serializeUser(function(user, done) {
     done(null, user);

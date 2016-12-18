@@ -1,7 +1,7 @@
 (function () {
   angular.module('showroom').service('UserDetailsService', UserDetailsService);
 
-  UserDetailsService.$inject = ['$http']
+  UserDetailsService.$inject = ['$http', '$q'];
   function UserDetailsService ($http, $q) {
     var userData;
     var fetched = false;
@@ -20,7 +20,6 @@
     }
     this.getContactsById = function (userId) {
       return $http.get('/api/repos/contacts/' + userId).then(function(response) {
-        console.log(response)
           return response.data;
       });
     }

@@ -7,16 +7,27 @@ function AuthService ($q, $http, $window, userService) {
 
     openPopup(deferred);
     
-    return deferred.promise;  
+    return deferred.promise;
   };
-  
+  this.trainingCenter = function (login, password) {
+    return $http.put('/api/auth/training', {
+      login: login,
+      password: password
+    }).then(function (response) {
+      setUserData(response.data.token, response.data.user, response.data.githubToken);
+      return {result: 'success'};
+    });
+  }
   function postCode (code, deferred) {
     $http.get('/api/auth/github?code=' + code).then(function (response) {
-      userService.setToken(response.data.token);
-      userService.setUser(response.data.user);
-      userService.setProviderToken(response.data.githubToken);
+      setUserData(response.data.token, response.data.user, response.data.githubToken);
       deferred.resolve(response.data);
     });
+  }
+  function setUserData(token, userData, providerToken) {
+    userService.setToken(token);
+    userService.setUser(userData);
+    providerToken && userService.setProviderToken(providerToken);
   }
   function openPopup (deferred) {
     var url = buildUrl();

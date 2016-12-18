@@ -1,13 +1,17 @@
 <form>
   <div class="form-group">
-    <label for="exampleInputEmail1">What I did and what I learned with this project:  </label>
-    <textarea class="form-control" placeholder="Description..." ng-model="$ctrl.repo.description"></textarea>
+    <label>
+      What I did and what I learned with this project:
+      <textarea class="form-control" placeholder="Description..." ng-model="$ctrl.repo.description"></textarea>
+    </label>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">What I plan to do and learn:  </label>
-    <textarea class="form-control" placeholder="Plans..." ng-model="$ctrl.repo.plans"></textarea>
+    <label>
+      What I plan to do and learn:
+      <textarea class="form-control" placeholder="Plans..." ng-model="$ctrl.repo.plans"></textarea>
+    </label>
   </div>
-  <label for="exampleInputEmail1">Languages used:  </label>
+  <label>Languages used:</label>
   <div class="checkbox" ng-repeat="skill in $ctrl.skills">
     <label>
       <input type="checkbox" ng-model="skill.used"> {{skill.name}}

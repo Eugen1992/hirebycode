@@ -18,11 +18,14 @@
     <script src="/client/js/services/authService.js"></script>
     <script src="/client/js/services/githubRepoService.js"></script>
     <script src="/client/js/controllers/headerController.js"></script>
+    <script src="/client/js/controllers/loginController.js"></script>
     <script src="/client/js/controllers/homeController.js"></script>
     <script src="/client/js/controllers/userHomeController.js"></script>
     <script src="/client/js/controllers/importController.js"></script>
     <script src="/client/js/controllers/editController.js"></script>
     <script src="/client/js/controllers/repoDetailsController.js"></script>
+    <script src="/client/js/controllers/trainingCenterLoginController.js"></script>
+    <script src="/client/js/controllers/trainingCenterHomeController.js"></script>
     <script src="/client/js/controllers/githubLoginController.js"></script>
     <script src="/client/js/directives/file-content-directive.js"></script>
     <script src="/client/js/components/repoContentComponent.js"></script>
@@ -36,7 +39,7 @@
     <div id="svg-icons" style="display: none;"></div>
     <header class="header clearfix" ng-controller="HeaderController">
         <h3 class="header-logo" ui-sref="home">Hire By Code</h3>
-        <button class="header-button btn btn-success pull-right" ng-hide="isLoggedIn" ng-click="logIn()">Log In</button>
+        <button class="header-button btn btn-success pull-right" ng-hide="isLoggedIn" ui-sref="login">Log In</button>
         <button class="header-button btn btn-success pull-right" ng-show="isLoggedIn" ui-sref="user-home">My Account</button>
         <button class="header-button btn btn-default pull-right" ng-show="isLoggedIn" ng-click="logOut()">Log Out</button>
     </header>

@@ -1,4 +1,4 @@
-<section class="repoEdit-container well">
+<section class="repoDetails well">
   <div>
     <h2>{{$ctrl.repo.name}}</h2>
     <div class="form-group">
@@ -13,10 +13,6 @@
     <ul class="list-group" ng-repeat="language in $ctrl.repo.languages">
       <li class="list-group-item list-group-item-success">{{language}}</li>
     </ul>
-    <div>
-      If you like this project you might reach it's author with contacts below:
-      <p>{{$ctrl.repo.contactInfo}}</p>
-    </div>
-    <sr-repo-contacts user-id="$ctrl.repo.developer"></sr-repo-contacts>
+    <sr-repo-contacts class="repoDetails-contacts" user-id="$ctrl.repo.developer"></sr-repo-contacts>
   </div>
 </section>

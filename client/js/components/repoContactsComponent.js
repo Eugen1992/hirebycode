@@ -10,10 +10,12 @@
   RepoContactsController.$inject = ['UserDetailsService']
   function RepoContactsController (userDetails) {
     this.$onInit = function () {
-      console.log(this);
       userDetails.getContactsById(this.userId).then(function (contacts) {
         this.contacts = contacts;
       }.bind(this));
+    }
+    this.toggleContacts = function () {
+      this.contactsShown = !this.contactsShown;
     }
   }
 })();

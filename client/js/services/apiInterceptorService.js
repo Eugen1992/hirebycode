@@ -1,7 +1,7 @@
-ApiInterceptorService.$inject = ['$rootScope', 'UserService'];
+ApiInterceptorService.$inject = ['$q', '$rootScope', 'UserService'];
 app.service('ApiInterceptorService', ApiInterceptorService);
 
-function ApiInterceptorService ($rootScope, userService) {
+function ApiInterceptorService ($q, $rootScope, userService) {
     var service = this;
     service.request = function(config) {
         var token = userService.getToken();
@@ -17,6 +17,6 @@ function ApiInterceptorService ($rootScope, userService) {
         if (response.status === 401) {
             $rootScope.$broadcast('unauthorized');
         }
-        return response;
+        return $q.reject(response);
     };
 }

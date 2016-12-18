@@ -1,0 +1,24 @@
+.repoContacts-button {
+  padding: 20px;
+  min-width: 300px;
+  color: white;
+  background-color: $purpleDull;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  &.is-open {
+    border-radius: 5px 5px 0 0;
+  }
+}
+.repoContacts-contacts {
+  position: absolute;
+  padding: 10px;
+  background-color: white;
+  color: $purpleDull;
+  border: 2px solid $purpleDull;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+}

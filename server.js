@@ -10,7 +10,8 @@ var passport = require('passport');
 var reposController = require('./controllers/reposController.js');
 var userReposController = require('./controllers/userReposController.js');
 var userDetailsController = require('./controllers/userDetailsController.js');
-var githubAuthController = require('./controllers/githubAuth.js');
+var githubAuthController = require('./controllers/githubAuthController.js');
+var trainingCenterAuthController = require('./controllers/trainingCenterAuthController.js');
 var skillsController = require('./controllers/skillsController.js');
 
 var authMiddleware = require('./middleware/authMiddleware.js');
@@ -18,7 +19,6 @@ var authMiddleware = require('./middleware/authMiddleware.js');
 var expressHbs = require('express3-handlebars');
 
 process.env.PWD = process.cwd();
-
 
 server.engine('hbs', expressHbs({extname:'hbs'}));
 server.set('view engine', 'hbs');
@@ -29,8 +29,6 @@ server.use(bodyParser.urlencoded({extended: false}));
 
 var mongoose = require('mongoose');
 mongoose.connect(localDB);
-
-
 
 server.use(session({
   secret: 'Super Secret Session Key',
@@ -46,6 +44,7 @@ server.use('/api/user/details', authMiddleware);
 
 reposController.controller(server);
 githubAuthController.controller(server);
+trainingCenterAuthController.controller(server);
 skillsController.controller(server);
 userReposController.controller(server);
 userDetailsController.controller(server);

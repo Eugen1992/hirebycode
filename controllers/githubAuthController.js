@@ -1,25 +1,21 @@
 var express = require('express');
 var passport = require('passport');
-var jwt = require('jwt-simple');
 var User = require('../models/user');
+var jwtMiddleware = require('../middleware/jwtMiddleware.js');
 
 function controller(app) {
   app.get('/api/auth/github',
     passport.authenticate('github', {failureRedirect: '/'}),
+    jwtMiddleware,
     function (req, res) {
       User.findOne({ githubId: req.user.id}, function (err, user) {
         if (err) {
           res.sendStatus(500);
         } else if (user === null) {
-          var payload = {
-            iss: req.hostname,
-            sub: req.user.id
-          };
-          var token = jwt.encode(payload, 'secret');
           var newUser = new User({
             githubId: req.user.id,
             githubLogin: req.user.username,
-            token: token
+            token: req.token
           });
           newUser.save(function(err) {
             if (err) {
@@ -27,7 +23,7 @@ function controller(app) {
             } else {
               res.status(200).json({
                 githubToken: req.user.accessToken,
-                token: token
+                token: req.token
               });
             }
           });  

@@ -1,3 +1,10 @@
-<div>
-  <h1>{{$ctrl.contacts}}</h1>
+<div class="repoContacts">
+  <div class="repoContacts-button is-open" ng-click="$ctrl.toggleContacts()">
+    Like this project? <br/>Hire it's author!</div>
+  <div class="repoContacts-contacts">
+    <span class="repoContacts-instruction">You may contact this developer by:</span>
+    <div>
+    {{$ctrl.contacts}}
+    </div>
+  </div>
 </div>

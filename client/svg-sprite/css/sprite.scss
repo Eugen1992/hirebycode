@@ -1,10 +1,10 @@
 %svg-common {
-	background: url("svg/sprite.css-1dab0623.svg") no-repeat;
+	background: url("svg/sprite.css-f5fd5214.svg") no-repeat;
 }
 
 .svg-client--svg--back {
 	@extend %svg-common;
-	background-position: 0 100%;
+	background-position: 94.71900647948164% 23.132530120481928%;
 }
 
 .svg-client--svg--back-dims {
@@ -14,7 +14,7 @@
 
 .svg-client--svg--dir {
 	@extend %svg-common;
-	background-position: 0 0;
+	background-position: 99.89726651480636% 0;
 }
 
 .svg-client--svg--dir-dims {
@@ -24,11 +24,21 @@
 
 .svg-client--svg--file {
 	@extend %svg-common;
-	background-position: 100% 0;
+	background-position: 99.89726651480636% 12.27621483375959%;
 }
 
 .svg-client--svg--file-dims {
 	width: 48px;
 	height: 48px;
+}
+
+.svg-client--svg--github {
+	@extend %svg-common;
+	background-position: 0 0;
+}
+
+.svg-client--svg--github-dims {
+	width: 438.549px;
+	height: 438.549px;
 }
 

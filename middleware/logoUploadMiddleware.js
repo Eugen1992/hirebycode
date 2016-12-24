@@ -20,10 +20,12 @@ function getStorage () {
 
 function middleware (req, res, next) {
   upload(req, res, function (err) {
+    console.log(req.file);
     if (!req.file) {
       req.logoUpdated = false;
+    } else {
+      req.logoUpdated = true;
     }
-    req.logoUpdated = true;
     next();
   });
 }

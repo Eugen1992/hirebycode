@@ -50,7 +50,9 @@ userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
     '_id': ObjectId(userId)
   }, updateQuery, {new: true}).then(function (user) {
     return {
-      name: user.name
+      name: user.name,
+      logo: user.logo,
+      hasLogo: user.hasLogo
     };
   });
 }

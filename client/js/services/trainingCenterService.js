@@ -12,6 +12,8 @@
         method: 'PUT',
         data: user,
       }).then(function(response) {
+        userLocal.setUser(response.data);
+        return response.data;
       }, function (error) {
         console.log(error);
       });

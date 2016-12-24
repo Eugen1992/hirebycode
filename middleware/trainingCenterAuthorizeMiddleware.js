@@ -4,14 +4,17 @@ var ObjectId = require('mongodb').ObjectId;
 
 module.exports = function (req, res, next) {
   if (req.userId) {
-    User.findOne({_id: ObjectId(req.userId), type: 'trainingCenter'}).then(function () {
-      next();
+    console.log('user id is present: ' + req.userId);
+    User.findOne({_id: ObjectId(req.userId), type: 'trainingCenter'}).then(function (user) {
+      if (user === null) {
+        res.sendStatus(401);
+      } else {
+        next();
+      }
     }, function () {
-      console.log('did not found');
-      res.sendStatus(401);
+      res.sendStatus(500);
     });
   } else {
-    console.log('didnt pass user');
     res.sendStatus(401);
   }
 }

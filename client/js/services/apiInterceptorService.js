@@ -1,4 +1,4 @@
-ApiInterceptorService.$inject = ['$q', '$rootScope', 'UserService'];
+ApiInterceptorService.$inject = ['$q', '$rootScope', 'UserLocalService'];
 app.service('ApiInterceptorService', ApiInterceptorService);
 
 function ApiInterceptorService ($q, $rootScope, userService) {

@@ -24,7 +24,7 @@
       });
     }
     this.updateUserDetails = function (data) {
-      return $http.put('/api/user/details', data);
+      return $http.put('/api/training-center/details', data);
     }
   }
 })();

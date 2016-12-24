@@ -3,10 +3,14 @@ var Schema = mongoose.Schema;
 var ObjectId = require('mongodb').ObjectId
 
 var userSchema = new Schema({
+  name: String,
+  type: String,
   githubId: String,
   githubLogin: String,
   token: String,
-  contacts: String
+  contacts: String,
+  hasLogo: Boolean,
+  logo: String
 });
 
 userSchema.statics.updateContacts = function (contacts, login) {
@@ -30,8 +34,25 @@ userSchema.statics.getContactsById = function (userId) {
     return user[0].contacts;
   });
 }
-userSchema.statics.updateTrainingCenter = function () {
-  
+userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
+  var updateQuery = {
+    $set: {
+      name: data.name
+    }
+  };
+  console.log(logoData);
+  if (logoData.wasUpdated) {
+    updateQuery.logo = logoData.fileName;
+    updateQuery.hasLogo = true;
+  }
+
+  return this.findOneAndUpdate({
+    '_id': ObjectId(userId)
+  }, updateQuery, {new: true}).then(function (user) {
+    return {
+      name: user.name
+    };
+  });
 }
 var User = mongoose.model('User', userSchema);
 

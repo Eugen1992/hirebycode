@@ -1,4 +1,4 @@
-GithubRepoService.$inject = ['$http', 'UserService'];
+GithubRepoService.$inject = ['$http', 'UserLocalService'];
 angular.module('showroom').service('GithubRepoService', GithubRepoService);
 
 function GithubRepoService ($http, user) {

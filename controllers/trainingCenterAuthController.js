@@ -12,7 +12,13 @@ function controller (app) {
         res.sendStatus(400);
       }
       User.findOneAndUpdate({_id: ObjectId(req.user._id)}, {$set: {token: req.token} }, {new: true}).then(function (user) {
-        res.send({ token: user.token, user: user });
+        res.send({ token: user.token, user: {
+            type: user.type,
+            name: user.name,
+            hasLogo: user.hasLogo,
+            logo: user.logo
+          }
+        });
       }, function (error) {
         res.sendStatus(500);
       })

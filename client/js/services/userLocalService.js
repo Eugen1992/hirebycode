@@ -1,7 +1,7 @@
-UserService.$inject = ['$q', '$window'];
-app.service('UserService', UserService);
+UserLocalService.$inject = ['$q', '$window'];
+app.service('UserLocalService', UserLocalService);
 
-function UserService ($q, $window) {
+function UserLocalService ($q, $window) {
   this.setToken = function (token) {
     $window.localStorage.setItem('token', token);
   }

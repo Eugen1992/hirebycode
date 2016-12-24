@@ -17,6 +17,7 @@ var skillsController = require('./controllers/skillsController.js');
 
 var userAuthorizeMiddleware = require('./middleware/userAuthorizeMiddleware.js');
 var trainingCenterAuthorizeMiddleware = require('./middleware/trainingCenterAuthorizeMiddleware');
+var uploadMiddleware = require('./middleware/logoUploadMiddleware.js');
 
 var expressHbs = require('express3-handlebars');
 
@@ -43,7 +44,10 @@ require('./config/passport.js')(server);
 server.use('/api/user/repos', userAuthorizeMiddleware);
 server.use('/api/user/repos/*', userAuthorizeMiddleware);
 server.use('/api/user/details', userAuthorizeMiddleware);
-server.use('/api/training-center/details', userAuthorizeMiddleware, trainingCenterAuthorizeMiddleware);
+server.use('/api/training-center/details',
+  userAuthorizeMiddleware, 
+  trainingCenterAuthorizeMiddleware,
+  uploadMiddleware);
 
 reposController.controller(server);
 githubAuthController.controller(server);

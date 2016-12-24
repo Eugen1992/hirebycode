@@ -1,9 +1,13 @@
-TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserService', 'TrainingCenterService'];
+TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserLocalService', 'TrainingCenterService', 'Upload'];
 angular.module('showroom').controller('TrainingCenterHomeController',  TrainingCenterHomeController);
 
-function TrainingCenterHomeController ($scope, $state, user, trainingCenter) {
+function TrainingCenterHomeController ($scope, $state, user, trainingCenter, upload) {
   $scope.user = user.getUser();
+
   $scope.submitDetails = function () {
-    trainingCenter.updateDetails($scope.user);
+    trainingCenter.update($scope.user, $scope.newLogo);
+  }
+  $scope.clearLogo = function () {
+    $scope.newLogo = null;
   }
 }

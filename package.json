@@ -28,6 +28,7 @@
     "jwt-simple": "^0.5.0",
     "mongodb": "^2.2.6",
     "mongoose": "^4.5.9",
+    "multer": "^1.2.1",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
     "passport-local": "^1.0.0",

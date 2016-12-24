@@ -5,7 +5,7 @@ function TrainingCenterLoginController ($scope, $state, auth) {
   $scope.submit = function () {
     auth.trainingCenter($scope.login, $scope.password).then(function () {
         $scope.error = null;
-        $state.go('training-home');
+        $state.go('account');
     }, function (err) {
         if (err.status === 401) {
           $scope.error = 'Wrong credentials, try again';

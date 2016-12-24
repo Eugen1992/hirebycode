@@ -1,4 +1,4 @@
-var app = angular.module('showroom', ['ui.router']);
+var app = angular.module('showroom', ['ui.router', 'ngFileUpload']);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   //
@@ -87,13 +87,12 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       }
     });
 
-
   $httpProvider.interceptors.push('ApiInterceptorService');
 });
 
-angular.module('showroom').run(function($rootScope, $state, UserService){
+angular.module('showroom').run(function($rootScope, $state, UserLocalService){
   $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
-    if (to.parent === 'authorized' && !UserService.isLoggedIn()) {
+    if (to.parent === 'authorized' && !UserLocalService.isLoggedIn()) {
         ev.preventDefault();
         $state.go('home');
     }
@@ -101,7 +100,7 @@ angular.module('showroom').run(function($rootScope, $state, UserService){
   $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
     if (to.name === 'account') {
       ev.preventDefault();
-      switch (UserService.getUser().type) {
+      switch (UserLocalService.getUser().type) {
         case 'trainingCenter':
           $state.go('training-center-home');
           break;

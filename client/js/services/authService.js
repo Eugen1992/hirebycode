@@ -1,4 +1,4 @@
-AuthService.$inject = ['$q', '$http', '$window', 'UserService'];
+AuthService.$inject = ['$q', '$http', '$window', 'UserLocalService'];
 app.service('AuthService', AuthService);
 
 function AuthService ($q, $http, $window, userService) {

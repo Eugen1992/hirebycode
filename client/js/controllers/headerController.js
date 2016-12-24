@@ -1,4 +1,4 @@
-HeaderController.$inject = ['$scope', '$state', 'UserService', 'AuthService'];
+HeaderController.$inject = ['$scope', '$state', 'UserLocalService', 'AuthService'];
 angular.module('showroom').controller('HeaderController', HeaderController);
 
 function HeaderController ($scope, $state, user, auth) {

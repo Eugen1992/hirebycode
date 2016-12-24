@@ -16,11 +16,21 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       abstract: true,
       template: '<ui-view/>'
     })
-    .state('user-home', {
+    .state('account', {
       parent: 'authorized',
       url: '/account',
+    })
+    .state('user-home', {
+      parent: 'authorized',
+      url: '/user-home',
       templateUrl: 'client/views/partials/userHome.html',
       controller: 'UserHomeController'
+    })
+    .state('training-center-home', {
+      parent: 'authorized',
+      url: '/training-center-home',
+      templateUrl: 'client/views/partials/trainingCenterHome.html',
+      controller: 'TrainingCenterHomeController'
     })
     .state('importing', {
       parent: 'authorized',
@@ -66,12 +76,6 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: 'client/views/partials/trainingCenterLogin.html',
       controller: 'TrainingCenterLoginController'
     })
-    .state('training-home', {
-      parent: 'authorized',
-      url: '/training-center',
-      templateUrl: 'client/views/partials/trainingCenterHome.html',
-      controller: 'TrainingCenterHomeController'
-    })
     .state('repo-details', {
       url: '/repo-details/:id',
       templateUrl: 'client/views/partials/repoDetails.html',
@@ -92,6 +96,21 @@ angular.module('showroom').run(function($rootScope, $state, UserService){
     if (to.parent === 'authorized' && !UserService.isLoggedIn()) {
         ev.preventDefault();
         $state.go('home');
+    }
+  });
+  $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
+    if (to.name === 'account') {
+      ev.preventDefault();
+      switch (UserService.getUser().type) {
+        case 'trainingCenter':
+          $state.go('training-center-home');
+          break;
+        case 'developer':
+          $state.go('user-home');
+          break;
+        default:
+          $state.go('home');
+      }
     }
   });
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){

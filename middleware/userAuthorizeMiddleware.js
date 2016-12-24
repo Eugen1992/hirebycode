@@ -12,6 +12,7 @@ module.exports = function (req, res, next) {
       next();  
     });
   } else {
+    console.log('didnt find user');
     res.sendStatus(401);
   }
 }

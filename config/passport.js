@@ -24,7 +24,7 @@ module.exports = function(server) {
       session: false
     },
     function (username, password, done) {
-      User.findOne({ login: username, password: password }, function (err, user) {
+      User.findOne({ login: username, password: password, type: 'trainingCenter' }, function (err, user) {
         if (err) { return done(err); }
         if (!user) { return done(null, false); }
         return done(null, user);

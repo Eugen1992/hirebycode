@@ -30,6 +30,9 @@ userSchema.statics.getContactsById = function (userId) {
     return user[0].contacts;
   });
 }
+userSchema.statics.updateTrainingCenter = function () {
+  
+}
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;

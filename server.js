@@ -12,9 +12,11 @@ var userReposController = require('./controllers/userReposController.js');
 var userDetailsController = require('./controllers/userDetailsController.js');
 var githubAuthController = require('./controllers/githubAuthController.js');
 var trainingCenterAuthController = require('./controllers/trainingCenterAuthController.js');
+var trainingCenterDetailsController = require('./controllers/trainingCenterDetailsController.js');
 var skillsController = require('./controllers/skillsController.js');
 
-var authMiddleware = require('./middleware/authMiddleware.js');
+var userAuthorizeMiddleware = require('./middleware/userAuthorizeMiddleware.js');
+var trainingCenterAuthorizeMiddleware = require('./middleware/trainingCenterAuthorizeMiddleware');
 
 var expressHbs = require('express3-handlebars');
 
@@ -38,9 +40,10 @@ server.use(session({
 
 require('./config/passport.js')(server);
 
-server.use('/api/user/repos', authMiddleware);
-server.use('/api/user/repos/*', authMiddleware);
-server.use('/api/user/details', authMiddleware);
+server.use('/api/user/repos', userAuthorizeMiddleware);
+server.use('/api/user/repos/*', userAuthorizeMiddleware);
+server.use('/api/user/details', userAuthorizeMiddleware);
+server.use('/api/training-center/details', userAuthorizeMiddleware, trainingCenterAuthorizeMiddleware);
 
 reposController.controller(server);
 githubAuthController.controller(server);
@@ -48,6 +51,7 @@ trainingCenterAuthController.controller(server);
 skillsController.controller(server);
 userReposController.controller(server);
 userDetailsController.controller(server);
+trainingCenterDetailsController.controller(server);
 
 require('./config/static.js')(server);
 

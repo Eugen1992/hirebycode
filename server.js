@@ -48,6 +48,9 @@ server.use('/api/training-center/details',
   userAuthorizeMiddleware, 
   trainingCenterAuthorizeMiddleware,
   uploadMiddleware);
+server.use('/api/training-center/requests', 
+  userAuthorizeMiddleware, 
+  trainingCenterAuthorizeMiddleware);
 
 reposController.controller(server);
 githubAuthController.controller(server);

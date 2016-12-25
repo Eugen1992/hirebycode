@@ -40,7 +40,8 @@ function controller(app) {
         languages: req.body.languages,
         createdAt: new Date().getTime(),
         contactInfo: req.body.contactInfo,
-        trainingCenter: req.body.trainingCenter
+        trainingCenterRequired: req.body.trainingCenterRequired,
+        messageToTrainingCenter: req.body.messageToTrainingCenter
       });
       newRepo.save(function(err) {
         if (err) {

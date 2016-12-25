@@ -1,15 +1,16 @@
 <form>
   <div class="form-group">
-    <label>
+    <label class="repoForm-inlineInput">
       What I did and what I learned with this project:
       <textarea class="form-control" placeholder="Description..." ng-model="$ctrl.repo.description"></textarea>
     </label>
-  </div>
-  <div class="form-group">
-    <label>
+    <label class="repoForm-inlineInput">
       What I plan to do and learn:
       <textarea class="form-control" placeholder="Plans..." ng-model="$ctrl.repo.plans"></textarea>
     </label>
+  </div>
+  <div class="form-group">
+
   </div>
   <label>Languages used:</label>
   <div class="checkbox" ng-repeat="skill in $ctrl.skills">
@@ -17,11 +18,16 @@
       <input type="checkbox" ng-model="skill.used"> {{skill.name}}
     </label>
   </div>
-  <label>Project was done during studing in the training center:
-    <select class="form-control" ng-model="$ctrl.repo.trainingCenter">
-      <option value="none">None</option>
-      <option ng-repeat="center in $ctrl.trainingCenters" value={{center.id}}>{{center.name}}</option>
-    </select>
-  </label>
-  <button type="submit" class="btn btn-default" ng-click="$ctrl.submit()">Submit</button>
+  <div class="form-group">
+    <label class="repoForm-inlineInput">Project was done during studying in the training center:
+      <select class="form-control" ng-model="$ctrl.repo.trainingCenterRequired">
+        <option value="none">None</option>
+        <option ng-repeat="center in $ctrl.trainingCenters" value={{center.id}}>{{center.name}}</option>
+      </select>
+    </label>
+    <label class="repoForm-inlineInput">Identifying message to training center:
+      <textarea class="form-control" placeholder="Let your training center recognize you" ng-model="$ctrl.repo.messageToTrainingCenter"></textarea>
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary" ng-click="$ctrl.submit()">Submit</button>
 </form>

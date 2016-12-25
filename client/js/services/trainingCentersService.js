@@ -18,6 +18,13 @@
         console.log(error);
       });
     }
+    this.getTrainingCenterRequests = function (id) {
+      return $http.get('api/training-center/requests').then(function (response) {
+        return response.data;
+      }, function (error) {
+        console.log(error);
+      });
+    }
     this.getAll = function () {
       return $http.get('api/training-center').then(function (response) {
         return response.data;

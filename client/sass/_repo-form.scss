@@ -1,0 +1,8 @@
+.repoForm-inlineInput {
+  display: inline-block;
+  margin-left: 15px;
+  vertical-align: top;
+  &:first-child {
+    margin-left: 0;
+  }
+}

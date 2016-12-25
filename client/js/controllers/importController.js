@@ -9,7 +9,8 @@ function ImportController ($scope, $filter, repos, $http, $state, $stateParams) 
       description: '',
       plans: '',
       contactInfo: '',
-      trainingCenter: 'none'
+      trainingCenter: 'none',
+      trainingCenterRequest: null
     };
   });;
   $scope.submit = function () {

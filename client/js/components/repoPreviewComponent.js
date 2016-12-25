@@ -1,8 +1,8 @@
 (function () {
-  angular.module('showroom').component('reposList', {
-    templateUrl: 'client/views/components/reposList.html',
+  angular.module('showroom').component('srRepoPreview', {
+    templateUrl: 'client/views/components/repoPreview.html',
     bindings: {
-      repos: '='
+      repo: '='
     },
     controller: function ($state) {
       this.seeDetails = function (id) {

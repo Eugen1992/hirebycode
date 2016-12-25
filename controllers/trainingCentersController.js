@@ -1,5 +1,5 @@
 var User = require('../models/user.js');
-
+var Repo = require('../models/repo.js');
 
 function controller(app) {
   app.put('/api/training-center/details', function(request, response) {
@@ -18,7 +18,15 @@ function controller(app) {
       response.send(trainingCenters);
     }, function (err) {
       response.sendStatus(500);
-    })
+    });
+  });
+  app.get('/api/training-center/requests', function(request, response) {
+    Repo.getTrainingCenterRequests(request.userId).then(function (centerRequests) {
+      console.log(centerRequests);
+      response.send(centerRequests);
+    }, function (err) {
+      response.sendStatus(500);
+    });
   });
 }
 module.exports.controller = controller;

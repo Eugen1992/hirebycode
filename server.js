@@ -12,7 +12,7 @@ var userReposController = require('./controllers/userReposController.js');
 var userDetailsController = require('./controllers/userDetailsController.js');
 var githubAuthController = require('./controllers/githubAuthController.js');
 var trainingCenterAuthController = require('./controllers/trainingCenterAuthController.js');
-var trainingCenterDetailsController = require('./controllers/trainingCenterDetailsController.js');
+var trainingCentersController = require('./controllers/trainingCentersController.js');
 var skillsController = require('./controllers/skillsController.js');
 
 var userAuthorizeMiddleware = require('./middleware/userAuthorizeMiddleware.js');
@@ -55,7 +55,7 @@ trainingCenterAuthController.controller(server);
 skillsController.controller(server);
 userReposController.controller(server);
 userDetailsController.controller(server);
-trainingCenterDetailsController.controller(server);
+trainingCentersController.controller(server);
 
 require('./config/static.js')(server);
 

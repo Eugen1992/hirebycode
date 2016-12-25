@@ -13,5 +13,12 @@ function controller(app) {
       response.sendStatus(500);
     });
   });
+  app.get('/api/training-center', function(request, response) {
+    User.getTrainingCentersList().then(function (trainingCenters) {
+      response.send(trainingCenters);
+    }, function (err) {
+      response.sendStatus(500);
+    })
+  });
 }
 module.exports.controller = controller;

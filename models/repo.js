@@ -10,7 +10,8 @@ var repoScheme = new Schema({
   plans: String,
   contents_url: String,
   contactInfo: String,
-  createdAt: Number
+  createdAt: Number,
+  trainingCenter: String
 });
 
 // the schema is useless so far

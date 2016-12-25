@@ -10,7 +10,8 @@ var userSchema = new Schema({
   token: String,
   contacts: String,
   hasLogo: Boolean,
-  logo: String
+  logo: String,
+  isPublic: Boolean
 });
 
 userSchema.statics.updateContacts = function (contacts, login) {
@@ -37,10 +38,10 @@ userSchema.statics.getContactsById = function (userId) {
 userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
   var updateQuery = {
     $set: {
-      name: data.name
+      name: data.name,
+      isPublic: data.isPublic
     }
   };
-  console.log(logoData);
   if (logoData.wasUpdated) {
     updateQuery.logo = logoData.fileName;
     updateQuery.hasLogo = true;
@@ -52,9 +53,23 @@ userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
     return {
       name: user.name,
       logo: user.logo,
-      hasLogo: user.hasLogo
+      hasLogo: user.hasLogo,
+      isPublic: user.isPublic
     };
   });
+}
+userSchema.statics.getTrainingCentersList = function () {
+   return this.find({type: 'trainingCenter', isPublic: true }).then(function(trainingCenters) {
+    return trainingCenters.map(function (item) {
+      publicData = {
+        id: item._id,
+        name: item.name,
+        logo: item.logo,
+        hasLogo: item.hasLogo
+      };
+      return publicData;
+    });
+   });
 }
 var User = mongoose.model('User', userSchema);
 

@@ -15,7 +15,8 @@ function controller(app) {
           var newUser = new User({
             githubId: req.user.id,
             githubLogin: req.user.username,
-            token: req.token
+            token: req.token,
+            type: 'developer'
           });
           newUser.save(function(err) {
             if (err) {
@@ -23,7 +24,8 @@ function controller(app) {
             } else {
               res.status(200).json({
                 githubToken: req.user.accessToken,
-                token: req.token
+                token: req.token,
+                user: newUser
               });
             }
           });  
@@ -31,7 +33,8 @@ function controller(app) {
           token = user.token;
           res.status(200).json({
             githubToken: req.user.accessToken,
-            token: token
+            token: token,
+            user: user
           });
         }
       });

@@ -39,7 +39,8 @@ function controller(app) {
         plans: req.body.plans,
         languages: req.body.languages,
         createdAt: new Date().getTime(),
-        contactInfo: req.body.contactInfo
+        contactInfo: req.body.contactInfo,
+        trainingCenter: req.body.trainingCenter
       });
       newRepo.save(function(err) {
         if (err) {

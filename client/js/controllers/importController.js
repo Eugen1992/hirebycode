@@ -8,7 +8,8 @@ function ImportController ($scope, $filter, repos, $http, $state, $stateParams) 
       languages: [],
       description: '',
       plans: '',
-      contactInfo: ''
+      contactInfo: '',
+      trainingCenter: 'none'
     };
   });;
   $scope.submit = function () {

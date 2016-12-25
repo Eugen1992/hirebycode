@@ -1,12 +1,21 @@
 <main class="row">
   <h1>Training Center Home</h1>
-  <section class="col-md-7"></section>
+  <section class="col-md-7">
+
+  </section>
   <section class="col-md-5">
     <form>
-      <div class="form-group">
-        <label>
+      <div class="form-group row">
+        <label class="col-sm-6 col-xs-12">
           Training center name:
           <textarea class="form-control" ng-model="user.name"></textarea>
+        </label>
+        <label class="col-sm-6 col-xs-12">
+          <span class="trainingCenter-switchLabel">Account status: </span>
+          <span class="trainingCenter-switch">
+            <input type="checkbox" ng-model="user.isPublic" ng-change="handleChange()">
+            <span class="trainingCenter-slider" ng-class="{'is-checked': user.isPublic}"></span>
+          </span>
         </label>
       </div>
       <div class="form-group">

@@ -1,4 +1,4 @@
-TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserLocalService', 'TrainingCenterService', 'Upload'];
+TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserLocalService', 'TrainingCentersService', 'Upload'];
 angular.module('showroom').controller('TrainingCenterHomeController',  TrainingCenterHomeController);
 
 function TrainingCenterHomeController ($scope, $state, user, trainingCenter, upload) {

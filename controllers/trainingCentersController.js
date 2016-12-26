@@ -20,13 +20,35 @@ function controller(app) {
       response.sendStatus(500);
     });
   });
-  app.get('/api/training-center/requests', function(request, response) {
+  app.get('/api/training-center/repos', function(request, response) {
     Repo.getTrainingCenterRequests(request.userId).then(function (centerRequests) {
-      console.log(centerRequests);
       response.send(centerRequests);
     }, function (err) {
       response.sendStatus(500);
     });
+  });
+  app.put('/api/training-center/repos', function(request, response) {
+    if (request.body.approved) {
+      Repo.approveTrainingCenterStatus({
+        repoId: request.body.repoId,
+        trainingCenterId: request.userId,
+        approved: true
+      }).then(function (repo) {
+        response.send(repo);
+      }, function (err) {
+        response.sendStatus(500);
+      });
+    } else {
+      Repo.disapproveTrainingCenterStatus({
+        repoId: request.body.repoId,
+        trainingCenterId: request.userId,
+        approved: false
+      }).then(function (repo) {
+        response.send(repo);
+      }, function (err) {
+        response.sendStatus(500);
+      });
+    }
   });
 }
 module.exports.controller = controller;

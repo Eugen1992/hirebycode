@@ -4,7 +4,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 module.exports = function (req, res, next) {
   if (req.userId) {
-    console.log('user id is present: ' + req.userId);
     User.findOne({_id: ObjectId(req.userId), type: 'trainingCenter'}).then(function (user) {
       if (user === null) {
         res.sendStatus(401);

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var ObjectId = require('mongodb').ObjectId
+var ObjectId = require('mongodb').ObjectId;
 
 var userSchema = new Schema({
   name: String,
@@ -39,7 +39,7 @@ userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
   var updateQuery = {
     $set: {
       name: data.name,
-      isPublic: data.isPublic
+      isPublic: Boolean(data.isPublic)
     }
   };
   if (logoData.wasUpdated) {
@@ -53,6 +53,7 @@ userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
     return {
       name: user.name,
       logo: user.logo,
+      type: user.type,
       hasLogo: user.hasLogo,
       isPublic: user.isPublic
     };

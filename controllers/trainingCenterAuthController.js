@@ -16,7 +16,8 @@ function controller (app) {
             type: user.type,
             name: user.name,
             hasLogo: user.hasLogo,
-            logo: user.logo
+            logo: user.logo,
+            isPublic: user.isPublic
           }
         });
       }, function (error) {

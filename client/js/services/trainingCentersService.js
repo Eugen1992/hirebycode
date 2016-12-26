@@ -5,12 +5,12 @@
   function TrainingCentersService ($http, $q, userLocal, upload) {
     this.update = function (user, logo) {
       if (logo) {
-        user.logo = logo;
+        user.logo = logo; 
       }
       return upload.upload({
         url: 'api/training-center/details',
         method: 'PUT',
-        data: user,
+        data: user
       }).then(function(response) {
         userLocal.setUser(response.data);
         return response.data;
@@ -18,8 +18,20 @@
         console.log(error);
       });
     }
+    this.approveRepo = function (repoId) {
+      return $http.put('api/training-center/repos', {
+        repoId: repoId,
+        approved: true
+      })
+    }
+    this.disaproveRepo = function (repoId) {
+      return $http.put('api/training-center/repos', {
+        repoId: repoId,
+        approved: false
+      })
+    }
     this.getTrainingCenterRequests = function (id) {
-      return $http.get('api/training-center/requests').then(function (response) {
+      return $http.get('api/training-center/repos').then(function (response) {
         return response.data;
       }, function (error) {
         console.log(error);

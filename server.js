@@ -48,7 +48,8 @@ server.use('/api/training-center/details',
   userAuthorizeMiddleware, 
   trainingCenterAuthorizeMiddleware,
   uploadMiddleware);
-server.use('/api/training-center/requests', 
+
+server.use('/api/training-center/repos', 
   userAuthorizeMiddleware, 
   trainingCenterAuthorizeMiddleware);
 

@@ -28,7 +28,7 @@ function controller(app) {
   app.post("/api/user/repos", function(req, res) {
     var login = req.login;
     var newRepo;
-    console.log(req.body.contactInfo);
+    
     if (login) {
       newRepo = new Repo({
         name: req.body.name,

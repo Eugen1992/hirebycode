@@ -6,6 +6,12 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, upl
   trainingCenter.getTrainingCenterRequests(user).then(function (requests) {
     $scope.developersRequests = requests;
   });
+  $scope.approveRepo = function (repo) {
+    trainingCenter.approveRepo(repo._id).then(function (response) {
+    }, function (error) {
+      console.log(error);
+    });;
+  }
   $scope.submitDetails = function () {
     trainingCenter.update($scope.user, $scope.newLogo);
   }

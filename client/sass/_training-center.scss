@@ -1,3 +1,18 @@
+.trainingCenter-requestDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: top;
+  padding: 10px;
+  padding-bottom: 23px;
+  border: solid 1px #d3d3d3;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: -3px;
+}
+.trainingCenter-requestMessage {
+  
+}
 .trainingCenter-logo {
   width: 350px;
 }
@@ -14,7 +29,9 @@
   width: 60px;
   height: 34px;
 }
-.trainingCenter-switch input {display:none;}
+.trainingCenter-switch input {
+  display:none;
+}
 
 .trainingCenter-slider {
   position: absolute;
@@ -31,7 +48,7 @@
 
 .trainingCenter-slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;

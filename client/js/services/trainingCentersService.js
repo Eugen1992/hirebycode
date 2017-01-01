@@ -3,23 +3,39 @@
 
   TrainingCentersService.$inject = ['$http', '$q', 'UserLocalService', 'Upload'];
   function TrainingCentersService ($http, $q, userLocal, upload) {
-    this.approveRepo = function (repoId) {
-      return $http.put('api/repo/training-center', {
-        repoId: repoId,
-        approved: true
-      })
+    var trainingCenterRepos;
+
+    this.getAll = function () {
+      return $http.get('api/user/training-center').then(function (response) {
+        return response.data;
+      });
     }
-    this.disaproveRepo = function (repoId) {
+    this.approveRepo = function (repo) {
       return $http.put('api/repo/training-center', {
-        repoId: repoId,
+        repoId: repo._id,
+        approved: true
+      }).then(function () {
+        trainingCenterRepos.pending.splice(trainingCenterRepos.pending.indexOf(repo), 1);
+        trainingCenterRepos.approved.push(repo);
+      }, function () {
+
+      });
+    }
+    this.disapproveRepo = function (repo) {
+      return $http.put('api/repo/training-center', {
+        repoId: repo._id,
         approved: false
-      })
+      }).then(function () {
+        trainingCenterRepos.approved.splice(trainingCenterRepos.pending.indexOf(repo), 1);
+        trainingCenterRepos.pending.push(repo);
+      }, function () {
+
+      });
     }
     this.getTrainingCenterRepos = function (id) {
       return $http.get('api/repo/training-center/').then(function (response) {
-        return response.data;
-      }, function (error) {
-        console.log(error);
+        trainingCenterRepos = response.data;
+        return trainingCenterRepos;
       });
     }
   }

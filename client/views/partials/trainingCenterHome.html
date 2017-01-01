@@ -1,11 +1,19 @@
 <main class="row">
   <h1>Training Center Home</h1>
   <section class="col-md-7">
-    <h3>Developers requests</h3>
-    <div ng-repeat="repo in developersRequests">
+    <h3>Pending projects</h3>
+    <div ng-repeat="repo in pendingRepos">
       <div class="trainingCenter-requestDetails">
-        <div class="trainingCenter-requestMessage">Developer's identifiying message: {{repo.messageToTrainingCenter}}</div>
+        <div class="trainingCenter-requestMessage">Developer's name: {{repo.author}}</div>
         <button class="btn btn-success" ng-click="approveRepo(repo)">Approve</button>
+      </div>
+      <sr-repo-preview repo="repo"></sr-repo-preview>
+    </div>
+    <h3>Approved projects</h3>
+    <div ng-repeat="repo in approvedRepos">
+      <div class="trainingCenter-requestDetails">
+        <div class="trainingCenter-requestMessage">Developer's name: {{repo.author}}</div>
+        <button class="btn btn-danger" ng-click="disapproveRepo(repo)">Disaprove</button>
       </div>
       <sr-repo-preview repo="repo"></sr-repo-preview>
     </div>

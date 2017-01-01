@@ -8,6 +8,14 @@ const UserController = {
       res.sendStatus(500);
     });
   },
+  getTrainingCentersList: (req, res, next) => {
+    console.log('getting centers list');
+    User.getTrainingCentersList().then(function (centers) {
+      res.send(centers);
+    }, function () {
+      res.sendStatus(500);
+    });
+  },
   getTrainingCenterDetails: (req, res, next) => {
     User.getTrainingCenter(req.userId).then(function (details) {
       res.send(details);

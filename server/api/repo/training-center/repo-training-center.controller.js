@@ -2,7 +2,7 @@ const Repo = require('../../../models/repo');
 
 const RepoTrainingCenterController = {
   get: (req, res, next) => {
-    Repo.getTrainingCenterRequests(req.userId).then(function (centerRepos) {
+    Repo.getTrainingCenterRepos(req.userId).then(function (centerRepos) {
       res.send(centerRepos);
     }, function (err) {
       console.log(err);
@@ -16,9 +16,9 @@ const RepoTrainingCenterController = {
         trainingCenterId: req.userId,
         approved: true
       }).then(function (repo) {
-        response.send(repo);
+        res.send(repo);
       }, function (err) {
-        response.sendStatus(500);
+        res.sendStatus(500);
       });
     } else {
       Repo.disapproveTrainingCenterStatus({
@@ -26,9 +26,9 @@ const RepoTrainingCenterController = {
         trainingCenterId: req.userId,
         approved: false
       }).then(function (repo) {
-        response.send(repo);
+        res.send(repo);
       }, function (err) {
-        response.sendStatus(500);
+        res.sendStatus(500);
       });
     }
   },

@@ -6,17 +6,16 @@ var bodyParser = require('body-parser');
 var localDB = 'mongodb://localhost:27017';
 
 var mongoose = require('mongoose');
+
+process.env.PWD = process.cwd();
 mongoose.connect(localDB);
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: false}));
 
-server.use('/api', require('./server/api'));
-
 require('./server/config/passport.js')(server);
+server.use('/api', require('./server/api'));
 require('./server/config/static.js')(server);
-
-process.env.PWD = process.cwd();
 
 server.use(session({
   secret: 'Super Secret Session Key',

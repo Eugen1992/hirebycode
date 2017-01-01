@@ -7,6 +7,10 @@ const uploadMiddleware = require('../../middleware/logoUploadMiddleware');
 router.get('/contacts/:userId',
   UserController.getContactsById
 );
+router.get('/training-center',
+  userAuthorizeMiddleware,
+  UserController.getTrainingCentersList
+);
 router.get('/training-center/details',
   userAuthorizeMiddleware,
   UserController.getTrainingCenterDetails

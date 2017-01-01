@@ -3,11 +3,18 @@ angular.module('showroom').controller('TrainingCenterHomeController',  TrainingC
 
 function TrainingCenterHomeController ($scope, $state, user, trainingCenter, userService, upload) {
   $scope.user = user.getUser();
-  trainingCenter.getTrainingCenterRepos(user).then(function (requests) {
-    $scope.developersRequests = requests;
+  trainingCenter.getTrainingCenterRepos(user).then(function (repos) {
+    $scope.pendingRepos = repos.pending;
+    $scope.approvedRepos = repos.approved;
   });
   $scope.approveRepo = function (repo) {
-    trainingCenter.approveRepo(repo._id).then(function (response) {
+    trainingCenter.approveRepo(repo).then(function (response) {
+    }, function (error) {
+      console.log(error);
+    });
+  }
+  $scope.disapproveRepo = function (repo) {
+    trainingCenter.disapproveRepo(repo).then(function (response) {
     }, function (error) {
       console.log(error);
     });

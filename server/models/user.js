@@ -52,9 +52,10 @@ userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
   var updateQuery = {
     $set: {
       name: data.name,
-      isPublic: Boolean(data.isPublic)
+      isPublic: data.isPublic === 'true' ? true : false
     }
   };
+  
   if (logoData.wasUpdated) {
     updateQuery.logo = logoData.fileName;
     updateQuery.hasLogo = true;

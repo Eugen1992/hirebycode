@@ -7,16 +7,16 @@
     controller: EditContactsController
   });
 
-  EditContactsController.$inject = ['UserDetailsService'];
+  EditContactsController.$inject = ['UserService'];
 
-  function EditContactsController (userDetails) {
+  function EditContactsController (userService) {
     this.$onInit = function () {
-      userDetails.fetchUserDetails().then(function (contacts) {
+      userService.fetchDeveloperDetails().then(function (contacts) {
         this.contacts = contacts;
       }.bind(this));
     }
     this.submit = function () {
-      userDetails.updateUserDetails({
+      userService.updateDeveloperDetails({
         contacts: this.contacts
       });
     }

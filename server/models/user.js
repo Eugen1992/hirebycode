@@ -35,6 +35,19 @@ userSchema.statics.getContactsById = function (userId) {
     return user[0].contacts;
   });
 }
+userSchema.statics.getTrainingCenter = function (userId) {
+  return this.find({ 
+    '_id': ObjectId(userId)
+  }).limit(1).then(function (user) {
+    return {
+      name: user.name,
+      logo: user.logo,
+      type: user.type,
+      hasLogo: user.hasLogo,
+      isPublic: user.isPublic
+    };
+  });
+}
 userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
   var updateQuery = {
     $set: {

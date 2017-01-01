@@ -9,7 +9,7 @@ function SkillsService ($http, $q) {
         resolve(skills);
       })
     } else {
-      return $http.get('api/skills-set').then(function (response) {
+      return $http.get('api/skills').then(function (response) {
         skills = response.data;
         return skills;
       });

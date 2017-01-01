@@ -3,42 +3,20 @@
 
   TrainingCentersService.$inject = ['$http', '$q', 'UserLocalService', 'Upload'];
   function TrainingCentersService ($http, $q, userLocal, upload) {
-    this.update = function (user, logo) {
-      if (logo) {
-        user.logo = logo; 
-      }
-      return upload.upload({
-        url: 'api/training-center/details',
-        method: 'PUT',
-        data: user
-      }).then(function(response) {
-        userLocal.setUser(response.data);
-        return response.data;
-      }, function (error) {
-        console.log(error);
-      });
-    }
     this.approveRepo = function (repoId) {
-      return $http.put('api/training-center/repos', {
+      return $http.put('api/repo/training-center', {
         repoId: repoId,
         approved: true
       })
     }
     this.disaproveRepo = function (repoId) {
-      return $http.put('api/training-center/repos', {
+      return $http.put('api/repo/training-center', {
         repoId: repoId,
         approved: false
       })
     }
-    this.getTrainingCenterRequests = function (id) {
-      return $http.get('api/training-center/repos').then(function (response) {
-        return response.data;
-      }, function (error) {
-        console.log(error);
-      });
-    }
-    this.getAll = function () {
-      return $http.get('api/training-center').then(function (response) {
+    this.getTrainingCenterRepos = function (id) {
+      return $http.get('api/repo/training-center/').then(function (response) {
         return response.data;
       }, function (error) {
         console.log(error);

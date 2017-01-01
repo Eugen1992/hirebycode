@@ -2,7 +2,7 @@ UserReposService.$inject = ['$q', '$http', '$filter'];
 app.service('UserReposService', UserReposService);
 
 function UserReposService ($q, $http, $filter) {
-  var baseUrl = '/api/user/repos';
+  var baseUrl = '/api/repo/developer';
   var fetched = false;
   var repos;
 

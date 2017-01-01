@@ -1,21 +1,21 @@
-var Repo = require('../models/repo');
-var Promise = require('promise');
-var request = require('request');
-var _ = require('underscore');
+const Repo = require('../../../models/repo');
+const Promise = require('promise');
+const request = require('request');
+const _ = require('underscore');
 
-function controller(app) {
-  app.get("/api/user/repos", function(clientRequest, clientResponse) { 
-    var userId =  clientRequest.userId;
-    var providerLogin = clientRequest.login;
+const RepoDeveloperController = {
+  get: (req, res, next) => {
+    var userId =  req.userId;
+    var providerLogin = req.login;
     if (userId) {
       formReposList(userId, providerLogin).then(function (data) {
-        clientResponse.send(JSON.stringify(data));
+        res.send(JSON.stringify(data));
       });
     } else {
-      clientResponse.sendStatus(500);
+      res.sendStatus(500);
     }
-  });
-  app.delete("/api/user/repos/:id", function(req, res) {
+  },
+  deleteById: (req, res, next) => {
     Repo.find({ _id: req.params.id}).remove(function (err) {
       if (err) {
         res.sendStatus(500);
@@ -23,9 +23,8 @@ function controller(app) {
         res.sendStatus(204);
       }
     });
-  });
-
-  app.post("/api/user/repos", function(req, res) {
+  },
+  import: (req, res, next) => {
     var login = req.login;
     var newRepo;
     
@@ -53,9 +52,8 @@ function controller(app) {
     } else {
       res.sendStatus(500);
     }
-    
-  });
-  app.put("/api/user/repos/:id", function(req, res) {
+  },
+  updateImported: (req, res, next) => {
     var login = req.login;
     var repo;
     
@@ -71,8 +69,11 @@ function controller(app) {
     } else {
       res.sendStatus(500);
     }
-  });
+  }
 }
+
+module.exports = RepoDeveloperController;
+
 function formReposList (userId, providerLogin) {
   var promise = new Promise(function (resolveListFormed, rejectListFormed) {
     var dbPromise = getReposFromDb(userId);
@@ -131,4 +132,3 @@ function getReposFromDb (userName) {
   });
   return promise;
 }
-module.exports.controller = controller;

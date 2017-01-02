@@ -17,14 +17,20 @@ function GithubRepoService ($http, user) {
     });
   },
   this.getContent = function (repo, path) {
-    var url = repo.contents_url.replace('{+path}', path);
-    return $http.get(url, {
-      headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': 'token ' + user.getProviderToken()
-      }
-    }).then(function (response) {
-      return response.data;
-    });
+    var url;
+
+    if (!path) {
+      return this.getRepoContent(repo);
+    } else {
+      url = repo.contents_url.replace('{+path}', path);
+      return $http.get(url, {
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': 'token ' + user.getProviderToken()
+        }
+      }).then(function (response) {
+        return response.data;
+      });
+    }
   }
 }

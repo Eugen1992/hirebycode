@@ -13,7 +13,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       controller: 'HomeController'
     })
     .state('repo-details', {
-      url: '/repo-details/:id?projectPath',
+      url: '/repo-details/:id?contentPath&contentType',
       templateUrl: 'client/views/partials/repoDetails.html',
       controller: 'RepoDetailsController',
       resolve: {

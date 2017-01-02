@@ -1,6 +1,9 @@
 <section class="repoDetails well">
   <div>
-    <h2>{{$ctrl.repo.name}}</h2>
+    <h2>
+      <span class="u-link" ui-sref="developer({id: $ctrl.repo.developer})">
+        {{$ctrl.repo.authorInfo.firstName}} {{$ctrl.repo.authorInfo.lastName}}</span>/<b>{{$ctrl.repo.name}}</b>
+    </h2>
     <div ng-if="$ctrl.repo.trainingCenter">
       <b>Was done while studying in:</b><br/>
       <img 

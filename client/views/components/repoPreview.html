@@ -2,7 +2,8 @@
   <div>
     <div class="repoPreview-content">
       <h3 class="repoPreview-name">
-      {{$ctrl.repo.authorInfo.firstName}} {{$ctrl.repo.authorInfo.lastName}}/{{$ctrl.repo.name}}</h3>
+      <span ng-if="!$ctrl.hideAuthorName">
+        {{$ctrl.repo.authorInfo.firstName}} {{$ctrl.repo.authorInfo.lastName}}/</span>{{$ctrl.repo.name}}</h3>
       <div class="pull-right">
         <div class="repoPreview-trainingCenter" ng-if="$ctrl.repo.trainingCenter">
           <span>{{$ctrl.repo.trainingCenterInfo.name}}</span>

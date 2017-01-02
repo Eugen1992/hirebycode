@@ -12,6 +12,26 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: 'client/views/partials/home.html',
       controller: 'HomeController'
     })
+    .state('repo-details', {
+      url: '/repo-details/:id?projectPath',
+      templateUrl: 'client/views/partials/repoDetails.html',
+      controller: 'RepoDetailsController',
+      resolve: {
+        repo: function (ReposService, $stateParams, $q) {
+          return ReposService.getRepoByHbcId($stateParams.id);
+        }
+      }
+    })
+    .state('developer', {
+      url: '/developer/:id',
+      templateUrl: 'client/views/partials/developerDetails.html',
+      controller: 'DeveloperController',
+      resolve: {
+        developer: function (DeveloperService, $stateParams) {
+          return DeveloperService.getDeveloperById($stateParams.id);
+        }
+      }
+    })
     .state('authorized', {
       abstract: true,
       template: '<ui-view/>'
@@ -75,16 +95,6 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       url: '/training-center-login',
       templateUrl: 'client/views/partials/trainingCenterLogin.html',
       controller: 'TrainingCenterLoginController'
-    })
-    .state('repo-details', {
-      url: '/repo-details/:id',
-      templateUrl: 'client/views/partials/repoDetails.html',
-      controller: 'RepoDetailsController',
-      resolve: {
-        repo: function (ReposService, $stateParams, $q) {
-          return ReposService.getRepoByHbcId($stateParams.id);
-        }
-      }
     });
 
   $httpProvider.interceptors.push('ApiInterceptorService');

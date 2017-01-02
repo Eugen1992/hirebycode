@@ -1,22 +1,4 @@
 <repo-details ng-if="repo" repo="repo"></repo-details>
 <section class="repoEdit-container well">
-  <div class="repoEdit-content">
-    <div class="repoContent-fsRow" ng-if="currentPath.length" ng-click="goUpFolders()">
-      <svg class="repoContent-fsIcon">
-          <use xlink:href="#client--svg--back"/>
-      </svg>
-      <span>...</span>
-    </div>
-    <div ng-if="contentType === 'dir'" class="repoContent-fsRow"
-    ng-repeat="item in dirContent" 
-    ng-click="showContent(item)">
-      <svg class="repoContent-fsIcon">
-        <use xlink:href="{{'#client--svg--' + item.type}}"/>
-      </svg>
-      <span>{{item.name}}</span>
-    </div>
-    <div class="repoContent-code" ng-if="contentType === 'file'">
-      <sr-file-content content="fileContent" language={{fileType}}></sr-file-content>
-    </div>
-  </div>
+  <sr-repo-content content="fileContent" repo="repo" language={{fileType}}></sr-repo-content>
 </section>

@@ -7,9 +7,9 @@
     controller: RepoContentController
   });
 
-  RepoContentController.$inject = ['orderByFilter', 'GithubRepoService'];
+  RepoContentController.$inject = ['orderByFilter', 'GithubRepoService', '$state', '$stateParams'];
 
-  function RepoContentController (orderBy, github) {
+  function RepoContentController (orderBy, github, state, stateParams) {
     this.$onInit = function () {
       github.getRepoContent(this.repo).then(function (content) {
         this.dirContent = filterByType(content);
@@ -36,7 +36,7 @@
         }
         this.contentType = contentType;
         this.currentPath = contentSource.path;
-        console.log(this.currentPath);
+        state.go('repo-details', {id: stateParams.id, projectPath: this.currentPath});
       }.bind(this));
     }
     this.goUpFolders = function () {

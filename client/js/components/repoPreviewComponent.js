@@ -2,7 +2,8 @@
   angular.module('showroom').component('srRepoPreview', {
     templateUrl: 'client/views/components/repoPreview.html',
     bindings: {
-      repo: '='
+      repo: '=',
+      hideAuthorName: '<'
     },
     controller: function ($state) {
       this.seeDetails = function (id) {

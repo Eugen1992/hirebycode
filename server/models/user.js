@@ -4,6 +4,8 @@ var ObjectId = require('mongodb').ObjectId;
 
 var userSchema = new Schema({
   name: String,
+  firstName: String,
+  lastName: String,
   type: String,
   githubId: String,
   githubLogin: String,
@@ -14,18 +16,31 @@ var userSchema = new Schema({
   isPublic: Boolean
 });
 
-userSchema.statics.updateContacts = function (contacts, login) {
-  return this.find({ 
-    githubLogin: login 
-  }).limit(1).update({
-    contacts: contacts
+userSchema.statics.getDeveloperById = function (id) {
+  return this.find({
+    '_id': ObjectId(id)
+  }).limit(1).then(function([user]) {
+    return user;
   });
 }
-userSchema.statics.getContacts = function (login) {
+userSchema.statics.updateContacts = function (params, id) {
   return this.find({ 
-    githubLogin: login 
-  }).limit(1).then(function (user) {
-    return user[0].contacts;
+    _id: ObjectId(id) 
+  }).limit(1).update({
+    contacts: params.contacts,
+    firstName: params.firstName,
+    lastName: params.lastName
+  });
+}
+userSchema.statics.getContacts = function (id) {
+  return this.find({ 
+    '_id': ObjectId(id) 
+  }).limit(1).then(function ([user]) {
+    return {
+      contacts: user.contacts,
+      firstName: user.firstName,
+      lastName: user.lastName
+    };
   });
 }
 userSchema.statics.getContactsById = function (userId) {
@@ -85,6 +100,19 @@ userSchema.statics.getTrainingCentersList = function () {
       return publicData;
     });
    });
+}
+userSchema.statics.getTrainingCenterInfo = function (id) {
+  return this.find({ 
+    '_id': ObjectId(id),
+    type: 'trainingCenter'
+  }).limit(1).then(function ([user]) {
+    return {
+      name: user.name,
+      logo: user.logo,
+      hasLogo: user.hasLogo,
+      isPublic: user.isPublic
+    };
+  });
 }
 var User = mongoose.model('User', userSchema);
 

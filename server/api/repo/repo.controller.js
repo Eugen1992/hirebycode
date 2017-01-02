@@ -2,21 +2,18 @@ const Repo = require('../../models/repo.js');
 
 const RepoController = {
   get: (req, res, next) => {
-    Repo.find({}).exec(function (error, importedRepos) {
-      if (error) {
-        res.sendStatus(500);
-      } else {
+    Repo.getAll().then(function (importedRepos) {
         res.send(importedRepos);
-      }
+    }, function (error) {
+        console.log(error);
+        res.sendStatus(503);
     });
   },
   getById: (req, res, next) => {
-    Repo.findOne({ _id: req.params.id}, function (err, repo) {
-      if (err) {
-        res.sendStatus(500);
-      } else {
-        res.send(JSON.stringify(repo));
-      }
+    Repo.getOne(req.params.id).then(function (repo) {
+      res.send(JSON.stringify(repo));
+    }, function () {
+      res.sendStatus(500);
     });
   }
 }

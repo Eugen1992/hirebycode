@@ -9,7 +9,6 @@ const UserController = {
     });
   },
   getTrainingCentersList: (req, res, next) => {
-    console.log('getting centers list');
     User.getTrainingCentersList().then(function (centers) {
       res.send(centers);
     }, function () {
@@ -36,15 +35,14 @@ const UserController = {
     });
   },
   getDeveloperDetails: (req, res, next) => {
-    User.getContacts(req.login).then(function (details) {
-      console.log(details);
+    User.getContacts(req.userId).then(function (details) {
       res.send(details);
     }, function () {
       res.sendStatus(500);
     });
   },
   updateDeveloperDetails: (req, res, next) => {
-    User.updateContacts(req.body.contacts, req.login).then(function () {
+    User.updateContacts(req.body, req.userId).then(function () {
       res.sendStatus(200);
     }, function () {
       res.sendStatus(500);

@@ -11,14 +11,12 @@
 
   function EditContactsController (userService) {
     this.$onInit = function () {
-      userService.fetchDeveloperDetails().then(function (contacts) {
-        this.contacts = contacts;
+      userService.fetchDeveloperDetails().then(function (info) {
+        this.info = info;
       }.bind(this));
     }
     this.submit = function () {
-      userService.updateDeveloperDetails({
-        contacts: this.contacts
-      });
+      userService.updateDeveloperDetails(this.info);
     }
   }
 })();

@@ -1,6 +1,14 @@
 <section class="repoDetails well">
   <div>
     <h2>{{$ctrl.repo.name}}</h2>
+    <div ng-if="$ctrl.repo.trainingCenter">
+      <b>Was done while studying in:</b><br/>
+      <img 
+        class="repoDetails-trainingCenterLogo" 
+        src="/client/assets/images/training-center-logos/{{$ctrl.repo.trainingCenterInfo.logo}}"
+      />
+      {{$ctrl.repo.trainingCenterInfo.name}}
+    </div>
     <div class="form-group">
       <b for="exampleInputEmail1">What I did and what I learned with this project:  </b>
       <article class="">{{$ctrl.repo.description}}</article>

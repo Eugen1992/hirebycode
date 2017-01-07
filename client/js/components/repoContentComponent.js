@@ -11,8 +11,8 @@
 
   function RepoContentController (orderBy, github, state, stateParams) {
     this.$onInit = function () {
-      github.getContent(this.repo, stateParams.contentPath).then(function (data) {
-        var contentType = stateParams.contentType;
+      github.getRepoContent(this.repo, stateParams.contentPath).then(function (data) {
+        var contentType = stateParams.contentType || 'dir';
         if (contentType === 'dir') {
           this.dirContent = filterByType(data);
         } else {
@@ -36,7 +36,7 @@
     this.showContent = function (contentSource) {
       var contentType = contentSource.type;
       
-      github.getContent(this.repo, contentSource.path).then(function (data) {
+      github.getRepoContent(this.repo, contentSource.path).then(function (data) {
         if (contentType === 'dir') {
           this.dirContent = filterByType(data);
         } else {
@@ -57,7 +57,7 @@
     this.goUpFolders = function () {
       var pathParts = this.currentPath.split('/');
       var path = pathParts.slice(0, pathParts.length - 1).join('/'); 
-      github.getContent(this.repo, path).then(function (content) {
+      github.getRepoContent(this.repo, path).then(function (content) {
         this.dirContent = filterByType(content);
         this.contentType = 'dir';
         this.currentPath = path;

@@ -18,7 +18,7 @@ function RepoDetailsController ($scope, $state, repo, github, orderBy) {
   $scope.showContent = function (contentSource) {
     var contentType = contentSource.type;
     
-    github.getContent($scope.repo, contentSource.path).then(function (data) {
+    github.getRepoContent($scope.repo, contentSource.path).then(function (data) {
       if (contentType === 'dir') {
         $scope.dirContent = filterByType(data);
       } else {
@@ -32,7 +32,7 @@ function RepoDetailsController ($scope, $state, repo, github, orderBy) {
   $scope.goUpFolders = function () {
     var pathParts = $scope.currentPath.split('/');
     var path = pathParts.slice(0, pathParts.length - 1).join('/'); 
-    github.getContent($scope.repo, path).then(function (content) {
+    github.getRepoContent($scope.repo, path).then(function (content) {
       $scope.dirContent = filterByType(content);
       $scope.contentType = 'dir';
       $scope.currentPath = path;

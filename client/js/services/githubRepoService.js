@@ -2,35 +2,25 @@ GithubRepoService.$inject = ['$http', 'UserLocalService'];
 angular.module('showroom').service('GithubRepoService', GithubRepoService);
 
 function GithubRepoService ($http, user) {
-  var repoContent;
-  this.getRepoContent = function (repo) {
-    var url = repo.contents_url.replace('/{+path}', '');
-    //var url = 'https://api.github.com/repos/Eugen1992/bee-medicine/contents';
-    return $http.get(url, {
-      headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': 'token ' + user.getProviderToken()
-      }
-    }).then(function (response) {
-      repoContent = response.data;
-      return response.data;
-    });
-  },
-  this.getContent = function (repo, path) {
+  this.getRepoContent = function (repo, path) {
     var url;
 
     if (!path) {
-      return this.getRepoContent(repo);
+      url = repo.contents_url.replace('/{+path}', '');
     } else {
       url = repo.contents_url.replace('{+path}', path);
-      return $http.get(url, {
-        headers: {
-          'Accept': 'application/vnd.github.v3+json',
-          'Authorization': 'token ' + user.getProviderToken()
-        }
-      }).then(function (response) {
+    }
+    
+    return fetchDataFromGithub(url).then(function (response) {
         return response.data;
       });
-    }
+  }
+  function fetchDataFromGithub(url) {
+    return $http.get('/api/github-proxy/' + encodeURIComponent(url), {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        //'Authorization': 'token ' + user.getProviderToken()
+      }
+    });
   }
 }

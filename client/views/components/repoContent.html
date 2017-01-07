@@ -1,4 +1,4 @@
-<div>
+<div class="repoContent">
   <div class="repoContent-fsRow" ng-if="$ctrl.currentPath.length" ng-click="$ctrl.goUpFolders()">
     <svg class="repoContent-fsIcon">
         <use xlink:href="#client--svg--back"/>
@@ -18,5 +18,10 @@
   </div>
   <div class="repoContent-code" ng-if="$ctrl.contentType === 'file'">
     <sr-file-content content="$ctrl.fileContent" language={{$ctrl.fileType}}></sr-file-content>
+  </div>
+  <div class="repoContent-loader" ng-show="$ctrl.loading">
+    <svg class="repoContent-loaderIcon">
+      <use xlink:href="#client--svg--gears" />
+    </svg>
   </div>
 </div>

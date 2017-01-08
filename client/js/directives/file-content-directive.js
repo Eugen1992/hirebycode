@@ -1,3 +1,4 @@
+
 angular.module('showroom').directive('srFileContent', function () {
   return {
     restrict: 'E',
@@ -9,6 +10,7 @@ angular.module('showroom').directive('srFileContent', function () {
     link: function ($scope, $element) {
       $scope.$watch('content', function() {
         hljs.highlightBlock($element[0]);
+        hljs.lineNumbersBlock($element[0].getElementsByTagName('code')[0]);
      });
       
     }

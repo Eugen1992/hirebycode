@@ -1,6 +1,6 @@
 (function () {
-  angular.module('showroom').component('srEditContacts', {
-    templateUrl: 'client/views/components/editContacts.html',
+  angular.module('showroom').component('srEditProfile', {
+    templateUrl: 'client/views/components/editProfile.html',
     bindings: {
       user: '<'
     },
@@ -16,7 +16,10 @@
       }.bind(this));
     }
     this.submit = function () {
-      userService.updateDeveloperDetails(this.info);
+      userService.updateDeveloperDetails(this.info, this.newAvatar);
+    }
+    this.clearAvatar = function () {
+      this.newAvatar = null;
     }
   }
 })();

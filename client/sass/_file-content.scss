@@ -1,6 +1,10 @@
+.fileContent {
+  display: flex;
+}
 .fileContent-code {
-  display: inline-block;
+  flex: 1 1 auto;
 }
 .hljs-line-numbers {
   border-right: none;
+  padding: 10px;
 }

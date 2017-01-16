@@ -7,10 +7,10 @@
     controller: RepoContactsController
   });
 
-  RepoContactsController.$inject = ['UserService']
-  function RepoContactsController (userService) {
+  RepoContactsController.$inject = ['DeveloperService']
+  function RepoContactsController (developerService) {
     this.$onInit = function () {
-      userService.getContactsById(this.userId).then(function (contacts) {
+      developerService.getContactsById(this.userId).then(function (contacts) {
         this.contacts = contacts;
       }.bind(this));
     }

@@ -5,6 +5,9 @@
       <span ng-if="!$ctrl.hideAuthorName">
         {{$ctrl.repo.authorInfo.firstName}} {{$ctrl.repo.authorInfo.lastName}}/</span>{{$ctrl.repo.name}}</h3>
       <div class="pull-right">
+        <small>
+          Posted: {{$ctrl.repo.createdAt | date}}
+        </small>
         <div class="repoPreview-trainingCenter" ng-if="$ctrl.repo.trainingCenter">
           <span>{{$ctrl.repo.trainingCenterInfo.name}}</span>
           <img 
@@ -12,12 +15,8 @@
             src="/client/assets/images/training-center-logos/{{$ctrl.repo.trainingCenterInfo.logo}}"
           />
         </div>
-        <small>
-          Posted: {{$ctrl.repo.createdAt | date}}
-        </small>
       </div>
     </div>
-    <div>{{$ctrl.repo.description}}</div>
   </div>
   <div class="repoPreview-bottomLine">
     <div>

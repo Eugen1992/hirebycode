@@ -16,6 +16,24 @@ function UserHomeController ($scope, repos, $http, $state) {
         
     });
   }
+  $scope.hideRepo = function (repoToHide) {
+    repos.hide({hbcId: repoToHide.hbcId})
+      .then(function () {
+        getRepos();
+      },
+      function () {
+        
+    });
+  }
+  $scope.unhideRepo = function (repoToHide) {
+    repos.unhide({hbcId: repoToHide.hbcId})
+      .then(function () {
+        getRepos();
+      },
+      function () {
+        
+    });
+  }
   $scope.editRepo = function (repo) {
     $state.go('edit', {id: repo.hbcId});
   }

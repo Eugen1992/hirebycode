@@ -33,8 +33,19 @@
         });
       }
     }
-    this.updateDeveloperDetails = function (data) {
-      return $http.put('/api/user/developer/details', data);
+    this.updateDeveloperDetails = function (data, avatar) {
+      if (avatar) {
+        data.avatar = avatar; 
+      }
+      return upload.upload({
+        url: 'api/user/developer/details',
+        method: 'PUT',
+        data: data
+      }).then(function(response) {
+        return response.data;
+      }, function (error) {
+        console.log(error);
+      });
     }
     this.updateTrainingCenterDetails = function (data, logo) {
       if (logo) {
@@ -49,11 +60,6 @@
         return response.data;
       }, function (error) {
         console.log(error);
-      });
-    }
-    this.getContactsById = function (userId) {
-      return $http.get('/api/user/contacts/' + userId).then(function(response) {
-          return response.data;
       });
     }
   }

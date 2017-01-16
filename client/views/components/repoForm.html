@@ -2,13 +2,11 @@
   <div class="form-group">
     <label class="repoForm-inlineInput">
       What I did and what I learned with this project:
-      <textarea class="form-control" placeholder="Description..." ng-model="$ctrl.repo.description"></textarea>
     </label>
-    <label class="repoForm-inlineInput">
-      What I plan to do and learn:
-      <textarea class="form-control" placeholder="Plans..." ng-model="$ctrl.repo.plans"></textarea>
-    </label>
+    <div text-angular placeholder="Description..." ng-model="$ctrl.repo.description"></div>
   </div>
+  <label>My plans for this project:</label>
+  <div text-angular placeholder="Plans..." ng-model="$ctrl.repo.plans"></div>
   <div class="form-group">
 
   </div>
@@ -24,9 +22,6 @@
         <option value="none">None</option>
         <option ng-repeat="center in $ctrl.trainingCenters" value={{center.id}}>{{center.name}}</option>
       </select>
-    </label>
-    <label class="repoForm-inlineInput">Identifying message to training center:
-      <textarea class="form-control" placeholder="Let your training center recognize you" ng-model="$ctrl.repo.messageToTrainingCenter"></textarea>
     </label>
   </div>
   <button type="submit" class="btn btn-primary" ng-click="$ctrl.submit()">Submit</button>

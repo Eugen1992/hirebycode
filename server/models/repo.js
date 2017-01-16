@@ -13,14 +13,14 @@ const repoSchema = new Schema({
   languages: [String],
   description: String,
   plans: String,
+  hidden: Boolean,
   contents_url: String,
-  contactInfo: String,
   createdAt: Number,
   trainingCenter: String,
   trainingCenterRequired: String,
+
   trainingCenterInfo: Object,
-  authorInfo: Object,
-  messageToTrainingCenter: String
+  authorInfo: Object
 });
 repoSchema.statics.getOne = function (id) {
   return this.find({_id: ObjectId(id)})
@@ -39,6 +39,8 @@ repoSchema.statics.getAll = function () {
 repoSchema.statics.getDeveloperRepos = function (developerId) {
   return this.find({developer: developerId}).then(function (repos) {
     return Promise.all(repos.map(utils.addTrainingCenterInfo));
+  }).then(function (repos) {
+    return Promise.all(repos.map(utils.addAuthorInfo));
   });
 }
 repoSchema.statics.getTrainingCenterRepos = function (trainingCenterId) {
@@ -57,7 +59,7 @@ repoSchema.statics.getTrainingCenterRepos = function (trainingCenterId) {
       })
   ]).then(function(results) {
     return {
-      pending: results[0],
+      pending: results[0], 
       approved: results[1]
     }
   });
@@ -80,10 +82,12 @@ repoSchema.statics.disapproveTrainingCenterStatus = function (params) {
   return this.findOneAndUpdate({
     '_id': ObjectId(params.repoId),
     trainingCenter: params.trainingCenterId
-  }, { $set: { trainingCenterRequired: params.trainingCenterId }, $unset: { trainingCenter: null }}, {new: true}).then(function () {
-
-  }, function () {
-
+  }, { $set: { trainingCenterRequired: params.trainingCenterId }, 
+       $unset: { trainingCenter: null }}, {new: true})
+  .then(function (repo) {
+    return repo;
+  }, function (err) {
+    return err;
   });
 }
 

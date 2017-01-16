@@ -1,13 +1,6 @@
 const User = require('../../models/user.js');
 
 const UserController = {
-  getContactsById: (req, res, next) => {
-    User.getContactsById(req.params.userId).then(function (contacts) {
-      res.send(contacts);
-    }, function () {
-      res.sendStatus(500);
-    });
-  },
   getTrainingCentersList: (req, res, next) => {
     User.getTrainingCentersList().then(function (centers) {
       res.send(centers);
@@ -34,16 +27,21 @@ const UserController = {
       res.sendStatus(500);
     });
   },
-  getDeveloperDetails: (req, res, next) => {
-    User.getContacts(req.userId).then(function (details) {
+  getDeveloperFullProfile: (req, res, next) => {
+    User.getDeveloperFullProfile(req.userId).then(function (details) {
       res.send(details);
     }, function () {
       res.sendStatus(500);
     });
   },
   updateDeveloperDetails: (req, res, next) => {
-    User.updateContacts(req.body, req.userId).then(function () {
-      res.sendStatus(200);
+    var avatarInfo = {
+      wasUpdated: req.avatarUpdated,
+      fileName: req.avatarUpdated ? req.avatarFileName : null
+    }
+
+    User.updateContacts(req.body, avatarInfo, req.userId).then(function (user) {
+      res.send(user);
     }, function () {
       res.sendStatus(500);
     });

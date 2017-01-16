@@ -1,4 +1,4 @@
-var app = angular.module('showroom', ['ui.router', 'ngFileUpload']);
+var app = angular.module('showroom', ['ui.router', 'ngFileUpload', 'textAngular']);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   //
@@ -61,7 +61,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('edit', {
       parent: 'authorized',
-      url: '/edit/:id',
+      url: '/edit/:id?contentPath&contentType',
       templateUrl: 'client/views/partials/edit.html',
       controller: 'EditController',
       resolve: {
@@ -72,7 +72,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('edit-preview', {
       parent: 'authorized',
-      url: '/edit/:id/preview',
+      url: '/edit/:id/preview?contentPath&contentType',
       templateUrl: 'client/views/partials/editPreview.html',
       controller: 'EditController',
       resolve: {

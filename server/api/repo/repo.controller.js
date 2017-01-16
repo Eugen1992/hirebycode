@@ -5,7 +5,6 @@ const RepoController = {
     Repo.getAll().then(function (importedRepos) {
       res.send(importedRepos);
     }, function (error) {
-      console.log(error);
       res.sendStatus(500);
     });
   },
@@ -13,7 +12,6 @@ const RepoController = {
     Repo.getOne(req.params.id).then(function (repo) {
       res.send(JSON.stringify(repo));
     }, function (error) {
-      console.log(error);
       res.sendStatus(500);
     });
   }

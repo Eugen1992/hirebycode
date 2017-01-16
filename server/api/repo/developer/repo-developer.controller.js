@@ -1,4 +1,7 @@
 const Repo = require('../../../models/repo');
+const RepoServices = require('../../../services/repo');
+const UserServices = require('../../../services/user');
+
 const Promise = require('promise');
 const request = require('request');
 const _ = require('underscore');
@@ -16,42 +19,46 @@ const RepoDeveloperController = {
     }
   },
   deleteById: (req, res, next) => {
-    Repo.find({ _id: req.params.id}).remove(function (err) {
-      if (err) {
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(204);
-      }
+    Repo.find({ _id: req.params.id}).remove()
+    .then(UserServices.deregisterRepo(req.params.id, req.userId))
+    .then(() => {
+      res.send(200);
+    }, (err) => {
+      res.sendStatus(500);
     });
   },
-  import: (req, res, next) => {
-    var login = req.login;
-    var newRepo;
-    
-    if (login) {
-      newRepo = new Repo({
-        name: req.body.name,
-        providerId: req.body.providerId,
-        contents_url: req.body.contents_url,
-        developer: req.userId,
-        description: req.body.description,
-        plans: req.body.plans,
-        languages: req.body.languages,
-        createdAt: new Date().getTime(),
-        contactInfo: req.body.contactInfo,
-        trainingCenterRequired: req.body.trainingCenterRequired,
-        messageToTrainingCenter: req.body.messageToTrainingCenter
-      });
-      newRepo.save(function(err) {
-        if (err) {
-          res.sendStatus(500);
-        } else {      
-          res.status(200).json(newRepo);
-        }
-      });
-    } else {
+  hideById: (req, res, next) => {
+    RepoServices.hide(req.params.id)
+    .then(() => {
+      res.send(200);
+    }, (err) => {
       res.sendStatus(500);
-    }
+    });
+  },
+
+  unhideById: (req, res, next) => {
+    RepoServices.unhide(req.params.id)
+    .then(() => {
+      res.send(200);
+    }, (err) => {
+      res.sendStatus(500);
+    });
+  },
+
+  import: (req, res, next) => {
+    let repo;
+
+    RepoServices.import(req.body, req.userId)
+    .then((importedRepo) => {
+      repo = importedRepo;
+      return repo;
+    })
+    .then(() => {
+      res.send(repo);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
   },
   updateImported: (req, res, next) => {
     var login = req.login;
@@ -74,10 +81,10 @@ const RepoDeveloperController = {
 
 module.exports = RepoDeveloperController;
 
-function formReposList (userId, providerLogin) {
+function formReposList (userId, providerLogin, githubToken) {
   var promise = new Promise(function (resolveListFormed, rejectListFormed) {
     var dbPromise = getReposFromDb(userId);
-    var githubReposPromise = getReposFromGithub(providerLogin);
+    var githubReposPromise = getReposFromGithub(providerLogin, githubToken);
     var importedRepos;
     Promise.all([dbPromise, githubReposPromise]).then(function (responses) {
       var importedRepos = responses[0];
@@ -93,7 +100,6 @@ function formReposList (userId, providerLogin) {
           githubRepo.hbcId = importedRepo._id;
           githubRepo.hbcData = importedRepo;
         }
-        
       });
       resolveListFormed(reposFromGithub);
     });
@@ -104,9 +110,9 @@ function formReposList (userId, providerLogin) {
 function getReposFromGithub (userName) {
   var githubReposPromise = new Promise(function (resolve, reject) {
     var options = {
-      url: 'https://api.github.com/users/' + userName + '/repos',
+      url: 'https://api.github.com/users/' + userName + '/repos' + '?client_id=11ab72fc5d5b195ee720&client_secret=3ab8338e26b13934fdefb7b59aa70b549651dcff',
       headers: {
-        'User-Agent': 'HireByCode'
+        'User-Agent': 'HireByCode',
       }
     };
     request.get(options, function (error, response) {
@@ -114,21 +120,12 @@ function getReposFromGithub (userName) {
         reject();
       } else {
         var repos = JSON.parse(response.body);
-        resolve(repos);  
-      }      
+        resolve(repos);
+      }
     });
   });
   return githubReposPromise;
 }
-function getReposFromDb (userName) {
-  var promise = new Promise(function (resolve, reject) {
-    Repo.find({developer: userName}).exec(function (error, importedRepos) {
-      if (error) {
-        reject();
-      } else {
-        resolve(importedRepos);  
-      }
-    });
-  });
-  return promise;
+function getReposFromDb (userId) {
+  return Repo.getDeveloperRepos(userId);
 }

@@ -7,23 +7,7 @@ const AuthController = {
       if (err) {
         res.sendStatus(500);
       } else if (user === null) {
-        var newUser = new User({
-          githubId: req.user.id,
-          githubLogin: req.user.username,
-          token: req.token,
-          type: 'developer'
-        });
-        newUser.save(function(err) {
-          if (err) {
-            res.sendStatus(500);
-          } else {
-            res.status(200).json({
-              githubToken: req.user.accessToken,
-              token: req.token,
-              user: newUser
-            });
-          }
-        });  
+        registerDevelop(req, res);
       } else {
         token = user.token;
         res.status(200).json({
@@ -52,6 +36,22 @@ const AuthController = {
         res.sendStatus(500);
       });
   }
+}
+
+function registerDevelop (req, res) {
+  User.createDeveloper({
+    githubId: req.user.id,
+    githubLogin: req.user.username,
+    token: req.token
+  }).then(function (newUser) {
+    res.status(200).json({
+        githubToken: req.user.accessToken,
+        token: req.token,
+        user: newUser
+      });
+  }, function (err) {
+    res.status(500).send(err);
+  });
 }
 
 module.exports = AuthController;

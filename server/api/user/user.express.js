@@ -2,11 +2,9 @@ const router = require('express').Router();
 const UserController = require('./user.controller');
 const userAuthorizeMiddleware = require('../../middleware/userAuthorizeMiddleware.js');
 const trainingCenterAuthorizeMiddleware = require('../../middleware/trainingCenterAuthorizeMiddleware');
-const uploadMiddleware = require('../../middleware/logoUploadMiddleware');
+const trainingCenterLogoMiddleware = require('../../middleware/logoUploadMiddleware');
+const developerAvatarMiddleware = require('../../middleware/developerAvatarUploadMiddleware');
 
-router.get('/contacts/:userId',
-  UserController.getContactsById
-);
 router.get('/training-center',
   userAuthorizeMiddleware,
   UserController.getTrainingCentersList
@@ -18,15 +16,17 @@ router.get('/training-center/details',
 router.put('/training-center/details',
   userAuthorizeMiddleware,
   trainingCenterAuthorizeMiddleware,
-  uploadMiddleware,
+  trainingCenterLogoMiddleware,
   UserController.updateTrainingCenterDetails
 );
+
 router.get('/developer/details',
   userAuthorizeMiddleware,
-  UserController.getDeveloperDetails
+  UserController.getDeveloperFullProfile
 );
 router.put('/developer/details',
   userAuthorizeMiddleware,
+  developerAvatarMiddleware,
   UserController.updateDeveloperDetails
 );
 

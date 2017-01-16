@@ -1,0 +1,19 @@
+<div class="developerPreview">
+  <img 
+    class="developerPreview-avatar"
+    src="{{'/client/assets/images/developers-avatars/' + $ctrl.developer.avatar}}"
+  />
+  <div class="developerPreview-content">
+    <h3 class="developerPreview-name" ui-sref="developer({id: $ctrl.developer.id})">
+      {{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}
+    </h3>
+    <div class="developerPreview-location">
+      <b>Location:</b> {{$ctrl.developer.location.city}}, {{$ctrl.developer.location.country}}
+    </div>
+    <div class="developerPreivew-technologies">
+      <div class="label label-info u-blueInlineLabel">Javascript</div>
+      <div class="label label-info u-blueInlineLabel">Angular</div>
+      <div class="label label-info u-blueInlineLabel">Node.js</div>
+    </div>
+  </div>
+</div>

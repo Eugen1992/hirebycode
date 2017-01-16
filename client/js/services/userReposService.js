@@ -48,6 +48,20 @@ function UserReposService ($q, $http, $filter) {
     
     return deletePromise;
   }
+  this.hide = function (options) {
+    var repo = $filter('filter')(repos, {hbcId: options.hbcId}, true)[0];
+
+    return $http.put(baseUrl + '/hide/' + repo.hbcId).then(function () {
+      repo.hbcData.hidden = true;
+    });
+  }
+  this.unhide = function (options) {
+    var repo = $filter('filter')(repos, {hbcId: options.hbcId}, true)[0];
+
+    return $http.put(baseUrl + '/unhide/' + repo.hbcId).then(function () {
+      repo.hbcData.hidden = false;
+    });
+  }
   this.update = function (repo) {
     var dataToSend = repo.hbcData;
     return $http.put(baseUrl + '/' + repo.hbcId, dataToSend);

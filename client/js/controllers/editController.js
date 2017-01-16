@@ -6,7 +6,7 @@ function EditController ($scope, $element, $state, $stateParams, repo, skills, r
   $scope.isLoading = true;
   $scope.repo = repo;
   $scope.isLoading = false;
-  
+
   $scope.submit = function () {
     repos.update($scope.repo);
   }

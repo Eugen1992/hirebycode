@@ -1,0 +1,47 @@
+<h2>Your profile</h2>
+<div class="form-inline">
+  <div class="form-group">
+    <label>
+      First Name
+      <input class="form-control" ng-model="$ctrl.info.firstName" />
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      Last name
+      <input class="form-control" ng-model="$ctrl.info.lastName" />
+    </label>
+  </div>
+    <div class="form-group">
+    <label>
+      Country
+      <input class="form-control" ng-model="$ctrl.info.location.country" />
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      City
+      <input class="form-control" ng-model="$ctrl.info.location.city" />
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      Avatar:
+      </label>
+    <div class="editProfile-formLine">
+      <button type="button" class="btn btn-default" ngf-select ng-model="$ctrl.newAvatar">Upload</button>
+      <button type="button" class="btn btn-default" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearLogo()">
+        Clear logo
+        <i class="glyphicon glyphicon-remove"></i>
+      </button>
+    </div>
+    <img class="editProfile-logo" ng-if="$ctrl.newAvatar" ngf-thumbnail="$ctrl.newAvatar || '/client/assets/images/developers-avatars/placeholder.png'" />
+    <img class="editProfile-logo" ng-hide="$ctrl.newAvatar" src="{{'/client/assets/images/developers-avatars/' + $ctrl.info.avatar}}" />
+  </div>
+</div>
+<div class="form-group">
+  <label>When someone will want to hire, they will need a way to reach you out</label>
+  <textarea  class="form-control" ng-model="$ctrl.info.contacts" placeholder="Enter email, skype or a link to your CV">
+  </textarea>
+</div>
+<button type="button" class="btn btn-primary" ng-click="$ctrl.submit()">Update profile</button>

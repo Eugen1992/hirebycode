@@ -7,4 +7,19 @@ function DeveloperService ($http) {
       return response.data;
     });
   }
+  this.getContactsById = function (userId) {
+    return $http.get('/api/developer/contacts/' + userId).then(function(response) {
+        return response.data;
+    });
+  }
+  this.getDevelopers = function () {
+    return $http.get('/api/developer').then(function(response) {
+      return response.data;
+    });
+  }
+  this.getActiveDevelopers = function () {
+    return $http.get('/api/developer/active').then(function(response) {
+      return response.data;
+    });
+  }
 }

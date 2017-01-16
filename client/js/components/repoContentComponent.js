@@ -18,7 +18,7 @@
         if (contentType === 'dir') {
           this.dirContent = filterByType(data);
         } else {
-          this.fileContent = atob(data.content);
+          this.fileContent = data;
           this.fileType = data.name.split('.').pop();
         }
 
@@ -37,15 +37,15 @@
 
     this.showContent = function (contentSource) {
       var contentType = contentSource.type;
-
+      
       this.loading = true;
       github.getRepoContent(this.repo, contentSource.path).then(function (data) {
         this.loading = false;
         if (contentType === 'dir') {
           this.dirContent = filterByType(data);
         } else {
-          this.fileContent = atob(data.content);
-          this.fileType = data.name.split('.').pop();
+          this.fileContent = data;
+          this.fileType = contentSource.name.split('.').pop();
         }
         this.contentType = contentType;
         this.currentPath = contentSource.path;

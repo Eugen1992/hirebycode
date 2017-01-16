@@ -13,7 +13,7 @@ const utils = {
     }
   },
   addAuthorInfo: function (repo) {
-    return User.getDeveloperById(repo.developer).then(function(developer) {
+    return User.getDeveloperPublicProfile(repo.developer).then(function(developer) {
       repo.authorInfo = {
         firstName: developer.firstName,
         lastName: developer.lastName

@@ -1,0 +1,33 @@
+.developerPreview {
+  display: flex;
+  margin: 10px 0;
+  padding: 15px;
+  background-color: #F4F4F4;
+  border: solid 1px #ABABAB;
+  border-radius: 5px;
+}
+.developerPreview-avatar {
+  width: 150px;
+  height: auto;
+  max-height: 150px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.developerPreview-content {
+  display: flex;
+  flex-direction: column;
+}
+.developerPreview-name {
+  margin: 10px 0;
+  color: blue;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.developerPreview-location {
+  flex: 1 1 auto;
+}
+.developerPreivew-technologies {
+  
+}

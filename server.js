@@ -3,7 +3,7 @@ var express = require('express');
 var server = express();
 
 var bodyParser = require('body-parser');
-var localDB = 'mongodb://localhost:27017';
+var localDB = 'mongodb://localhost:27017/hirebycode';
 
 var mongoose = require('mongoose');
 

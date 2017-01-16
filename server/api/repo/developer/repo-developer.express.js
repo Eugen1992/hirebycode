@@ -23,4 +23,14 @@ router.put('/:id',
   RepoDeveloperController.updateImported
 );
 
+router.put('/hide/:id',
+  userAuthorizeMiddleware,
+  RepoDeveloperController.hideById
+);
+
+router.put('/unhide/:id',
+  userAuthorizeMiddleware,
+  RepoDeveloperController.unhideById
+);
+
 module.exports = router;

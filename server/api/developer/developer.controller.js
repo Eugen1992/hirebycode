@@ -11,7 +11,7 @@ const DeveloperController = {
     ]).then(function(results) {
       const result = {
         info: results[0],
-        repos: results[1]
+        repos: results[1].filter((repo) => !repo.hidden )
       };
       res.send(result);
     }, function (err) {

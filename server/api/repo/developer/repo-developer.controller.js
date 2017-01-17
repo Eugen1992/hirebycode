@@ -24,27 +24,9 @@ const RepoDeveloperController = {
     .then(() => {
       res.send(200);
     }, (err) => {
-      res.sendStatus(500);
+      res.status(500).send(err);
     });
   },
-  hideById: (req, res, next) => {
-    RepoServices.hide(req.params.id)
-    .then(() => {
-      res.send(200);
-    }, (err) => {
-      res.sendStatus(500);
-    });
-  },
-
-  unhideById: (req, res, next) => {
-    RepoServices.unhide(req.params.id)
-    .then(() => {
-      res.send(200);
-    }, (err) => {
-      res.sendStatus(500);
-    });
-  },
-
   import: (req, res, next) => {
     let repo;
 
@@ -52,6 +34,8 @@ const RepoDeveloperController = {
     .then((importedRepo) => {
       repo = importedRepo;
       return repo;
+    }).then((repo) => {
+      return UserServices.registerRepo(req.userId, repo._id)
     })
     .then(() => {
       res.send(repo);
@@ -76,7 +60,24 @@ const RepoDeveloperController = {
     } else {
       res.sendStatus(500);
     }
-  }
+  },
+  hideById: (req, res, next) => {
+    RepoServices.hide(req.params.id)
+    .then(() => {
+      res.send(200);
+    }, (err) => {
+      res.sendStatus(500);
+    });
+  },
+
+  unhideById: (req, res, next) => {
+    RepoServices.unhide(req.params.id)
+    .then(() => {
+      res.send(200);
+    }, (err) => {
+      res.sendStatus(500);
+    });
+  },
 }
 
 module.exports = RepoDeveloperController;

@@ -1,7 +1,11 @@
 const User = require('../../models/user');
 
 module.exports = function getActiveDevelopers () {
-  return User.find({type: 'developer', 'repos.0': {$exists: true} }).then((developers) => {
+  const sQuery = {
+    type: 'developer',
+    'repos.0': {$exists: true}
+  };
+  return User.find(sQuery).then((developers) => {
     return developers;
   });
 }

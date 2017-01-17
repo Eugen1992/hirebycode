@@ -17,7 +17,8 @@ var userSchema = new Schema({
   logo: String,
   avatar: String,
   isPublic: Boolean,
-  repos: Array
+  repos: Array,
+  profileReadyForPublic: Boolean
 });
 
 userSchema.statics.createDeveloper = function (data) {
@@ -60,32 +61,7 @@ userSchema.statics.getDeveloperFullProfile = function (id) {
     return user;
   });
 }
-userSchema.statics.updateContacts = function (params, avatarInfo, id) {
-  var updateQuery = {
-    $set: {
-      contacts: params.contacts,
-      firstName: params.firstName,
-      lastName: params.lastName,
-      location: params.location
-    }
-  };
-  
-  if (avatarInfo.wasUpdated) {
-    updateQuery.avatar = avatarInfo.fileName;
-  }
 
-  return this.findOneAndUpdate({
-    '_id': ObjectId(id)
-  }, updateQuery, {new: true}).then(function (user) {
-    return {
-      contacts: user.contacts,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      avatar: user.avatar,
-      location: user.location
-    };
-  });
-}
 userSchema.statics.getContactsById = function (userId) {
   return this.find({ 
     '_id': ObjectId(userId)

@@ -1,4 +1,5 @@
 const User = require('../../models/user.js');
+const UserServices = require('../../services/user');
 
 const UserController = {
   getTrainingCentersList: (req, res, next) => {
@@ -35,15 +36,18 @@ const UserController = {
     });
   },
   updateDeveloperDetails: (req, res, next) => {
-    var avatarInfo = {
-      wasUpdated: req.avatarUpdated,
-      fileName: req.avatarUpdated ? req.avatarFileName : null
-    }
-
-    User.updateContacts(req.body, avatarInfo, req.userId).then(function (user) {
+    UserServices.updateProfile(req.userId, req.body)
+    .then((user) => {
+      if (req.avatarUpdated) {
+        return UserServices.updateAvatar(req.userId, req.avatarFileName);
+      } else {
+        return user;
+      }
+    })
+    .then((user) => {
       res.send(user);
-    }, function () {
-      res.sendStatus(500);
+    }, (err) => {
+      res.status(500).send(err);
     });
   }
 }

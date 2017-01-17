@@ -20,7 +20,9 @@ const RepoDeveloperController = {
   },
   deleteById: (req, res, next) => {
     Repo.find({ _id: req.params.id}).remove()
-    .then(UserServices.deregisterRepo(req.params.id, req.userId))
+    .then(() => {
+      return UserServices.deregisterRepo(req.userId, req.params.id);
+    })
     .then(() => {
       res.send(200);
     }, (err) => {
@@ -63,15 +65,17 @@ const RepoDeveloperController = {
   },
   hideById: (req, res, next) => {
     RepoServices.hide(req.params.id)
+    .then(() => UserServices.deregisterRepo(req.userId, req.params.id))
     .then(() => {
       res.send(200);
     }, (err) => {
-      res.sendStatus(500);
+      res.status(500).send(err);
     });
   },
 
   unhideById: (req, res, next) => {
     RepoServices.unhide(req.params.id)
+    .then(() => UserServices.registerRepo(req.userId, req.params.id))
     .then(() => {
       res.send(200);
     }, (err) => {

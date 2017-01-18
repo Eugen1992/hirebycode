@@ -1,49 +1,41 @@
 <h2>Your profile</h2>
-<div ng-if="!info.profileReadyForPublic">We do not show projects of users without name, location or contacts. We will include your account and projects into our search results once you complete your profile.</div>
-<div class="form-inline">
-  <div class="form-group">
-    <label>
-      First Name
-      <input class="form-control" ng-model="info.firstName" />
-    </label>
-  </div>
-  <div class="form-group">
-    <label>
-      Last name
-      <input class="form-control" ng-model="info.lastName" />
-    </label>
-  </div>
-    <div class="form-group">
-    <label>
-      Country
-      <input class="form-control" ng-model="info.location.country" />
-    </label>
-  </div>
-  <div class="form-group">
-    <label>
-      City
-      <input class="form-control" ng-model="info.location.city" />
-    </label>
-  </div>
-  <div class="form-group">
-    <label>
-      Avatar:
-      </label>
-    <div class="editProfile-formLine">
-      <button type="button" class="btn btn-default" ngf-select ng-model="newAvatar">Upload</button>
-      <button type="button" class="btn btn-default" ng-show="newAvatar" ng-click="clearLogo()">
-        Clear logo
-        <i class="glyphicon glyphicon-remove"></i>
-      </button>
+<div ng-if="!info.profileReadyForPublic" class="alert alert-warning">We do not show projects of users without name, location or contacts. We will include your account and projects into our search results once you complete your profile.</div>
+<main class="row">
+  <section class="col-sm-8">
+    <div class="editDeveloper-subsection">
+      <h3 class="editDeveloper-subsectionHeader">Contact info</h3>
+      <div class="form-group">
+        <label>
+          First Name
+          <input class="form-control" ng-model="info.firstName" />
+        </label>
+        <label>
+          Last name
+          <input class="form-control" ng-model="info.lastName" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>When someone will want to hire, they will need a way to reach you out</label>
+        <textarea  class="form-control" ng-model="info.contacts" placeholder="Enter email, skype or a link to your CV">
+        </textarea>
+      </div>
     </div>
-    <img class="editProfile-logo" ng-if="newAvatar" ngf-thumbnail="newAvatar || '/client/assets/images/developers-avatars/placeholder.png'" />
-    <img class="editProfile-logo" ng-hide="newAvatar" src="{{'/client/assets/images/developers-avatars/' + info.avatar}}" />
-  </div>
-</div>
-<div class="form-group">
-  <label>When someone will want to hire, they will need a way to reach you out</label>
-  <textarea  class="form-control" ng-model="info.contacts" placeholder="Enter email, skype or a link to your CV">
-  </textarea>
-</div>
-<button type="button" class="btn btn-primary" ng-click="submit()">Update profile</button>
-<button type="button" class="btn btn-primary" ui-sref="user-home">I will do this later</button>
+    <div class="editDeveloper-subsection">
+      <h3 class="editDeveloper-subsectionHeader">Location</h3>
+      <div class="form-group">
+        <label>
+          Country
+          <input class="form-control" ng-model="info.location.country" />
+        </label>
+        <label>
+          City
+          <input class="form-control" ng-model="info.location.city" />
+        </label>
+      </div>
+    </div>
+    <div class="editDeveloper-subsection">
+      <button type="button" class="btn btn-primary" ng-click="submit()">Update profile</button>
+      <button type="button" class="btn btn-default" ui-sref="user-home">I will do this later</button>
+    </div>
+  </section>
+</main>

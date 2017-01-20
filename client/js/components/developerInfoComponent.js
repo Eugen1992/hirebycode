@@ -15,5 +15,15 @@
         this.info = info;
       }.bind(this));
     }
+    this.hideAccount = function () {
+      userService.updateDeveloperAccountStatus({hidden: true}).then(function(newInfo) {
+        this.info = newInfo;
+      }.bind(this));
+    }
+    this.showAccount = function () {
+      userService.updateDeveloperAccountStatus({hidden: false}).then(function(newInfo) {
+        this.info = newInfo;
+      }.bind(this));
+    }
   }
 })();

@@ -18,13 +18,14 @@ var userSchema = new Schema({
   avatar: String,
   isPublic: Boolean,
   repos: Array,
-  profileReadyForPublic: Boolean
+  profileReadyForPublic: Boolean,
+  hidden: Boolean
 });
 
 userSchema.statics.createDeveloper = function (data) {
   var createQuery = Object.assign(
     data,
-    { type: 'developer', avatar: 'placeholder.png', repos: [] });
+    { type: 'developer', avatar: 'placeholder.png', repos: [], hidden: false });
 
   return this.create(createQuery);
 }

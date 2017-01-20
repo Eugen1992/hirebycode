@@ -42,9 +42,16 @@
         method: 'PUT',
         data: data
       }).then(function(response) {
-        return response.data;
+        userData = response.data;
+        return userData;
       }, function (error) {
         console.log(error);
+      });
+    }
+    this.updateDeveloperAccountStatus = function (data) {
+      return $http.put('api/user/developer/account-status', data).then(function(response) {
+        userData = response.data;
+        return userData;
       });
     }
     this.updateTrainingCenterDetails = function (data, logo) {

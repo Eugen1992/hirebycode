@@ -49,6 +49,14 @@ const UserController = {
     }, (err) => {
       res.status(500).send(err);
     });
+  },
+  updateDeveloperAccountStatus: (req, res, next) => {
+    UserServices.updateAccountStatus(req.userId, req.body)
+    .then((user) => {
+      res.send(user);
+    }, (err) => {
+      res.status(500).send(err);
+    });
   }
 }
 

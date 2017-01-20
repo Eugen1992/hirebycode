@@ -1,5 +1,5 @@
 <h2>Your profile</h2>
-<div ng-if="!info.profileReadyForPublic" class="alert alert-warning">We do not show projects of users without name, location or contacts. We will include your account and projects into our search results once you complete your profile.</div>
+<b ng-if="!info.profileReadyForPublic" class="alert alert-warning editDeveloper-warning">We do not show projects of users without name, location or contacts. We will include your account and projects into our search results once you complete your profile.</b>
 <main class="row">
   <section class="col-sm-8">
     <div class="editDeveloper-subsection">
@@ -7,16 +7,16 @@
       <div class="form-group">
         <label>
           First Name
-          <input class="form-control" ng-model="info.firstName" />
+          <input class="form-control" name="name" ng-model="info.firstName" />
         </label>
         <label>
           Last name
-          <input class="form-control" ng-model="info.lastName" />
+          <input class="form-control" name="lastName" ng-model="info.lastName" />
         </label>
       </div>
       <div class="form-group">
         <label>When someone will want to hire, they will need a way to reach you out</label>
-        <textarea  class="form-control" ng-model="info.contacts" placeholder="Enter email, skype or a link to your CV">
+        <textarea  class="form-control" ng-model="info.contacts" type="email" placeholder="Enter email, skype or a link to your CV">
         </textarea>
       </div>
     </div>

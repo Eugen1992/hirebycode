@@ -1,26 +1,38 @@
-<h2>Your profile</h2>
-<div class="alert alert-warning" ng-if="!$ctrl.info.profileReadyForPublic">
-  <b>Your profile is not included in search.</b> Please fill in contacts and location info and we will add your profile to search results.
+<div class="developerInfo">
+  <h2>Your profile</h2>
+  <div class="alert alert-warning" ng-if="!$ctrl.info.profileReadyForPublic">
+    <b>Your profile is not included in search.</b> Please fill in contacts and location info and we will add your profile to search results.
+  </div>
+  <div ng-if="$ctrl.info.profileReadyForPublic && $ctrl.info.hidden" class="developerInfo-unhideAccount">
+    <button class="developerInfo-unhideButton btn btn-primary" ng-click="$ctrl.showAccount()" ng-if="$ctrl.info.hidden">Make my account public</button>
+    <div class="alert alert-warning developerInfo-unhideExplanation">
+      <b>Your profile and your projects are not included in search, because your account is hidden.</b>
+    </div>
+  </div>
+  <section>
+    <div class="developerInfo-formLine">
+      <img class="developerInfo-logo" ng-if="$ctrl.newAvatar" ngf-thumbnail="$ctrl.newAvatar || '/client/assets/images/developers-avatars/placeholder.png'" />
+      <img class="developerInfo-logo" ng-hide="$ctrl.newAvatar" src="{{'/client/assets/images/developers-avatars/' + $ctrl.info.avatar}}" />
+      <button type="button" class="btn btn-default developerInfo-avatarControl" ngf-select ng-model="$ctrl.newAvatar">Upload new</button>
+      <button type="button" class="btn btn-default developerInfo-avatarControl" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearLogo()">
+        Clear logo
+        <i class="glyphicon glyphicon-remove"></i>
+      </button>
+    </div>
+    <div class="developerInfo-name">
+      {{$ctrl.info.firstName}} {{$ctrl.info.lastName}}
+    </div>
+    <div>
+        <b>Location:</b> {{$ctrl.info.location.city}}, {{$ctrl.info.location.country}}
+    </div>
+    <div>
+        <b>Contact info:</b> {{$ctrl.info.contacts}}
+    </div>
+    <br/>
+    <button type="button" class="btn btn-primary" ui-sref="edit-developer-profile">Edit profile</button>
+    <div ng-if="$ctrl.info.profileReadyForPublic && !$ctrl.info.hidden" class="developerInfo-hideAccount">
+    <button class="btn btn-warning developerInfo-hideButton" ng-click="$ctrl.hideAccount()">Hide my account</button>
+      <small class="developerInfo-hideExplanation">If you hide your account, it will be not included in search and your projects also will be hidden for public access</small>
+    </div>
+  </article>
 </div>
-<section>
-  <div class="developerInfo-formLine">
-    <img class="developerInfo-logo" ng-if="$ctrl.newAvatar" ngf-thumbnail="$ctrl.newAvatar || '/client/assets/images/developers-avatars/placeholder.png'" />
-    <img class="developerInfo-logo" ng-hide="$ctrl.newAvatar" src="{{'/client/assets/images/developers-avatars/' + $ctrl.info.avatar}}" />
-    <button type="button" class="btn btn-default developerInfo-avatarControl" ngf-select ng-model="$ctrl.newAvatar">Upload new</button>
-    <button type="button" class="btn btn-default developerInfo-avatarControl" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearLogo()">
-      Clear logo
-      <i class="glyphicon glyphicon-remove"></i>
-    </button>
-  </div>
-  <div class="developerInfo-name">
-    {{$ctrl.info.firstName}} {{$ctrl.info.lastName}}
-  </div>
-  <div>
-      <b>Location:</b> {{$ctrl.info.location.city}}, {{$ctrl.info.location.country}}
-  </div>
-  <div>
-      <b>Conact info:</b> {{$ctrl.info.contacts}}
-  </div>
-  <br/>
-  <button type="button" class="btn btn-primary" ui-sref="edit-developer-profile">Edit profile</button>
-</article>

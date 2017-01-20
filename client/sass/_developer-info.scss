@@ -1,3 +1,8 @@
+.developerInfo {
+  background-color: #F4F4F4;
+  padding: 20px;
+  margin: -20px -15px 0 0;
+}
 .developerInfo-logo {
   width: 200px;
   height: 200px;
@@ -12,4 +17,26 @@
   font-size: 16px;
   font-weight: 600;
   margin: 5px 0 10px;
+}
+.developerInfo-hideAccount {
+  border-top: dashed 1px #ababab;
+  margin: 10px 0;
+}
+.developerInfo-hideButton {
+  margin: 20px 0 10px;
+}
+.developerInfo-hideExplanation {
+  display: block;
+}
+.developerInfo-unhideButton {
+
+}
+.developerInfo-unhideExplanation {
+  display: block;
+  margin: 10px 0 0;
+}
+.developerInfo-unhideAccount {
+  padding: 10px 0;
+  border-top: dashed 1px black;
+  border-bottom: dashed 1px black;
 }

@@ -29,6 +29,9 @@ router.put('/developer/details',
   developerAvatarMiddleware,
   UserController.updateDeveloperDetails
 );
-
+router.put('/developer/account-status',
+  userAuthorizeMiddleware,
+  UserController.updateDeveloperAccountStatus
+);
 
 module.exports = router;

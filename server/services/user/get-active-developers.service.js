@@ -4,7 +4,8 @@ module.exports = function getActiveDevelopers () {
   const sQuery = {
     type: 'developer',
     'repos.0': {$exists: true},
-    'profileReadyForPublic': true
+    hidden: false,
+    profileReadyForPublic: true
   };
   return User.find(sQuery).then((developers) => {
     return developers;

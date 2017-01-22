@@ -1,3 +1,7 @@
+.userHome {
+  display: flex;
+  align-items: stretch;
+}
 .userHome-search {
   margin: 20px;
 }
@@ -13,4 +17,8 @@
 .userHome-importedLabel {
   margin: 0 12px;
   padding: 6px 12px;
+}
+.userHome-developerInfo {
+  display: flex;
+  align-items: stretch;
 }

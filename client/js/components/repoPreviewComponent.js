@@ -2,13 +2,21 @@
   angular.module('showroom').component('srRepoPreview', {
     templateUrl: 'client/views/components/repoPreview.html',
     bindings: {
-      repo: '=',
-      hideAuthorName: '<'
+      repo: '<',
+      hideAuthorName: '<',
+      mode: '<',
+      onHide: '&',
+      onUnhide: '&',
+      onDelete: '&',
+      onEdit: '&'
     },
-    controller: function ($state) {
-      this.seeDetails = function (id) {
-        $state.go('repo-details', {id: id});
-      }
-    }
+    controller: RepoPreviewController
   });
+
+  RepoPreviewController.$inject = ['$state', 'UserReposService'];
+  function RepoPreviewController ($state, userRepos) {
+    this.seeDetails = function (id) {
+      $state.go('repo-details', {id: id});
+    }
+  }
 })();

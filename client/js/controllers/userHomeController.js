@@ -1,49 +1,50 @@
 UserHomeController.$inject = ['$scope', 'UserReposService', '$http', '$state'];
 angular.module('showroom').controller('UserHomeController',  UserHomeController);
 
-function UserHomeController ($scope, repos, $http, $state) {
+function UserHomeController ($scope, userRepos, $http, $state) {
   $scope.searchedUser = $state.params.login;
+  $scope.reposState = 'loading';
   getRepos();
   $scope.import = function (repo) {
     $state.go('importing', {id: repo.id, name: repo.name, data: repo});
   }
   $scope.deleteRepo = function (repoToDelete) {
-    repos.delete({hbcId: repoToDelete.hbcId})
+    userRepos.delete({hbcId: repoToDelete.hbcId})
       .then(function () {
         getRepos();
-      },
-      function () {
-        
-    });
+      });
   }
   $scope.hideRepo = function (repoToHide) {
-    repos.hide({hbcId: repoToHide.hbcId})
+    userRepos.hide({hbcId: repoToHide.hbcId})
       .then(function () {
         getRepos();
-      },
-      function () {
-        
-    });
+      });
   }
   $scope.unhideRepo = function (repoToHide) {
-    repos.unhide({hbcId: repoToHide.hbcId})
+    userRepos.unhide({hbcId: repoToHide.hbcId})
       .then(function () {
         getRepos();
-      },
-      function () {
-        
-    });
+      });
   }
   $scope.editRepo = function (repo) {
     $state.go('edit', {id: repo.hbcId});
   }
+  
   function getRepos() {
-    repos.getUserRepos()
+    userRepos.getUserRepos()
       .then(function (repos) {
-        $scope.userRepos = repos;
-        $scope.userFound = true;
+        handleRepos(repos);
+        $scope.reposState = 'loaded';
       }, function () {
-        $scope.userFound = false;
+        $scope.reposState = 'failed';
       });
+  }
+  function handleRepos(repos) {
+    $scope.userGithubRepos = repos.filter(function(repo) {
+      return !repo.imported;
+    });
+    $scope.userImportedRepos = repos.filter(function(repo) {
+      return repo.imported;
+    });
   }
 }

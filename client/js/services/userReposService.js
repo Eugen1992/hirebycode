@@ -35,7 +35,9 @@ function UserReposService ($q, $http, $filter) {
     dataToSend.contents_url = repo.contents_url;
     dataToSend.createdAt = new Date().getTime();
 
-    return $http.post(baseUrl, dataToSend);
+    return $http.post(baseUrl, dataToSend).then(function (response) {
+      console.log(response);
+    });
   }
   this.delete = function (options) {
     var deletePromise;

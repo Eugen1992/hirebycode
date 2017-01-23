@@ -101,6 +101,22 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       url: '/training-center-login',
       templateUrl: 'client/views/partials/trainingCenterLogin.html',
       controller: 'TrainingCenterLoginController'
+    })
+    .state('admin', {
+      abstract: true,
+      template: '<ui-view/>'
+    })
+    .state('admin-login', {
+      parent: 'admin',
+      url: '/admin-login',
+      templateUrl: 'client/views/partials/admin-login.html',
+      controller: 'AdminLoginController'
+    })
+    .state('admin-panel', {
+      parent: 'admin',
+      url: '/admin-panel',
+      templateUrl: 'client/views/partials/admin-panel.html',
+      controller: 'AdminPanelController'
     });
 
   $httpProvider.interceptors.push('ApiInterceptorService');
@@ -128,6 +144,7 @@ angular.module('showroom').run(function($rootScope, $state, UserLocalService){
       }
     }
   });
+
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
     console.log(event);
     console.log(error);

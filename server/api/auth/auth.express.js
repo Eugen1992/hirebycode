@@ -15,4 +15,11 @@ router.put('/training',
   AuthController.local
 );
 
+router.put('/admin',
+  passport.authenticate('local'),
+  jwtMiddleware,
+  AuthController.local
+);
+
+
 module.exports = router;

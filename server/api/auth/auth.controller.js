@@ -20,6 +20,7 @@ const AuthController = {
   },
   local: (req, res, next) => {
     if (!req.user) {
+      console.log('sending 400');
       res.sendStatus(400);
     }
     User.findOneAndUpdate({_id: ObjectId(req.user._id)}, {$set: {token: req.token} }, {new: true})

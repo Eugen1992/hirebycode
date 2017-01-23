@@ -31,7 +31,20 @@ module.exports = function(server) {
       });
     }
   ));
-
+  passport.use(new LocalStrategy({
+      usernameField: 'login',
+      passwordField: 'password',
+      session: false
+    },
+    function (username, password, done) {
+      
+      User.findOne({ login: username, password: password, type: 'admin' }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        return done(null, user);
+      });
+    }
+  ));
   passport.serializeUser(function(user, done) {
     done(null, user);
   });

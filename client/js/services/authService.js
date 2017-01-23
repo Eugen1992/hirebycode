@@ -14,7 +14,16 @@ function AuthService ($q, $http, $window, userService) {
       login: login,
       password: password
     }).then(function (response) {
-      setUserData(response.data.token, response.data.user, response.data.githubToken);
+      setUserData(response.data.token, response.data.user, null);
+      return {result: 'success'};
+    });
+  }
+  this.admin = function (login, password) {
+    return $http.put('/api/auth/admin', {
+      login: login,
+      password: password
+    }).then(function (response) {
+      setUserData(response.data.token, response.data.user, null);
       return {result: 'success'};
     });
   }

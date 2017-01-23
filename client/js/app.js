@@ -107,7 +107,6 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       template: '<ui-view/>'
     })
     .state('admin-login', {
-      parent: 'admin',
       url: '/admin-login',
       templateUrl: 'client/views/partials/admin-login.html',
       controller: 'AdminLoginController'
@@ -127,6 +126,10 @@ angular.module('showroom').run(function($rootScope, $state, UserLocalService){
     if (to.parent === 'authorized' && !UserLocalService.isLoggedIn()) {
         ev.preventDefault();
         $state.go('home');
+    } 
+    if (to.parent === 'admin' && !UserLocalService.isAdmin()) {
+      ev.preventDefault();
+      $state.go('home');
     }
   });
   $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {

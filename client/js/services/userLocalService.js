@@ -20,6 +20,11 @@ function UserLocalService ($q, $window) {
   this.isLoggedIn = function () {
     return !!$window.localStorage.getItem('token');
   }
+  this.isAdmin = function () {
+    var user = this.getUser();
+    return this.isLoggedIn && user && user.type === 'admin';
+  }
+  
   this.getUser = function () { 
     return JSON.parse($window.localStorage.getItem('user'));
   }

@@ -1,0 +1,24 @@
+<form>
+  <div class="form-group">
+    <label>New skill
+      <input class="form-control" placeholder="Input name" ng-model="$ctrl.newSkillName" />
+    </label>
+  </div>
+  <button ng-click="$ctrl.addSkill()" class="btn btn-primary">Add</button>
+</form>
+<table class="table table-striped">
+  <thead>
+    <th>
+      Name
+    </th>
+    <th class="adminSkills-narrowColumn">Remove</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="skill in $ctrl.skills">
+      <th>{{skill.name}}</th>
+      <th class="adminSkills-narrowColumn u-textCenter">
+        <span class="glyphicon glyphicon-remove adminSkill-actionElement" ng-click="$ctrl.removeSkill(skill)"></span>
+      </th>
+    </tr>
+  </tbody>
+</table>

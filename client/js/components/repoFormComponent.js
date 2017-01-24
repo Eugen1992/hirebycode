@@ -32,11 +32,9 @@
     }, []);
   }
   function formSkillsList (skillsArray, repo) {
-    return skillsArray.map(function(skillName) {
-      return {
-        name: skillName,
-        used: repo.languages.indexOf(skillName) > -1
-      };
+    return skillsArray.map(function(skill) {
+      skill.used = repo.languages.indexOf(skill.name) > -1;
+      return skill;
     });
   }
 }());

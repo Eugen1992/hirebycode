@@ -111,6 +111,12 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: 'client/views/partials/admin-login.html',
       controller: 'AdminLoginController'
     })
+    .state('admin-skills', {
+      url: '/admin-skills',
+      controllerAs: '$ctrl',
+      templateUrl: 'client/views/partials/admin-skills.html',
+      controller: 'AdminSkillsController'
+    })
     .state('admin-panel', {
       parent: 'admin',
       url: '/admin-panel',
@@ -141,6 +147,9 @@ angular.module('showroom').run(function($rootScope, $state, UserLocalService){
           break;
         case 'developer':
           $state.go('user-home');
+          break;
+        case 'admin':
+          $state.go('admin-panel');
           break;
         default:
           $state.go('home');

@@ -7,7 +7,7 @@ const AuthController = {
       if (err) {
         res.sendStatus(500);
       } else if (user === null) {
-        registerDevelop(req, res);
+        registerDeveloper(req, res);
       } else {
         token = user.token;
         res.status(200).json({
@@ -18,10 +18,9 @@ const AuthController = {
       }
     });
   },
-  local: (req, res, next) => {
+  trainingCenter: (req, res, next) => {
     if (!req.user) {
-      console.log('sending 400');
-      res.sendStatus(400);
+      res.sendStatus(401);
     }
     User.findOneAndUpdate({_id: ObjectId(req.user._id)}, {$set: {token: req.token} }, {new: true})
       .then(function (user) {
@@ -36,10 +35,27 @@ const AuthController = {
       }, function (error) {
         res.sendStatus(500);
       });
+  },
+  trainingCenterSignup: (req, res, next) => {
+    res.sendStatus(200);
+  },
+  admin: (req, res, next) => {
+        if (!req.user) {
+      res.sendStatus(401);
+    }
+    User.findOneAndUpdate({_id: ObjectId(req.user._id)}, {$set: {token: req.token} }, {new: true})
+      .then(function (user) {
+        res.send({ token: user.token, user: {
+            type: user.type
+          }
+        });
+      }, function (error) {
+        res.sendStatus(500);
+      });
   }
 }
 
-function registerDevelop (req, res) {
+function registerDeveloper (req, res) {
   User.createDeveloper({
     githubId: req.user.id,
     githubLogin: req.user.username,

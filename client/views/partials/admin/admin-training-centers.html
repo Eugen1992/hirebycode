@@ -1,0 +1,26 @@
+<form>
+  <div class="form-group">
+    <label>New training center
+      <input class="form-control" placeholder="Name" ng-model="$ctrl.newTrainingCenter.name" />
+      <input class="form-control" placeholder="Login" ng-model="$ctrl.newTrainingCenter.login" />
+      <input class="form-control" placeholder="Password" ng-model="$ctrl.newTrainingCenter.password" />
+    </label>
+  </div>
+  <button ng-click="$ctrl.addTrainingCenter()" class="btn btn-primary">Add</button>
+</form>
+<table class="table table-striped">
+  <thead>
+    <th>
+      Name
+    </th>
+    <th class="adminSkills-narrowColumn">Remove</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="skill in $ctrl.skills">
+      <th>{{skill.name}}</th>
+      <th class="adminSkills-narrowColumn u-textCenter">
+        <span class="glyphicon glyphicon-remove adminSkill-actionElement" ng-click="$ctrl.removeSkill(skill)"></span>
+      </th>
+    </tr>
+  </tbody>
+</table>

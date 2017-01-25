@@ -108,19 +108,25 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('admin-login', {
       url: '/admin-login',
-      templateUrl: 'client/views/partials/admin-login.html',
+      templateUrl: 'client/views/partials/admin/admin-login.html',
       controller: 'AdminLoginController'
     })
     .state('admin-skills', {
       url: '/admin-skills',
       controllerAs: '$ctrl',
-      templateUrl: 'client/views/partials/admin-skills.html',
+      templateUrl: 'client/views/partials/admin/admin-skills.html',
       controller: 'AdminSkillsController'
+    })
+    .state('admin-training-centers', {
+      url: '/admin-training-centers',
+      controllerAs: '$ctrl',
+      templateUrl: 'client/views/partials/admin/admin-training-centers.html',
+      controller: 'AdminTrainingCentersController'
     })
     .state('admin-panel', {
       parent: 'admin',
       url: '/admin-panel',
-      templateUrl: 'client/views/partials/admin-panel.html',
+      templateUrl: 'client/views/partials/admin/admin-panel.html',
       controller: 'AdminPanelController'
     });
 

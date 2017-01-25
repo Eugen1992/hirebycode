@@ -19,7 +19,9 @@ var userSchema = new Schema({
   isPublic: Boolean,
   repos: Array,
   profileReadyForPublic: Boolean,
-  hidden: Boolean
+  hidden: Boolean,
+  login: String,
+  password: String
 });
 
 userSchema.statics.createDeveloper = function (data) {

@@ -24,6 +24,7 @@ module.exports = function () {
         // set the user's local credentials
         newUser.login = login;
         newUser.password = createHash(password);
+        newUser.type = 'trainingCenter';
         // save the user
         newUser.save(function(err) {
           if (err){

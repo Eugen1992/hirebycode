@@ -110,19 +110,7 @@ userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
     };
   });
 }
-userSchema.statics.getTrainingCentersList = function () {
-   return this.find({type: 'trainingCenter', isPublic: true }).then(function(trainingCenters) {
-    return trainingCenters.map(function (item) {
-      publicData = {
-        id: item._id,
-        name: item.name,
-        logo: item.logo,
-        hasLogo: item.hasLogo
-      };
-      return publicData;
-    });
-   });
-}
+
 userSchema.statics.getTrainingCenterInfo = function (id) {
   return this.find({ 
     '_id': ObjectId(id),

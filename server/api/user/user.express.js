@@ -6,15 +6,6 @@ const trainingCenterLogoMiddleware = require('../../middleware/logoUploadMiddlew
 const developerAvatarMiddleware = require('../../middleware/developerAvatarUploadMiddleware');
 const adminAuthorizeMiddleware = require('../../middleware/adminAuthorizeMiddleware');
 
-router.get('/training-center',
-  userAuthorizeMiddleware,
-  UserController.getTrainingCentersList
-);
-router.post('/training-center',
-  userAuthorizeMiddleware,
-  adminAuthorizeMiddleware,
-  UserController.getTrainingCentersList
-);
 router.get('/training-center/details',
   userAuthorizeMiddleware,
   UserController.getTrainingCenterDetails

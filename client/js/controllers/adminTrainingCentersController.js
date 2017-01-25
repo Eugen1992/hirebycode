@@ -4,7 +4,7 @@
   AdminTrainingCentersController.$inject = ['$scope', 'AdminTrainingCentersService'];
   function AdminTrainingCentersController ($scope, AdminTrainingCentersService) {
     var vm = this;
-
+    gettrainingCenters();
     vm.addTrainingCenter = function() {
       AdminTrainingCentersService.createTrainingCenter(
         vm.newTrainingCenter.password,
@@ -16,8 +16,8 @@
         vm.skills = skills;
       });
     }
-    function getSkills () {
-      SkillsService.getSkills().then(function (skills) {
+    function gettrainingCenters () {
+      AdminTrainingCentersService.getTrainingCenters().then(function (skills) {
         vm.skills = skills;
       });
     }

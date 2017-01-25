@@ -17,8 +17,8 @@
           return response.data;
       });
     }
-    this.getDevelopers = function () {
-      return $http.get('/api/developer').then(function(response) {
+    this.getTrainingCenters = function () {
+      return $http.get('/api/training-center/full').then(function(response) {
         return response.data;
       });
     }

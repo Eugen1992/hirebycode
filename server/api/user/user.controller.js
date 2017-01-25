@@ -2,13 +2,6 @@ const User = require('../../models/user.js');
 const UserServices = require('../../services/user');
 
 const UserController = {
-  getTrainingCentersList: (req, res, next) => {
-    User.getTrainingCentersList().then(function (centers) {
-      res.send(centers);
-    }, function () {
-      res.sendStatus(500);
-    });
-  },
   getTrainingCenterDetails: (req, res, next) => {
     User.getTrainingCenter(req.userId).then(function (details) {
       res.send(details);

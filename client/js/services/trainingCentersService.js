@@ -6,7 +6,7 @@
     var trainingCenterRepos;
 
     this.getAll = function () {
-      return $http.get('api/user/training-center').then(function (response) {
+      return $http.get('api/training-center').then(function (response) {
         return response.data;
       });
     }

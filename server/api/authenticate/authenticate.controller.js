@@ -1,5 +1,6 @@
 const User = require('../../models/user.js');
-var ObjectId = require('mongodb').ObjectId;
+const ObjectId = require('mongodb').ObjectId;
+const TrainingCenterServices = require('../../services/training-center');
 
 const AuthController = {
   github: (req, res, next) => {
@@ -37,10 +38,17 @@ const AuthController = {
       });
   },
   trainingCenterSignup: (req, res, next) => {
-    res.sendStatus(200);
+    TrainingCenterServices.completeCreatingTrainingCenter({
+      name: req.body.name,
+      id: req.user._id
+    }).then((trainingCenter) => {
+      res.send(trainingCenter);
+    }, (err) => {
+      res.send(err);
+    });
   },
   admin: (req, res, next) => {
-        if (!req.user) {
+    if (!req.user) {
       res.sendStatus(401);
     }
     User.findOneAndUpdate({_id: ObjectId(req.user._id)}, {$set: {token: req.token} }, {new: true})

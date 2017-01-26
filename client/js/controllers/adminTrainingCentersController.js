@@ -11,14 +11,14 @@
         vm.newTrainingCenter.login,
         vm.newTrainingCenter.name);
     }
-    vm.removeSkill = function(skill) {
-      SkillsService.removeSkill(skill).then(function (skills) {
-        vm.skills = skills;
+    vm.removeTrainingCenter = function(trainingCenter) {
+      AdminTrainingCentersService.removeTrainingCenter(trainingCenter).then(function (trainingCenters) {
+        vm.trainingCenters = trainingCenters;
       });
     }
     function gettrainingCenters () {
-      AdminTrainingCentersService.getTrainingCenters().then(function (skills) {
-        vm.skills = skills;
+      AdminTrainingCentersService.getTrainingCenters().then(function (trainingCenters) {
+        vm.trainingCenters = trainingCenters;
       });
     }
   }

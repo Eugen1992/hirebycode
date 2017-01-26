@@ -5,6 +5,8 @@ const utils = {
       return User.getTrainingCenterInfo(repo.trainingCenter).then(function (info) {
         repo.trainingCenterInfo = info;
         return repo;
+      }, () => {
+        return repo;
       }).catch(function () {
         return repo;
       });

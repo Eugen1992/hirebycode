@@ -23,7 +23,6 @@ router.put('/admin',
 
 router.post('/training',
   passport.authenticate('training-center-signup'),
-  jwtMiddleware,
   AuthController.trainingCenterSignup
 );
 

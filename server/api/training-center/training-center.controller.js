@@ -9,6 +9,13 @@ const TrainingCenterController = {
       res.sendStatus(500);
     });
   },
+  removeTrainingCenter: (req, res, next) => {
+    TrainingCenterServices.removeTrainingCenter(req.params.id).then(function () {
+      res.sendStatus(200);
+    }, function () {
+      res.sendStatus(500);
+    });
+  },
   getTrainingCentersList: (req, res, next) => {
     TrainingCenterServices.getTrainingCentersList({ onlyPublic: true }).then(function (centers) {
       res.send(centers);

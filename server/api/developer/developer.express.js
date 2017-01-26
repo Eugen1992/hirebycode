@@ -2,10 +2,10 @@ const router = require('express').Router();
 const DeveloperController = require('./developer.controller.js');
 
 router.get('/',
-    DeveloperController.getAll
+  DeveloperController.getAll
 );
 router.get('/active',
-    DeveloperController.getActive
+  DeveloperController.getActive
 );
 
 router.get('/:id',
@@ -13,6 +13,6 @@ router.get('/:id',
 );
 
 router.get('/contacts/:id',
-    DeveloperController.getContacts
+  DeveloperController.getContacts
 );
 module.exports = router;

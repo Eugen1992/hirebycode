@@ -16,10 +16,10 @@
     <th class="adminSkills-narrowColumn">Remove</th>
   </thead>
   <tbody>
-    <tr ng-repeat="skill in $ctrl.skills">
-      <th>{{skill.name}}</th>
+    <tr ng-repeat="trainingCenter in $ctrl.trainingCenters">
+      <th>{{trainingCenter.name}}</th>
       <th class="adminSkills-narrowColumn u-textCenter">
-        <span class="glyphicon glyphicon-remove adminSkill-actionElement" ng-click="$ctrl.removeSkill(skill)"></span>
+        <span class="glyphicon glyphicon-remove u-actionElement" ng-click="$ctrl.removeTrainingCenter(trainingCenter)"></span>
       </th>
     </tr>
   </tbody>

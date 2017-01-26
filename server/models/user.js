@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = require('mongodb').ObjectId;
+var mongooseDelete = require('mongoose-delete');
 
 var userSchema = new Schema({
   name: String,
@@ -23,6 +24,8 @@ var userSchema = new Schema({
   login: String,
   password: String
 });
+
+userSchema.plugin(mongooseDelete);
 
 userSchema.statics.createDeveloper = function (data) {
   var createQuery = Object.assign(

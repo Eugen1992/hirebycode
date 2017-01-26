@@ -3,7 +3,9 @@
 
   AdminTrainingCentersService.$inject = ['$http'];
   function AdminTrainingCentersService ($http) {
-    this.createTrainingCenter = function (password, login) {
+    var trainingCenters, fetched;
+
+    this.createTrainingCenter = function (password, login, name) {
       return $http.post('/api/auth/training', {
         password: password,
         login: login,
@@ -12,20 +14,24 @@
         return response.data;
       });
     }
-    this.getContactsById = function (userId) {
-      return $http.get('/api/developer/contacts/' + userId).then(function(response) {
-          return response.data;
+    this.removeTrainingCenter = function (trainingCenter) {
+      return $http.delete('api/training-center/' + trainingCenter._id).then(function() {
+        trainingCenters.splice(trainingCenters.indexOf(trainingCenter), 1);
+        return trainingCenters;
       });
     }
     this.getTrainingCenters = function () {
-      return $http.get('/api/training-center/full').then(function(response) {
-        return response.data;
-      });
-    }
-    this.getActiveDevelopers = function () {
-      return $http.get('/api/developer/active').then(function(response) {
-        return response.data;
-      });
+      if (fetched) {
+        return $q(function (resolve, reject) {
+          resolve(trainingCenters);
+        })
+      } else {
+        return $http.get('/api/training-center/full').then(function(response) {
+          fetched = true;
+          trainingCenters = response.data;
+          return response.data;
+        });
+      }
     }
   }
 })();

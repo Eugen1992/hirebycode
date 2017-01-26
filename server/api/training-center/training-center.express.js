@@ -10,6 +10,12 @@ router.get('/full',
   TrainingCenterController.getTrainingCentersFullList
 );
 
+router.delete('/:id',
+  userAuthorizeMiddleware,
+  adminAuthorizeMiddleware,
+  TrainingCenterController.removeTrainingCenter
+);
+
 router.get('/',
   userAuthorizeMiddleware,
   TrainingCenterController.getTrainingCentersList

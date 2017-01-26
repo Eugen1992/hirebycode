@@ -94,7 +94,7 @@ function formReposList (userId, providerLogin, githubToken) {
     Promise.all([dbPromise, githubReposPromise]).then(function (responses) {
       var importedRepos = responses[0];
       var reposFromGithub = responses[1];
-      
+      console.log('reposFromGithub');
       importedRepos.forEach(function (importedRepo) {
         importedRepo = importedRepo.toObject();
         var githubRepo = _.find(reposFromGithub, function (repo) {

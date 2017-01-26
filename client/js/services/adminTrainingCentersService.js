@@ -33,5 +33,12 @@
         });
       }
     }
+    this.getTrainingCenterById = function (id) {
+      return $http.get('/api/training-center/full/' + id).then(function(response) {
+        fetched = true;
+        trainingCenters = response.data;
+        return response.data;
+      });
+    }
   }
 })();

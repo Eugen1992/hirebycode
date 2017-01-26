@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="trainingCenter in $ctrl.trainingCenters">
-      <th>{{trainingCenter.name}}</th>
+      <th class="u-actionElement" ui-sref="admin-training-center-details({id: trainingCenter._id })">{{trainingCenter.name}}</th>
       <th class="adminSkills-narrowColumn u-textCenter">
         <span class="glyphicon glyphicon-remove u-actionElement" ng-click="$ctrl.removeTrainingCenter(trainingCenter)"></span>
       </th>

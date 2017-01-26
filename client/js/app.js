@@ -123,6 +123,12 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: 'client/views/partials/admin/admin-training-centers.html',
       controller: 'AdminTrainingCentersController'
     })
+    .state('admin-training-center-details', {
+      url: '/admin-training-centers/:id',
+      controllerAs: '$ctrl',
+      templateUrl: 'client/views/partials/admin/admin-training-center-details.html',
+      controller: 'AdminTrainingCenterDetailsController'
+    })
     .state('admin-panel', {
       parent: 'admin',
       url: '/admin-panel',

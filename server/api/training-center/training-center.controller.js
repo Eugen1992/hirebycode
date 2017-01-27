@@ -1,6 +1,7 @@
 const User = require('../../models/user.js');
 const TrainingCenterServices = require('../../services/training-center');
 const ObjectId = require('mongodb').ObjectId;
+const Repo = require('../../models/repo.js');
 
 const TrainingCenterController = {
   getTrainingCentersFullList: (req, res, next) => {
@@ -30,6 +31,13 @@ const TrainingCenterController = {
         res.status(404).send('No such training center')
       }
       res.send(center);
+    }, function () {
+      res.sendStatus(500);
+    });
+  },
+  getFullTrainingCenterRepos: (req, res, next) => {
+    Repo.getTrainingCenterRepos(req.params.id).then((repos) => {
+      res.send(repos);
     }, function () {
       res.sendStatus(500);
     });

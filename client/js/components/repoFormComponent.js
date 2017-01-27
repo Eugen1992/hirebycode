@@ -11,6 +11,7 @@
   function RepoFormController ($scope, SkillsService, TrainingCentersService) {
     this.$onInit = function () {
       TrainingCentersService.getAll().then(function (centers) {
+        console.log(centers);
         this.trainingCenters = centers;
       }.bind(this));
     }

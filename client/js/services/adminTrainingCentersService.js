@@ -40,5 +40,11 @@
         return response.data;
       });
     }
+    this.getTrainingCenterRepos = function (id) {
+      return $http.get('api/training-center/repos/' + id).then(function (response) {
+        trainingCenterRepos = response.data;
+        return trainingCenterRepos;
+      });
+    }
   }
 })();

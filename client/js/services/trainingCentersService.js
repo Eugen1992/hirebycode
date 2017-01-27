@@ -32,7 +32,7 @@
 
       });
     }
-    this.getTrainingCenterRepos = function (id) {
+    this.getTrainingCenterRepos = function () {
       return $http.get('api/repo/training-center/').then(function (response) {
         trainingCenterRepos = response.data;
         return trainingCenterRepos;

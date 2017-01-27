@@ -1,1 +1,51 @@
-Training center details
+<main class="row">
+  <h1>Training Center Home</h1>
+  <section class="col-md-7">
+    <h3>Pending projects</h3>
+    <div ng-repeat="repo in $ctrl.pendingRepos">
+      <div class="trainingCenter-requestDetails">
+        <button class="btn btn-success" ng-click="approveRepo(repo)">Approve</button>
+      </div>
+      <sr-repo-preview repo="repo"></sr-repo-preview>
+    </div>
+    <h3>Approved projects</h3>
+    <div ng-repeat="repo in $ctrl.approvedRepos">
+      <div class="trainingCenter-requestDetails">
+        <button class="btn btn-danger" ng-click="disapproveRepo(repo)">Disaprove</button>
+      </div>
+      <sr-repo-preview repo="repo"></sr-repo-preview>
+    </div>
+  </section>
+  <section class="col-md-5">
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-6 col-xs-12">
+          Training center name:
+          <textarea class="form-control" ng-model="$ctrl.trainingCenter.name"></textarea>
+        </label>
+        <label class="col-sm-6 col-xs-12">
+          <span class="trainingCenter-switchLabel">Account status: </span>
+          <span class="trainingCenter-switch">
+            <input type="checkbox" ng-model="$ctrl.trainingCenter.isPublic" ng-change="handleChange()">
+            <span class="trainingCenter-slider" ng-class="{'is-checked': $ctrl.trainingCenter.isPublic}"></span>
+          </span>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          Training center logo:
+          </label>
+        <div class="trainingCenter-formLine">
+          <button type="button" class="btn btn-default" ngf-select ng-model="newLogo">Upload</button>
+          <button type="button" class="btn btn-default" ng-show="newLogo" ng-click="clearLogo()">
+            Clear logo
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+        </div>
+        <img class="trainingCenter-logo trainingCenter-formLine" ng-if="!$ctrl.trainingCenter.hasLogo || newLogo" ngf-thumbnail="newLogo || '/client/assets/images/placeholder.svg'" />
+        <img class="trainingCenter-logo trainingCenter-formLine" ng-show="$ctrl.trainingCenter.logo && !newLogo" src="{{'/client/assets/images/training-center-logos/' + $ctrl.trainingCenter.logo}}" />
+      </div>
+      <button type="submit" class="trainingCenter-button btn btn-primary" ng-click="submitDetails()">Submit</button>
+    </form>
+  </section>
+</main> 

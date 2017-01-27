@@ -16,6 +16,12 @@ router.get('/full/:id',
   TrainingCenterController.getFullTrainingCenterById
 );
 
+router.get('/repos/:id',
+  userAuthorizeMiddleware,
+  adminAuthorizeMiddleware,
+  TrainingCenterController.getFullTrainingCenterRepos
+);
+
 router.delete('/:id',
   userAuthorizeMiddleware,
   adminAuthorizeMiddleware,

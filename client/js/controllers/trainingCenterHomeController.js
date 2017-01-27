@@ -1,6 +1,6 @@
-TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserLocalService', 'TrainingCentersService', 'UserService', 'Upload'];
 angular.module('showroom').controller('TrainingCenterHomeController',  TrainingCenterHomeController);
 
+TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserLocalService', 'TrainingCentersService', 'UserService', 'Upload'];
 function TrainingCenterHomeController ($scope, $state, user, trainingCenter, userService, upload) {
   $scope.user = user.getUser();
   trainingCenter.getTrainingCenterRepos(user).then(function (repos) {

@@ -20,7 +20,7 @@
     <label class="repoForm-inlineInput">Project was done during studying in the training center:
       <select class="form-control" ng-model="$ctrl.repo.trainingCenterRequired">
         <option value="none">None</option>
-        <option ng-repeat="center in $ctrl.trainingCenters" value={{center.id}}>{{center.name}}</option>
+        <option ng-repeat="center in $ctrl.trainingCenters" value={{center._id}}>{{center.name}}</option>
       </select>
     </label>
   </div>

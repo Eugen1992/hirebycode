@@ -129,6 +129,18 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: 'client/views/partials/admin/admin-training-center-details.html',
       controller: 'AdminTrainingCenterDetailsController'
     })
+    .state('admin-developers', {
+      url: '/admin-developers',
+      controllerAs: '$ctrl',
+      templateUrl: 'client/views/partials/admin/admin-developers.html',
+      controller: 'AdminDevelopersController'
+    })
+    .state('admin-developer-details', {
+      url: '/admin-developer-details/:id',
+      controllerAs: '$ctrl',
+      templateUrl: 'client/views/partials/admin/admin-developer-details.html',
+      controller: 'AdminDeveloperDetailsController'
+    })
     .state('admin-panel', {
       parent: 'admin',
       url: '/admin-panel',

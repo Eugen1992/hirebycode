@@ -1,0 +1,15 @@
+<main class="row">
+  <section class="col-sm-7">
+    <h1>{{$ctrl.info.firstName}} {{$ctrl.info.lastName}}</h1>
+    <sr-repo-preview
+      hide-author-name="true"
+      ng-repeat="repo in $ctrl.repos" 
+      repo="repo"
+    >
+    </sr-repo-preview>
+  </section>
+  <section class="col-sm-3 pull-right">
+    <h2>Contacts</h2>
+    {{$ctrl.info.contacts}}
+  </section>
+</section>

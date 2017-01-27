@@ -42,7 +42,7 @@ userSchema.statics.getDevelopers = function (id) {
         lastName: developer.lastName,
         location: developer.location,
         avatar: developer.avatar,
-        id: developer._id
+        _id: developer._id
       }
     });
   });

@@ -19,6 +19,21 @@ const DeveloperController = {
       res.sendStatus(500);
     });
   },
+  getFullById: (req, res, next) => {
+    Promise.all([
+      User.getDeveloperFullProfile(req.params.id),
+      Repo.getDeveloperRepos(req.params.id)
+    ]).then(function(results) {
+      const result = {
+        info: results[0],
+        repos: results[1]
+      };
+      res.send(result);
+    }, function (err) {
+      console.log(err);
+      res.sendStatus(500);
+    });
+  },
   getActive: (req, res, next) => {
     UserServices.getActiveDevelopers().then((developers) => {
       res.send(developers);

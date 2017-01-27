@@ -1,0 +1,9 @@
+<article ng-repeat="developer in $ctrl.developers">
+  <sr-developer-preview developer="developer"></sr-developer-preview>
+  <button 
+    ui-sref="admin-developer-details({ id: developer._id })"
+    class="btn btn-primary"
+  >
+    See full profile
+  </button>
+</article>

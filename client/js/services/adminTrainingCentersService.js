@@ -1,8 +1,8 @@
 (function () {
   angular.module('showroom').service('AdminTrainingCentersService', AdminTrainingCentersService);
 
-  AdminTrainingCentersService.$inject = ['$http'];
-  function AdminTrainingCentersService ($http) {
+  AdminTrainingCentersService.$inject = ['$http', '$q'];
+  function AdminTrainingCentersService ($http, $q) {
     var trainingCenters, fetched;
 
     this.createTrainingCenter = function (password, login, name) {

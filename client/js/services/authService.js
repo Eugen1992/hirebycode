@@ -1,10 +1,10 @@
 AuthService.$inject = ['$q', '$http', '$window', 'UserLocalService'];
 app.service('AuthService', AuthService);
 
-function AuthService ($q, $http, $window, userService) {
+function AuthService ($q, $http, $window, userLocalService) {
   this.github = function () {
     var deferred = $q.defer();
-
+    userLocalService.logOut();
     openPopup(deferred);
     
     return deferred.promise;
@@ -34,9 +34,9 @@ function AuthService ($q, $http, $window, userService) {
     });
   }
   function setUserData(token, userData, providerToken) {
-    userService.setToken(token);
-    userService.setUser(userData);
-    providerToken && userService.setProviderToken(providerToken);
+    userLocalService.setToken(token);
+    userLocalService.setUser(userData);
+    providerToken && userLocalService.setProviderToken(providerToken);
   }
   function openPopup (deferred) {
     var url = buildUrl();

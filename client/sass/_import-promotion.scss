@@ -1,0 +1,33 @@
+.importPromotion {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 360px;
+  text-align: center;
+  background-image: url('/client/assets/images/engine.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: -20px -15px 0;
+  box-sizing: border-box;
+}
+.importPromotion-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.importPromotion-title {
+  color: white;
+  margin-bottom: 40px;
+}
+
+.importPromotion-button {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 10px 20px;
+}

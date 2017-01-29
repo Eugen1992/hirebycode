@@ -22,9 +22,14 @@ function UserLocalService ($q, $window) {
   }
   this.isAdmin = function () {
     var user = this.getUser();
-    return this.isLoggedIn && user && user.type === 'admin';
+    return this.isLoggedIn() && user && user.type === 'admin';
   }
   
+  this.isDeveloper = function () {
+    var user = this.getUser();
+    return this.isLoggedIn() && user && user.type === 'developer';
+  }
+
   this.getUser = function () { 
     return JSON.parse($window.localStorage.getItem('user'));
   }

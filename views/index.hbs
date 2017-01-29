@@ -63,15 +63,12 @@
     <script src="/client/js/components/repoPreviewComponent.js"></script>
     <script src="/client/js/components/developerPreviewComponent.js"></script>
     <script src="/client/js/components/developerInfoComponent.js"></script>
+    <script src="/client/js/components/importPromotionComponent.js"></script>
+    <script src="/client/js/components/headerComponent.js"></script>
   </head>
   <body ng-app="showroom">
     <div id="svg-icons" style="display: none;"></div>
-    <header class="header clearfix" ng-controller="HeaderController">
-        <h3 class="header-logo" ui-sref="home">Hire By Code</h3>
-        <button class="header-button btn btn-success pull-right" ng-hide="isLoggedIn" ui-sref="login">Log In</button>
-        <button class="header-button btn btn-success pull-right" ng-show="isLoggedIn" ui-sref="account">My Account</button>
-        <button class="header-button btn btn-default pull-right" ng-show="isLoggedIn" ng-click="logOut()">Log Out</button>
-    </header>
+    <sr-header></sr-header>
     <main ui-view class="container-fluid">
     </main>
     <script src="/client/icons.js"></script>

@@ -1,5 +1,6 @@
 const User = require('../../models/user.js');
 const UserServices = require('../../services/user');
+const LocationService = require('../../services/location');
 
 const UserController = {
   getTrainingCenterDetails: (req, res, next) => {
@@ -22,18 +23,48 @@ const UserController = {
     });
   },
   getDeveloperDetails: (req, res, next) => {
-    User.getDeveloperFullProfile(req.userId).then(function (details) {
-      res.send(details);
-    }, function () {
-      res.sendStatus(500);
-    });
+    let userDetails;
+    UserServices.getDeveloperProfile({ userId: req.userId, withContacts: true })
+      .then(function (details) {
+        userDetails = details.toObject();
+      })
+      .then(function () {
+        return LocationService.getLocationData(userDetails.placeId);
+      })
+      .then(function (location) {
+        userDetails.city = location.city;
+        userDetails.country = location.country;
+      })
+      .then(function () {
+        res.send(userDetails);
+
+      })
+      .catch(function (err) {
+        res.status(500).send(err);
+      })
   },
   updateDeveloperDetails: (req, res, next) => {
-    UserServices.updateDeveloperProfile(req.userId, req.body)
+    LocationService.addLocation({
+      placeId: req.body.placeId,
+      city: req.body.city,
+      country: req.body.country
+    }).then((location) => {
+      return UserServices.updateDeveloperProfile(req.userId, req.body);
+    })
     .then((user) => {
-      res.send(user);
+      return UserServices.getDeveloperProfile({ userId: req.userId, withContacts: true });
+    })
+    .then(function (details) {
+      return LocationService.getLocationData(details.placeId).then((location) => {
+        return Object.assign({}, location, details.toObject());
+      });
+    })
+    .then((details) => {
+      console.log(details);
+      res.send(details);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send(err);
     });
   },

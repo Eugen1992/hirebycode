@@ -1,5 +1,6 @@
 const User = require('../../models/user.js');
 const UserServices = require('../../services/user');
+const LocationServices = require('../../services/user');
 const Repo = require('../../models/repo.js');
 const Promise = require('promise');
 
@@ -37,14 +38,17 @@ const DeveloperController = {
   getActive: (req, res, next) => {
     UserServices.getActiveDevelopers().then((developers) => {
       res.send(developers);
-    }, (err) => {
+    }).catch((err) => {
+      console.log(err);
       res.sendStatus(500);
     });
   },
   getAll: (req, res, next) => {
-    User.getDevelopers(req.userId).then(function (developers) {
+    User.getDevelopers()
+    .then(function (developers) {
       res.send(developers);
-    }, function () {
+    })
+    .catch(function () {
       res.sendStatus(500);
     });
   },

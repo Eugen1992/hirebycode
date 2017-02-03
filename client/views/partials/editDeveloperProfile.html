@@ -23,11 +23,12 @@
     <div class="editDeveloper-subsection">
       <h3 class="editDeveloper-subsectionHeader">Location</h3>
       <div class="form-group">
-        <input vs-google-autocomplete
+        <input
+         vs-google-autocomplete="autocompleteOptions"
          ng-model="location"
          vs-city="info.city" 
          vs-country="info.country" 
-         vs-place-id="info.locationId"
+         vs-place-id="info.placeId"
          type="text" 
          class="form-control" 
          placeholder="Enter city name">

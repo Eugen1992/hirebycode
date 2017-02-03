@@ -1,4 +1,5 @@
 const User = require('../../models/user');
+const LocationServices = require('../location');
 
 module.exports = function getActiveDevelopers () {
   const sQuery = {
@@ -7,7 +8,13 @@ module.exports = function getActiveDevelopers () {
     hidden: false,
     profileReadyForPublic: true
   };
-  return User.find(sQuery).then((developers) => {
-    return developers;
+  const projection = 'firstName lastName placeId avatar';
+
+  return User.find(sQuery, projection).then((developers) => {
+    return Promise.all(developers.map((developer) => {
+      return LocationServices.getLocationData(developer.placeId).then((location) => {
+        return Object.assign(developer.toObject(), location); 
+      });
+    }));
   });
 }

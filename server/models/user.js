@@ -7,7 +7,7 @@ var userSchema = new Schema({
   name: String,
   firstName: String,
   lastName: String,
-  locationId: String,
+  placeId: String,
   type: String,
   githubId: String,
   githubLogin: String,

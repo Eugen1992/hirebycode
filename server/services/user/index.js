@@ -5,4 +5,5 @@ module.exports = {
   updateDeveloperProfile: require('./update-developer-profile.service'),
   updateDeveloperAvatar: require('./update-developer-avatar.service'),
   updateAccountStatus: require('./update-account-status.service'),
+  getDeveloperProfile: require('./get-developer-profile.service'),
 }

@@ -9,7 +9,7 @@ module.exports = function (userId, data) {
     contacts: data.contacts,
     firstName: data.firstName,
     lastName: data.lastName,
-    locationId: data.locationId
+    placeId: data.placeId
   }
 
   return User.findOneAndUpdate(sQuery, uQuery, { new: true })
@@ -19,6 +19,6 @@ module.exports = function (userId, data) {
 }
 
 function checkIsReadyForPublic (user) {
-  const { firstName, lastName, contacts, locationId } = user;
-  return firstName && lastName && contacts && locationId;
+  const { firstName, lastName, contacts, placeId } = user;
+  return firstName && lastName && contacts && placeId;
 }

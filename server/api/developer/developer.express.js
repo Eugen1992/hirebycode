@@ -13,13 +13,14 @@ router.get('/active',
   DeveloperController.getActive
 );
 
+router.get('/:id',
+  DeveloperController.getById
+);
+
 router.get('/full/:id',
   DeveloperController.getFullById
 );
 
-router.get('/:id',
-  DeveloperController.getById
-);
 
 router.get('/contacts/:id',
   DeveloperController.getContacts

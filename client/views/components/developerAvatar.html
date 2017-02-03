@@ -1,0 +1,13 @@
+<div class="developerInfo-formLine">
+  <img class="developerInfo-logo" ng-if="$ctrl.newAvatar" ngf-thumbnail="$ctrl.newAvatar || '/client/assets/images/developers-avatars/placeholder.png'" />
+  <img class="developerInfo-logo" ng-hide="$ctrl.newAvatar" src="{{'/client/assets/images/developers-avatars/' + $ctrl.avatarUrl}}" />
+  <button type="button" class="btn btn-default developerInfo-avatarControl" ngf-select ng-model="$ctrl.newAvatar">Upload new</button>
+  <button type="button" class="btn btn-default developerInfo-avatarControl" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">
+    Clear logo
+    <i class="glyphicon glyphicon-remove"></i>
+  </button>
+  <button type="button" class="btn btn-primary developerInfo-avatarControl" ng-show="$ctrl.newAvatar" ng-click="$ctrl.submit()">
+    Submit changes
+    <i class="glyphicon glyphicon-remove"></i>
+  </button>
+</div>

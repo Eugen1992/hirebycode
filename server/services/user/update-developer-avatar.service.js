@@ -9,5 +9,8 @@ module.exports = function (userId, avatarFileName) {
     avatar: avatarFileName
   }
 
-  return User.findOneAndUpdate(sQuery, uQuery, { new: true });
+  return User.findOneAndUpdate(sQuery, uQuery, { new: true })
+    .then(function (user) {
+      return { avatar: user.avatar };
+    });
 }

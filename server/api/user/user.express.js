@@ -19,12 +19,16 @@ router.put('/training-center/details',
 
 router.get('/developer/details',
   userAuthorizeMiddleware,
-  UserController.getDeveloperFullProfile
+  UserController.getDeveloperDetails
 );
 router.put('/developer/details',
   userAuthorizeMiddleware,
-  developerAvatarMiddleware,
   UserController.updateDeveloperDetails
+);
+router.put('/developer/avatar',
+  userAuthorizeMiddleware,
+  developerAvatarMiddleware,
+  UserController.updateDeveloperAvatar
 );
 router.put('/developer/account-status',
   userAuthorizeMiddleware,

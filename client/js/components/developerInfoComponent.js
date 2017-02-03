@@ -25,5 +25,10 @@
         this.info = newInfo;
       }.bind(this));
     }
+    this.updateAvatar = function (avatar) {
+      userService.updateDeveloperAvatar(avatar).then(function(info) {
+        this.info = info;
+      });
+    }
   }
 })();

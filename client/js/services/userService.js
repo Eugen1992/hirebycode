@@ -33,16 +33,26 @@
         });
       }
     }
-    this.updateDeveloperDetails = function (data, avatar) {
-      if (avatar) {
-        data.avatar = avatar; 
-      }
-      return upload.upload({
-        url: 'api/user/developer/details',
+    this.updateDeveloperDetails = function (data) {
+      return $http({
         method: 'PUT',
+        url: 'api/user/developer/details',
         data: data
       }).then(function(response) {
         userData = response.data;
+        return userData;
+      }, function (error) {
+        console.log(error);
+        return error;
+      });
+    }
+    this.updateDeveloperAvatar = function (avatar) {
+      return upload.upload({
+        url: 'api/user/developer/avatar',
+        method: 'PUT',
+        data: { avatar: avatar }
+      }).then(function(response) {
+        userData.avatar = response.data.avatar;
         return userData;
       }, function (error) {
         console.log(error);

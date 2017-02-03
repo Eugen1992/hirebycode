@@ -16,21 +16,21 @@
       </div>
       <div class="form-group">
         <label>When someone will want to hire, they will need a way to reach you out</label>
-        <textarea  class="form-control" ng-model="info.contacts" type="email" placeholder="Enter email, skype or a link to your CV">
+        <textarea  class="form-control" ng-model="info.contacts" placeholder="Enter email, skype or a link to your CV">
         </textarea>
       </div>
     </div>
     <div class="editDeveloper-subsection">
       <h3 class="editDeveloper-subsectionHeader">Location</h3>
       <div class="form-group">
-        <label>
-          Country
-          <input class="form-control" ng-model="info.location.country" />
-        </label>
-        <label>
-          City
-          <input class="form-control" ng-model="info.location.city" />
-        </label>
+        <input vs-google-autocomplete
+         ng-model="location"
+         vs-city="info.city" 
+         vs-country="info.country" 
+         vs-place-id="info.locationId"
+         type="text" 
+         class="form-control" 
+         placeholder="Enter city name">
       </div>
     </div>
     <div class="editDeveloper-subsection">

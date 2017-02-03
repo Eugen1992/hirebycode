@@ -21,7 +21,7 @@ const UserController = {
       res.sendStatus(500);
     });
   },
-  getDeveloperFullProfile: (req, res, next) => {
+  getDeveloperDetails: (req, res, next) => {
     User.getDeveloperFullProfile(req.userId).then(function (details) {
       res.send(details);
     }, function () {
@@ -29,19 +29,25 @@ const UserController = {
     });
   },
   updateDeveloperDetails: (req, res, next) => {
-    UserServices.updateProfile(req.userId, req.body)
-    .then((user) => {
-      if (req.avatarUpdated) {
-        return UserServices.updateAvatar(req.userId, req.avatarFileName);
-      } else {
-        return user;
-      }
-    })
+    UserServices.updateDeveloperProfile(req.userId, req.body)
     .then((user) => {
       res.send(user);
-    }, (err) => {
+    })
+    .catch((err) => {
       res.status(500).send(err);
     });
+  },
+  updateDeveloperAvatar: (req, res, next) => {
+    if (req.avatarUpdated) {
+      UserServices.updateDeveloperAvatar(req.userId, req.avatarFileName)
+      .then(function (avatarData) {
+        res.send(avatarData);
+      }, function (err) {
+        res.status(500).send(err);
+      });
+    } else {
+      res.send(400);
+    }
   },
   updateDeveloperAccountStatus: (req, res, next) => {
     UserServices.updateAccountStatus(req.userId, req.body)

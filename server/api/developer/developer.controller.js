@@ -14,7 +14,7 @@ const DeveloperController = {
     .then(function(results) {
       return {
         info: results[0],
-        repos: results[1].filter((repo) => !repo.hidden )
+        repos: results[1].filter((repo) => !repo.hidden)
       };
     })
     .then((result) => {
@@ -41,7 +41,13 @@ const DeveloperController = {
     });
   },
   getActive: (req, res, next) => {
-    UserServices.getActiveDevelopers()
+    const skillFilter = req.query.skill ? req.query.skill.split(',') : null;
+    const filters = {
+      skill: skillFilter,
+      school: req.query.school,
+      location: req.query.location,
+    };
+    UserServices.getActiveDevelopers(filters)
     .then((developers) => {
       res.send(developers);
     })

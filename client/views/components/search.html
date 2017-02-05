@@ -1,0 +1,26 @@
+<section>
+  <sr-search-toggle
+    on-toggle="$ctrl.changeSearchType(type)"
+    search-type="$ctrl.searchType"
+  ></sr-search-toggle>
+  <sr-search-filters-indicator
+    filters="$ctrl.filters.flattenFilters"
+    on-remove="$ctrl.removeFilter(filter)"
+  ></sr-search-filters-indicator>
+</section>
+<section clas="row">
+  <div class="col-md-9">
+    <sr-developer-list ng-if="$ctrl.searchType==='developers'" filters="$ctrl.filters"></sr-developer-list>
+    <sr-repo-list ng-if="$ctrl.searchType==='projects'"></sr-repo-list>
+  </div>
+  <div class="col-md-3">
+    <sr-search-filters
+      skills="$ctrl.skillsList"
+      locations="$ctrl.locationsList"
+      schools="$ctrl.schoolsList"
+      filtersLoaded="$ctrl.filtersLoaded"
+      on-school-change="$ctrl.addSchoolToFilters(school)"
+      on-skill-change="$ctrl.addSkillToFilters(skill)"
+    ></sr-search-filters>
+  </div>
+</section>

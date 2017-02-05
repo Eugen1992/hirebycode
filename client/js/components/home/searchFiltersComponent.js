@@ -5,18 +5,14 @@
     bindings: {
       onLocationChange: '&',
       onSkillChange: '&',
-      onSchoolChange: '&'
+      onSchoolChange: '&',
+      skills: '<',
+      schools: '<',
+      locations: '<',
+      filtersLoaded: '<'
     }
   });
 
-  SearchFiltersController.$inject = ['SkillsService'];
-  function SearchFiltersController (skills) {
-    var vm = this;
-
-    vm.$onInit = function () {
-      skills.getSkills().then(function (skills) {
-        vm.skills = skills;
-      });
-    }
+  function SearchFiltersController () {
   }
 })();

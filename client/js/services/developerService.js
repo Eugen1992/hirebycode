@@ -17,8 +17,16 @@ function DeveloperService ($http) {
       return response.data;
     });
   }
-  this.getActiveDevelopers = function () {
-    return $http.get('/api/developer/active').then(function(response) {
+  this.getActiveDevelopers = function (filters) {
+    filters = filters || {};
+
+    return $http.get('/api/developer/active', {
+        params: {
+          skill: Object.keys(filters.skill).join(','),
+          location: filters.location && filters.location._id,
+          school: filters.school && filters.school._id
+        }
+      }).then(function(response) {
       return response.data;
     });
   }

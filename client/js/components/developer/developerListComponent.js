@@ -13,9 +13,16 @@
     var vm = this;
 
     vm.$onInit = function () {
-      developerService.getActiveDevelopers().then(function (developers) {
+      developerService.getActiveDevelopers(vm.filters).then(function (developers) {
         vm.developers = developers;
       });
+    }
+    vm.$onChanges = function (changeObject) {
+      if (changeObject.filters) {
+        developerService.getActiveDevelopers(vm.filters).then(function (developers) {
+          vm.developers = developers;
+        });
+      }
     }
   }
 })();

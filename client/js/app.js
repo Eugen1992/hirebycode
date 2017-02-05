@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   // Now set up the states
   $stateProvider
     .state('home', {
-      url: '/',
+      url: '/?searchType&skillFilter&schoolFilter&locationFilter',
       templateUrl: 'client/views/partials/home.html',
       controller: 'HomeController'
     })

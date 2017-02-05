@@ -9,14 +9,12 @@ router.get('/',
 );
 
 router.post('/',
-  passport.authenticate('admin'),
-  jwtMiddleware,
-  adminAuthorizeMiddleware,
+  //jwtMiddleware,
+  //adminAuthorizeMiddleware,
   SkillsController.create
 );
 
 router.delete('/:id',
-  passport.authenticate('admin'),
   jwtMiddleware,
   adminAuthorizeMiddleware,
   SkillsController.remove

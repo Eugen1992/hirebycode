@@ -16,7 +16,7 @@
       }.bind(this));
     }
     this.submit = function () {
-      this.repo.languages = getEnteredSkills(this.skills);
+      this.repo.skills = getEnteredSkills(this.skills);
       this.submitCallback();
     }
     SkillsService.getSkills().then(function (skills) {
@@ -27,16 +27,23 @@
   function getEnteredSkills (skills) {
     return skills.reduce(function (finalList, skill) {
       if (skill.used) {
-        finalList.push(skill.name);
+        finalList.push(skill._id);
       }
       return finalList;
     }, []);
   }
   function formSkillsList (skillsArray, repo) {
-    return skillsArray.map(function(skill) {
-      skill.used = repo.languages.indexOf(skill.name) > -1;
-      return skill;
-    });
+    if (repo.skills) {
+      return skillsArray.map(function(skill) {
+        skill.used = repo.skills.some(function (repoSkill) {
+          return skill._id === repoSkill._id;
+        });
+        return skill;
+      });
+    } else {
+      return skillsArray;
+    }
+    
   }
 }());
 

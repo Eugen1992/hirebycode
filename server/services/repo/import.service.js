@@ -8,10 +8,11 @@ module.exports = function importService (data, userId) {
     developer: userId,
     description: data.description,
     plans: data.plans,
-    languages: data.languages,
+    skills: data.skills,
     createdAt: new Date().getTime(),
     contactInfo: data.contactInfo,
-    trainingCenterRequired: data.trainingCenterRequired
+    trainingCenterRequired: data.trainingCenterRequired,
+    hidden: false
   });
 
   return repo.save();

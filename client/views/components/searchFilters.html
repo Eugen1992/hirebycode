@@ -1,0 +1,6 @@
+ <ui-select ng-model="$ctrl.skill" theme="select2" class="searchFilters-filter" title="Choose a person">
+  <ui-select-match placeholder="Add filtering by skill...">{{$select.selected.name}}</ui-select-match>
+  <ui-select-choices repeat="item in $ctrl.skills | filter: $select.search">
+    <div ng-bind-html="item.name | highlight: $select.search"></div>
+  </ui-select-choices>
+</ui-select>

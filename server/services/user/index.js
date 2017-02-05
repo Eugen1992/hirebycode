@@ -6,4 +6,6 @@ module.exports = {
   updateDeveloperAvatar: require('./update-developer-avatar.service'),
   updateAccountStatus: require('./update-account-status.service'),
   getDeveloperProfile: require('./get-developer-profile.service'),
+  getDeveloperSkills: require('./get-developer-skills.service'),
+  updateSkills: require('./update-skills.service'),
 }

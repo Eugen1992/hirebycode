@@ -18,9 +18,6 @@ function ReposService ($q, $http, $filter) {
       return response.data;
     });
   }
-  this.getMostRecent = function () {
-    return this.getImported();
-  }
   this.getByProviderId = function (repoProviderId) {
     var defer = $q.defer();
     var promise = defer.promise;

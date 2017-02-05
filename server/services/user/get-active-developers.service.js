@@ -8,9 +8,11 @@ module.exports = function getActiveDevelopers () {
     hidden: false,
     profileReadyForPublic: true
   };
-  const projection = 'firstName lastName placeId avatar';
+  const projection = 'firstName lastName placeId avatar skills';
 
-  return User.find(sQuery, projection).then((developers) => {
+  return User.find(sQuery, projection)
+  .populate('skills')
+  .then((developers) => {
     return Promise.all(developers.map((developer) => {
       return LocationServices.getLocationData(developer.placeId).then((location) => {
         return Object.assign(developer.toObject(), location); 

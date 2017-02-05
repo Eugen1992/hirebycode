@@ -7,7 +7,7 @@ var userSchema = new Schema({
   name: String,
   firstName: String,
   lastName: String,
-  placeId: String,
+  placeId: {type: String, ref: 'Location'},
   type: String,
   githubId: String,
   githubLogin: String,
@@ -18,11 +18,12 @@ var userSchema = new Schema({
   logo: String,
   avatar: String,
   isPublic: Boolean,
-  repos: Array,
+  repos: [{type: String, ref: 'Repo'}],
   profileReadyForPublic: Boolean,
   hidden: Boolean,
   login: String,
-  password: String
+  password: String,
+  skills: [ { type: String, ref: 'Skill' }]
 });
 
 userSchema.plugin(mongooseDelete);

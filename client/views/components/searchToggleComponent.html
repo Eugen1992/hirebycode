@@ -1,0 +1,14 @@
+<button 
+  class="btn btn-primary"
+  ng-click="$ctrl.onToggle({type: 'developers'})"
+  ng-class="{active: $ctrl.type === 'developers'}"
+>
+  Developers
+</button>
+<button
+  class="btn btn-primary"
+  ng-click="$ctrl.onToggle({type: 'projects'})"
+  ng-class="{active: $ctrl.type === 'projects'}"
+>
+  Projects
+</button>

@@ -1,0 +1,15 @@
+<section>
+  <sr-search-toggle
+    on-toggle="$ctrl.changeSearchType(type)"
+    search-type="$ctrl.searchType"
+  ></sr-search-toggle>
+</section>
+<section clas="row">
+  <div class="col-md-9">
+    <sr-developer-list ng-if="$ctrl.searchType==='developers'" filters></sr-developer-list>
+    <sr-repo-list ng-if="$ctrl.searchType==='projects'" filters></sr-repo-list>
+  </div>
+  <div class="col-md-3">
+    <sr-search-filters></sr-search-filters>
+  </div>
+</section>

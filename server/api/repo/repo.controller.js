@@ -1,15 +1,16 @@
-const Repo = require('../../models/repo.js');
+const Repo = require('../../models/repo');
+const RepoServices = require('../../services/repo');
 
 const RepoController = {
   get: (req, res, next) => {
-    Repo.getAll().then(function (importedRepos) {
+    RepoServices.getAllActive().then(function (importedRepos) {
       res.send(importedRepos);
     }, function (error) {
       res.sendStatus(500);
     });
   },
   getById: (req, res, next) => {
-    Repo.getOne(req.params.id).then(function (repo) {
+    RepoServices.getRepo(req.params.id).then(function (repo) {
       res.send(JSON.stringify(repo));
     }, function (error) {
       res.sendStatus(500);

@@ -8,41 +8,18 @@ const utils = require('./utils/repo.utils.js');
 
 const repoSchema = new Schema({
   name: String,
-  developer: String,
+  developer: {type: String, ref: 'User'},
   providerId: Number,
-  languages: [String],
+  skills: [{type: String, ref: 'Skill'}],
   description: String,
   plans: String,
   hidden: Boolean,
   contents_url: String,
   createdAt: Number,
-  trainingCenter: String,
-  trainingCenterRequired: String,
-
-  trainingCenterInfo: Object,
-  authorInfo: Object
+  trainingCenter: {type: String, ref: 'User'},
+  trainingCenterRequired: String
 });
-repoSchema.statics.getOne = function (id) {
-  return this.find({_id: ObjectId(id)})
-    .limit(1)
-    .then(function([repo]) { return repo; })
-    .then(utils.addTrainingCenterInfo)
-    .then(utils.addAuthorInfo);
-}
-repoSchema.statics.getAll = function () {
-  return this.find({}).then(function(repos) {
-    return Promise.all(repos.map(utils.addTrainingCenterInfo));
-  }).then(function (repos) {
-    return Promise.all(repos.map(utils.addAuthorInfo));
-  });
-}
-repoSchema.statics.getDeveloperRepos = function (developerId) {
-  return this.find({developer: developerId}).then(function (repos) {
-    return Promise.all(repos.map(utils.addTrainingCenterInfo));
-  }).then(function (repos) {
-    return Promise.all(repos.map(utils.addAuthorInfo));
-  });
-}
+
 repoSchema.statics.getTrainingCenterRepos = function (trainingCenterId) {
   return Promise.all([
     this.find({trainingCenterRequired: trainingCenterId})

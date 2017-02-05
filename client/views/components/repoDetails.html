@@ -1,29 +1,29 @@
 <section class="repoDetails well">
   <div>
     <h2>
-      <span class="u-link" ui-sref="developer({id: $ctrl.repo.developer})">
-        {{$ctrl.repo.authorInfo.firstName}} {{$ctrl.repo.authorInfo.lastName}}</span>/<b>{{$ctrl.repo.name}}</b>
+      <span class="u-link" ui-sref="developer({id: $ctrl.repo.developer._id})">
+        {{$ctrl.repo.developer.firstName}} {{$ctrl.repo.developer.lastName}}</span>/<b>{{$ctrl.repo.name}}</b>
     </h2>
     <div ng-if="$ctrl.repo.trainingCenter">
       <b>Was done while studying in:</b><br/>
       <img 
         class="repoDetails-trainingCenterLogo" 
-        src="/client/assets/images/training-center-logos/{{$ctrl.repo.trainingCenterInfo.logo}}"
+        src="/client/assets/images/training-center-logos/{{$ctrl.repo.trainingCenter.logo}}"
       />
-      {{$ctrl.repo.trainingCenterInfo.name}}
+      {{$ctrl.repo.trainingCenter.name}}
     </div>
     <div class="form-group">
       <b>What I did and what I learned with this project:  </b>
       <article ng-bind-html="$ctrl.repo.description"></article>
     </div>
     <div class="form-group">
-      <b>What I plan to do and learn:  </b>
+      <b>What I plan to do and learn: </b>
       <article  ng-bind-html="$ctrl.repo.plans"></article>
     </div>
-    <b for="exampleInputEmail1">Languages used:  </b>
-    <ul class="list-group" ng-repeat="language in $ctrl.repo.languages">
-      <li class="list-group-item list-group-item-success">{{language}}</li>
+    <b for="exampleInputEmail1">Languages used: </b>
+    <ul class="list-group" ng-repeat="skill in $ctrl.repo.skills">
+      <li class="list-group-item list-group-item-success">{{skill.name}}</li>
     </ul>
-    <sr-repo-contacts class="repoDetails-contacts" user-id="$ctrl.repo.developer"></sr-repo-contacts>
+    <sr-repo-contacts class="repoDetails-contacts" user-id="$ctrl.repo.developer._id"></sr-repo-contacts>
   </div>
 </section>

@@ -11,9 +11,9 @@
       <b>Location:</b> {{$ctrl.developer.city}}, {{$ctrl.developer.country}}
     </div>
     <div class="developerPreivew-technologies">
-      <div class="label label-info u-blueInlineLabel">Javascript</div>
-      <div class="label label-info u-blueInlineLabel">Angular</div>
-      <div class="label label-info u-blueInlineLabel">Node.js</div>
+      <div class="label label-info u-blueInlineLabel" ng-repeat="skill in $ctrl.developer.skills">
+        {{skill.name}}
+      </div>
     </div>
   </div>
 </div>

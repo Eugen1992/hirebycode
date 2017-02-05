@@ -6,10 +6,13 @@
 
 @import "svg/css/sprite";
 
+@import "root";
+@import "header";
+@import "footer";
+
 @import "utilities";
 @import "home";
 @import "user-home";
-@import "header";
 @import "repo-content";
 @import "file-content";
 @import "repo-edit";
@@ -25,3 +28,4 @@
 @import "edit-developer";
 @import "admin-skills";
 @import "import-promotion";
+@import "search-filters";

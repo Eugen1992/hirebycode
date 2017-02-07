@@ -19,6 +19,7 @@ var userSchema = new Schema({
   avatar: String,
   isPublic: Boolean,
   repos: [{type: String, ref: 'Repo'}],
+  trainingCenters: [{type: String, ref: 'User' }],
   profileReadyForPublic: Boolean,
   hidden: Boolean,
   login: String,

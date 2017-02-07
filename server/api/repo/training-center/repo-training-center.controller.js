@@ -1,5 +1,6 @@
 const Repo = require('../../../models/repo');
 const RepoServices = require('../../../services/repo');
+const UserServices = require('../../../services/user');
 
 const RepoTrainingCenterController = {
   get: (req, res, next) => {
@@ -15,10 +16,19 @@ const RepoTrainingCenterController = {
       repoId: req.body.repoId,
       trainingCenterId: req.userId,
       approved: req.body.approved
-    }).then(function (repo) {
+    })
+    .then((repo) => {
+      return UserServices.updateTrainingCenters(repo.developer)
+      .then(() => {
+        return repo;
+      });
+    })
+    .then((repo) => {
       res.send(repo);
-    }, function (err) {
-      res.sendStatus(500);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
     });
   },
   discard: (req, res, next) => {

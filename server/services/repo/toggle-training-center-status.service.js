@@ -25,9 +25,8 @@ module.exports = function ({ repoId, trainingCenterId, approved }) {
     }
   }
 
-  return Repo.findOneAndUpdate(sQuery, uQuery, {new: true}).then(function (repo) {
+  return Repo.findOneAndUpdate(sQuery, uQuery, {new: true})
+  .then((repo) => {
     return repo;
-  }, function (err) {
-    return err;
   });
 }

@@ -8,4 +8,5 @@ module.exports = {
   getDeveloperProfile: require('./get-developer-profile.service'),
   getDeveloperSkills: require('./get-developer-skills.service'),
   updateSkills: require('./update-skills.service'),
+  updateTrainingCenters: require('./update-training-centers.service.js'),
 }

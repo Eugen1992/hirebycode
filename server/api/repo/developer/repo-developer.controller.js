@@ -79,6 +79,9 @@ const RepoDeveloperController = {
       return UserServices.updateSkills(req.userId);
     })
     .then(() => {
+      return UserServices.updateTrainingCenters(req.userId)
+    })
+    .then(() => {
       res.send(200);
     }, (err) => {
       res.status(500).send(err);
@@ -90,6 +93,9 @@ const RepoDeveloperController = {
     .then(() => UserServices.registerRepo(req.userId, req.params.id))
     .then(() => {
       return UserServices.updateSkills(req.userId);
+    })
+    .then(() => {
+      return UserServices.updateTrainingCenters(req.userId)
     })
     .then(() => {
       res.send(200);

@@ -55,7 +55,6 @@
 
     vm.addSchoolToFilters = function (school) {
       filtersService.addSchoolToFilters(school).then(function(newFilters) {
-        console.log(newFilters);
         vm.filters = angular.extend({}, newFilters);
         vm.updateState();
       });
@@ -63,7 +62,8 @@
     vm.updateState = function () {
       var newParams = {
         searchType: vm.searchType,
-        skillFilter: Object.keys(vm.filters.skill).join()
+        skillFilter: Object.keys(vm.filters.skill).join(),
+        schoolFilter: vm.filters.school ? vm.filters.school._id : null
       };
       $state.go(
         $state.current.name,

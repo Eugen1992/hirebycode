@@ -14,15 +14,16 @@ module.exports = function getActiveDevelopers (filters = { skill: [], location: 
     sQuery.skills = { $all: filters.skill };
   }
   if (school) {
-    sQuery.trainingCenter = school;
+    sQuery.trainingCenters = { $elemMatch: { $eq :school } };
   }
   if (location) {
     sQuery.placeId = location;
   }
-  const projection = 'firstName lastName placeId avatar skills';
+  const projection = 'firstName lastName placeId avatar skills trainingCenters';
 
   return User.find(sQuery, projection)
   .populate('skills')
+  .populate('trainingCenters', 'isPublic name logo hasLogo')
   .then((developers) => {
     return Promise.all(developers.map((developer) => {
       return LocationServices.getLocationData(developer.placeId).then((location) => {

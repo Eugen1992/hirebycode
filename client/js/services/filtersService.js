@@ -36,6 +36,7 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
   };
   this.createFiltersFromState = function (stateParams) {
     this.createSkillFiltersFromState(stateParams);
+    this.createSchoolFiltersFromState(stateParams);
 
     return $q.resolve(filters);
   };
@@ -56,6 +57,26 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
     }
   };
 
+  this.createSchoolFiltersFromState = function (stateParams) {
+    var schoolId = stateParams.schoolFilter;
+    var schoolInfo;
+
+    if (!schoolId) {
+      return;
+    };
+
+    schoolInfo = filtersList.schools.find(function(currentSchool) {
+      return currentSchool._id === schoolId;
+    });
+
+    filters.school = schoolInfo;
+    filters.flattenFilters.push({
+      _id: schoolInfo._id,
+      type: 'school',
+      text: schoolInfo.name
+    });
+  }
+
   this.addSkillToFilters = function (skill) {
     if (filters.skill[skill._id]) {
       return $q.resolve(filters);
@@ -70,7 +91,9 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
   };
 
   this.addSchoolToFilters = function (school) {
+    this.clearSchoolFilter();
     filters.school = school;
+
     filters.flattenFilters.push({
       text: school.name,
       _id: school._id,
@@ -89,7 +112,7 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
         }
         break;
       case 'school':
-        filters.school = null;
+        this.clearSchoolFilter();
         break;
       case 'location':
         filters.location = null;
@@ -97,4 +120,11 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
 
     return $q.resolve(filters);
   };
+
+  this.clearSchoolFilter = function () {
+    filters.school = null;
+    filters.flattenFilters= filters.flattenFilters.filter(function (filter) {
+      return filter.type !== 'school';
+    });
+  }
 }

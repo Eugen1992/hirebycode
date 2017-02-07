@@ -8,7 +8,8 @@ module.exports = function updateTrainingCenters (developerId) {
     .populate('repos')
     .then((user) => {
       return user.repos.reduce((allTrainingCenters, repo) => {
-        if (repo.hidden) {
+        const trainingCenterAllreadyPresent = allTrainingCenters.indexOf(repo.trainingCenter) > -1;
+        if (repo.hidden || trainingCenterAllreadyPresent) {
           return allTrainingCenters;
         }
         return repo.trainingCenter ? [...allTrainingCenters, repo.trainingCenter] : allTrainingCenters;

@@ -10,6 +10,14 @@
     <div class="developerPreview-location">
       <b>Location:</b> {{$ctrl.developer.city}}, {{$ctrl.developer.country}}
     </div>
+    <div class="developerPreview-location" ng-if="$ctrl.developer.trainingCenters.length">
+      <b>School:</b>
+      <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
+        {{trainingCenter.name}}
+        <span ng-if="!$last">,</span>
+      </span>
+
+    </div>
     <div class="developerPreivew-technologies">
       <div class="label label-info u-blueInlineLabel" ng-repeat="skill in $ctrl.developer.skills">
         {{skill.name}}

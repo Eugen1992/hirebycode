@@ -42,34 +42,6 @@ repoSchema.statics.getTrainingCenterRepos = function (trainingCenterId) {
   });
 }
 
-repoSchema.statics.approveTrainingCenterStatus = function (params) {
-  return this.findOneAndUpdate({
-      '_id': ObjectId(params.repoId),
-      trainingCenterRequired: params.trainingCenterId
-    }, { 
-      $set: { trainingCenter: params.trainingCenterId }, 
-      $unset: { trainingCenterRequired: null }
-    }, {new: true}).then(function (repo) {
-      return repo;
-    }, function (err) {
-      return err;
-    });
-}
-repoSchema.statics.disapproveTrainingCenterStatus = function (params) {
-  return this.findOneAndUpdate({
-    '_id': ObjectId(params.repoId),
-    trainingCenter: params.trainingCenterId
-  }, { $set: { trainingCenterRequired: params.trainingCenterId }, 
-       $unset: { trainingCenter: null }}, {new: true})
-  .then(function (repo) {
-    return repo;
-  }, function (err) {
-    return err;
-  });
-}
-
 var Repo = mongoose.model('Repo', repoSchema);
 
-
-// make this available to our users in our Node applications
 module.exports = Repo;

@@ -1,4 +1,5 @@
 const Repo = require('../../../models/repo');
+const RepoServices = require('../../../services/repo');
 
 const RepoTrainingCenterController = {
   get: (req, res, next) => {
@@ -10,27 +11,15 @@ const RepoTrainingCenterController = {
     });
   },
   toggleApprove: (req, res, next) => {
-    if (req.body.approved) {
-      Repo.approveTrainingCenterStatus({
-        repoId: req.body.repoId,
-        trainingCenterId: req.userId,
-        approved: true
-      }).then(function (repo) {
-        res.send(repo);
-      }, function (err) {
-        res.sendStatus(500);
-      });
-    } else {
-      Repo.disapproveTrainingCenterStatus({
-        repoId: req.body.repoId,
-        trainingCenterId: req.userId,
-        approved: false
-      }).then(function (repo) {
-        res.send(repo);
-      }, function (err) {
-        res.sendStatus(500);
-      });
-    }
+    RepoServices.toggleTrainingCenterStatus({
+      repoId: req.body.repoId,
+      trainingCenterId: req.userId,
+      approved: req.body.approved
+    }).then(function (repo) {
+      res.send(repo);
+    }, function (err) {
+      res.sendStatus(500);
+    });
   },
   discard: (req, res, next) => {
     res.send('404');

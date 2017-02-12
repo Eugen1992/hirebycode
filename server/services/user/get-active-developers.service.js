@@ -19,6 +19,7 @@ module.exports = function getActiveDevelopers (filters = { skill: [], location: 
   if (location) {
     sQuery.placeId = location;
   }
+
   const projection = 'firstName lastName placeId avatar skills trainingCenters';
 
   return User.find(sQuery, projection)

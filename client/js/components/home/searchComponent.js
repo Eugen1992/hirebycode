@@ -29,6 +29,8 @@
       return filtersService.loadFiltersLists().then(function (filtersLists) {
         vm.skillsList = filtersLists.skills;
         vm.schoolsList = filtersLists.schools;
+        vm.locationsList = filtersLists.locations;
+
         return filtersLists;
       });
     };
@@ -59,11 +61,20 @@
         vm.updateState();
       });
     };
+
+    vm.addLocationToFilters = function (location) {
+      filtersService.addLocationToFilters(location).then(function(newFilters) {
+        vm.filters = angular.extend({}, newFilters);
+        vm.updateState();
+      });
+    };
+
     vm.updateState = function () {
       var newParams = {
         searchType: vm.searchType,
         skillFilter: Object.keys(vm.filters.skill).join(),
-        schoolFilter: vm.filters.school ? vm.filters.school._id : null
+        schoolFilter: vm.filters.school ? vm.filters.school._id : null,
+        locationFilter: vm.filters.location ? vm.filters.location._id : null
       };
       $state.go(
         $state.current.name,

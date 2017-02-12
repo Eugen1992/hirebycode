@@ -23,7 +23,7 @@ function DeveloperService ($http) {
     return $http.get('/api/developer/active', {
         params: {
           skill: Object.keys(filters.skill).join(','),
-          location: filters.location && filters.location._id,
+          location: filters.location && filters.location.placeId,
           school: filters.school && filters.school._id
         }
       }).then(function(response) {

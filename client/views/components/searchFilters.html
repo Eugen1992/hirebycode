@@ -23,3 +23,16 @@
     <div ng-bind-html="item.name | highlight: $select.search"></div>
   </ui-select-choices>
 </ui-select>
+
+ <ui-select 
+  ng-model="$ctrl.location" 
+  theme="select2" 
+  class="searchFilters-filter" 
+  title="Choose a city"
+  on-select="$ctrl.onLocationChange({location: $item})"
+>
+  <ui-select-match placeholder="Add filtering by location...">{{$select.selected.city + ', ' + $select.selected.country}}</ui-select-match>
+  <ui-select-choices repeat="item in $ctrl.locations | filter: $select.search">
+    <div ng-bind-html="item.city + ', ' + item.country | highlight: $select.search"></div>
+  </ui-select-choices>
+</ui-select>

@@ -1,0 +1,15 @@
+.submitButton {
+  position: relative;
+  min-height: 42px;
+  top: 6px;
+}
+.submitButton-loader {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.submitButton-loaderIcon {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+}

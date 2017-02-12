@@ -1,10 +1,10 @@
 %svg-common {
-	background: url("svg/sprite.css-f36f10d4.svg") no-repeat;
+	background: url("svg/sprite.css-d86fc468.svg") no-repeat;
 }
 
 .svg-client--svg--back {
 	@extend %svg-common;
-	background-position: 86.91853658536584% 48.19277108433735%;
+	background-position: 96.67463414634146% 48.19277108433735%;
 }
 
 .svg-client--svg--back-dims {
@@ -14,7 +14,7 @@
 
 .svg-client--svg--dir {
 	@extend %svg-common;
-	background-position: 74.20456852791877% 51.150895140664964%;
+	background-position: 84.35685279187817% 51.150895140664964%;
 }
 
 .svg-client--svg--dir-dims {
@@ -24,7 +24,7 @@
 
 .svg-client--svg--file {
 	@extend %svg-common;
-	background-position: 82.32639593908628% 51.150895140664964%;
+	background-position: 92.47868020304567% 51.150895140664964%;
 }
 
 .svg-client--svg--file-dims {
@@ -40,6 +40,16 @@
 .svg-client--svg--gears-dims {
 	width: 200px;
 	height: 200px;
+}
+
+.svg-client--svg--gears-single {
+	@extend %svg-common;
+	background-position: 75.74248704663212% 52.770448548812666%;
+}
+
+.svg-client--svg--gears-single-dims {
+	width: 60px;
+	height: 60px;
 }
 
 .svg-client--svg--github {

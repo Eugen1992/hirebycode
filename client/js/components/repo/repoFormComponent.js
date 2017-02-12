@@ -11,16 +11,16 @@
   function RepoFormController ($scope, SkillsService, TrainingCentersService) {
     this.$onInit = function () {
       TrainingCentersService.getAll().then(function (centers) {
-        console.log(centers);
         this.trainingCenters = centers;
       }.bind(this));
+      this.enteredSkills = SkillsService.skillsToStrings(this.repo.skills);
     }
     this.submit = function () {
-      this.repo.skills = getEnteredSkills(this.skills);
+      this.repo.skills = SkillsService.skillsToObjects(this.enteredSkills);
       this.submitCallback();
     }
     SkillsService.getSkills().then(function (skills) {
-      this.skills = formSkillsList(skills, this.repo);
+      this.skills = SkillsService.skillsToStrings(skills, this.repo);
     }.bind(this));
   }
 
@@ -32,18 +32,4 @@
       return finalList;
     }, []);
   }
-  function formSkillsList (skillsArray, repo) {
-    if (repo.skills) {
-      return skillsArray.map(function(skill) {
-        skill.used = repo.skills.some(function (repoSkill) {
-          return skill._id === repoSkill._id;
-        });
-        return skill;
-      });
-    } else {
-      return skillsArray;
-    }
-    
-  }
 }());
-

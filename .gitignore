@@ -1,5 +1,6 @@
 .idea/
 node_modules/
+build/
 client/application.css
 client/application.css.map
 client/assets/images/training-center-logos/

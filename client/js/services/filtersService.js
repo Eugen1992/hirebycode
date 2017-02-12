@@ -1,7 +1,7 @@
-FiltersService.$inject = ['$http', '$q', 'SkillsService', 'TrainingCentersService'];
+FiltersService.$inject = ['$http', '$q', 'SkillsService', 'TrainingCentersService', 'LocationsService'];
 app.service('FiltersService', FiltersService);
 
-function FiltersService ($http, $q, skillsService, trainingCentersService) {
+function FiltersService ($http, $q, skillsService, trainingCentersService, locationService) {
   var fetched;
   var filtersList ={};
   var filters =  {
@@ -15,7 +15,7 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
     if (fetched) {
       return $q.resolve(filtersList);
     } else {
-      return $q.all([this.loadSchoolsList(), this.loadSkillsList()])
+      return $q.all([this.loadSchoolsList(), this.loadSkillsList(), this.loadLocationsList()])
       .then(function () {
         fetched = true;
         return filtersList;
@@ -32,6 +32,12 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
     return trainingCentersService.getAll().then(function (trainingCenters) {
       filtersList.schools = trainingCenters;
       return trainingCenters;
+    });
+  };
+  this.loadLocationsList = function () {
+    return locationService.getLocations().then(function (locations) {
+      filtersList.locations = locations;
+      return locations;
     });
   };
   this.createFiltersFromState = function (stateParams) {
@@ -102,6 +108,18 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
     return $q.resolve(filters);
   };
 
+  this.addLocationToFilters = function (location) {
+    this.clearLocationFilter();
+    filters.location = location;
+
+    filters.flattenFilters.push({
+      text: location.city + ', ' + location.country,
+      _id: location._id,
+      type: 'location'
+    });
+    return $q.resolve(filters);
+  };
+
   this.removeFilter = function(filter) {
     switch (filter.type) {
       case 'skill':
@@ -115,7 +133,7 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
         this.clearSchoolFilter();
         break;
       case 'location':
-        filters.location = null;
+        this.clearLocationFilter();
     }
 
     return $q.resolve(filters);
@@ -125,6 +143,13 @@ function FiltersService ($http, $q, skillsService, trainingCentersService) {
     filters.school = null;
     filters.flattenFilters= filters.flattenFilters.filter(function (filter) {
       return filter.type !== 'school';
+    });
+  }
+
+  this.clearLocationFilter = function () {
+    filters.location = null;
+    filters.flattenFilters= filters.flattenFilters.filter(function (filter) {
+      return filter.type !== 'location';
     });
   }
 }

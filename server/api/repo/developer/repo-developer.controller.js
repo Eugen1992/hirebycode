@@ -1,6 +1,7 @@
 const Repo = require('../../../models/repo');
 const RepoServices = require('../../../services/repo');
 const UserServices = require('../../../services/user');
+const SkillServices = require('../../../services/skill');
 
 const RepoDeveloperController = {
   get: (req, res, next) => {
@@ -31,13 +32,17 @@ const RepoDeveloperController = {
   import: (req, res, next) => {
     let repo;
 
-    RepoServices.import(req.body, req.userId)
+    SkillServices.registerNewSkills(req.body.skills)
+    .then((skills) => {
+    req.body.skills = skills;
+      return RepoServices.import(req.body, req.userId);
+    })
     .then((importedRepo) => {
       repo = importedRepo;
       return repo;
     })
     .then((repo) => {
-      return UserServices.registerRepo(req.userId, repo);
+      return UserServices.registerRepo(req.userId, repo._id);
     })
     .then(() => {
       return UserServices.updateSkills(req.userId);
@@ -46,6 +51,7 @@ const RepoDeveloperController = {
       res.send(repo);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send(err);
     });
   },
@@ -54,7 +60,11 @@ const RepoDeveloperController = {
     var repo;
     
     if (login) {
-      Repo.update({_id: req.params.id}, req.body)
+      SkillServices.registerNewSkills(req.body.skills)
+      .then((skills) => {
+        req.body.skills = skills;
+        return Repo.update({_id: req.params.id}, req.body)
+      })
       .then(function () {
         return UserServices.updateSkills(req.userId);
       })

@@ -16,7 +16,7 @@ const SkillsController = {
     });
   },
   remove: (req, res) => {
-    Skill.remove({ _id: req.body.id }).then(function () {
+    Skill.remove({ _id: req.params.id }).then(function () {
       res.sendStatus(200);
     }, function (err) {
       res.status(500).send(err);

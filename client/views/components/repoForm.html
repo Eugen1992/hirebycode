@@ -10,12 +10,23 @@
   <div class="form-group">
 
   </div>
-  <label>Languages used:</label>
-  <div class="checkbox" ng-repeat="skill in $ctrl.skills">
-    <label>
-      <input type="checkbox" ng-model="skill.used"> {{skill.name}}
-    </label>
-  </div>
+  <label>Skills:</label>
+  <ui-select 
+    multiple
+    tagging
+    tagging-label=""
+    ng-model="$ctrl.enteredSkills"
+    theme="bootstrap"
+    sortable="true"
+    ng-disabled="disabled"
+    style="width: 300px;"
+    title="Add a skill"
+  >
+    <ui-select-match placeholder="Add skills...">{{$item}}</ui-select-match>
+    <ui-select-choices repeat="skill in $ctrl.skills | filter:$select.search track by $index ">
+      <div ng-bind-html="skill | highlight: $select.search"></div>
+    </ui-select-choices>
+  </ui-select>
   <div class="form-group">
     <label class="repoForm-inlineInput">Project was done during studying in the training center:
       <select class="form-control" ng-model="$ctrl.repo.trainingCenterRequired">
@@ -24,5 +35,8 @@
       </select>
     </label>
   </div>
+  <sr-submit-button>
+    submit
+  </sr-submit-button>
   <button type="submit" class="btn btn-primary" ng-click="$ctrl.submit()">Submit</button>
 </form>

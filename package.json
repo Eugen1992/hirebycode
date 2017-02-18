@@ -4,7 +4,8 @@
   "description": "Showroom for open source training porjects",
   "main": "app.js",
   "scripts": {
-    "test": "no"
+    "postinstall": "grunt build",
+    "start": "node build/server.js"
   },
   "repository": {
     "type": "git",

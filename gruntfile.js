@@ -54,12 +54,13 @@ module.exports = function(grunt) {
     copy: {
       build: {
         expand: true,
-        src: ['server/**/*', 'views/**/*', 'client/**/*', 'server.js', 'package.json'],
+        src: ['server/**/*', 'views/**/*', 'client/**/*', 'server.js'],
         dest: 'build/',
       },
     },
     clean: {
-      build: ['build']
+      build: ['build'],
+      postBuild: ['build/client/js']
     },
     processhtml: {
       dist: {
@@ -92,6 +93,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['sass', 'watch:sass']);
   grunt.registerTask('svg-icons', ['svg_sprite', 'svginjector']);
 
-  grunt.registerTask('build', ['clean:build', 'copy:build', 'useref',  'concat']);
+  grunt.registerTask('build', ['clean:build', 'copy:build', 'useref',  'concat', 'clean:postBuild']);
 
 };

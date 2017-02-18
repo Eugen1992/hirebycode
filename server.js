@@ -25,6 +25,6 @@ server.use(session({
 
 const port = process.env.PORT || 80;
 
-server.listen(port, '127.0.0.1', function () {
+server.listen(port, function () {
   console.log(`listening on ${port}!`);
 });

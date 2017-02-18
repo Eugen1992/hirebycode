@@ -3,12 +3,12 @@ var express = require('express');
 var server = express();
 
 var bodyParser = require('body-parser');
-var localDB = 'mongodb://localhost:27017/hirebycode';
+var dbUrl = process.env.MONGODB_URI;
 
 var mongoose = require('mongoose');
 
 process.env.PWD = process.cwd();
-mongoose.connect(localDB);
+mongoose.connect(dbUrl);
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: false}));

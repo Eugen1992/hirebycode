@@ -3,7 +3,7 @@ var express = require('express');
 var server = express();
 
 var bodyParser = require('body-parser');
-var dbUrl = process.env.MONGODB_URI;
+var dbUrl = process.env.MONGODB_URI || '127.0.0.1:27017';
 
 var mongoose = require('mongoose');
 

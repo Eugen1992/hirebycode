@@ -60,7 +60,7 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ['build'],
-      postBuild: ['build/client/js', 'server.js']
+      postBuild: ['build/client/js']
     },
     useref: {
         // specify which files contain the build blocks 

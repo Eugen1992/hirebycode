@@ -62,13 +62,6 @@ module.exports = function(grunt) {
       build: ['build'],
       postBuild: ['build/client/js']
     },
-    processhtml: {
-      dist: {
-        files: {
-          'build/client/index.html': ['views/index.hbs']
-        }
-      }
-    },
     useref: {
         // specify which files contain the build blocks 
         html: 'build/views/index.hbs',
@@ -86,13 +79,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-useref');
   grunt.loadNpmTasks('grunt-nodemon');
-  grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-svg-sprite');
   grunt.loadNpmTasks('grunt-svginjector');
 
   grunt.registerTask('default', ['sass', 'watch:sass']);
   grunt.registerTask('svg-icons', ['svg_sprite', 'svginjector']);
 
-  grunt.registerTask('build', ['clean:build', 'copy:build', 'useref',  'concat', 'clean:postBuild']);
+  grunt.registerTask('build', ['clean:build', 'copy:build', 'useref', 'concat', 'clean:postBuild']);
 
 };

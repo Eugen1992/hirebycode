@@ -23,7 +23,8 @@ server.use(session({
   resave: true
 }));
 
+const port = process.env.PORT || 80;
 
-server.listen(80, '127.0.0.1', function () {
-  console.log('listening on 80!');
+server.listen(port, '127.0.0.1', function () {
+  console.log(`listening on ${port}!`);
 });

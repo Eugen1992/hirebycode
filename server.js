@@ -3,7 +3,7 @@ var express = require('express');
 var server = express();
 
 var bodyParser = require('body-parser');
-var dbUrl = process.env.MONGODB_URI || '127.0.0.1:27017';
+var dbUrl = process.env.MONGODB_URI || ('127.0.0.1:27017') + '/hirebycode';
 
 var mongoose = require('mongoose');
 
@@ -25,6 +25,6 @@ server.use(session({
 
 const port = process.env.PORT || 80;
 
-server.listen(port, function () {
+server.listen(port, '127.0.0.1', function () {
   console.log(`listening on ${port}!`);
 });

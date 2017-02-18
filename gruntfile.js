@@ -85,6 +85,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['sass', 'watch:sass']);
   grunt.registerTask('svg-icons', ['svg_sprite', 'svginjector']);
 
-  grunt.registerTask('build', ['clean:build', 'copy:build', 'useref', 'concat', 'clean:postBuild']);
+  grunt.registerTask('build', 
+    ['clean:build', 'sass', 'svg-icons', 'copy:build', 'useref', 'concat', 'clean:postBuild']);
 
 };

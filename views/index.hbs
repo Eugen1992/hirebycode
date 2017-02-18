@@ -2,28 +2,23 @@
   <head>
     <title>Show Room</title>
     <meta charset="UTF-8"/>
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/ui-select/dist/select.min.css" rel="stylesheet">
     <link href="client/application.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">  
-    
-    <script src="/node_modules/angular/angular.js"></script>
-    <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-
-    <link rel='stylesheet' href='/node_modules/textangular/dist/textAngular.css'>
-    <script src='/node_modules/textangular/dist/textAngular-rangy.min.js'></script>
-    <script src='/node_modules/textangular/dist/textAngular-sanitize.min.js'></script>
-    <script src='/node_modules/textangular/dist/textAngular.min.js'></script>
-    <script src='/node_modules/ui-select/dist/select.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
 
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCDn0djyxvWJL-t_nvmhp7OKJKk1V9iMfI&language=en"></script>
-    <script src="/client/js/vendor/vs-google-autocomplete.min.js"></script>
 
+    <!-- build:js /client/vendor.min.js -->
+    <script src="/client/js/vendor/angular.js"></script>
+    <script src="/client/js/vendor/angular-ui-router.js"></script>
+    <script src='/client/js/vendor/select.js'></script>
     <script src="/client/js/vendor/ng-file-upload.min.js"></script>
     <script src="/client/js/vendor/ng-file-upload-shim.min.js"></script>
-
     <script src="/client/js/vendor/highlight.pack.js"></script>
-    <script src="/node_modules/highlightjs-line-numbers.js/dist/highlightjs-line-numbers.min.js"></script>
+    <script src="/client/js/vendor/highlightjs-line-numbers.min.js"></script>
+    <script src="/client/js/vendor/vs-google-autocomplete.min.js"></script>
+    <!-- endbuild -->
+
     <!-- build:js /client/app.min.js -->
     <script src="/client/js/app.js"></script>
 

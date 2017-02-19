@@ -24,7 +24,15 @@ server.use(session({
 }));
 
 const port = process.env.PORT || 80;
-
-server.listen(port, function () {
+const isProduction = process.env.ENV === 'production';
+const serverParams = [port];
+const serverCallback = function () {
   console.log(`listening on ${port}!`);
-});
+};
+if (!isProduction) {
+  //need to specify in order to use 'hirebycode' domain from hosts file on local machine
+  serverParams.push('127.0.0.1');
+}
+serverParams.push(serverCallback);
+
+server.listen.apply(server, serverParams);

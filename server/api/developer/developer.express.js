@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const DeveloperController = require('./developer.controller.js');
-const userAuthorizeMiddleware = require('../../middleware/userAuthorizeMiddleware.js');
 const authorizeMiddleware = require('../../middleware/authorizeMiddleware.js');
 const jwtMiddleware = require('../../middleware/jwtMiddleware.js');
 

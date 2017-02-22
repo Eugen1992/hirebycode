@@ -1,35 +1,34 @@
 const router = require('express').Router();
 
 const TrainingCenterController = require('./training-center.controller');
-const userAuthorizeMiddleware = require('../../middleware/userAuthorizeMiddleware.js');
-const adminAuthorizeMiddleware = require('../../middleware/adminAuthorizeMiddleware');
+const authorizeMiddleware = require('../../middleware/authorizeMiddleware');
+const jwtMiddleware = require('../../middleware/jwtMiddleware');
 
 router.get('/full',
-  userAuthorizeMiddleware,
-  adminAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'admin'}),
   TrainingCenterController.getTrainingCentersFullList
 );
 
 router.get('/full/:id',
-  userAuthorizeMiddleware,
-  adminAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'admin'}),
   TrainingCenterController.getFullTrainingCenterById
 );
 
 router.get('/repos/:id',
-  userAuthorizeMiddleware,
-  adminAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'admin'}),
   TrainingCenterController.getFullTrainingCenterRepos
 );
 
 router.delete('/:id',
-  userAuthorizeMiddleware,
-  adminAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'admin'}),
   TrainingCenterController.removeTrainingCenter
 );
 
 router.get('/',
-  userAuthorizeMiddleware,
   TrainingCenterController.getTrainingCentersList
 );
 

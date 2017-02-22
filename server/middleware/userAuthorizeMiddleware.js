@@ -9,7 +9,7 @@ module.exports = function (req, res, next) {
       }
       req.userId = user._id;
       req.login = user.githubLogin;
-      next();  
+      next();
     });
   } else {
     res.sendStatus(401);

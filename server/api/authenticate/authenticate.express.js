@@ -1,23 +1,23 @@
 const router = require('express').Router();
 const AuthController = require('./authenticate.controller');
-var passport = require('passport');
-var jwtMiddleware = require('../../middleware/jwtMiddleware.js');
+const passport = require('passport');
+const jwtMiddleware = require('../../middleware/jwtMiddleware.js');
 
 router.get('/github',
   passport.authenticate('github', { failureRedirect: '/' }),
-  jwtMiddleware,
+  jwtMiddleware.createToken,
   AuthController.github
 );
 
 router.put('/training',
   passport.authenticate('training-center'),
-  jwtMiddleware,
+  jwtMiddleware.createToken,
   AuthController.trainingCenter
 );
 
 router.put('/admin',
   passport.authenticate('admin'),
-  jwtMiddleware,
+  jwtMiddleware.createToken,
   AuthController.admin
 );
 

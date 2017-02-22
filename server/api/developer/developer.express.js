@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const DeveloperController = require('./developer.controller.js');
 const userAuthorizeMiddleware = require('../../middleware/userAuthorizeMiddleware.js');
-const adminAuthorizeMiddleware = require('../../middleware/adminAuthorizeMiddleware.js');
+const authorizeMiddleware = require('../../middleware/authorizeMiddleware.js');
+const jwtMiddleware = require('../../middleware/jwtMiddleware.js');
 
 router.get('/',
-  userAuthorizeMiddleware,
-  adminAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'admin'}),
   DeveloperController.getAll
 );
 

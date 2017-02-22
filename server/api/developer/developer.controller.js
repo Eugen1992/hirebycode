@@ -28,7 +28,7 @@ const DeveloperController = {
   getFullById: (req, res, next) => {
     Promise.all([
       User.getDeveloperFullProfile(req.params.id),
-      Repo.getDeveloperRepos(req.params.id)
+      RepoServices.getUserReposImported(req.params.id)
     ]).then(function(results) {
       const result = {
         info: results[0],

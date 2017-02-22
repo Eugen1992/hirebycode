@@ -1,37 +1,42 @@
 const router = require('express').Router();
 const UserController = require('./user.controller');
-const userAuthorizeMiddleware = require('../../middleware/userAuthorizeMiddleware.js');
-const trainingCenterAuthorizeMiddleware = require('../../middleware/trainingCenterAuthorizeMiddleware');
+
 const trainingCenterLogoMiddleware = require('../../middleware/logoUploadMiddleware');
 const developerAvatarMiddleware = require('../../middleware/developerAvatarUploadMiddleware');
-const adminAuthorizeMiddleware = require('../../middleware/adminAuthorizeMiddleware');
+
+const jwtMiddleware = require('../../middleware/jwtMiddleware');
+const authorizeMiddleware = require('../../middleware/authorizeMiddleware');
 
 router.get('/training-center/details',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'training-center'}),
   UserController.getTrainingCenterDetails
 );
 router.put('/training-center/details',
-  userAuthorizeMiddleware,
-  trainingCenterAuthorizeMiddleware,
-  trainingCenterLogoMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'training-center'}),
   UserController.updateTrainingCenterDetails
 );
 
 router.get('/developer/details',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'training-center'}),
   UserController.getDeveloperDetails
 );
 router.put('/developer/details',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   UserController.updateDeveloperDetails
 );
 router.put('/developer/avatar',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   developerAvatarMiddleware,
   UserController.updateDeveloperAvatar
 );
 router.put('/developer/account-status',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   UserController.updateDeveloperAccountStatus
 );
 

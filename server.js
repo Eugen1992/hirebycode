@@ -30,7 +30,8 @@ const serverCallback = function () {
   console.log(`listening on ${port}!`);
 };
 if (!isProduction) {
-  //need to specify in order to use 'hirebycode' domain from hosts file on local machine
+  //need to specify 
+  //in order to use 'hirebycode' domain from hosts file on local machine
   serverParams.push('127.0.0.1');
 }
 serverParams.push(serverCallback);

@@ -1,35 +1,42 @@
 const router = require('express').Router();
 const RepoDeveloperController = require('./repo-developer.controller');
-var userAuthorizeMiddleware = require('../../../middleware/userAuthorizeMiddleware.js');
+const authorizeMiddleware = require('../../../middleware/authorizeMiddleware.js');
+const jwtMiddleware = require('../../../middleware/jwtMiddleware.js');
 
 router.get('/',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   RepoDeveloperController.get
 );
 
 router.post('/',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   RepoDeveloperController.import
 );
 
 
 router.delete('/:id',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   RepoDeveloperController.deleteById
 );
 
 router.put('/:id',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   RepoDeveloperController.updateImported
 );
 
 router.put('/hide/:id',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   RepoDeveloperController.hideById
 );
 
 router.put('/unhide/:id',
-  userAuthorizeMiddleware,
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
   RepoDeveloperController.unhideById
 );
 

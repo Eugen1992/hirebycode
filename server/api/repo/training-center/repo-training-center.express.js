@@ -1,23 +1,23 @@
 const router = require('express').Router();
 const RepoTrainingCenterController = require('./repo-training-center.controller');
-var userAuthorizeMiddleware = require('../../../middleware/userAuthorizeMiddleware.js');
-var trainingCenterAuthorizeMiddleware = require('../../../middleware/trainingCenterAuthorizeMiddleware');
+const authorizeMiddleware = require('../../../middleware/authorizeMiddleware.js');
+const jwtMidleware = require('../../../middleware/jwtMiddleware.js');
 
 router.get('/',
-  userAuthorizeMiddleware,
-  trainingCenterAuthorizeMiddleware,
+  jwtMidleware.decodeToken,
+  authorizeMiddleware({userType: 'training-center'}),
   RepoTrainingCenterController.get
 );
 
 router.put('/',
-  userAuthorizeMiddleware,
-  trainingCenterAuthorizeMiddleware,
+  jwtMidleware.decodeToken,
+  authorizeMiddleware({userType: 'training-center'}),
   RepoTrainingCenterController.toggleApprove
 );
 
 router.delete('/:id',
-  userAuthorizeMiddleware,
-  trainingCenterAuthorizeMiddleware,
+  jwtMidleware.decodeToken,
+  authorizeMiddleware({userType: 'training-center'}),
   RepoTrainingCenterController.discard
 );
 

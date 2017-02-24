@@ -1,3 +1,7 @@
+.u-block {
+  padding: $mainMargin / 2;
+}
+
 .u-link {
   color: #4078c0;
   cursor: pointer;
@@ -23,4 +27,11 @@
 
 .u-zIndex1 {
   z-index: 1;
+}
+
+.u-buttonIcon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: white;
 }

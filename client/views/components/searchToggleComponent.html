@@ -1,14 +1,16 @@
-<button 
-  class="btn btn-primary"
-  ng-click="$ctrl.onToggle({type: 'developers'})"
-  ng-class="{active: $ctrl.type === 'developers'}"
->
-  Developers
-</button>
-<button
-  class="btn btn-primary"
-  ng-click="$ctrl.onToggle({type: 'projects'})"
-  ng-class="{active: $ctrl.type === 'projects'}"
->
-  Projects
-</button>
+<div class="u-block">
+  <button
+    class="btn"
+    ng-click="$ctrl.onToggle({type: 'developers'})"
+    ng-class="{'btn-primary': $ctrl.searchType !== 'developers'}"
+  >
+    Developers
+  </button>
+  <button
+    class="btn"
+    ng-click="$ctrl.onToggle({type: 'projects'})"
+    ng-class="{'btn-primary': $ctrl.searchType !== 'projects'}"
+  >
+    Projects
+  </button>
+</div>

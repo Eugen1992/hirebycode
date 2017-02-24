@@ -14,5 +14,6 @@
   });
 
   function SearchFiltersController () {
+
   }
 })();

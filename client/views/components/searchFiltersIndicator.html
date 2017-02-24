@@ -1,10 +1,12 @@
-<article>
+<article class="u-block">
   <div
     class="btn btn-primary btn-lg"
     ng-repeat="filter in $ctrl.filters"
     ng-click="$ctrl.onRemove({filter: filter})"
   >
     {{filter.text}}
-    <span class="glyphicon glyphicon-remove"></span>
+    <svg class="u-buttonIcon">
+      <use xlink:href="#client--svg--cross"/>
+    </svg>
   </div>
 </article>

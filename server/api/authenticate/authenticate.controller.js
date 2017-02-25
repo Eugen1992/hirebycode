@@ -7,10 +7,11 @@ const AuthController = {
     User.findOneAndUpdate(
       {_id: ObjectId(req.user.id)}, 
       {$set: { token: req.token } }, {new: true})
-    .then((err, user) => {
+    .then((user) => {
       if (user === null) {
         res.send(401);
       } else {
+        
         res.status(200).json({
           githubToken: req.user.accessToken,
           token: req.token,

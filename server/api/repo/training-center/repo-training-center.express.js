@@ -5,19 +5,19 @@ const jwtMidleware = require('../../../middleware/jwtMiddleware.js');
 
 router.get('/',
   jwtMidleware.decodeToken,
-  authorizeMiddleware({userType: 'training-center'}),
+  authorizeMiddleware({userType: 'trainingCenter'}),
   RepoTrainingCenterController.get
 );
 
 router.put('/',
   jwtMidleware.decodeToken,
-  authorizeMiddleware({userType: 'training-center'}),
+  authorizeMiddleware({userType: 'trainingCenter'}),
   RepoTrainingCenterController.toggleApprove
 );
 
 router.delete('/:id',
   jwtMidleware.decodeToken,
-  authorizeMiddleware({userType: 'training-center'}),
+  authorizeMiddleware({userType: 'trainingCenter'}),
   RepoTrainingCenterController.discard
 );
 

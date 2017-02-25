@@ -6,7 +6,6 @@
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
-  min-height: 200px;
 }
 
 .repoPreview-author {
@@ -22,8 +21,10 @@
 .repoPreview-bottomLine {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   flex-direction: row;
   margin-top: 20px;
+  min-height: 150px;
 }
 
 .repoPreview-language {

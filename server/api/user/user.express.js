@@ -9,12 +9,12 @@ const authorizeMiddleware = require('../../middleware/authorizeMiddleware');
 
 router.get('/training-center/details',
   jwtMiddleware.decodeToken,
-  authorizeMiddleware({userType: 'training-center'}),
+  authorizeMiddleware({userType: 'trainingCenter'}),
   UserController.getTrainingCenterDetails
 );
 router.put('/training-center/details',
   jwtMiddleware.decodeToken,
-  authorizeMiddleware({userType: 'training-center'}),
+  authorizeMiddleware({userType: 'trainingCenter'}),
   UserController.updateTrainingCenterDetails
 );
 

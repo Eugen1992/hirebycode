@@ -8,7 +8,6 @@ module.exports = function () {
     session: false
   },
   function(login, password, done) {
-    console.log(login);
     User.findOne({ 'login': login }, function(err, user) {
       // In case of any error return
       if (err) {

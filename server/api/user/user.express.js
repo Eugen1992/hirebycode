@@ -20,7 +20,7 @@ router.put('/training-center/details',
 
 router.get('/developer/details',
   jwtMiddleware.decodeToken,
-  authorizeMiddleware({userType: 'training-center'}),
+  authorizeMiddleware({userType: 'developer'}),
   UserController.getDeveloperDetails
 );
 router.put('/developer/details',

@@ -2,6 +2,7 @@ const jwt = require('jwt-simple');
 
 module.exports = { 
   createToken: (req, res, next) => {
+    console.log(req.user);
     if (req.user) {
       const payload = {
         iss: req.hostname,
@@ -15,7 +16,8 @@ module.exports = {
     const token = req.headers.authorization;
 
     if (req.headers.authorization) {
-      const decodedToken = jwt.decode(token, 'secret'); 
+      const decodedToken = jwt.decode(token, 'secret');
+
       req.userId = decodedToken.userId;
     }
     next();

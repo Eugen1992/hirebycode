@@ -4,16 +4,16 @@ const TrainingCenterServices = require('../../services/training-center');
 
 const AuthController = {
   github: (req, res, next) => {
-    User.findOne({ githubId: req.user.id}, function (err, user) {
-      if (err) {
-        res.sendStatus(500);
-      } else if (user === null) {
-        registerDeveloper(req, res);
+    User.findOneAndUpdate(
+      {_id: ObjectId(req.user.id)}, 
+      {$set: { token: req.token } }, {new: true})
+    .then((err, user) => {
+      if (user === null) {
+        res.send(401);
       } else {
-        token = user.token;
         res.status(200).json({
           githubToken: req.user.accessToken,
-          token: token,
+          token: req.token,
           user: user
         });
       }
@@ -61,22 +61,6 @@ const AuthController = {
         res.sendStatus(500);
       });
   }
-}
-
-function registerDeveloper (req, res) {
-  User.createDeveloper({
-    githubId: req.user.id,
-    githubLogin: req.user.username,
-    token: req.token
-  }).then(function (newUser) {
-    res.status(200).json({
-        githubToken: req.user.accessToken,
-        token: req.token,
-        user: newUser
-      });
-  }, function (err) {
-    res.status(500).send(err);
-  });
 }
 
 module.exports = AuthController;

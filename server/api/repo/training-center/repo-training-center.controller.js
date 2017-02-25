@@ -4,7 +4,7 @@ const UserServices = require('../../../services/user');
 
 const RepoTrainingCenterController = {
   get: (req, res, next) => {
-    Repo.getTrainingCenterRepos(req.userId).then(function (centerRepos) {
+    RepoServices.TrainingCenter.getTrainingCenterRepos(req.userId).then(function (centerRepos) {
       res.send(centerRepos);
     }, function (err) {
       console.log(err);

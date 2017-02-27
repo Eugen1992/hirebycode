@@ -4,7 +4,7 @@ const request = require('request');
 const GithubProxyController = {
   get: (req, res, next) => {
     const secret = process.env.GITHUB_SECRET;
-    const clientId = process.env.GITHUB_CLIEND_ID;
+    const clientId = process.env.GITHUB_CLIENT_ID;
     const options = {
       url: `${req.params.url}?client_id=${clientId}&client_secret=${secret}`,
       headers: {

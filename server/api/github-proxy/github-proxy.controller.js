@@ -3,9 +3,10 @@ const request = require('request');
 
 const GithubProxyController = {
   get: (req, res, next) => {
-    console.log(req.params.url);
+    const secret = process.env.GITHUB_SECRET;
+    const clientId = process.env.GITHUB_CLIEND_ID;
     const options = {
-      url: req.params.url + '?client_id=11ab72fc5d5b195ee720&client_secret=3ab8338e26b13934fdefb7b59aa70b549651dcff',
+      url: `${req.params.url}?client_id=${clientId}&client_secret=${secret}`,
       headers: {
         'User-Agent': 'HireByCode',
         'Accept': 'application/vnd.github.v3.raw+json'

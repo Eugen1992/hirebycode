@@ -1,11 +1,14 @@
-var session = require('express-session');
-var express = require('express');
-var server = express();
+const session = require('express-session');
+const express = require('express');
+const server = express();
+const dotenv = require('dotenv');
 
-var bodyParser = require('body-parser');
-var dbUrl = process.env.MONGODB_URI || ('127.0.0.1:27017') + '/hirebycode';
+const bodyParser = require('body-parser');
+const dbUrl = (process.env.MONGODB_URI || '127.0.0.1:27017') + '/hirebycode';
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+
+dotenv.load();
 
 process.env.PWD = process.cwd();
 mongoose.connect(dbUrl);
@@ -25,15 +28,14 @@ server.use(session({
 
 const port = process.env.PORT || 80;
 const isProduction = process.env.ENV === 'production';
-const serverParams = [port];
 const serverCallback = function () {
   console.log(`listening on ${port}!`);
 };
+const serverParams = [port, serverCallback];
 if (!isProduction) {
-  //need to specify 
+  //need to specify localhost ip
   //in order to use 'hirebycode' domain from hosts file on local machine
-  serverParams.push('127.0.0.1');
+  serverParams.splice(1, 0, '127.0.0.1');
 }
-serverParams.push(serverCallback);
 
 server.listen.apply(server, serverParams);

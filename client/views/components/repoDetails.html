@@ -1,4 +1,4 @@
-<section class="repoDetails u-block well">
+<section class="repoDetails">
   <div>
     <h2>
       <span class="u-link" ui-sref="developer({id: $ctrl.repo.developer._id})">
@@ -20,8 +20,8 @@
       <b>What I plan to do and learn: </b>
       <article  ng-bind-html="$ctrl.repo.plans"></article>
     </div>
-    <b for="exampleInputEmail1">Languages used: </b>
-    <div class="u-block">
+    <b for="exampleInputEmail1">Technologies used: </b>
+    <div class="u-block repoDetails-skillsList">
       <span class="label label-info repoDetails-skill" ng-repeat="skill in $ctrl.repo.skills">{{skill.name}}</span>
     </div>
     <sr-repo-contacts class="repoDetails-contacts" user-id="$ctrl.repo.developer._id"></sr-repo-contacts>

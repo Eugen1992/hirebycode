@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "postinstall": "grunt build",
-    "start": "cd build && node server.js"
+    "start": "cd build && node server.js",
+    "env-setup": "node env-variables-setup.js"
   },
   "repository": {
     "type": "git",
@@ -52,5 +53,8 @@
     "grunt-svginjector": "^0.2.0",
     "grunt-useref": "0.0.16",
     "highlightjs-line-numbers.js": "^1.1.0"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
   }
 }

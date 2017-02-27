@@ -32,14 +32,16 @@ const UserController = {
         return LocationService.getLocationData(userDetails.placeId);
       })
       .then(function (location) {
-        userDetails.city = location.city;
-        userDetails.country = location.country;
+        if (location) {
+          userDetails.city = location.city;
+          userDetails.country = location.country;
+        }
       })
       .then(function () {
         res.send(userDetails);
-
       })
       .catch(function (err) {
+        console.log(err);
         res.status(500).send(err);
       })
   },

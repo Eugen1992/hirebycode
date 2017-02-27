@@ -21,10 +21,13 @@ function getStorage () {
 
 function middleware (req, res, next) {
   upload(req, res, function (err) {
-    if (!req.file) {
-      req.avatarUpdated = false;
-    } else {
+    if (err) {
+      console.log(err);
+    }
+    if (req.file) {
       req.avatarUpdated = true;
+    } else {
+      req.avatarUpdated = false;
     }
     next();
   });

@@ -57,7 +57,9 @@ function AuthService ($q, $http, $window, userLocalService) {
 
   function buildUrl () {
     var url = 'https://github.com/login/oauth/authorize';
-    var clientId = '11ab72fc5d5b195ee720';
+    var localClientId = '11ab72fc5d5b195ee720';
+    var productionClientId = '46704eae5252da4bc665';
+    var clientId = window.env === 'local' ? localClientId : productionClientId;
     var redirectUrl = 'http://www.hirebycode.me/api/auth/github-login';
 
     url += '?client_id=' + clientId;

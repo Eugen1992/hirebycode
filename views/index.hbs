@@ -83,6 +83,13 @@
     <script src="/client/js/components/root/headerComponent.js"></script>
     <script src="/client/js/components/root/footerComponent.js"></script>
     <!-- endbuild -->
+    <script>
+    {{#if isProduction}}
+        window.env = 'production';
+    {{else}}
+        window.env = 'local';
+    {{/if}}
+    </script>
   </head>
   <body ng-app="showroom" class="root-body">
     <div id="svg-icons" style="display: none;"></div>

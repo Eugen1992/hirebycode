@@ -10,21 +10,27 @@
   RepoContentController.$inject = ['orderByFilter', 'GithubRepoService', '$state', '$stateParams'];
 
   function RepoContentController (orderBy, github, state, stateParams) {
-    this.$onInit = function () {
-      this.loading = true;
-      github.getRepoContent(this.repo, stateParams.contentPath).then(function (data) {
+    var vm = this;
+    vm.$onInit = function () {
+      vm.loading = true;
+      github.getRepoContent(vm.repo, stateParams.contentPath).then(function (data) {
         var contentType = stateParams.contentType || 'dir';
-        this.loading = false;
+        vm.loading = false;
         if (contentType === 'dir') {
-          this.dirContent = filterByType(data);
+          vm.dirContent = filterByType(data);
         } else {
-          this.fileContent = data;
-          this.fileType = data.name.split('.').pop();
+          vm.fileContent = data;
+          vm.fileType = data.name.split('.').pop();
         }
 
-        this.contentType = contentType;
-        this.currentPath = stateParams.contentPath;
-      }.bind(this));
+        vm.contentType = contentType;
+        vm.currentPath = stateParams.contentPath;
+      }, function (error) {
+        if (error.data === 'error:empty-repository') {
+          vm.loading = false;
+          vm.showError('error:empty-repository');
+        }
+      });
     };
 
     function filterByType (content) {
@@ -35,28 +41,29 @@
       return filteredContent;
     }
 
-    this.showContent = function (contentSource) {
+    vm.showContent = function (contentSource) {
       var contentType = contentSource.type;
       
-      this.loading = true;
-      github.getRepoContent(this.repo, contentSource.path).then(function (data) {
-        this.loading = false;
+      vm.loading = true;
+      github.getRepoContent(vm.repo, contentSource.path).then(function (data) {
+        vm.loading = false;
+        vm.error = null;
         if (contentType === 'dir') {
-          this.dirContent = filterByType(data);
+          vm.dirContent = filterByType(data);
         } else {
-          this.fileContent = data;
-          this.fileType = contentSource.name.split('.').pop();
+          vm.fileContent = data;
+          vm.fileType = contentSource.name.split('.').pop();
         }
-        this.contentType = contentType;
-        this.currentPath = contentSource.path;
+        vm.contentType = contentType;
+        vm.currentPath = contentSource.path;
         state.go(
           state.current.name, 
           angular.extend(
             state.params,
-            { contentPath: this.currentPath, contentType: this.contentType }
+            { contentPath: vm.currentPath, contentType: vm.contentType }
           )
         );
-      }.bind(this));
+      });
     }
     this.goUpFolders = function () {
       var pathParts = this.currentPath.split('/');
@@ -76,6 +83,16 @@
           )
         );
       }.bind(this)); 
+    }
+    vm.showError = function (errorCode) {
+      switch (errorCode) {
+        case 'error:empty-repo':
+          vm.error = 'This repo is empty';
+          break;
+        default:
+          vm.error = 'Somethign went wrong';
+      }
+      vm.error = 'This repo is empty.';
     }
   }
 })();

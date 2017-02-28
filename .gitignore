@@ -8,3 +8,4 @@ client/assets/images/training-center-logos/*
 client/assets/images/developers-avatars/*
 !client/assets/images/developers-avatars/.gitkeep
 !client/assets/images/training-center-logos/.gitkeep
+!client/assets/images/training-center-logos/placeholder.svg

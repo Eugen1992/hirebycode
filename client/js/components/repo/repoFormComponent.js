@@ -3,7 +3,10 @@
     templateUrl: 'client/views/components/repoForm.html',
     bindings: {
       repo: '=',
-      submitCallback: '&'
+      state: '<',
+      submitCallback: '&',
+      errorText: '<',
+      successText: '<'
     },
     controller: RepoFormController
   });

@@ -2,13 +2,17 @@ EditController.$inject = ['$scope', '$element', '$state', '$stateParams', 'repo'
 angular.module('showroom').controller('EditController', EditController);
 
 function EditController ($scope, $element, $state, $stateParams, repo, skills, repos) {
-  $scope.currentPath = '';
-  $scope.isLoading = true;
+  var vm = this;
   $scope.repo = repo;
-  $scope.isLoading = false;
 
+  vm.state = 'idle';
   $scope.submit = function () {
-    repos.update($scope.repo);
+    vm.state = 'loading';
+    repos.update($scope.repo).then(function () {
+      vm.state = 'success';
+    }, function () {
+      vm.state = 'error';
+    });
   }
   $scope.switchToPreview = function () {
     $state.go('edit-preview', {id: repo.hbcId});

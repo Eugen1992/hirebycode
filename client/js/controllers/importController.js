@@ -2,6 +2,8 @@ ImportController.$inject = ['$scope', '$q', '$filter', 'UserService', 'UserRepos
 angular.module('showroom').controller('ImportController',  ImportController);
 
 function ImportController ($scope, $q, $filter, user, repos, $http, $state, $stateParams) {
+  var vm = this;
+
   repos.getByProviderId($stateParams.id).then(function (receivedRepo) {
     $scope.repo = receivedRepo;
     $scope.repo.hbcData = {
@@ -11,7 +13,7 @@ function ImportController ($scope, $q, $filter, user, repos, $http, $state, $sta
       contactInfo: '',
       trainingCenterRequired: 'none'
     };
-  });;
+  });
   $scope.submit = function () {
     $q.all([user.fetchDeveloperDetails(), repos.import($scope.repo)])
     .then(function (responses) {

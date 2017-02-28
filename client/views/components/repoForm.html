@@ -1,33 +1,34 @@
 <form>
-  <div class="form-group">
+  <div class="form-group repoForm-inputBlock">
     <label class="repoForm-inlineInput">
       What I did and what I learned with this project:
     </label>
-    <div text-angular placeholder="Description..." ng-model="$ctrl.repo.description"></div>
+    <textarea class="form-control" placeholder="Description..." ng-model="$ctrl.repo.description"></textarea>
   </div>
-  <label>My plans for this project:</label>
-  <div text-angular placeholder="Plans..." ng-model="$ctrl.repo.plans"></div>
-  <div class="form-group">
-
+  <div class="repoForm-inputBlock">
+    <label>My plans for this project:</label>
+    <textarea class="form-control" placeholder="Plans..." ng-model="$ctrl.repo.plans"></textarea> 
   </div>
-  <label>Skills:</label>
-  <ui-select 
-    multiple
-    tagging
-    tagging-label=""
-    ng-model="$ctrl.enteredSkills"
-    theme="bootstrap"
-    sortable="true"
-    ng-disabled="disabled"
-    style="width: 300px;"
-    title="Add a skill"
-  >
-    <ui-select-match placeholder="Add skills...">{{$item}}</ui-select-match>
-    <ui-select-choices repeat="skill in $ctrl.skills | filter:$select.search track by $index ">
-      <div ng-bind-html="skill | highlight: $select.search"></div>
-    </ui-select-choices>
-  </ui-select>
-  <div class="form-group">
+  <div class="repoForm-inputBlock">
+    <label>Skills:</label>
+    <ui-select 
+      multiple
+      tagging
+      tagging-label=""
+      ng-model="$ctrl.enteredSkills"
+      theme="bootstrap"
+      sortable="true"
+      ng-disabled="disabled"
+      style="width: 300px;"
+      title="Add a skill"
+    >
+      <ui-select-match placeholder="Add skills...">{{$item}}</ui-select-match>
+      <ui-select-choices repeat="skill in $ctrl.skills | filter:$select.search track by $index ">
+        <div ng-bind-html="skill | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+  <div class="form-group repoForm-inputBlock">
     <label class="repoForm-inlineInput">Project was done during studying in the training center:
       <select class="form-control" ng-model="$ctrl.repo.trainingCenterRequired">
         <option value="none">None</option>
@@ -35,8 +36,12 @@
       </select>
     </label>
   </div>
-  <sr-submit-button>
-    submit
+  <sr-submit-button 
+    state="$ctrl.state"
+    success-text="$ctrl.successText"
+    error-text="$ctrl.errorText"
+    ng-click="$ctrl.submit()"
+  >
+    Submit
   </sr-submit-button>
-  <button type="submit" class="btn btn-primary" ng-click="$ctrl.submit()">Submit</button>
 </form>

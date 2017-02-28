@@ -1,4 +1,5 @@
 const Repo = require('../../models/repo');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = function importService (data, userId) {
   const repo = new Repo({
@@ -15,5 +16,10 @@ module.exports = function importService (data, userId) {
     hidden: false
   });
 
-  return repo.save();
+
+  return repo.save().then((repo) => {
+    return Repo.findOne({ _id: ObjectId(repo._id)})
+      .populate('skills')
+      .populate('developer');;
+  });
 }

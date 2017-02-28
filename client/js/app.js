@@ -63,6 +63,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       url: '/import/:id',
       templateUrl: 'client/views/partials/importing.html',
       controller: 'ImportController',
+      controllerAs: '$ctrl',
       params: {name: '', data: {}}
     })
     .state('edit', {
@@ -70,6 +71,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       url: '/edit/:id?contentPath&contentType',
       templateUrl: 'client/views/partials/edit.html',
       controller: 'EditController',
+      controllerAs: '$ctrl',
       resolve: {
         repo: function (UserReposService, $stateParams, $q) {
           return UserReposService.getRepoByHbcId($stateParams.id);

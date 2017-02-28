@@ -3,7 +3,9 @@
     templateUrl: 'client/views/components/submitButton.html',
     transclude: true,
     bindings: {
-      state: '<'
+      state: '<',
+      successText: '<',
+      errorText: '<'
     },
     controller: SubmitButtonController
   });

@@ -36,7 +36,19 @@ function UserReposService ($q, $http, $filter) {
     dataToSend.createdAt = new Date().getTime();
 
     return $http.post(baseUrl, dataToSend).then(function (response) {
-      console.log(response);
+      var hbcData = response.data;
+      var githubId = hbcData.providerId;
+      var repo;
+
+      previousRepoIndex = repos.findIndex(function(repo) {
+        return repo.id === githubId;
+      });
+      repo = repos[previousRepoIndex];
+      repo.imported = true;
+      repos.splice(previousRepoIndex, 1);
+      repos.unshift(repo);
+      repo.hbcData = hbcData;
+      return repo;
     });
   }
   this.delete = function (options) {

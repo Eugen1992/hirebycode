@@ -1,15 +1,58 @@
 .submitButton {
   position: relative;
-  min-height: 42px;
+  height: 42px;
   top: 6px;
+  &::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+  }
+}
+.submitButton-text {
+  vertical-align: middle;
+  font-size: 16px;
+  &.is-hidden {
+    visibility: hidden;
+  }
 }
 .submitButton-loader {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  &.is-hidden {
+    visibility: hidden;
+  }
 }
 .submitButton-loaderIcon {
   vertical-align: middle;
   width: 30px;
   height: 30px;
+}
+
+.submitButton-notification {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  &.is-success {
+    color: #88b04b;
+  }
+  &.is-error {
+    color: red;
+  }
+}
+
+.submitButton-icon {
+  vertical-align: middle;
+  &.is-success {
+    width: 30px;
+    height: 30px;
+    fill: #88b04b;
+  }
+  &.is-error {
+    width: 32px;
+    height: 32px;
+    fill: red;
+  }
 }

@@ -1,10 +1,10 @@
 %svg-common {
-	background: url("svg/sprite.css-60901cbc.svg") no-repeat;
+	background: url("svg/sprite.css-4b9d03d6.svg") no-repeat;
 }
 
 .svg-client--svg--back {
 	@extend %svg-common;
-	background-position: 72.0604099244876% 63.742587209302314%;
+	background-position: 99.90248655913977% 48.63945578231292%;
 }
 
 .svg-client--svg--back-dims {
@@ -12,9 +12,19 @@
 	height: 24px;
 }
 
-.svg-client--svg--cross {
+.svg-client--svg--checkmark {
 	@extend %svg-common;
 	background-position: 0 0;
+}
+
+.svg-client--svg--checkmark-dims {
+	width: 1000px;
+	height: 1000px;
+}
+
+.svg-client--svg--cross {
+	@extend %svg-common;
+	background-position: 100% 0;
 }
 
 .svg-client--svg--cross-dims {
@@ -24,7 +34,7 @@
 
 .svg-client--svg--dir {
 	@extend %svg-common;
-	background-position: 63.34440753045404% 66.0465361445783%;
+	background-position: 98.261543715847% 49.65277777777778%;
 }
 
 .svg-client--svg--dir-dims {
@@ -34,7 +44,7 @@
 
 .svg-client--svg--file {
 	@extend %svg-common;
-	background-position: 68.66002214839425% 66.0465361445783%;
+	background-position: 98.261543715847% 53.81944444444444%;
 }
 
 .svg-client--svg--file-dims {
@@ -54,7 +64,7 @@
 
 .svg-client--svg--gears-single {
 	@extend %svg-common;
-	background-position: 57.4635241301908% 67.26211656441717%;
+	background-position: 99.07362258953168% 44.91228070175438%;
 }
 
 .svg-client--svg--gears-single-dims {
@@ -64,7 +74,7 @@
 
 .svg-client--svg--github {
 	@extend %svg-common;
-	background-position: 99.91199158553695% 0;
+	background-position: 93.15748925661255% 67.24004564968725%;
 }
 
 .svg-client--svg--github-dims {

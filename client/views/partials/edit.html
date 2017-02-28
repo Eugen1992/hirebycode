@@ -3,7 +3,12 @@
   <div class="clearfix">
     <button class="btn btn-primary pull-right" ng-click="switchToPreview()">See public version</button>
   </div>
-  <repo-form repo="repo.hbcData" submit-callback="submit()"></repo-form>
+  <repo-form 
+    repo="repo.hbcData"
+    state="$ctrl.state"
+    success-state="'Updated'"
+    error-state="'Something went wrong'"
+    submit-callback="submit()"></repo-form>
 </section>
 <section class="repoEdit-container well">
   <div class="repoEdit-content">

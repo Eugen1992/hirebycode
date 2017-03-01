@@ -15,6 +15,7 @@ router.get('/training-center/details',
 router.put('/training-center/details',
   jwtMiddleware.decodeToken,
   authorizeMiddleware({userType: 'trainingCenter'}),
+  trainingCenterLogoMiddleware,
   UserController.updateTrainingCenterDetails
 );
 

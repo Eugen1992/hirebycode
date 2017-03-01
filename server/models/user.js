@@ -96,6 +96,7 @@ userSchema.statics.getTrainingCenter = function (userId) {
   });
 }
 userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
+  console.log(data);
   var updateQuery = {
     $set: {
       name: data.name,

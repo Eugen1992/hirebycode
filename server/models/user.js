@@ -50,15 +50,20 @@ userSchema.statics.getDevelopers = function (id) {
   });
 }
 userSchema.statics.getDeveloperPublicProfile = function (id) {
-  return this.find({ 
+  return this.find({
     '_id': ObjectId(id),
     type: 'developer' 
-  }).limit(1).then(function ([user]) {
+  })
+  .limit(1)
+  .populate('skills')
+  .then(function ([user]) {
     return {
+      contacts: user.contacts,
       firstName: user.firstName,
       lastName: user.lastName,
       avatar: user.avatar,
-      location: user.location
+      placeId: user.placeId,
+      skills: user.skills
     };
   });
 }

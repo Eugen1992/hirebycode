@@ -4,20 +4,33 @@ const LocationServices = require('../../services/user');
 const RepoServices = require('../../services/repo');
 const Repo = require('../../models/repo.js');
 const Promise = require('promise');
+const LocationService = require('../../services/location');
 
 const DeveloperController = {
   getById: (req, res, next) => {
+    let result;
+
     Promise.all([
       User.getDeveloperPublicProfile(req.params.id),
       RepoServices.getUserReposImported(req.params.id)
     ])
     .then(function(results) {
-      return {
+      result = {
         info: results[0],
         repos: results[1].filter((repo) => !repo.hidden)
       };
+      return result;
     })
     .then((result) => {
+      return LocationService.getLocationData(result.info.placeId);
+    })
+    .then((location) => {
+      if (location) {
+        result.info.city = location.city;
+        result.info.country = location.country;
+      }
+    })
+    .then(() => {
       res.send(result);
     })
     .catch((err) => {

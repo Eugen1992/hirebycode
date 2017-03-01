@@ -1,6 +1,6 @@
 <main class="row">
   <section class="col-sm-7">
-    <h1>{{developerInfo.firstName}} {{developerInfo.lastName}}</h1>
+    <h2>{{developerInfo.firstName}} {{developerInfo.lastName}}</h2>
     <sr-repo-preview
       hide-author-name="true"
       ng-repeat="repo in repos" 
@@ -8,8 +8,20 @@
     >
     </sr-repo-preview>
   </section>
-  <section class="col-sm-3 pull-right">
-    <h2>Contacts</h2>
-    {{developerInfo.contacts}}
+  <section class="col-sm-5 pull-right">
+    <img class="developerDetails-avatar" src="/client/assets/images/developers-avatars/{{developerInfo.avatar}}">
+    <h3>Details</h3>
+    <div class="developerDetails-row">
+      <b>Location: </b>{{developerInfo.city}}, {{developerInfo.country}}
+    </div>
+    <div class="developerDetails-row">
+      <b>Contacts: </b>{{developerInfo.contacts}}
+    </div>
+    <div class="developerDetails-row">
+      <b>Skills:</b>
+      <div class="label label-info u-blueInlineLabel" ng-repeat="skill in developerInfo.skills">
+        {{skill.name}}
+      </div> 
+    </div>
   </section>
 </section>

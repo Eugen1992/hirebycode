@@ -7,7 +7,5 @@ module.exports = function getDeveloperProfile ({ userId, withContacts }) {
   if (withContacts) {
     projection += ' contacts'
   }
-  return User.findOne(sQuery, projection).then(function (user) {
-    return user;
-  });
+  return User.findOne(sQuery, projection);
 }

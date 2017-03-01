@@ -1,12 +1,24 @@
 <div class="developerInfo-formLine">
   <img class="developerInfo-logo" ng-if="$ctrl.newAvatar" ngf-thumbnail="$ctrl.newAvatar || '/client/assets/images/developers-avatars/placeholder.png'" />
   <img class="developerInfo-logo" ng-hide="$ctrl.newAvatar" src="{{'/client/assets/images/developers-avatars/' + $ctrl.avatarUrl}}" />
-  <button type="button" class="btn btn-default developerInfo-avatarControl" ngf-select ng-model="$ctrl.newAvatar">Upload new</button>
-  <button type="button" class="btn btn-default developerInfo-avatarControl" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">
-    Clear logo
-    <i class="glyphicon glyphicon-remove"></i>
-  </button>
-  <button type="button" class="btn btn-primary developerInfo-avatarControl" ng-show="$ctrl.newAvatar" ng-click="$ctrl.submit()">
-    Submit changes
-  </button>
+  <div class="developerInfo-row">
+    <button class="btn btn-default developerInfo-avatarControlButton" ngf-select ng-model="$ctrl.newAvatar">Choose new</button>
+    <button class="btn btn-default developerInfo-avatarControlButton" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">
+      Clear logo
+      <svg class="u-buttonIcon is-black">
+        <use xlink:href="#client--svg--cross"/>
+      </svg>
+    </button>
+  </div>
+  <div class="developerInfo-row">
+    <sr-submit-button 
+      state="$ctrl.state"
+      success-text="'Avatar updated'"
+      error-text="'Something went wrong'"
+      ng-click="$ctrl.submit()"
+      ng-show="$ctrl.newAvatar"
+    >
+      Save new logo
+    </sr-submit-button>
+  </div>
 </div>

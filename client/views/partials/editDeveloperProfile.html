@@ -35,8 +35,15 @@
       </div>
     </div>
     <div class="editDeveloper-subsection">
-      <button type="button" class="btn btn-primary" ng-click="submit()">Update profile</button>
-      <button type="button" class="btn btn-default" ui-sref="user-home">I will do this later</button>
+      <sr-submit-button 
+        errorText="'Something went wrong'"
+        successText="'Your account was updated'"
+        state="$ctrl.state"
+        ng-click="submit()"
+      >
+        Update profile
+      </sr-submit-button>
+      <button type="button" class="btn btn-default pull-right" ui-sref="user-home">I will do this later</button>
     </div>
   </section>
 </main>

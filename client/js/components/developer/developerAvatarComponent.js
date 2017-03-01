@@ -3,14 +3,13 @@
     templateUrl: 'client/views/components/developerAvatar.html',
     bindings: {
       avatarUrl: '<',
-      onSubmit: '&'
+      onSubmit: '&',
+      state: '<'
     },
     controller: DeveloperAvatarController
   });
 
-  DeveloperAvatarController.$inject = ['UserService'];
-
-  function DeveloperAvatarController (userService) {
+  function DeveloperAvatarController () {
     this.clearAvatar = function () {
       this.newAvatar = null;
     }

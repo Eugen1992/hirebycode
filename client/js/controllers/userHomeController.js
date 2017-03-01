@@ -40,7 +40,6 @@ function UserHomeController ($scope, userRepos, $http, $state) {
       });
   }
   function handleRepos(repos) {
-    console.log(repos);
     $scope.userGithubRepos = repos.filter(function(repo) {
       return !repo.imported;
     });

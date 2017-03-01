@@ -10,24 +10,30 @@
   DeveloperInfoController.$inject = ['UserService'];
 
   function DeveloperInfoController (userService) {
-    this.$onInit = function () {
+    var vm = this;
+    vm.$onInit = function () {
+      vm.avatarState = 'idle';
       userService.fetchDeveloperDetails().then(function (info) {
-        this.info = info;
-      }.bind(this));
+        vm.info = info;
+      });
     }
-    this.hideAccount = function () {
+    vm.hideAccount = function () {
       userService.updateDeveloperAccountStatus({hidden: true}).then(function(newInfo) {
-        this.info = newInfo;
-      }.bind(this));
+        vm.info = newInfo;
+      });
     }
-    this.showAccount = function () {
+    vm.showAccount = function () {
       userService.updateDeveloperAccountStatus({hidden: false}).then(function(newInfo) {
-        this.info = newInfo;
-      }.bind(this));
+        vm.info = newInfo;
+      });
     }
-    this.updateAvatar = function (avatar) {
+    vm.updateAvatar = function (avatar) {
+      vm.avatarState = 'loading';
       userService.updateDeveloperAvatar(avatar).then(function(info) {
-        this.info = info;
+        vm.avatarState = 'success';
+        vm.info = info;
+      }, function (error) {
+        vm.avatarState = 'error';
       });
     }
   }

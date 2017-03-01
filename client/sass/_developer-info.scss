@@ -9,9 +9,11 @@
   border-radius: 5px;
   margin-top: 20px;
 }
-.developerInfo-avatarControl {
-  display: block;
+.developerInfo-row {
   margin: 5px 0 20px;
+}
+.developerInfo-avatarControlButton {
+  margin-right: 15px;
 }
 .developerInfo-name {
   font-size: 16px;
@@ -27,9 +29,6 @@
 }
 .developerInfo-hideExplanation {
   display: block;
-}
-.developerInfo-unhideButton {
-
 }
 .developerInfo-unhideExplanation {
   display: block;

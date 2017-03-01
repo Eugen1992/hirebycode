@@ -34,4 +34,7 @@
   height: 20px;
   vertical-align: middle;
   fill: white;
+  &.is-black {
+    fill: black;
+  }
 }

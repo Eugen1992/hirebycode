@@ -50,7 +50,8 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       parent: 'authorized',
       url: '/edit-developer-profile',
       templateUrl: 'client/views/partials/editDeveloperProfile.html',
-      controller: 'editDeveloperProfileController'
+      controller: 'editDeveloperProfileController',
+      controllerAs: '$ctrl'
     })
     .state('training-center-home', {
       parent: 'authorized',

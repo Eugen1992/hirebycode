@@ -13,16 +13,22 @@
     var vm = this;
 
     vm.$onInit = function () {
-      developerService.getActiveDevelopers(vm.filters).then(function (developers) {
-        vm.developers = developers;
-      });
+      vm.fetch();
+      vm.state = 'loading';
     }
     vm.$onChanges = function (changeObject) {
       if (changeObject.filters) {
-        developerService.getActiveDevelopers(vm.filters).then(function (developers) {
-          vm.developers = developers;
-        });
+        vm.fetch();
       }
+    }
+    vm.fetch = function () {
+      vm.state = 'loading';
+      developerService.getActiveDevelopers(vm.filters).then(function (developers) {
+        vm.state = 'idle';
+        vm.developers = developers;
+      }, function () {
+        vm.state = 'error';
+      });
     }
   }
 })();

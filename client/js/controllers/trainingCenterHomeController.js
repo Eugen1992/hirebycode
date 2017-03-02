@@ -2,6 +2,8 @@ angular.module('showroom').controller('TrainingCenterHomeController',  TrainingC
 
 TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserLocalService', 'TrainingCentersService', 'UserService', 'Upload'];
 function TrainingCenterHomeController ($scope, $state, user, trainingCenter, userService, upload) {
+  var vm = this;
+  vm.profileFormState = 'idle';
   $scope.user = user.getUser();
   trainingCenter.getTrainingCenterRepos(user).then(function (repos) {
     $scope.pendingRepos = repos.pending;
@@ -20,7 +22,13 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
     });
   }
   $scope.submitDetails = function () {
-    userService.updateTrainingCenterDetails($scope.user, $scope.newLogo);
+    vm.profileFormState = 'loading';
+    userService.updateTrainingCenterDetails($scope.user, $scope.newLogo)
+      .then(function () {
+        vm.profileFormState = 'success';
+      }, function () {
+        vm.profileFormState = 'error';
+      });
   }
   $scope.clearLogo = function () {
     $scope.newLogo = null;

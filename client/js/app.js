@@ -57,7 +57,8 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       parent: 'authorized',
       url: '/training-center-home',
       templateUrl: 'client/views/partials/trainingCenterHome.html',
-      controller: 'TrainingCenterHomeController'
+      controller: 'TrainingCenterHomeController',
+      controllerAs: '$ctrl'
     })
     .state('importing', {
       parent: 'authorized',

@@ -1,4 +1,4 @@
-<main class="row">
+<main class="row u-block">
   <h1>Training Center Home</h1>
   <section class="col-md-7">
     <h3>Pending projects</h3>
@@ -17,35 +17,45 @@
     </div>
   </section>
   <section class="col-md-5">
-    <form>
-      <div class="form-group row">
-        <label class="col-sm-6 col-xs-12">
-          Training center name:
-          <textarea class="form-control" ng-model="user.name"></textarea>
-        </label>
-        <label class="col-sm-6 col-xs-12">
-          <span class="trainingCenter-switchLabel">Account status: </span>
-          <span class="trainingCenter-switch">
-            <input type="checkbox" ng-model="user.isPublic" ng-change="handleChange()">
-            <span class="trainingCenter-slider" ng-class="{'is-checked': user.isPublic}"></span>
-          </span>
-        </label>
-      </div>
-      <div class="form-group">
-        <label>
-          Training center logo:
+    <h3>Profile details</h3>
+    <article class="trainingCenter-profileDetails u-block">
+      <form>
+        <div class="form-group row">
+          <label class="col-sm-6 col-xs-12">
+            Training center name:
+            <textarea class="form-control" ng-model="user.name"></textarea>
           </label>
-        <div class="trainingCenter-formLine">
-          <button type="button" class="btn btn-default" ngf-select ng-model="newLogo">Upload</button>
-          <button type="button" class="btn btn-default" ng-show="newLogo" ng-click="clearLogo()">
-            Clear logo
-            <i class="glyphicon glyphicon-remove"></i>
-          </button>
+          <label class="col-sm-6 col-xs-12">
+            <span class="trainingCenter-switchLabel">Account status: </span>
+            <span class="trainingCenter-switch">
+              <input type="checkbox" ng-model="user.isPublic" ng-change="handleChange()">
+              <span class="trainingCenter-slider" ng-class="{'is-checked': user.isPublic}"></span>
+            </span>
+          </label>
         </div>
-        <img class="trainingCenter-logo trainingCenter-formLine" ng-if="!user.hasLogo || newLogo" ngf-thumbnail="newLogo || '/client/assets/images/placeholder.svg'" />
-        <img class="trainingCenter-logo trainingCenter-formLine" ng-show="user.logo && !newLogo" src="{{'/client/assets/images/training-center-logos/' + user.logo}}" />
-      </div>
-      <button type="submit" class="trainingCenter-button btn btn-primary" ng-click="submitDetails()">Submit</button>
-    </form>
+        <div class="form-group">
+          <label>
+            Training center logo:
+            </label>
+          <div class="trainingCenter-formLine">
+            <button type="button" class="btn btn-default" ngf-select ng-model="newLogo">Upload</button>
+            <button type="button" class="btn btn-default" ng-show="newLogo" ng-click="clearLogo()">
+              Clear logo
+              <i class="glyphicon glyphicon-remove"></i>
+            </button>
+          </div>
+          <img class="trainingCenter-logo trainingCenter-formLine" ng-if="!user.hasLogo || newLogo" ngf-thumbnail="newLogo || '/client/assets/images/placeholder.svg'" />
+          <img class="trainingCenter-logo trainingCenter-formLine" ng-show="user.logo && !newLogo" src="{{'/client/assets/images/training-center-logos/' + user.logo}}" />
+        </div>
+        <sr-submit-button 
+          ng-click="submitDetails()"
+          error-text="'Something went wrong'"
+          success-text="'Account updated'"
+          state="$ctrl.profileFormState"
+        >
+          Apply changes
+        </sr-submit-button>
+      </form>
+    </article>
   </section>
 </main> 

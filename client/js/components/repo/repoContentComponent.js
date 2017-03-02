@@ -20,7 +20,7 @@
           vm.dirContent = filterByType(data);
         } else {
           vm.fileContent = data;
-          vm.fileType = data.name.split('.').pop();
+          vm.fileType = stateParams.contentPath.split('.').pop();
         }
 
         vm.contentType = contentType;

@@ -19,11 +19,8 @@
   <div class="repoContent-code" ng-if="$ctrl.contentType === 'file'">
     <sr-file-content content="$ctrl.fileContent" class="repoContent-fileContent" language={{$ctrl.fileType}}></sr-file-content>
   </div>
-  <div class="repoContent-loader" ng-show="$ctrl.loading">
-    <svg class="repoContent-loaderIcon">
-      <use xlink:href="#client--svg--gears" />
-    </svg>
-  </div>
+  <sr-loader shown="$ctrl.loading"></sr-loader>
+  
   <div class="repoContent-error" ng-show="$ctrl.error">
     <span class="label label-danger repoContent-errorText">{{$ctrl.error}}</span>
   </div>

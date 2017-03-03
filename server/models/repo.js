@@ -17,12 +17,12 @@ const repoSchema = new Schema({
   contents_url: String,
   createdAt: Number,
   trainingCenter: {type: String, ref: 'User'},
-  trainingCenterRequired: String
+  trainingCenterClaim: String
 });
 
 repoSchema.statics.getTrainingCenterRepos = function (trainingCenterId) {
   return Promise.all([
-    this.find({trainingCenterRequired: trainingCenterId})
+    this.find({trainingCenterClaim: trainingCenterId})
       .then(function(repos) {
         return Promise.all(repos.map(utils.addTrainingCenterInfo));
       }).then(function (repos) {

@@ -11,7 +11,7 @@ function ImportController ($scope, $q, $filter, user, repos, $http, $state, $sta
       description: '',
       plans: '',
       contactInfo: '',
-      trainingCenterRequired: 'none'
+      trainingCenterClaim: 'none'
     };
   });
   $scope.submit = function () {

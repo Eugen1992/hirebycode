@@ -8,11 +8,11 @@ module.exports = function ({ repoId, trainingCenterId, approved }) {
   if (approved) {
     sQuery = {
       '_id': ObjectId(repoId),
-      trainingCenterRequired: trainingCenterId
+      trainingCenterClaim: trainingCenterId
     };
     uQuery = { 
       $set: { trainingCenter: trainingCenterId }, 
-      $unset: { trainingCenterRequired: null }
+      $unset: { trainingCenterClaim: null }
     };
   } else {
     sQuery = {
@@ -20,7 +20,7 @@ module.exports = function ({ repoId, trainingCenterId, approved }) {
       trainingCenter: trainingCenterId
     };
     uQuery = { 
-      $set: { trainingCenterRequired: trainingCenterId }, 
+      $set: { trainingCenterClaim: trainingCenterId }, 
       $unset: { trainingCenter: null }
     }
   }

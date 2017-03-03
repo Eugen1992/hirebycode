@@ -12,7 +12,7 @@ module.exports = function importService (data, userId) {
     skills: data.skills,
     createdAt: new Date().getTime(),
     contactInfo: data.contactInfo,
-    trainingCenterRequired: data.trainingCenterRequired,
+    trainingCenterClaim: data.trainingCenterRequired,
     hidden: false
   });
 

@@ -3,7 +3,7 @@ const utils = require('../../../models/utils/repo.utils.js');
 
 module.exports = function getTrainingCenterRepos (trainingCenterId) {
     return Promise.all([
-      Repo.find({trainingCenterRequired: trainingCenterId})
+      Repo.find({trainingCenterClaim: trainingCenterId})
           .populate('skills')
           .populate('developer'),
       Repo.find({trainingCenter: trainingCenterId})

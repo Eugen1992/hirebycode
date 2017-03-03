@@ -30,7 +30,7 @@
   </div>
   <div class="form-group repoForm-inputBlock">
     <label class="repoForm-inlineInput">Project was done during studying in the training center:
-      <select class="form-control" ng-model="$ctrl.repo.trainingCenterRequired">
+      <select class="form-control" ng-model="$ctrl.repo.trainingCenterClaim">
         <option value="none">None</option>
         <option ng-repeat="center in $ctrl.trainingCenters" value={{center._id}}>{{center.name}}</option>
       </select>

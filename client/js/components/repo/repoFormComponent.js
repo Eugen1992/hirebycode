@@ -13,8 +13,12 @@
   RepoFormController.$inject = ['$scope', 'SkillsService', 'TrainingCentersService'];
   function RepoFormController ($scope, SkillsService, TrainingCentersService) {
     this.$onInit = function () {
+      console.log(this.repo);
       TrainingCentersService.getAll().then(function (centers) {
         this.trainingCenters = centers;
+      }.bind(this));
+      SkillsService.getSkills().then(function (skills) {
+        this.skills = SkillsService.skillsToStrings(skills, this.repo);
       }.bind(this));
       this.enteredSkills = SkillsService.skillsToStrings(this.repo.skills);
     }
@@ -22,9 +26,6 @@
       this.repo.skills = SkillsService.skillsToObjects(this.enteredSkills);
       this.submitCallback();
     }
-    SkillsService.getSkills().then(function (skills) {
-      this.skills = SkillsService.skillsToStrings(skills, this.repo);
-    }.bind(this));
   }
 
   function getEnteredSkills (skills) {

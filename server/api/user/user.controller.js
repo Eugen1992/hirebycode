@@ -25,7 +25,7 @@ const UserController = {
     let userDetails;
     UserServices.getDeveloperProfile({ userId: req.userId, withContacts: true })
       .then(function (details) {
-        userDetails = details.toObject();
+        userDetails = details.toObject({ getters: true });
       })
       .then(function () {
         return LocationService.getLocationData(userDetails.placeId);
@@ -74,6 +74,7 @@ const UserController = {
       .then(function (avatarData) {
         res.send(avatarData);
       }, function (err) {
+        console.log(err);
         res.status(500).send(err);
       });
     } else {

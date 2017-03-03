@@ -1,9 +1,10 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = require('mongodb').ObjectId;
-var mongooseDelete = require('mongoose-delete');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = require('mongodb').ObjectId;
+const mongooseDelete = require('mongoose-delete');
+const cloudinary = require('cloudinary');
 
-var userSchema = new Schema({
+const userSchema = new Schema({
   name: String,
   firstName: String,
   lastName: String,
@@ -16,7 +17,7 @@ var userSchema = new Schema({
   contacts: String,
   hasLogo: Boolean,
   logo: String,
-  avatar: String,
+  avatar: { type: String, get: getAvatar },
   isPublic: Boolean,
   repos: [{type: String, ref: 'Repo'}],
   trainingCenters: [{type: String, ref: 'User' }],
@@ -134,6 +135,15 @@ userSchema.statics.getTrainingCenterInfo = function (id) {
       isPublic: user.isPublic
     };
   });
+}
+
+function getAvatar (fileName) {
+    console.log('getting');
+  if (process.env.ENV === 'production') {
+    return cloudinary.url(`folder-name/${fileName}`);
+  } else {
+    return `/client/assets/images/developers-avatars/${fileName}`;
+  }
 }
 var User = mongoose.model('User', userSchema);
 

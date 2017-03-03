@@ -1,7 +1,7 @@
-ImportController.$inject = ['$scope', '$q', '$filter', 'UserService', 'UserReposService', '$http', '$state', '$stateParams'];
+ImportController.$inject = ['$scope', '$q', 'UserService', 'UserReposService', '$state', '$stateParams'];
 angular.module('showroom').controller('ImportController',  ImportController);
 
-function ImportController ($scope, $q, $filter, user, repos, $http, $state, $stateParams) {
+function ImportController ($scope, $q, user, repos, $state, $stateParams) {
   var vm = this;
 
   repos.getByProviderId($stateParams.id).then(function (receivedRepo) {

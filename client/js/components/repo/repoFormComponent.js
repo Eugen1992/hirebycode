@@ -13,7 +13,6 @@
   RepoFormController.$inject = ['$scope', 'SkillsService', 'TrainingCentersService'];
   function RepoFormController ($scope, SkillsService, TrainingCentersService) {
     this.$onInit = function () {
-      console.log(this.repo);
       TrainingCentersService.getAll().then(function (centers) {
         this.trainingCenters = centers;
       }.bind(this));

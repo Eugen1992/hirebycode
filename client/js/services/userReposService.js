@@ -48,19 +48,18 @@ function UserReposService ($q, $http, $filter) {
       repos.splice(previousRepoIndex, 1);
       repos.unshift(repo);
       repo.hbcData = hbcData;
+      repo.hbcId = hbcData._id;
       return repo;
     });
   }
   this.delete = function (options) {
     var deletePromise;
-    
+
     if (options.repo) {
-      deletePromise = deleteByModel(options.repo);
+      return deleteByModel(options.repo);
     } else if (options.hbcId) {
-      deletePromise = deleteById(options.hbcId);
+      return deleteById(options.hbcId);
     }
-    
-    return deletePromise;
   }
   this.hide = function (options) {
     var repo = $filter('filter')(repos, {hbcId: options.hbcId}, true)[0];
@@ -128,6 +127,7 @@ function UserReposService ($q, $http, $filter) {
   function deleteByModel(repo) {
     return $http.delete(baseUrl + '/' + repo.hbcId).then(function () {
       repo.imported = false;
+      return repo;
     });
   }
 }

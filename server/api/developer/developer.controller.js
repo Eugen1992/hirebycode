@@ -49,7 +49,6 @@ const DeveloperController = {
       };
       res.send(result);
     }, function (err) {
-      console.log(err);
       res.sendStatus(500);
     });
   },

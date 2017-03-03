@@ -1,7 +1,7 @@
-UserHomeController.$inject = ['$scope', 'UserReposService', '$http', '$state'];
+UserHomeController.$inject = ['$scope', 'UserReposService', '$filter', '$http', '$state'];
 angular.module('showroom').controller('UserHomeController',  UserHomeController);
 
-function UserHomeController ($scope, userRepos, $http, $state) {
+function UserHomeController ($scope, userRepos, filter, $http, $state) {
   $scope.searchedUser = $state.params.login;
   $scope.reposState = 'loading';
   getRepos();

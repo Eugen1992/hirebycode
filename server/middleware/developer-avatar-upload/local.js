@@ -1,8 +1,8 @@
-var multer = require('multer');
-var upload = multer({ storage: getStorage() }).single('avatar');
+const multer = require('multer');
+const upload = multer({ storage: getStorage() }).single('avatar');
 
 
-var extensionLookup = /(?:(\.[^.]+))?$/;
+const extensionLookup = /(?:(\.[^.]+))?$/;
 
 function getStorage () {
   return multer.diskStorage({
@@ -11,7 +11,6 @@ function getStorage () {
     },
     filename: function (req, file, cb) {
       var extension = extensionLookup.exec(file.originalname)[1];
-      console.log(file.originalname);
       var fileName = req.userId + extension;
       req.avatarFileName = fileName;
       cb(null, fileName);
@@ -19,7 +18,7 @@ function getStorage () {
   });
 }
 
-function middleware (req, res, next) {
+module.exports = function middleware (req, res, next) {
   upload(req, res, function (err) {
     if (err) {
       console.log(err);
@@ -32,5 +31,3 @@ function middleware (req, res, next) {
     next();
   });
 }
-
-module.exports = middleware;

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const UserController = require('./user.controller');
 
 const trainingCenterLogoMiddleware = require('../../middleware/logoUploadMiddleware');
-const developerAvatarMiddleware = require('../../middleware/developerAvatarUploadMiddleware');
+const developerAvatarMiddleware = require('../../middleware/developer-avatar-upload');
 
 const jwtMiddleware = require('../../middleware/jwtMiddleware');
 const authorizeMiddleware = require('../../middleware/authorizeMiddleware');

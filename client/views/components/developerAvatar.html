@@ -1,6 +1,6 @@
 <div class="developerInfo-formLine">
   <img class="developerInfo-logo" ng-if="$ctrl.newAvatar" ngf-thumbnail="$ctrl.newAvatar || '/client/assets/images/developers-avatars/placeholder.png'" />
-  <img class="developerInfo-logo" ng-hide="$ctrl.newAvatar" src="{{'/client/assets/images/developers-avatars/' + $ctrl.avatarUrl}}" />
+  <img class="developerInfo-logo" ng-hide="$ctrl.newAvatar" src="{{$ctrl.avatarUrl}}" />
   <div class="developerInfo-row">
     <button class="btn btn-default developerInfo-avatarControlButton" ngf-select ng-model="$ctrl.newAvatar">Choose new</button>
     <button class="btn btn-default developerInfo-avatarControlButton" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">

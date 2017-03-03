@@ -30,7 +30,7 @@ function UserReposService ($q, $http, $filter) {
   this.import = function (repo) {
     var dataToSend = repo.hbcData;
     
-    dataToSend.providerId = repo.id;
+    dataToSend.providerId = repo.id;  
     dataToSend.name = repo.name;
     dataToSend.contents_url = repo.contents_url;
     dataToSend.createdAt = new Date().getTime();

@@ -13,6 +13,7 @@ const RepoController = {
     RepoServices.getRepo(req.params.id).then(function (repo) {
       res.send(JSON.stringify(repo));
     }, function (error) {
+      console.log(error);
       res.sendStatus(500);
     });
   }

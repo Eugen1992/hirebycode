@@ -45,7 +45,7 @@
             </button>
           </div>
           <img class="trainingCenter-logo trainingCenter-formLine" ng-if="!user.hasLogo || newLogo" ngf-thumbnail="newLogo || '/client/assets/images/placeholder.svg'" />
-          <img class="trainingCenter-logo trainingCenter-formLine" ng-show="user.logo && !newLogo" src="{{'/client/assets/images/training-center-logos/' + user.logo}}" />
+          <img class="trainingCenter-logo trainingCenter-formLine" ng-show="user.logo && !newLogo" src="{{user.logo}}" />
         </div>
         <sr-submit-button 
           ng-click="submitDetails()"

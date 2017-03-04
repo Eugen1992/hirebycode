@@ -10,6 +10,13 @@ module.exports = function getTrainingCenterRepos (trainingCenterId) {
         .populate('skills')
         .populate('developer')
         .populate('trainingCenter')
+        .then((repos) => {
+          return repos.map((repo) => {
+            repo.trainingCenter = repo.trainingCenter.toObject({ getters: true });
+
+            return repo;
+          });
+        })
     ]).then(function(results) {
       return {
         pending: results[0],

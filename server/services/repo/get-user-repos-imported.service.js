@@ -6,6 +6,13 @@ const utils = require('../../models/utils/repo.utils.js');
 module.exports = function getUserReposImported (userId) {
   return Repo.find({developer: userId})
   .populate('skills')
+  .populate('developer')
   .populate('trainingCenter')
-  .populate('developer');
+  .then((repos) => {
+    return repos.map((repo) => {
+      repo.trainingCenter = repo.trainingCenter.toObject({ getters: true });
+
+      return repo;
+    });
+  });
 }

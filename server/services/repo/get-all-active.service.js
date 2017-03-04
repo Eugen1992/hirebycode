@@ -7,6 +7,13 @@ module.exports = function() {
   .populate('trainingCenter', 'name logo hasLogo isPublic')
   .populate('developer', 'firstName lastName')
   .then((repos) => {
+    return repos.map((repo) => {
+      repo.trainingCenter = repo.trainingCenter.toObject({ getters: true });
+
+      return repo;
+    });
+  })
+  .then((repos) => {
     console.log(repos);
     return repos;
   });

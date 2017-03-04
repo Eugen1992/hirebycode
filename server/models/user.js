@@ -26,6 +26,8 @@ const userSchema = new Schema({
   login: String,
   password: String,
   skills: [ { type: String, ref: 'Skill' }]
+}, {
+  toObject: { getters: true }
 });
 
 userSchema.plugin(mongooseDelete);

@@ -7,6 +7,11 @@ module.exports = function(repoId) {
   .populate('developer')
   .populate('trainingCenter')
   .then((repo) => {
+    repo.trainingCenter = repo.trainingCenter.toObject({ getters: true });
+
+    return repo;
+  })
+  .then((repo) => {
     return repo;
   });
 }

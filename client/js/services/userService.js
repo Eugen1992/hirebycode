@@ -50,7 +50,7 @@
       return upload.upload({
         url: 'api/user/developer/avatar',
         method: 'PUT',
-        data: { avatar: avatar }
+        data: { userImage: avatar }
       }).then(function(response) {
         userData.avatar = response.data.avatar;
         return userData;
@@ -66,7 +66,7 @@
     }
     this.updateTrainingCenterDetails = function (data, logo) {
       if (logo) {
-        data.logo = logo; 
+        data.userImage = logo; 
       }
       return upload.upload({
         url: 'api/user/training-center/details',

@@ -1,5 +1,5 @@
 const multer = require('multer');
-const upload = multer({ storage: getStorage() }).single('avatar');
+const upload = multer({ storage: getStorage() }).single('userImage');
 
 
 const extensionLookup = /(?:(\.[^.]+))?$/;

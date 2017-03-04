@@ -11,7 +11,7 @@ const storage = cloudinaryStorage({
   filename: function (req, file, cb) {
     const extension = extensionLookup.exec(file.originalname)[1];
     const fileName = req.userId + extension;
-    req.avatarFileName = fileName;
+    req.imageFileName = fileName;
     cb(null, req.userId);
   }
 });
@@ -22,11 +22,8 @@ module.exports = function middleware (req, res, next) {
     if (err) {
       console.log(err);
     }
-    if (req.file) {
-      req.avatarUpdated = true;
-    } else {
-      req.avatarUpdated = false;
-    }
+
+    req.imageUpdated = !!req.file;
     next();
   });
 }

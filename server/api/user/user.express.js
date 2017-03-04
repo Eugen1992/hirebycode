@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const UserController = require('./user.controller');
 
-const trainingCenterLogoMiddleware = require('../../middleware/logoUploadMiddleware');
-const developerAvatarMiddleware = require('../../middleware/developer-avatar-upload');
+const userImageUpload = require('../../middleware/user-image-upload');
 
 const jwtMiddleware = require('../../middleware/jwtMiddleware');
 const authorizeMiddleware = require('../../middleware/authorizeMiddleware');
@@ -15,7 +14,7 @@ router.get('/training-center/details',
 router.put('/training-center/details',
   jwtMiddleware.decodeToken,
   authorizeMiddleware({userType: 'trainingCenter'}),
-  trainingCenterLogoMiddleware,
+  userImageUpload,
   UserController.updateTrainingCenterDetails
 );
 
@@ -32,7 +31,7 @@ router.put('/developer/details',
 router.put('/developer/avatar',
   jwtMiddleware.decodeToken,
   authorizeMiddleware({userType: 'developer'}),
-  developerAvatarMiddleware,
+  userImageUpload,
   UserController.updateDeveloperAvatar
 );
 router.put('/developer/account-status',

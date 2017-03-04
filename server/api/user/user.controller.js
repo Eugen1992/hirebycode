@@ -12,8 +12,8 @@ const UserController = {
   },
   updateTrainingCenterDetails: (req, res, next) => {
     var logoInfo = {
-      wasUpdated: req.logoUpdated,
-      fileName: req.logoUpdated ? req.logoFileName : null
+      wasUpdated: req.imageUpdated,
+      fileName: req.imageUpdated ? req.imageFileName : null
     }
     User.updateTrainingCenter(req.body, logoInfo, req.userId).then(function (user) {
       res.send(user);
@@ -69,8 +69,8 @@ const UserController = {
     });
   },
   updateDeveloperAvatar: (req, res, next) => {
-    if (req.avatarUpdated) {
-      UserServices.updateDeveloperAvatar(req.userId, req.avatarFileName)
+    if (req.imageUpdated) {
+      UserServices.updateDeveloperAvatar(req.userId, req.imageFileName)
       .then(function (avatarData) {
         res.send(avatarData);
       }, function (err) {

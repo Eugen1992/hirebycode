@@ -7,12 +7,12 @@ const extensionLookup = /(?:(\.[^.]+))?$/;
 function getStorage () {
   return multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'client/assets/images/developers-avatars');
+      cb(null, 'client/assets/images/user-images');
     },
     filename: function (req, file, cb) {
-      var extension = extensionLookup.exec(file.originalname)[1];
-      var fileName = req.userId + extension;
-      req.avatarFileName = fileName;
+      const extension = extensionLookup.exec(file.originalname)[1];
+      const fileName = req.userId + extension;
+      req.imageFileName = fileName;
       cb(null, fileName);
     }
   });
@@ -23,11 +23,8 @@ module.exports = function middleware (req, res, next) {
     if (err) {
       console.log(err);
     }
-    if (req.file) {
-      req.avatarUpdated = true;
-    } else {
-      req.avatarUpdated = false;
-    }
+
+    req.imageUpdated = !!req.file;
     next();
   });
 }

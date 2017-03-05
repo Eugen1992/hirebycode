@@ -57,7 +57,7 @@ const UserController = {
     })
     .then(function (details) {
       return LocationService.getLocationData(details.placeId).then((location) => {
-        return Object.assign({}, location, details.toObject());
+        return Object.assign({}, location, details);
       });
     })
     .then((details) => {

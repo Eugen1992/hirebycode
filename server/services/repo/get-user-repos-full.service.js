@@ -14,7 +14,6 @@ module.exports = function getUserRepos (userId, providerLogin) {
       var importedRepos = responses[0];
       var reposFromGithub = responses[1];
       importedRepos.forEach(function (importedRepo) {
-        importedRepo = importedRepo.toObject();
         var githubRepo = _.find(reposFromGithub, function (repo) {
           return repo.id === importedRepo.providerId;
         });

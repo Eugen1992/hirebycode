@@ -15,7 +15,7 @@ const storage = cloudinaryStorage({
     cb(null, req.userId);
   }
 });
-const upload = multer({ storage }).single('avatar');
+const upload = multer({ storage }).single('userImage');
 
 module.exports = function middleware (req, res, next) {
   upload(req, res, function (err) {

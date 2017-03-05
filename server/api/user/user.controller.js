@@ -25,7 +25,7 @@ const UserController = {
     let userDetails;
     UserServices.getDeveloperProfile({ userId: req.userId, withContacts: true })
       .then(function (details) {
-        userDetails = details.toObject({ getters: true });
+        userDetails = details;
       })
       .then(function () {
         return LocationService.getLocationData(userDetails.placeId);

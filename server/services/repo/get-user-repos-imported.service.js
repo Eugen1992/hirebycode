@@ -10,7 +10,7 @@ module.exports = function getUserReposImported (userId) {
   .populate('trainingCenter')
   .then((repos) => {
     return repos.map((repo) => {
-      repo.trainingCenter = repo.trainingCenter.toObject({ getters: true });
+      repo.trainingCenter = repo.trainingCenter && repo.trainingCenter.toObject({ getters: true });
 
       return repo;
     });

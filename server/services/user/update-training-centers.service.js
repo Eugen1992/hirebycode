@@ -8,11 +8,11 @@ module.exports = function updateTrainingCenters (developerId) {
     .populate('repos')
     .then((user) => {
       return user.repos.reduce((allTrainingCenters, repo) => {
-        const trainingCenterAllreadyPresent = allTrainingCenters.indexOf(repo.trainingCenter) > -1;
+        const trainingCenterAllreadyPresent = allTrainingCenters.indexOf(repo.trainingCenterApproved) > -1;
         if (repo.hidden || trainingCenterAllreadyPresent) {
           return allTrainingCenters;
         }
-        return repo.trainingCenter ? [...allTrainingCenters, repo.trainingCenter] : allTrainingCenters;
+        return repo.trainingCenterApproved ? [...allTrainingCenters, repo.trainingCenterApproved] : allTrainingCenters;
       }, []);
     })
     .then((trainingCenters) => {

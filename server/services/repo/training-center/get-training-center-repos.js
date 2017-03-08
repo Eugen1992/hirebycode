@@ -3,16 +3,19 @@ const utils = require('../../../models/utils/repo.utils.js');
 
 module.exports = function getTrainingCenterRepos (trainingCenterId) {
     return Promise.all([
-      Repo.find({trainingCenterClaim: trainingCenterId})
+      Repo.find({
+        trainingCenter: trainingCenterId,
+        trainingCenterApproved: { $ne: trainingCenterId }
+      })
           .populate('skills')
           .populate('developer'),
-      Repo.find({trainingCenter: trainingCenterId})
+      Repo.find({trainingCenterApproved: trainingCenterId})
         .populate('skills')
         .populate('developer')
-        .populate('trainingCenter')
+        .populate('trainingCenterApproved')
         .then((repos) => {
           return repos.map((repo) => {
-            repo.trainingCenter = repo.trainingCenter.toObject({ getters: true });
+            repo.trainingCenterApproved = repo.trainingCenterApproved.toObject({ getters: true });
 
             return repo;
           });

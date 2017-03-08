@@ -8,11 +8,11 @@ module.exports = function getUserReposImported (userId) {
   return Repo.find({developer: userId})
   .populate('skills')
   .populate('developer')
-  .populate('trainingCenter')
+  .populate('trainingCenterApproved')
   .then((repos) => {
     return repos.map((repo) => {
-      repo.trainingCenter = repo.trainingCenter && repo.trainingCenter.toObject();
-
+      repo.trainingCenterApproved = repo.trainingCenterApproved && repo.trainingCenterApproved.toObject();
+      console.log(repo.trainingCenterApproved);
       return repo;
     });
   });

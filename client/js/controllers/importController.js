@@ -10,8 +10,7 @@ function ImportController ($scope, $q, user, repos, $state, $stateParams) {
       languages: [],
       description: '',
       plans: '',
-      contactInfo: '',
-      trainingCenterClaim: 'none'
+      contactInfo: ''
     };
   });
   $scope.submit = function () {

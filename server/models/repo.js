@@ -16,8 +16,8 @@ const repoSchema = new Schema({
   hidden: Boolean,
   contents_url: String,
   createdAt: Number,
-  trainingCenter: {type: String, ref: 'User'},
-  trainingCenterClaim: String
+  trainingCenter: String,
+  trainingCenterApproved: {type: String, ref: 'User'}
 });
 
 repoSchema.statics.getTrainingCenterRepos = function (trainingCenterId) {

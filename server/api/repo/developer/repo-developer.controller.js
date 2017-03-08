@@ -56,17 +56,17 @@ const RepoDeveloperController = {
     });
   },
   updateImported: (req, res, next) => {
-    var login = req.login;
-    var repo;
+    const login = req.login;
+    let repo;
     
     if (login) {
       SkillServices.registerNewSkills(req.body.skills)
       .then((skills) => {
         req.body.skills = skills;
-        return Repo.update({_id: req.params.id}, req.body)
+        return RepoServices.Developer.updateRepo(req.params.id, req.body)
       })
-      .then(function () {
-        return UserServices.updateSkills(req.userId);
+      .then(() => {
+        return UserServices.updateTrainingCenters(req.userId)
       })
       .then(() => {
         return UserServices.updateSkills(req.userId);

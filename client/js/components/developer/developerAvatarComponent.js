@@ -8,13 +8,14 @@
     },
     controller: DeveloperAvatarController
   });
+  DeveloperAvatarController.$inject = ['Upload'];
 
-  function DeveloperAvatarController () {
+  function DeveloperAvatarController (Upload) {
     this.clearAvatar = function () {
       this.newAvatar = null;
     }
     this.submit = function () {
-      this.onSubmit({avatar: this.newAvatar});
+      this.onSubmit({avatar: Upload.dataUrltoBlob(this.croppedDataUrl)});
     }
   }
 })();

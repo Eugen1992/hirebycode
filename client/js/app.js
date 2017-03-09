@@ -1,4 +1,11 @@
-var app = angular.module('showroom', ['ui.router', 'ui.select', 'ngSanitize', 'ngFileUpload', 'vsGoogleAutocomplete']);
+var app = angular.module('showroom', [
+  'ui.router', 
+  'ui.select', 
+  'ngSanitize', 
+  'ngFileUpload', 
+  'vsGoogleAutocomplete',
+  'ngImgCrop'
+]);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   //

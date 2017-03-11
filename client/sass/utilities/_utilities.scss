@@ -1,5 +1,9 @@
 .u-block {
   padding: $mainMargin / 2;
+  &--fullWidth {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .u-blockTitle {
@@ -15,6 +19,7 @@
     text-decoration: underline;
   }
 }
+
 
 
 .u-blueInlineLabel {

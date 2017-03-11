@@ -1,5 +1,5 @@
 <section clas="row u-columnFullWidth">
-  <div class="col-md-3 u-columnFullWidth">
+  <div class="col-md-3 u-block u-block--fullWidth">
     <sr-search-filters
       skills="$ctrl.skillsList"
       locations="$ctrl.locationsList"
@@ -10,16 +10,18 @@
       on-location-change="$ctrl.addLocationToFilters(location)"
     ></sr-search-filters>
   </div>
-  <div class="col-md-9 u-minHeight350">
+  <div class="col-md-9 u-minHeight350 u-block u-block--fullWidth">
     <sr-search-toggle
       on-toggle="$ctrl.changeSearchType(type)"
       search-type="$ctrl.searchType"
     ></sr-search-toggle>
-    <sr-search-filters-indicator
-      filters="$ctrl.filters.flattenFilters"
-      on-remove="$ctrl.removeFilter(filter)"
-    ></sr-search-filters-indicator>
-    <sr-developer-list ng-if="$ctrl.searchType==='developers'" filters="$ctrl.filters"></sr-developer-list>
-    <sr-repo-list ng-if="$ctrl.searchType==='projects'"></sr-repo-list>
+    <div class="search-content u-block">
+      <sr-search-filters-indicator
+        filters="$ctrl.filters.flattenFilters"
+        on-remove="$ctrl.removeFilter(filter)"
+      ></sr-search-filters-indicator>
+      <sr-developer-list ng-if="$ctrl.searchType==='developers'" filters="$ctrl.filters"></sr-developer-list>
+      <sr-repo-list ng-if="$ctrl.searchType==='projects'"></sr-repo-list>
+    </div>
   </div>
 </section>

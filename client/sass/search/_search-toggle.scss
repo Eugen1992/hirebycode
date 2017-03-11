@@ -1,0 +1,19 @@
+.searchToggle {
+  display: flex;
+  flex-direction: row;
+}
+.searchToggle-tab {
+  font-family: Raleway, 'sans-serif';
+  flex: 1 1 50%;
+  background-color: $mainColor2;
+  color: white;
+  box-shadow: inset 4px 0px 0px 0px #8e9697;
+  cursor: pointer;
+  &:first-of-type, &--active {
+    box-shadow: none;
+  }
+  &--active {
+    background-color: white;
+    color: $mainColor3;
+  }
+}

@@ -1,33 +1,45 @@
 .developerPreview {
   display: flex;
-  margin: 10px 0;
-  padding: 15px;
-  background-color: #F4F4F4;
-  border: solid 1px #ABABAB;
-  border-radius: 5px;
+  flex-direction: column;
+  background-color: $mainColor1;
+  padding: 17px 7px 7px;
+}
+.developerPreview-info {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Playfair Display', serif;
+  color: $mainColor3;
 }
 .developerPreview-avatar {
-  width: 150px;
-  height: auto;
-  height: 150px;
-  border-radius: 10px;
-  margin: 10px;
-}
-.developerPreview-content {
-  display: flex;
-  flex-direction: column;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 .developerPreview-name {
-  margin: 10px 0;
-  color: blue;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
+  margin: 5px 0;
+  font-size: fontSize(22px);
+}
+.developerPreview-key {
+  font-size: fontSize(11.7px);
 }
 .developerPreview-location {
   flex: 0 1 auto;
 }
-.developerPreivew-technologies {
-  
+.developerList-skillsList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.developerPreview-skill {
+  padding: 6px 10px;
+  color: #f4f5f0;
+  font-size: fontSize(11px);
+  background-color: $mainColor4;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.developerPreview-button {
+  cursor: pointer;
+  font-size: fontSize(18px);
+  font-family: Raleway, 'sans-serif';
 }

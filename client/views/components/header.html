@@ -1,7 +1,7 @@
 <header class="header u-block" ng-controller="HeaderController">
   <h3 class="header-logo" ui-sref="home">Hire By Code</h3>
   <div class="header-buttonsGroup">
-    <button class="u-greenButton u-greenButton--small" ng-hide="isLoggedIn" ui-sref="login">Log In</button>
+    <button class="u-greenButton u-greenButton--small u-greenButton--shadow" ng-hide="isLoggedIn" ui-sref="login">Log In</button>
     <button class="header-button btn btn-success pull-right" ng-show="isLoggedIn" ui-sref="account">My Account</button>
     <button class="header-button btn btn-default pull-right" ng-show="isLoggedIn" ng-click="logOut()">Log Out</button>
   </div>

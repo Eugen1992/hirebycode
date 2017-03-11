@@ -1,27 +1,31 @@
-<div class="developerPreview">
-  <img 
-    class="developerPreview-avatar"
-    src="{{$ctrl.developer.avatar}}"
-  />
-  <div class="developerPreview-content">
-    <h3 class="developerPreview-name" ui-sref="developer({id: $ctrl.developer._id})">
-      {{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}
-    </h3>
-    <div class="developerPreview-location">
-      <b>Location:</b> {{$ctrl.developer.city}}, {{$ctrl.developer.country}}
+<article class="u-block">
+  <div class="developerPreview u-block u-paper">
+    <div class="developerPreview-info">
+      <img 
+        class="developerPreview-avatar"
+        src="{{$ctrl.developer.avatar}}"
+      />
+      <div class="developerPreview-infoText">
+        <h3 class="developerPreview-name" ui-sref="developer({id: $ctrl.developer._id})">
+          {{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}
+        </h3>
+        <div class="developerPreview-location">
+          <span class="developerPreview-key">Location:</span> {{$ctrl.developer.city}}, {{$ctrl.developer.country}}
+        </div>
+        <div class="developerPreview-location" ng-if="$ctrl.developer.trainingCenters.length">
+          <span class="developerPreview-key">School:</span>
+          <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
+            {{trainingCenter.name}}
+            <span ng-if="!$last">,</span>
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="developerPreview-location" ng-if="$ctrl.developer.trainingCenters.length">
-      <b>School:</b>
-      <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
-        {{trainingCenter.name}}
-        <span ng-if="!$last">,</span>
-      </span>
-
-    </div>
-    <div class="developerPreivew-technologies">
-      <div class="label label-info u-blueInlineLabel" ng-repeat="skill in $ctrl.developer.skills">
+    <div class="u-block u-block--fullWidth developerList-skillsList">
+      <div class="developerPreview-skill" ng-repeat="skill in $ctrl.developer.skills">
         {{skill.name}}
       </div>
     </div>
+    <div class="u-greenButton u-textCenter developerPreview-button">See projects</div>
   </div>
-</div>
+</article>

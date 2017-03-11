@@ -2,6 +2,12 @@
   padding: $mainMargin / 2;
 }
 
+.u-blockTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: fontSize(27.4px);
+  margin: 0;
+  @extend .u-block;
+}
 .u-link {
   color: #4078c0;
   cursor: pointer;
@@ -10,6 +16,7 @@
   }
 }
 
+
 .u-blueInlineLabel {
   display: inline-block;
   margin-right: 15px;
@@ -17,6 +24,28 @@
   padding: 11px;
 }
 
+.u-greenButton {
+  background-color: $mainColor2;
+  color: white;
+  border: none;
+  box-shadow: 0px 4px 0 0 #8e9697;
+  &--small {
+    padding: 6px 12px;
+  }
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 0 0 #8e9697;
+    box-shadow: 0px 4px 0 0 darken(#8e9697, 5%);
+  }
+}
+
+.u-paper {
+  background-color: white;
+  box-shadow: 0px 4px 0 0 #7d8d8e;
+}
+.u-columnFullWidth {
+  margin: 0 -15px;
+}
 .u-textCenter {
   text-align: center;
 }

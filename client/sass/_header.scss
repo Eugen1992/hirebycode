@@ -1,16 +1,19 @@
 .header {
-  padding: 20px;
-  background-color: $blueRoyal;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 16px;
+  background-color: $mainColor1;
 }
 .header-logo {
-  border-radius: 5px;
-  padding: 5px;
-  border: solid 2px white;
   cursor: pointer;
   margin: 0;
   display: inline-block;
-  color: white;
+  color: $mainColor3;
+}
+.header-buttonsGroup {
+
 }
 .header-button {
   margin-left: 20px;

@@ -1,13 +1,14 @@
-<section class="u-block">
+<section class="u-paper u-block searchFilters">
+  <h3 class="u-blockTitle u-textCenter">Find Developers</h3>
   <ui-select 
-    ng-model="$ctrl.skill" 
-    theme="select2" 
-    class="searchFilters-filter" 
+    ng-model="$ctrl.skill"
+    theme="select2"
+    class="searchFilters-filterContainer"
     title="Choose a skill"
     on-select="$ctrl.onSkillChange({skill: $item})"
   >
-    <ui-select-match placeholder="Add filtering by skill...">{{$select.selected.name}}</ui-select-match>
-    <ui-select-choices repeat="item in $ctrl.skills | filter: $select.search">
+    <ui-select-match class="searchFilters-filter" placeholder="Add filtering by skill...">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices  class="searchFilters-dropdown" repeat="item in $ctrl.skills | filter: $select.search">
       <div ng-bind-html="item.name | highlight: $select.search"></div>
     </ui-select-choices>
   </ui-select>
@@ -15,11 +16,11 @@
   <ui-select 
     ng-model="$ctrl.school" 
     theme="select2" 
-    class="searchFilters-filter" 
+    class="searchFilters-filterContainer"
     title="Choose a skill"
     on-select="$ctrl.onSchoolChange({school: $item})"
   >
-    <ui-select-match placeholder="Add filtering by school...">{{$select.selected.name}}</ui-select-match>
+    <ui-select-match class="searchFilters-filter" placeholder="Add filtering by school...">{{$select.selected.name}}</ui-select-match>
     <ui-select-choices repeat="item in $ctrl.schools | filter: $select.search">
       <div ng-bind-html="item.name || item | highlight: $select.search"></div>
     </ui-select-choices>
@@ -28,11 +29,11 @@
   <ui-select 
     ng-model="$ctrl.location" 
     theme="select2" 
-    class="searchFilters-filter" 
+    class="searchFilters-filterContainer"
     title="Choose a city"
     on-select="$ctrl.onLocationChange({location: $item})"
   >
-    <ui-select-match placeholder="Add filtering by location...">{{$select.selected.city + ', ' + $select.selected.country}}</ui-select-match>
+    <ui-select-match class="searchFilters-filter" placeholder="Add filtering by location...">{{$select.selected.city + ', ' + $select.selected.country}}</ui-select-match>
     <ui-select-choices repeat="item in $ctrl.locations | filter: $select.search">
       <div ng-bind-html="item.city + ', ' + item.country | highlight: $select.search"></div>
     </ui-select-choices>

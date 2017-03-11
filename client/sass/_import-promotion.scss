@@ -1,42 +1,47 @@
 .importPromotion {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left: 20px;
-  min-height: 360px;
-  text-align: left;
-  background-image: url('/client/assets/images/engine.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  margin: -20px -15px 0;
-  box-sizing: border-box;
-}
-.importPromotion-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
-}
-.importPromotion-title {
-  color: white;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-.importPromotion-text {
-  font-size: 18px;
-  color: white;
-  padding: 0 65% 0 0;
-  margin-bottom: 40px;
+  display: none;
 }
 
-.importPromotion-button {
-  box-sizing: border-box;
-  width: 200px;
-  padding: 10px 20px;
+@include tabletAndDesktop {
+  .importPromotion {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+    min-height: 360px;
+    text-align: left;
+    background-image: url('/client/assets/images/engine.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: -20px -15px 0;
+    box-sizing: border-box;
+  }
+  .importPromotion-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  }
+  .importPromotion-title {
+    color: white;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .importPromotion-text {
+    font-size: 18px;
+    color: white;
+    padding: 0 65% 0 0;
+    margin-bottom: 40px;
+  }
+  .importPromotion-button {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 10px 20px;
+  }
 }

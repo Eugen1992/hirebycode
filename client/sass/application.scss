@@ -1,5 +1,6 @@
 @import "vendor/bootstrap.scss";
-@import "vendor/select.scss";
+@import "vendor/select";
+@import "vendor/select2";
 @import "vendor/color-me-sass";
 @import "vendor/tomorrow-highlight";
 @import "vendor/ng-img-crop";
@@ -9,12 +10,15 @@
 
 @import "svg/css/sprite";
 @import "variables";
+@import "mixins/media-queries.scss";
+@import "mixins/font-size.scss";
+
+@import "utilities";
 
 @import "root";
 @import "header";
 @import "footer";
 
-@import "utilities";
 @import "home";
 @import "user-home";
 @import "repo-content";
@@ -33,7 +37,8 @@
 @import "edit-developer";
 @import "admin-skills";
 @import "import-promotion";
-@import "search-filters";
+
+@import "search/index";
 
 @import "submit-button";
 @import "loader";

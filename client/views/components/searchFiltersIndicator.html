@@ -1,12 +1,11 @@
-<article class="u-block">
+<div class="u-block filtersIndicators-indicatorOuter" ng-repeat="filter in $ctrl.filters">
   <div
-    class="btn btn-primary btn-lg"
-    ng-repeat="filter in $ctrl.filters"
+    class="filtersIndicators-indicator"
     ng-click="$ctrl.onRemove({filter: filter})"
   >
-    {{filter.text}}
-    <svg class="u-buttonIcon">
-      <use xlink:href="#client--svg--cross"/>
+    <span class="filtersIndicators-innerText">{{filter.text}}</span>
+    <svg class="u-buttonIcon filtersIndicators-icon">
+      <use xlink:href="#client--svg--thick-cross"/>
     </svg>
   </div>
-</article>
+</div>

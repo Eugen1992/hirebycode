@@ -84,7 +84,7 @@
   .ui-select-choices-row {
     border-bottom: solid 1px black;
     font-family: 'Raleway', sans-serif;
-    font-size: fontSize(27.4px);
+    font-size: fontSize(17px);
   }
   .ui-select-choices-row-inner {
     padding: 12px 15px;
@@ -93,6 +93,7 @@
 .searchFilters-filterContainer.open {
   .ui-select-toggle {
     margin-top: 31px;
+    z-index: 10002;
   }
 }
 .searchFilters-dropdown {

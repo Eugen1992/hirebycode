@@ -43,6 +43,7 @@ function FiltersService ($http, $q, skillsService, trainingCentersService, locat
   this.createFiltersFromState = function (stateParams) {
     this.createSkillFiltersFromState(stateParams);
     this.createSchoolFiltersFromState(stateParams);
+    this.createLocationFiltersFromState(stateParams);
 
     return $q.resolve(filters);
   };
@@ -80,6 +81,27 @@ function FiltersService ($http, $q, skillsService, trainingCentersService, locat
       _id: schoolInfo._id,
       type: 'school',
       text: schoolInfo.name
+    });
+  }
+
+
+  this.createLocationFiltersFromState = function (stateParams) {
+    var locationId = stateParams.locationFilter;
+    var locationInfo;
+
+    if (!locationId) {
+      return;
+    };
+
+    locationInfo = filtersList.locations.find(function(currentLocation) {
+      return currentLocation._id === locationId;
+    });
+
+    filters.location = locationInfo;
+    filters.flattenFilters.push({
+      _id: locationInfo._id,
+      type: 'location',
+      text: locationInfo.city + ', ' + locationInfo.country
     });
   }
 

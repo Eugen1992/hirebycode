@@ -1,0 +1,16 @@
+.filtersIndicators-indicatorOuter {
+  display: inline-block;
+}
+.filtersIndicators-indicator {
+  border: solid 1px black;
+  padding: 3px 5px;
+  cursor: pointer;
+}
+.filtersIndicators-innerText {
+  margin-right: 24px;
+  color: $mainColor3;
+}
+.filtersIndicators-icon {
+  width: 14px;
+  height: 14px;
+}

@@ -1,5 +1,5 @@
 %svg-common {
-	background: url("svg/sprite.css-4b9d03d6.svg") no-repeat;
+	background: url("svg/sprite.css-db28488b.svg") no-repeat;
 }
 
 .svg-client--svg--back {
@@ -80,5 +80,15 @@
 .svg-client--svg--github-dims {
 	width: 438.549px;
 	height: 438.549px;
+}
+
+.svg-client--svg--thick-cross {
+	@extend %svg-common;
+	background-position: 99.70147551978538% 50.50847457627118%;
+}
+
+.svg-client--svg--thick-cross-dims {
+	width: 21px;
+	height: 20px;
 }
 

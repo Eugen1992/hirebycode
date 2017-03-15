@@ -1,6 +1,6 @@
-.home-import {
-  margin: 30px;
-}
-.home-table {
-  width: 70%;
+@include phone {
+  .home-search {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }

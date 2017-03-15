@@ -4,6 +4,12 @@
 .search-listContainer {
   min-height: 350px;
 }
+@include phone {
+  .search-listContainer, .search-content {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
 @include tabletAndDesktop {
   .search {
     display: flex;

@@ -10,9 +10,15 @@
   display: inline-block;
   color: $mainColor3;
 }
-.header-buttonsGroup {
-
+.header-githubIcon {
+  margin-left: 10px;
+  
+  //opacity: 0.55;
+  height: 25px;
 }
 .header-button {
   margin-left: 20px;
+}
+.header-buttonText {
+  vertical-align: middle;
 }

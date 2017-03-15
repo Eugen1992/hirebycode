@@ -18,3 +18,16 @@
     color: $mainColor3;
   }
 }
+
+@include tabletAndDesktop {
+  .searchToggle-tab {
+    flex: 0 1 auto;
+    font-family: 600;
+    padding-right: 50px;
+    padding-left: 50px;
+    box-shadow: inset 4px 0px 0px 0px #8e9697;
+    &:first-of-type, &--active {
+      box-shadow: none;
+    }
+  }
+}

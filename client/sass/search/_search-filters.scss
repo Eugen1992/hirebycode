@@ -65,7 +65,7 @@
     &:before {
       top: 0px;
       border-width: 14px 7.5px 0 7.5px;
-      border-color: #3e3c41 transparent transparent transparent;
+      border-color: $mainColor3 transparent transparent transparent;
     }
   }
   .select2-search {
@@ -106,4 +106,33 @@
   56% {opacity: 0; margin-top: -10px;}
   57% {opacity: 1; margin-top: -10px;}
   100% {opacity: 1; margin-top: 0px;}
+}
+
+@include tabletAndDesktop {
+  .searchFilters {
+    background-color: transparent;
+    box-shadow: none;
+    .ui-select-dropdown {
+      &:after, &:before {
+        z-index: 1;
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        right: 20px;
+        border-style: solid;
+        animation: slide-down 600ms linear 1;
+      }
+      &:after {
+        top: -2px;
+        border-width: 14px 7.5px 0 7.5px;
+        border-color: $mainColor1 transparent transparent transparent;
+      }
+      &:before {
+        top: 0px;
+        border-width: 14px 7.5px 0 7.5px;
+        border-color: $mainColor3 transparent transparent transparent;
+      }
+    }
+  }
 }

@@ -1,11 +1,13 @@
 .u-block {
   padding: $mainMargin / 2;
-  &--fullWidth {
+  &--onlyVertical {
     padding-left: 0;
     padding-right: 0;
   }
 }
-
+.u-fullWidthBlock {
+  margin: 0 #{-$mainMargin/2};
+}
 .u-blockTitle {
   font-family: 'Raleway', sans-serif;
   font-size: fontSize(27.4px);
@@ -20,8 +22,6 @@
   }
 }
 
-
-
 .u-blueInlineLabel {
   display: inline-block;
   margin-right: 15px;
@@ -34,6 +34,7 @@
   color: white;
   border: none;
   padding: 15px 0;
+  font-family: 'Raleway', 'sans-serif';
   &--small {
     padding: 6px 12px;
   }
@@ -56,7 +57,7 @@
   box-shadow: 2px 3.5px 0 0 #bcbaba;
 }
 .u-columnFullWidth {
-  margin: 0 -15px;
+  padding: 0;
 }
 .u-textCenter {
   text-align: center;
@@ -80,6 +81,16 @@
   }
 }
 
-.u-minHeight350 {
-  min-height: 350px;
+@include tabletAndDesktop {
+  .u-block {
+    padding: $mainMarginTabletDesktop / 2;
+  }
+  .u-fullWidthBlock {
+    margin: 0 #{-$mainMarginTabletDesktop / 2};
+  }
+  .u-greenButton {
+    font-size: fontSize(18px);
+    font-weight: 600;
+    padding: 8px 20px;
+  }
 }

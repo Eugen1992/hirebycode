@@ -43,3 +43,15 @@
   font-size: fontSize(18px);
   font-family: Raleway, 'sans-serif';
 }
+
+@include tabletAndDesktop {
+  .developerPreview {
+    padding: 35px 12px 12px 154px;
+    align-self: center;
+  }
+  .developerPreview-avatar {
+    margin-left: -142px;
+    width: 142px;
+    height: 142px;
+  }
+}

@@ -1,3 +1,12 @@
 .search-content {
   background-color: white;
 }
+.search-listContainer {
+  min-height: 350px;
+}
+@include tabletAndDesktop {
+  .search {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}

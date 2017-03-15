@@ -1,5 +1,5 @@
-<section clas="row u-columnFullWidth">
-  <div class="col-md-3 u-block u-block--fullWidth">
+<section class="search">
+  <div class="col-md-4 u-columnFullWidth">
     <sr-search-filters
       skills="$ctrl.skillsList"
       locations="$ctrl.locationsList"
@@ -10,7 +10,7 @@
       on-location-change="$ctrl.addLocationToFilters(location)"
     ></sr-search-filters>
   </div>
-  <div class="col-md-9 u-minHeight350 u-block u-block--fullWidth">
+  <div class="col-md-8 search-listContainer u-block">
     <sr-search-toggle
       on-toggle="$ctrl.changeSearchType(type)"
       search-type="$ctrl.searchType"

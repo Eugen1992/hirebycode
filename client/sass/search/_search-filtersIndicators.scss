@@ -4,6 +4,7 @@
 .filtersIndicators-indicator {
   border: solid 1px black;
   padding: 3px 5px;
+  font-family: Raleway, 'sans-serif';
   cursor: pointer;
 }
 .filtersIndicators-innerText {
@@ -13,4 +14,15 @@
 .filtersIndicators-icon {
   width: 14px;
   height: 14px;
+}
+
+@include tabletAndDesktop {
+  .filtersIndicators-indicator {
+    padding: 12px 10px;
+    font-size: fontSize(18.6px);
+  }
+  .filtersIndicators-icon {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -48,6 +48,25 @@
   }
 }
 
+.u-whiteButton {
+
+  background-color: white;
+  border: solid 1px $mainColor2;
+  color: $mainColor2;
+  padding: 15px 0;
+  font-family: 'Raleway', 'sans-serif';
+  &--small {
+    padding: 6px 12px;
+  }
+  &--shadow {
+    box-shadow: 0px 4px 0 0 #8e9697;
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0px 5px 0 0 #8e9697;
+      box-shadow: 0px 4px 0 0 darken(#8e9697, 5%);
+    }
+  }
+}
 .u-paperVertical {
   background-color: white;
   box-shadow: 0px 4px 0 0 #7d8d8e;

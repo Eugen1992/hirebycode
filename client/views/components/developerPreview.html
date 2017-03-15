@@ -9,23 +9,29 @@
         <h3 class="developerPreview-name" ui-sref="developer({id: $ctrl.developer._id})">
           {{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}
         </h3>
-        <div class="developerPreview-location">
-          <span class="developerPreview-key">Location:</span> {{$ctrl.developer.city}}, {{$ctrl.developer.country}}
-        </div>
-        <div class="developerPreview-location" ng-if="$ctrl.developer.trainingCenters.length">
-          <span class="developerPreview-key">School:</span>
-          <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
-            {{trainingCenter.name}}
-            <span ng-if="!$last">,</span>
-          </span>
+        <div class="developerPreview-details">
+          <div class="developerPreview-detail">
+            <span class="developerPreview-detailName">Location:</span> 
+            <span class="developerPreview-detailValue">{{$ctrl.developer.city}}, {{$ctrl.developer.country}}</span>
+          </div>
+          <div class="developerPreview-detail" ng-if="$ctrl.developer.trainingCenters.length">
+            <span class="developerPreview-detailName">School:</span>
+            <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
+              <img class="developerPreview-trainingCenterLogo" src="{{trainingCenter.logo}}"/>
+              <span class="developerPreview-detailValue">
+                {{trainingCenter.name}}
+                <span ng-if="!$last">,</span>
+              </span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="u-block u-block--onlyVertical developerList-skillsList">
+    <div class="u-block u-block--onlyVertical developerPreview-skillsList">
       <div class="developerPreview-skill" ng-repeat="skill in $ctrl.developer.skills">
         {{skill.name}}
       </div>
     </div>
-    <div class="u-greenButton u-textCenter developerPreview-button">See projects</div>
+    <div class="u-greenButton u-textCenter developerPreview-button" ui-sref="developer/{{$ctrl.developer._id}}">See projects</div>
   </div>
 </article>

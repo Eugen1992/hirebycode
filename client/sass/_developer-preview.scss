@@ -13,6 +13,7 @@
 .developerPreview-avatar {
   width: 85px;
   height: 85px;
+  flex: 0 0 85px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -20,13 +21,17 @@
   margin: 5px 0;
   font-size: fontSize(22px);
 }
-.developerPreview-key {
-  font-size: fontSize(11.7px);
-}
-.developerPreview-location {
+.developerPreview-detail {
+  color: $mainColor3;
   flex: 0 1 auto;
 }
-.developerList-skillsList {
+.developerPreview-detailName {
+  font-size: fontSize(11.7px);
+}
+.developerPreview-trainingCenterLogo {
+  height: 30px;
+}
+.developerPreview-skillsList {
   display: flex;
   flex-wrap: wrap;
 }
@@ -34,7 +39,7 @@
   padding: 6px 10px;
   color: #f4f5f0;
   font-size: fontSize(11px);
-  background-color: $mainColor4;
+  background-color: $emphasizeColor;
   margin-right: 10px;
   margin-bottom: 10px;
 }
@@ -46,12 +51,49 @@
 
 @include tabletAndDesktop {
   .developerPreview {
-    padding: 35px 12px 12px 154px;
+    position: relative;
+    padding: 35px 12px 12px 164px;
     align-self: center;
   }
-  .developerPreview-avatar {
-    margin-left: -142px;
+  .developerPreview-avatar { 
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    margin-left: -152px;
     width: 142px;
     height: 142px;
+  }
+  .developerPreview-name {
+    margin-bottom: 24px;
+  }
+  .developerPreview-detail {
+    margin-bottom: 10px;
+  }
+  .developerPreview-info {
+    min-height: 142px;
+  }
+  .developerPreview-details {
+    padding-right: 195px;
+  }
+  .developerPreview-button {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    padding: 16px 0;
+    width: 170px;
+    font-weight: 300;
+  }
+  .developerPreview-detailName {
+    font-size: fontSize(14px);
+  }
+  .developerPreview-detailValue {
+    font-size: fontSize(18px);
+  }
+  .developerPreview-skillsList {
+    padding: 0;
+  }
+  .developerPreview-skill {
+    margin-right: 19px;
   }
 }

@@ -1,33 +1,35 @@
-<div class="repoPreview-content">
-  <div>
-    <h3 class="repoPreview-name">
-    <span ng-if="!$ctrl.hideAuthorName" class="u-link" ui-sref="developer({id: $ctrl.repo.developer._id})">
-      {{$ctrl.repo.developer.firstName}} {{$ctrl.repo.developer.lastName}}/</span>{{$ctrl.repo.name}}</h3>
-    <div class="pull-right">
-      <small>
-        Posted: {{$ctrl.repo.createdAt | date}}
-      </small>
-      <div class="repoPreview-trainingCenter" ng-if="$ctrl.repo.trainingCenterApproved">
-        <span>{{$ctrl.repo.trainingCenterApproved.name}}</span>
-        <img 
-          class="repoPreview-trainingCenterLogo" 
-          src="{{$ctrl.repo.trainingCenterApproved.logo}}"
-        />
+<article class="u-block">
+  <div class="repoPreview-content u-block u-paper">
+    <div>
+      <h3 class="repoPreview-name u-textCenter">{{$ctrl.repo.name}}</h3>
+      <div class="u-block">
+        <img class="repoPreview-image" src="/client/assets/images/project-placeholder.jpg">
+      </div>
+      <div>
+        <div class="repoPreview-trainingCenter" ng-if="$ctrl.repo.trainingCenterApproved">
+          <span>{{$ctrl.repo.trainingCenterApproved.name}}</span>
+          <img 
+            class="repoPreview-trainingCenterLogo" 
+            src="{{$ctrl.repo.trainingCenterApproved.logo}}"
+          />
+        </div>
       </div>
     </div>
-  </div>
-  <div class="repoPreview-bottomLine">
-    <div>
-      <div class="label label-info repoPreview-language" ng-repeat="skill in $ctrl.repo.skills">
+    <div class="u-block repoPreview-skillsContainer">
+      <div class="u-blueInlineLabel" ng-repeat="skill in $ctrl.repo.skills">
         {{skill.name}}
       </div>
     </div>
-    <button class="btn btn-primary" ng-click="$ctrl.seeDetails($ctrl.repo._id)">See details</button>
+    <div class="u-block">
+      <button class="u-greenButton u-greenButton--big" ng-click="$ctrl.seeDetails($ctrl.repo._id)">See details</button>
+    </div>
   </div>
-</div>
-<div class="repoPreview-adminPanel" ng-if="$ctrl.mode === 'admin'">
-  <span class="btn btn-info userHome-importedLabel" ng-click="$ctrl.onEdit()">Edit</span>
-  <button class="btn btn-danger" ng-class="{disabled: $ctrl.repo.isDeleting}" ng-click="$ctrl.onDelete()">Remove</button>
-  <button class="btn btn-primary" ng-class="{disabled: $ctrl.repo.isHiding}" ng-show="$ctrl.repo.hidden" ng-click="$ctrl.onUnhide()">Show</button>
-  <button class="btn btn-warning" ng-class="{disabled: $ctrl.repo.isHiding}" ng-hide="$ctrl.repo.hidden" ng-click="$ctrl.onHide()">Hide</button>
-</div>
+
+  <div class="repoPreview-adminPanel" ng-if="$ctrl.mode === 'admin'">
+    <span class="btn btn-info userHome-importedLabel" ng-click="$ctrl.onEdit()">Edit</span>
+    <button class="btn btn-danger" ng-class="{disabled: $ctrl.repo.isDeleting}" ng-click="$ctrl.onDelete()">Remove</button>
+    <button class="btn btn-primary" ng-class="{disabled: $ctrl.repo.isHiding}" ng-show="$ctrl.repo.hidden" ng-click="$ctrl.onUnhide()">Show</button>
+    <button class="btn btn-warning" ng-class="{disabled: $ctrl.repo.isHiding}" ng-hide="$ctrl.repo.hidden" ng-click="$ctrl.onHide()">Hide</button>
+  </div>
+</article>
+

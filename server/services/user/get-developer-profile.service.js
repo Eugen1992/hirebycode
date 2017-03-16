@@ -3,11 +3,15 @@ const ObjectId = require('mongodb').ObjectId;
 
 module.exports = function getDeveloperProfile ({ userId, withContacts }) {
   const sQuery = { _id: ObjectId(userId) };
-  let projection = 'firstName lastName placeId profileReadyForPublic avatar';
+  let projection = 'firstName lastName placeId skills profileReadyForPublic avatar trainingCenters';
   if (withContacts) {
     projection += ' contacts'
   }
-  return User.findOne(sQuery, projection).then((user) => {
+  return User.findOne(sQuery, projection)
+    .populate('skills')
+    .populate('trainingCenters')
+    .then((user) => {
+
     return user.toObject();
   });
 }

@@ -1,8 +1,46 @@
+.developerDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
 .developerDetails-avatar {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
+  align-self: center;
+  border-radius: 50%;
 }
 
-.developerDetails-row {
-  margin-bottom: 20px;
+.developerDetails-name {
+  font-family: 'PlayfairDisplay-Regular', sans;
+  font-size: fontSize(24px);
+  text-align: center;
+  font-weight: 300;
+  margin: 0;
+  color: $mainColor3;
+  border-bottom: solid 1px $mainColor3;
+}
+.developerDetails-detailsTable {
+  margin: 0 auto;
+}
+
+.developerDetails-detailKey, .developerDetails-detailValue {
+  font-family: 'PlayfairDisplay-Regular', sans;
+  padding-top: 0;
+  padding-bottom: 5px;
+  font-weight: 300;
+  color: $mainColor3;
+  font-size: fontSize(16px);
+}
+.developerDetails-trainingCenterLogo {
+  height: 18px;
+}
+.developerDetails-skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.developerDetails-lightLabel {
+  background-color: #e1eff0;
+  color: black;
+  font-weight: 300;
+  font-family: Raleway, 'sans-serif';
 }

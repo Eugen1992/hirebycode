@@ -1,6 +1,37 @@
-<main class="row">
-  <section class="col-sm-7">
-    <h2>{{developerInfo.firstName}} {{developerInfo.lastName}}</h2>
+<main class="u-block u-block--onlyVertical">
+  <section class="col-sm-5 u-paperVertical u-block developerDetails">
+    <img class="developerDetails-avatar" src="{{developerInfo.avatar}}">
+    <div class="u-block">
+      <h2 class="developerDetails-name u-block">{{developerInfo.firstName}} {{developerInfo.lastName}}</h2>
+    </div>
+    <article class="u-block">
+      <table class="developerDetails-detailsTable">
+        <tr class="developerDetails-detailRow">
+          <th class="developerDetails-detailKey u-block">Location: </th>
+          <th class="developerDetails-detailValue u-block">{{developerInfo.city}}, {{developerInfo.country}}</th>
+        </tr>
+        <tr class="developerDetails-detailRow">
+          <th class="developerDetails-detailKey u-block">School:</th>
+          <th class="developerDetails-detailValue u-block">
+            <span ng-repeat="trainingCenter in developerInfo.trainingCenters">
+              <img class="developerDetails-trainingCenterLogo" src="{{trainingCenter.logo}}"/>
+                {{trainingCenter.name}}
+                <span ng-if="!$last">,</span>
+              </span>
+          </th>
+        </tr>
+      </table>
+    </article>
+    <div class="developerDetails-skillsContainer u-block">
+      <div class="u-blueInlineLabel developerDetails-lightLabel" ng-repeat="skill in developerInfo.skills">
+        {{skill.name}}
+      </div> 
+    </div>
+    <div class="u-block">
+      <button class="u-greenButton u-greenButton--big">Contact {{developerInfo.firstName}}</button>
+    </div>
+  </section>
+  <section class="col-sm-7 u-block u-paperVertical">
     <sr-repo-preview
       hide-author-name="true"
       ng-repeat="repo in repos" 
@@ -8,20 +39,3 @@
     >
     </sr-repo-preview>
   </section>
-  <section class="col-sm-5 pull-right">
-    <img class="developerDetails-avatar" src="{{developerInfo.avatar}}">
-    <h3>Details</h3>
-    <div class="developerDetails-row">
-      <b>Location: </b>{{developerInfo.city}}, {{developerInfo.country}}
-    </div>
-    <div class="developerDetails-row">
-      <b>Contacts: </b>{{developerInfo.contacts}}
-    </div>
-    <div class="developerDetails-row">
-      <b>Skills:</b>
-      <div class="label label-info u-blueInlineLabel" ng-repeat="skill in developerInfo.skills">
-        {{skill.name}}
-      </div> 
-    </div>
-  </section>
-</section>

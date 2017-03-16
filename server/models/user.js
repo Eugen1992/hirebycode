@@ -59,6 +59,7 @@ userSchema.statics.getDeveloperPublicProfile = function (id) {
   })
   .limit(1)
   .populate('skills')
+  .populate('trainingCenters')
   .then(function ([user]) {
     return {
       contacts: user.contacts,

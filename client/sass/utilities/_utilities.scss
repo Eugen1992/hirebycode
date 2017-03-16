@@ -23,10 +23,12 @@
 }
 
 .u-blueInlineLabel {
-  display: inline-block;
-  margin-right: 15px;
-  margin-bottom: 15px;
-  padding: 11px;
+  padding: 6px 10px;
+  color: #f4f5f0;
+  font-size: fontSize(11px);
+  background-color: $emphasizeColor;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .u-greenButton {
@@ -46,10 +48,13 @@
       box-shadow: 0px 4px 0 0 darken(#8e9697, 5%);
     }
   }
+  &--big {
+    width: 100%;
+    font-size: fontSize(18px);
+  }
 }
 
 .u-whiteButton {
-
   background-color: white;
   border: solid 1px $mainColor2;
   color: $mainColor2;
@@ -70,6 +75,7 @@
 .u-paperVertical {
   background-color: white;
   box-shadow: 0px 4px 0 0 #7d8d8e;
+  margin-bottom: 4px;
 }
 .u-paper {
   background-color: white;

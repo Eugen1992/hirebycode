@@ -6,7 +6,6 @@ module.exports = function (id) {
     _id: ObjectId(id)
   };
   return User.delete(sQuery).then(function(result) {
-    console.log(result);
     return result;
   });
 }

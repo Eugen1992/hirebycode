@@ -9,9 +9,8 @@ const LocationService = require('../../services/location');
 const DeveloperController = {
   getById: (req, res, next) => {
     let result;
-
     Promise.all([
-      User.getDeveloperPublicProfile(req.params.id),
+      UserServices.getDeveloperProfile({ userId: req.params.id }),
       RepoServices.getUserReposImported(req.params.id)
     ])
     .then(function(results) {

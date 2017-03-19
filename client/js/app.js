@@ -4,7 +4,8 @@ var app = angular.module('showroom', [
   'ngSanitize', 
   'ngFileUpload', 
   'vsGoogleAutocomplete',
-  'ngImgCrop'
+  'ngImgCrop',
+  'vcRecaptcha',
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -31,8 +32,9 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('developer', {
       url: '/developer/:id',
-      templateUrl: 'client/views/partials/developerDetails.html',
+      templateUrl: 'client/views/partials/developer.html',
       controller: 'DeveloperController',
+      controllerAs: '$ctrl',
       resolve: {
         developer: function (DeveloperService, $stateParams) {
           return DeveloperService.getDeveloperById($stateParams.id);

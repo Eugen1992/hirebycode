@@ -2,6 +2,7 @@ const router = require('express').Router();
 const DeveloperController = require('./developer.controller.js');
 const authorizeMiddleware = require('../../middleware/authorizeMiddleware.js');
 const jwtMiddleware = require('../../middleware/jwtMiddleware.js');
+const captchaMiddleware = require('../../middleware/captcha.middleware.js');
 
 router.get('/',
   jwtMiddleware.decodeToken,
@@ -22,7 +23,8 @@ router.get('/full/:id',
 );
 
 
-router.get('/contacts/:id',
+router.get('/contacts/:id/:captcha',
+  captchaMiddleware,
   DeveloperController.getContacts
 );
 

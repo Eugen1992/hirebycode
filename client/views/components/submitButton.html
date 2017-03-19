@@ -1,4 +1,4 @@
-<div class="btn btn-primary submitButton">
+<button class="submitButton">
   <span 
     ng-transclude 
     class="submitButton-text" 
@@ -9,7 +9,7 @@
     ng-class="{'is-hidden': $ctrl.state !== 'loading'}"
   >
     <svg class="submitButton-loaderIcon">
-      <use xlink:href="#client--svg--gears-single" />
+      <use xlink:href="#client--svg--gears-single-white" />
     </svg>
   </span>
 </div>
@@ -24,4 +24,4 @@
     <use xlink:href="#client--svg--cross" />
   </svg>
   <span class="submitButton-notificationText">{{$ctrl.errorText}}</span>
-</div>
+</button>

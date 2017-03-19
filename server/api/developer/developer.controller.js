@@ -79,7 +79,8 @@ const DeveloperController = {
   getContacts: (req, res, next) => {
     User.getContactsById(req.params.id).then(function (contacts) {
       res.send(contacts);
-    }, function () {
+    }).catch((error) => {
+      console.log(error);
       res.sendStatus(500);
     });
   }

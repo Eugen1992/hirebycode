@@ -1,7 +1,8 @@
 .submitButton {
+  @extend .u-greenButton;
+  @extend .u-greenButton--big;
   position: relative;
-  height: 42px;
-  top: 6px;
+  height: 55px;
   &::after {
     content: '';
     display: inline-block;
@@ -32,8 +33,9 @@
 }
 
 .submitButton-notification {
-  display: inline-block;
-  vertical-align: middle;
+  position: absolute;
+  color: red;
+  margin-top: -2px;
   margin-left: 10px;
   &.is-success {
     color: #88b04b;

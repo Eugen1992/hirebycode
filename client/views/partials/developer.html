@@ -1,0 +1,56 @@
+<main class="u-block u-block--onlyVertical">
+  <section class="col-sm-5 u-paperVertical u-block developerDetails">
+    <img class="developerDetails-avatar" src="{{$ctrl.developer.avatar}}">
+    <div class="u-block">
+      <h2 class="developerDetails-name u-block">{{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}</h2>
+    </div>
+    <article class="u-block">
+      <table class="developerDetails-detailsTable">
+        <tr class="developerDetails-detailRow">
+          <th class="developerDetails-detailKey u-block">Location: </th>
+          <th class="developerDetails-detailValue u-block">{{$ctrl.developer.city}}, {{$ctrl.developer.country}}</th>
+        </tr>
+        <tr class="developerDetails-detailRow">
+          <th class="developerDetails-detailKey u-block">School:</th>
+          <th class="developerDetails-detailValue u-block">
+            <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
+              <img class="developerDetails-trainingCenterLogo" src="{{trainingCenter.logo}}"/>
+                {{trainingCenter.name}}
+                <span ng-if="!$last">,</span>
+              </span>
+          </th>
+        </tr>
+      </table>
+    </article>
+    <div class="developerDetails-skillsContainer u-block">
+      <div class="u-blueInlineLabel developerDetails-lightLabel" ng-repeat="skill in $ctrl.developer.skills">
+        {{skill.name}}
+      </div> 
+    </div>
+    <div class="u-block">
+      <sr-submit-button 
+        state="$ctrl.contactRequestState"
+        ng-click="$ctrl.showCaptcha()"
+      >Contact {{$ctrl.developer.firstName}}</sr-submit-button>
+      <form
+        ng-show="$ctrl.contactRequestState === 'captchaInProgress'"
+      >
+        <div
+          on-success="$ctrl.requestContact(response)"
+          size="compact"
+          vc-recaptcha
+          key="$ctrl.captchaKey"
+        ></div>
+      </form>
+      <div class="u-error" ng-show="$ctrl.contactRequestError">{{$ctrl.contactRequestError}}</div>
+      <div class="develoeprDetails-contact" ng-if="$ctrl.contacts">Email: {{$ctrl.contacts}}</div>
+    </div>
+  </section>
+  <section class="col-sm-7 u-block u-paperVertical">
+    <sr-repo-preview
+      hide-author-name="true"
+      ng-repeat="repo in $ctrl.repos" 
+      repo="repo"
+    >
+    </sr-repo-preview>
+  </section>

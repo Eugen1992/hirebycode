@@ -106,6 +106,9 @@
   }
 }
 
+.u-error {
+  color: red;
+}
 @include tabletAndDesktop {
   .u-block {
     padding: $mainMarginTabletDesktop / 2;
@@ -115,7 +118,10 @@
   }
   .u-greenButton {
     font-size: fontSize(18px);
-    font-weight: 600;
+    padding: 8px 20px;
+  }
+  .u-whiteButton {
+    font-size: fontSize(18px);
     padding: 8px 20px;
   }
 }

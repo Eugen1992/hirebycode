@@ -7,8 +7,8 @@ function DeveloperService ($http) {
       return response.data;
     });
   }
-  this.getContactsById = function (userId) {
-    return $http.get('/api/developer/contacts/' + userId).then(function(response) {
+  this.getContactsById = function (userId, captcha) {
+    return $http.get('/api/developer/contacts/' + userId + '/' + captcha).then(function(response) {
         return response.data;
     });
   }

@@ -3,7 +3,7 @@
   <div class="alert alert-warning" ng-if="!$ctrl.info.profileReadyForPublic">
     <b>Your profile is not included in search.</b> Please fill in contacts and location info and we will add your profile to search results.
   </div>
-  <div ng-if="$ctrl.info.profileReadyForPublic && $ctrl.info.hidden" class="developerInfo-unhideAccount">
+  <div ng-if="$ctrl.info.hidden" class="developerInfo-unhideAccount">
     <button class="developerInfo-unhideButton btn btn-primary" ng-click="$ctrl.showAccount()" ng-if="$ctrl.info.hidden">Make my account public</button>
     <div class="alert alert-warning developerInfo-unhideExplanation">
       <b>Your profile and your projects are not included in search, because your account is hidden.</b>

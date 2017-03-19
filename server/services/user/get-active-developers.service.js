@@ -6,7 +6,7 @@ module.exports = function getActiveDevelopers (filters = { skill: [], location: 
 
   const sQuery = {
     type: 'developer',
-    'repos.0': {$exists: true},
+    'repos.0': { $exists: true },
     hidden: false,
     profileReadyForPublic: true
   };

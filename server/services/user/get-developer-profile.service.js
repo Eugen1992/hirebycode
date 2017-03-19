@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 module.exports = function getDeveloperProfile ({ userId, withContacts }) {
   const sQuery = { _id: ObjectId(userId) };
-  let projection = 'firstName lastName placeId skills profileReadyForPublic avatar trainingCenters';
+  let projection = 'firstName lastName hidden placeId skills profileReadyForPublic avatar trainingCenters';
   if (withContacts) {
     projection += ' contacts'
   }

@@ -5,7 +5,8 @@
     bindings: {
       state: '<',
       successText: '<',
-      errorText: '<'
+      errorText: '<',
+      buttonClass: '<'
     },
     controller: SubmitButtonController
   });

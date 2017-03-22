@@ -1,7 +1,8 @@
 (function () {
   angular.module('showroom').controller('DeveloperController', DeveloperController);
-  DeveloperController.$inject = ['$scope', 'developer', 'DeveloperService', 'ConfigService'];
-  function DeveloperController (scope, developer, developerService, configService) {
+  DeveloperController.$inject = ['$scope', 'developer', 'DeveloperService', 'ConfigService', 'AnalyticService'];
+  function DeveloperController (scope, developer, developerService, configService, analyticService) {
+    analyticService.sendEvent({ email: 'someEmail' });
     var vm = this;
     vm.repos = developer.repos;
     vm.developer = developer.info;

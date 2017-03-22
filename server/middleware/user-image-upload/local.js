@@ -11,7 +11,7 @@ function getStorage () {
     },
     filename: function (req, file, cb) {
       const extension = extensionLookup.exec(file.originalname)[1];
-      const fileName = req.userId + extension;
+      const fileName = req.userId.toString();
       req.imageFileName = fileName;
       cb(null, fileName);
     }

@@ -6,6 +6,7 @@ var app = angular.module('showroom', [
   'vsGoogleAutocomplete',
   'ngImgCrop',
   'vcRecaptcha',
+  'angular-google-analytics',
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -164,7 +165,11 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $httpProvider.interceptors.push('ApiInterceptorService');
 });
 
-angular.module('showroom').run(function($rootScope, $state, UserLocalService){
+angular.module('showroom').config(['AnalyticsProvider', function (AnalyticsProvider) {
+   AnalyticsProvider.setAccount('UA-94102105-1');
+}]).run(['Analytics', function(Analytics) { }]);
+
+angular.module('showroom').run(function($rootScope, $state, UserLocalService) {
   $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
     if (to.parent === 'authorized' && !UserLocalService.isLoggedIn()) {
         ev.preventDefault();

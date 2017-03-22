@@ -1,16 +1,17 @@
 <main class="u-block u-block--onlyVertical developerDetails">
-  <section class="col-sm-5 u-paperVertical--mobile u-paper--desktop u-block developerDetails-info">
+  <section class="col-sm-4 u-paperVertical--mobile u-paper--desktop u-block developerDetails-info">
     <img class="developerDetails-avatar" src="{{$ctrl.developer.avatar}}">
     <div class="u-block">
-      <h2 class="developerDetails-name u-block">{{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}</h2>
+      <h2 class="developerDetails-name">{{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}</h2>
+      <div class="developerDetails-position  u-block u-textCenter">Front-end developer</div>
     </div>
-    <article class="u-block">
+    <article class="u-block developerDetails-personalInfo">
       <table class="developerDetails-detailsTable">
         <tr class="developerDetails-detailRow">
           <th class="developerDetails-detailKey u-block">Location: </th>
           <th class="developerDetails-detailValue u-block">{{$ctrl.developer.city}}, {{$ctrl.developer.country}}</th>
         </tr>
-        <tr class="developerDetails-detailRow" ng-if="{{$ctrl.trainingCenter.trainingCenters.length}}">
+        <tr class="developerDetails-detailRow" ng-if="$ctrl.trainingCenter.trainingCenters.length">
           <th class="developerDetails-detailKey u-block">School:</th>
           <th class="developerDetails-detailValue u-block">
             <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
@@ -23,6 +24,11 @@
       </table>
     </article>
     <div class="developerDetails-skillsContainer u-block">
+      <div class="developerDetails-skillsHeader">Focus</div>
+      <div class="u-blueInlineLabel developerDetails-darkLabel" ng-repeat="skill in $ctrl.developer.skills">
+        {{skill.name}}
+      </div> 
+      <div class="developerDetails-skillsHeader">All skills</div>
       <div class="u-blueInlineLabel developerDetails-lightLabel" ng-repeat="skill in $ctrl.developer.skills">
         {{skill.name}}
       </div> 
@@ -46,7 +52,7 @@
       <div class="develoeprDetails-contact" ng-if="$ctrl.contacts">Email: {{$ctrl.contacts}}</div>
     </div>
   </section>
-  <section class="col-sm-7 developerDetails-repos u-block--mobile u-paper--desktop u-paperVertical--mobile">
+  <section class="col-sm-8 developerDetails-repos u-block--mobile u-paper--desktop u-paperVertical--mobile">
     <sr-repo-preview
       hide-author-name="true"
       ng-repeat="repo in $ctrl.repos" 

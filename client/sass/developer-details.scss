@@ -17,6 +17,11 @@
   font-weight: 300;
   margin: 0;
   color: $mainColor3;
+}
+.developerDetails-position {
+  font-family: 'PlayfairDisplay-Regular', sans;
+  font-size: fontSize(14px);
+  color: $mainColor3;
   border-bottom: solid 1px $mainColor3;
 }
 .developerDetails-detailsTable {
@@ -37,6 +42,21 @@
 .developerDetails-skillsContainer {
   display: flex;
   flex-wrap: wrap;
+}
+.developerDetails-skillsHeader {
+  flex: 1 1 100%;
+  font-family: 'PlayfairDisplay-Regular', sans;
+  color: $mainColor3;
+  font-size: fontSize(18px);
+  border-bottom: solid 1px $mainColor3;
+  padding: 11px 0;
+  margin-bottom: 11px;
+}
+.developerDetails-darkLabel {
+  background-color: #385571;
+  color: white;
+  font-weight: 300;
+  font-family: Raleway, 'sans-serif';
 }
 .developerDetails-lightLabel {
   background-color: #e1eff0;
@@ -63,5 +83,9 @@
   }
   .developerDetails-skillsContainer {
     order: 1;
+  }
+  .developerDetails-personalInfo {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }

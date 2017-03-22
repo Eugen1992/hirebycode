@@ -1,0 +1,24 @@
+.u-block {
+  padding: $mainMargin / 2;
+  &--onlyVertical {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.u-fullWidthBlock {
+  margin: 0 #{-$mainMargin/2};
+}
+
+@include phone {
+  .u-block--mobile {
+    padding: $mainMargin / 2;
+  }
+}
+@include tabletAndDesktop {
+  .u-block {
+    padding: $mainMarginTabletDesktop / 2;
+  }
+  .u-fullWidthBlock {
+    margin: 0 #{-$mainMarginTabletDesktop / 2};
+  }
+}

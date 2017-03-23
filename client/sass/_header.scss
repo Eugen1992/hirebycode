@@ -6,14 +6,10 @@
 }
 .header-logo {
   cursor: pointer;
-  margin: 0;
-  display: inline-block;
-  color: $mainColor3;
+  height: 55px;
 }
 .header-githubIcon {
   margin-left: 10px;
-  
-  //opacity: 0.55;
   height: 25px;
 }
 .header-button {
@@ -21,4 +17,10 @@
 }
 .header-buttonText {
   vertical-align: middle;
+}
+
+@include tabletAndDesktop {
+  .header-logo {
+    height: 75px;
+  }
 }

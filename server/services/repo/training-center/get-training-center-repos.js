@@ -5,11 +5,15 @@ module.exports = function getTrainingCenterRepos (trainingCenterId) {
     return Promise.all([
       Repo.find({
         trainingCenter: trainingCenterId,
-        trainingCenterApproved: { $ne: trainingCenterId }
+        trainingCenterApproved: { $ne: trainingCenterId },
+        hidden: { $ne: true },
       })
           .populate('skills')
           .populate('developer'),
-      Repo.find({trainingCenterApproved: trainingCenterId})
+      Repo.find({
+        trainingCenterApproved: trainingCenterId,
+        hidden: { $ne: true },
+      })
         .populate('skills')
         .populate('developer')
         .populate('trainingCenterApproved')

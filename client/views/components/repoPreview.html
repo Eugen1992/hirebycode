@@ -7,11 +7,11 @@
       </div>
       <article class="u-block">
         <table class="repoPreview-detailsTable">
-          <tr class="repoPreview-detailRow">
+          <tr class="repoPreview-detailRow" ng-if="$ctrl.repo.trainingCenterApproved">
             <th class="repoPreview-detailKey u-block">School: </th>
             <th class="repoPreview-detailValue u-block">
-              <img class="repoPreview-trainingCenterLogo" src="{{trainingCenter.logo}}"/>
-              MainAcademy
+              <img class="repoPreview-trainingCenterLogo" src="{{$ctrl.repo.trainingCenterApproved.logo}}"/>
+              {{$ctrl.repo.trainingCenterApproved.name}}
             </th>
           </tr>
           <tr class="repoPreview-detailRow">
@@ -22,13 +22,6 @@
           </tr>
         </table>
       </article>
-      <div class="repoPreview-trainingCenter" ng-if="$ctrl.repo.trainingCenterApproved">
-        <span>{{$ctrl.repo.trainingCenterApproved.name}}</span>
-        <img 
-          class="repoPreview-trainingCenterLogo" 
-          src="{{$ctrl.repo.trainingCenterApproved.logo}}"
-        />
-      </div>
       <div class="u-block repoPreview-skillsContainer">
         <div class="u-blueInlineLabel" ng-repeat="skill in $ctrl.repo.skills">
           {{skill.name}}

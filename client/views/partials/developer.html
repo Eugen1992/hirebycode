@@ -11,7 +11,7 @@
           <th class="developerDetails-detailKey u-block">Location: </th>
           <th class="developerDetails-detailValue u-block">{{$ctrl.developer.city}}, {{$ctrl.developer.country}}</th>
         </tr>
-        <tr class="developerDetails-detailRow" ng-if="$ctrl.trainingCenter.trainingCenters.length">
+        <tr class="developerDetails-detailRow" ng-if="$ctrl.developer.trainingCenters.length">
           <th class="developerDetails-detailKey u-block">School:</th>
           <th class="developerDetails-detailValue u-block">
             <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">

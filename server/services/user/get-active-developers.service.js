@@ -20,7 +20,7 @@ module.exports = function getActiveDevelopers (filters = { skill: [], location: 
     sQuery.placeId = location;
   }
 
-  const projection = 'firstName lastName placeId avatar skills trainingCenters';
+  const projection = 'firstName lastName position placeId avatar skills trainingCenters';
 
   return User.find(sQuery, projection)
   .populate('skills')

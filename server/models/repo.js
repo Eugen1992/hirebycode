@@ -12,6 +12,7 @@ const repoSchema = new Schema({
   providerId: Number,
   skills: [{type: String, ref: 'Skill'}],
   description: String,
+  type: String,
   plans: String,
   hidden: Boolean,
   contents_url: String,

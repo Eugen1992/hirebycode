@@ -1,6 +1,6 @@
-<main class="row userHome">
-  <section class="col-md-8">
-    <h2>Your Github projects</h2>
+<main class="userHome u-block">
+  <section class="col-md-8 u-block u-paper userHome-projectsList">
+    <h2 class="u-block userHome-projectsListHeader">Your Github projects</h2>
     <sr-repo-preview 
       ng-repeat="repo in userImportedRepos"
       mode="'admin'" 
@@ -11,7 +11,7 @@
       on-unhide="unhideRepo(repo)"
     >
     </sr-repo-preview>
-    <ul class="list-group userHome-projectsList" ng-show="reposState === 'loaded'">
+    <ul class="list-group" ng-show="reposState === 'loaded'">
       <li class="list-group-item clearfix" ng-repeat="repo in userGithubRepos">
         {{repo.name}}
         <button class="btn btn-primary pull-right" ng-click="import(repo)" ng-hide="repo.imported">Import</button>

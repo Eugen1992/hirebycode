@@ -3,7 +3,10 @@
     <img class="developerDetails-avatar" src="{{$ctrl.developer.avatar}}">
     <div class="u-block">
       <h2 class="developerDetails-name">{{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}</h2>
-      <div class="developerDetails-position  u-block u-textCenter">Front-end developer</div>
+      <div 
+        ng-if="$ctrl.developer.position"
+        class="developerDetails-position u-block u-textCenter"
+      >{{$ctrl.developer.position}}</div>
     </div>
     <article class="u-block developerDetails-personalInfo">
       <table class="developerDetails-detailsTable">

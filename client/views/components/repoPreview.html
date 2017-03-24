@@ -14,10 +14,10 @@
               {{$ctrl.repo.trainingCenterApproved.name}}
             </th>
           </tr>
-          <tr class="repoPreview-detailRow">
+          <tr class="repoPreview-detailRow" ng-if="$ctrl.repo.type">
             <th class="repoPreview-detailKey u-block">Type:</th>
             <th class="repoPreview-detailValue u-block">
-              Web Application
+              {{$ctrl.repo.type}}
             </th>
           </tr>
         </table>
@@ -34,13 +34,12 @@
         <button class="u-greenButton u-greenButton--big" ng-click="$ctrl.seeDetails($ctrl.repo._id)">See details</button>
       </div>
     </div>
-  </div>
-
-  <div class="repoPreview-adminPanel" ng-if="$ctrl.mode === 'admin'">
-    <span class="btn btn-info userHome-importedLabel" ng-click="$ctrl.onEdit()">Edit</span>
-    <button class="btn btn-danger" ng-class="{disabled: $ctrl.repo.isDeleting}" ng-click="$ctrl.onDelete()">Remove</button>
-    <button class="btn btn-primary" ng-class="{disabled: $ctrl.repo.isHiding}" ng-show="$ctrl.repo.hidden" ng-click="$ctrl.onUnhide()">Show</button>
-    <button class="btn btn-warning" ng-class="{disabled: $ctrl.repo.isHiding}" ng-hide="$ctrl.repo.hidden" ng-click="$ctrl.onHide()">Hide</button>
+    <div class="repoPreview-adminPanel" ng-if="$ctrl.mode === 'admin'">
+      <span class="btn btn-info userHome-importedLabel" ng-click="$ctrl.onEdit()">Edit</span>
+      <button class="btn btn-danger" ng-class="{disabled: $ctrl.repo.isDeleting}" ng-click="$ctrl.onDelete()">Remove</button>
+      <button class="btn btn-primary" ng-class="{disabled: $ctrl.repo.isHiding}" ng-show="$ctrl.repo.hidden" ng-click="$ctrl.onUnhide()">Show</button>
+      <button class="btn btn-warning" ng-class="{disabled: $ctrl.repo.isHiding}" ng-hide="$ctrl.repo.hidden" ng-click="$ctrl.onHide()">Hide</button>
+    </div>
   </div>
 </article>
 

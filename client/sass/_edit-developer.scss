@@ -3,9 +3,17 @@
   margin: 20px 0 -10px;
 
 }
-.editDeveloper-subsection {
-  margin: 40px 0 10px;
-}
+
 .editDeveloper-subsectionHeader {
   margin: 0 0 20px;
+}
+.editDeveloper-submitButton {
+  display: inline-block;
+}
+.editDeveloper-cancelButton {
+  margin-left: 20px;
+}
+.editDeveloper-buttons {
+  display: flex;
+  align-items: flex-end;
 }

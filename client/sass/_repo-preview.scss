@@ -36,12 +36,10 @@
 }
 
 .repoPreview-adminPanel {
-  border: solid 1px #d3d3d3;
-  border-top: none;
-  border-radius: 5px;
-  margin: -25px 0 25px;
-  padding: 20px;
+  border-top: solid 1px $mainColor3;
+  padding-top: $mainMarginTabletDesktop/2;
 }
+
 .repoPreview-detailsTable {
   margin: 0 auto;
 }

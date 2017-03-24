@@ -8,16 +8,16 @@
   >
     <img-crop 
       image="$ctrl.newAvatar  | ngfDataUrl"
-      result-image="$ctrl.croppedDataUrl" 
+      result-image="$ctrl.croppedDataUrl"
       area-type="square"
       ng-init="$ctrl.croppedDataUrl=''">
     </img-crop>
   </div>
   <img class="developerInfo-logo" ng-hide="$ctrl.newAvatar" src="{{$ctrl.avatarUrl}}" />
   <div class="developerInfo-row">
-    <button class="btn btn-default developerInfo-avatarControlButton" ngf-select ng-model="$ctrl.newAvatar">Choose new</button>
+    <button class="btn btn-default developerInfo-avatarControlButton" ngf-select ng-model="$ctrl.newAvatar">Choose new picture</button>
     <button class="btn btn-default developerInfo-avatarControlButton" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">
-      Clear logo
+      Cancel
       <svg class="u-buttonIcon is-black">
         <use xlink:href="#client--svg--cross"/>
       </svg>

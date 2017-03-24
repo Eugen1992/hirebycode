@@ -1,8 +1,10 @@
-<h2>Your profile</h2>
-<b ng-if="!info.profileReadyForPublic" class="alert alert-warning editDeveloper-warning">We do not show projects of users without name, location or contacts. We will include your account and projects into our search results once you complete your profile.</b>
-<main class="row">
-  <section class="col-sm-8">
-    <div class="editDeveloper-subsection">
+<main>
+  <section class="u-block">
+    <h2 class="u-block">Your profile</h2>
+    <b ng-if="!info.profileReadyForPublic" class="alert alert-warning editDeveloper-warning">We do not show projects of users without name, location or contacts. We will include your account and projects into our search results once you complete your profile.</b>
+  </section>
+  <section class="col-sm-8 u-fullWidthColumn u-block">
+    <div class="u-block">
       <h3 class="editDeveloper-subsectionHeader">Contact info</h3>
       <div class="form-group">
         <label>
@@ -13,6 +15,10 @@
           Last name
           <input class="form-control" name="lastName" ng-model="info.lastName" />
         </label>
+        <label>
+          Position
+          <input class="form-control" name="position" ng-model="info.position" />
+        </label>
       </div>
       <div class="form-group">
         <label>When someone will want to hire, they will need a way to reach you out</label>
@@ -20,7 +26,7 @@
         </textarea>
       </div>
     </div>
-    <div class="editDeveloper-subsection">
+    <div class="u-block">
       <h3 class="editDeveloper-subsectionHeader">Location</h3>
       <div class="form-group">
         <input
@@ -34,16 +40,18 @@
          placeholder="Enter city name">
       </div>
     </div>
-    <div class="editDeveloper-subsection">
+    <div class="u-block editDeveloper-buttons">
       <sr-submit-button 
-        errorText="'Something went wrong'"
-        successText="'Your account was updated'"
+        error-text="'Something went wrong'"
+        success-text="'Your account was updated'"
+        class="editDeveloper-submitButton"
+        
         state="$ctrl.state"
         ng-click="submit()"
       >
         Update profile
       </sr-submit-button>
-      <button type="button" class="btn btn-default pull-right" ui-sref="user-home">I will do this later</button>
+      <button type="button" class="editDeveloper-cancelButton u-whiteButton" ui-sref="user-home">I will do this later</button>
     </div>
   </section>
 </main>

@@ -9,6 +9,7 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   placeId: {type: String, ref: 'Location'},
+  position: String,
   type: String,
   githubId: String,
   githubLogin: String,

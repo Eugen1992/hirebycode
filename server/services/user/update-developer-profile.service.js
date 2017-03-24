@@ -9,7 +9,8 @@ module.exports = function (userId, data) {
     contacts: data.contacts,
     firstName: data.firstName,
     lastName: data.lastName,
-    placeId: data.placeId
+    placeId: data.placeId,
+    position: data.position,
   }
 
   return User.findOneAndUpdate(sQuery, uQuery, { new: true })

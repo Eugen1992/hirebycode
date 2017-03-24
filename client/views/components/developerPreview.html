@@ -10,6 +10,10 @@
           {{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}
         </h3>
         <div class="developerPreview-details">
+          <div class="developerPreview-detail" ng-if="$ctrl.developer.position">
+            <span class="developerPreview-detailName">Position:</span> 
+            <span class="developerPreview-detailValue">{{$ctrl.developer.position}}</span>
+          </div>
           <div class="developerPreview-detail">
             <span class="developerPreview-detailName">Location:</span> 
             <span class="developerPreview-detailValue">{{$ctrl.developer.city}}, {{$ctrl.developer.country}}</span>

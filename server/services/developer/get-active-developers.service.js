@@ -1,8 +1,8 @@
 const User = require('../../models/user');
 const LocationServices = require('../location');
 
-module.exports = function getActiveDevelopers (filters = { skill: [], location: '', school: ''}) {
-  const { skill, location, school } = filters;
+module.exports = function getActiveDevelopers (filters = { skill: [], location: '', trainingCenter: ''}) {
+  const { skill, location, trainingCenter } = filters;
 
   const sQuery = {
     type: 'developer',
@@ -13,8 +13,8 @@ module.exports = function getActiveDevelopers (filters = { skill: [], location: 
   if (skill) {
     sQuery.skills = { $all: filters.skill };
   }
-  if (school) {
-    sQuery.trainingCenters = { $elemMatch: { $eq : school } };
+  if (trainingCenter) {
+    sQuery.trainingCenters = { $elemMatch: { $eq :trainingCenter } };
   }
   if (location) {
     sQuery.placeId = location;

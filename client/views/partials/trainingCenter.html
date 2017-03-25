@@ -1,0 +1,31 @@
+<main class="u-block u-block--onlyVertical trainingCenter">
+  <section class="col-sm-4 u-paperVertical--mobile u-paper--desktop u-block trainingCenter-info">
+    <img class="trainingCenter-avatar" src="{{$ctrl.trainingCenter.logo}}">
+    <div class="u-block">
+      <h2 class="trainingCenter-name">{{$ctrl.trainingCenter.name}}</h2>
+    </div>
+    <article class="u-block trainingCenter-personalInfo">
+      <table class="trainingCenter-detailsTable">
+        <tr class="trainingCenter-detailRow" ng-if="$ctrl.trainingCenter.website">
+          <th class="trainingCenter-detailKey u-block">Website: </th>
+          <th class="trainingCenter-detailValue u-block">
+            <a class="u-link" target="_blank" href="{{$ctrl.trainingCenter.website}}">
+              {{$ctrl.trainingCenter.name}}
+            </a>
+          </th>
+        </tr>
+        <tr class="trainingCenter-detailRow">
+          <th class="trainingCenter-detailKey u-block">Developers: </th>
+          <th class="trainingCenter-detailValue u-block">{{$ctrl.developers.length}}</th>
+        </tr>
+        <tr class="trainingCenter-detailRow" ng-if="$ctrl.trainingCenter.description">
+          <th class="trainingCenter-detailKey u-block">Description: </th>
+          <th class="trainingCenter-detailValue u-block">{{$ctrl.trainingCenter.description}}</th>
+        </tr>
+      </table>
+    </article>
+  </section>
+  <section class="col-sm-8 trainingCenter-repos u-block--mobile u-paper--desktop u-paperVertical--mobile">
+    <sr-developer-preview ng-repeat="developer in $ctrl.developers" developer="developer"></sr-developer-preview>
+  </section>
+</main>

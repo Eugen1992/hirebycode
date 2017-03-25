@@ -1,4 +1,4 @@
 module.exports = {
-  getTrainingCenterRepos: require('./get-training-center-repos'),
+  getActive: require('./get-active-developers.service.js'),
   deregisterTrainingCenterFromAll: require('./deregister-training-center-from-all.service.js'),
-}
+};

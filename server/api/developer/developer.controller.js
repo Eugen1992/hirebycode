@@ -1,5 +1,7 @@
 const User = require('../../models/user.js');
 const UserServices = require('../../services/user');
+const DeveloperServices = require('../../services/developer');
+
 const LocationServices = require('../../services/user');
 const RepoServices = require('../../services/repo');
 const Repo = require('../../models/repo.js');
@@ -66,6 +68,16 @@ const DeveloperController = {
       console.log(err);
       res.sendStatus(500);
     });
+  },
+  getByTrainingCenter: (req, res, next) => {
+    DeveloperServices.getActive({ trainingCenter: req.params.id})
+      .then((developers) => {
+        res.send(developers);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
+      });
   },
   getAll: (req, res, next) => {
     User.getDevelopers()

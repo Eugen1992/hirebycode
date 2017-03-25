@@ -29,12 +29,11 @@ function UserLocalService ($q, $window) {
     var user = this.getUser();
     return this.isLoggedIn() && user && user.type === 'developer';
   }
-
-  this.getUser = function () { 
-    return JSON.parse($window.localStorage.getItem('user'));
-  }
   this.logOut = function () {
     $window.localStorage.removeItem('token');
     $window.localStorage.removeItem('user');
+  }
+  this.getUser = function() {
+    return JSON.parse($window.localStorage.getItem('user'));
   }
 }

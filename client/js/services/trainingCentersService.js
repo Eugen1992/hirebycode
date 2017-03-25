@@ -10,6 +10,11 @@
         return response.data;
       });
     }
+    this.getTrainingCenterDetailsById = function (id) {
+      return $http.get('/api/training-center/' + id).then(function(response) {
+        return response.data;
+     });
+    }
     this.approveRepo = function (repo) {
       return $http.put('api/repo/training-center', {
         repoId: repo._id,

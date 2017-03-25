@@ -16,6 +16,8 @@ const userSchema = new Schema({
   githubToken: String,
   token: String,
   contacts: String,
+  website: String,
+  description: String,
   hasLogo: Boolean,
   logo: { type: String, get: getImageUrlService },
   avatar: { type: String, get: getImageUrlService },
@@ -88,13 +90,15 @@ userSchema.statics.getContactsById = function (userId) {
   });
 }
 userSchema.statics.getTrainingCenter = function (userId) {
-  return this.find({ 
+  return this.findOne({ 
     '_id': ObjectId(userId)
-  }).limit(1).then(function (user) {
+  }).then(function (user) {
     return {
       name: user.name,
       logo: user.logo,
       type: user.type,
+      website: user.website,
+      description: user.description,
       hasLogo: user.hasLogo,
       isPublic: user.isPublic
     };
@@ -105,6 +109,8 @@ userSchema.statics.updateTrainingCenter = function (data, logoData, userId) {
   var updateQuery = {
     $set: {
       name: data.name,
+      website: data.website,
+      description: data.description,
       isPublic: data.isPublic === 'true' ? true : false
     }
   };
@@ -135,6 +141,8 @@ userSchema.statics.getTrainingCenterInfo = function (id) {
     return {
       name: user.name,
       logo: user.logo,
+      website: user.website,
+      description: user.description,
       hasLogo: user.hasLogo,
       isPublic: user.isPublic
     };

@@ -14,7 +14,8 @@ const UserController = {
     var logoInfo = {
       wasUpdated: req.imageUpdated,
       fileName: req.imageUpdated ? req.imageFileName : null
-    }
+    };
+    console.log(req.body);
     User.updateTrainingCenter(req.body, logoInfo, req.userId).then(function (user) {
       res.send(user);
     }, function () {

@@ -17,6 +17,11 @@ function DeveloperService ($http) {
       return response.data;
     });
   }
+  this.getDevelopersByTrainingCenter = function (id) {
+    return $http.get('/api/developer/training-center/' + id).then(function(response) {
+      return response.data;
+    });
+  } 
   this.getActiveDevelopers = function (filters) {
     filters = filters || {};
 

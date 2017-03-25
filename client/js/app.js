@@ -42,6 +42,20 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         }
       }
     })
+    .state('training-center', {
+      url: '/school/:id',
+      templateUrl: 'client/views/partials/trainingCenter.html',
+      controller: 'TrainingCenterController',
+      controllerAs: '$ctrl',
+      resolve: {
+        trainingCenter: function (TrainingCentersService, $stateParams) {
+          return TrainingCentersService.getTrainingCenterDetailsById($stateParams.id);
+        },
+        developers: function (DeveloperService, $stateParams) {
+          return DeveloperService.getDevelopersByTrainingCenter($stateParams.id);
+        }
+      }
+    })
     .state('authorized', {
       abstract: true,
       template: '<ui-view/>'
@@ -54,7 +68,8 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       parent: 'authorized',
       url: '/user-home',
       templateUrl: 'client/views/partials/userHome.html',
-      controller: 'UserHomeController'
+      controller: 'UserHomeController',
+      controllerAs: '$ctrl',
     })
     .state('edit-developer-profile', {
       parent: 'authorized',

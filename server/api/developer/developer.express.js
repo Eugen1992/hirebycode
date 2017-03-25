@@ -14,6 +14,10 @@ router.get('/active',
   DeveloperController.getActive
 );
 
+router.get('/training-center/:id',
+  DeveloperController.getByTrainingCenter
+);
+
 router.get('/:id',
   DeveloperController.getById
 );

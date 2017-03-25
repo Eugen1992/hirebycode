@@ -22,6 +22,10 @@ router.get('/repos/:id',
   TrainingCenterController.getFullTrainingCenterRepos
 );
 
+router.get('/:id',
+  TrainingCenterController.getTrainingCenter
+);
+
 router.delete('/:id',
   jwtMiddleware.decodeToken,
   authorizeMiddleware({userType: 'admin'}),

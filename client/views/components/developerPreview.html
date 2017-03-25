@@ -23,7 +23,7 @@
             <span ng-repeat="trainingCenter in $ctrl.developer.trainingCenters">
               <img class="developerPreview-trainingCenterLogo" src="{{trainingCenter.logo}}"/>
               <span class="developerPreview-detailValue">
-                {{trainingCenter.name}}
+                <span class="u-link" ui-sref="training-center({id: trainingCenter._id})">{{trainingCenter.name}}</span>
                 <span ng-if="!$last">,</span>
               </span>
             </span>

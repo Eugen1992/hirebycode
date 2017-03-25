@@ -21,6 +21,7 @@
     "angucomplete-alt": "^3.0.0",
     "angular": "^1.5.8",
     "angular-ui-router": "^0.3.2",
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "cloudinary": "1.7.1",

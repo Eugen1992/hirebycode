@@ -1,5 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user.js');
+const bcrypt = require('bcrypt');
 
 module.exports = function () {
   return new LocalStrategy({
@@ -11,7 +12,7 @@ module.exports = function () {
     User.findOne({ 'login': login }, function(err, user) {
       // In case of any error return
       if (err) {
-        console.log('Error in SignUp: '+err);
+        console.log('Error in SignUp: ' + err);
         return done(err);
       }
       // already exists
@@ -22,21 +23,23 @@ module.exports = function () {
         const newUser = new User();
         // set the user's local credentials
         newUser.login = login;
-        newUser.password = createHash(password);
-        // save the user
-        newUser.save(function(err) {
-          if (err){
-            console.log('Error in Saving user: '+err);
-            throw err;  
-          }
-          console.log('User Registration succesful');
-          return done(null, newUser);
+        createHash(password, (err, bcryptedPassword) => {
+          if (err) done(err);
+          newUser.password = bcryptedPassword;
+          newUser.save(function(err) {
+            if (err){
+              console.log('Error in Saving user: ' + err);
+              throw err;
+            }
+            console.log('User Registration succesful');
+            return done(null, newUser);
+          });
         });
       }
     });
   });
 };
 
-var createHash = function(password){
- return password;//bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+const createHash = (password, cb) => {
+  bcrypt.hash(password, 5, cb);
 }

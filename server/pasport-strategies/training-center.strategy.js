@@ -15,10 +15,9 @@ module.exports = function () {
 
       bcrypt.compare(password, user.password, (err, doesMatch) => {
         if (doesMatch) {
-           return done(null, user);
+          return done(null, user);
         } else {
-          console.log(doesMatch);
-           return done(new Error('Wrong credentials'));
+          return done(new Error('Wrong credentials'));
         }
        });
     });

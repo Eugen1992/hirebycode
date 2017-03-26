@@ -33,7 +33,6 @@ const userSchema = new Schema({
   toObject: { getters: true }
 });
 
-userSchema.plugin(mongooseDelete);
 
 userSchema.statics.createDeveloper = function (data) {
   var createQuery = Object.assign(

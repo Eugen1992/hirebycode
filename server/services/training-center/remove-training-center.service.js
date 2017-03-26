@@ -5,7 +5,7 @@ module.exports = function (id) {
   const sQuery = {
     _id: ObjectId(id)
   };
-  return User.delete(sQuery).then(function(result) {
+  return User.remove(sQuery).then(function(result) {
     return result;
   });
 }

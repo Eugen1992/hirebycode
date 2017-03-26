@@ -1,0 +1,16 @@
+<sr-submit-button 
+  state="$ctrl.contactRequestState"
+  ng-click="$ctrl.showCaptcha()"
+>Contact {{$ctrl.developerName}}</sr-submit-button>
+<form
+  ng-show="$ctrl.requestState === 'captchaInProgress'"
+>
+  <div
+    on-success="$ctrl.requestContact(response)"
+    size="compact"
+    vc-recaptcha
+    key="$ctrl.captchaKey"
+  ></div>
+</form>
+<div class="u-error" ng-show="$ctrl.contactRequestError">{{$ctrl.contactRequestError}}</div>
+<div class="develoeprDetails-contact" ng-if="$ctrl.contacts">Email: {{$ctrl.contacts}}</div>

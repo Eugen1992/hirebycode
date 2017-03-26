@@ -21,4 +21,7 @@
   .u-fullWidthBlock {
     margin: 0 #{-$mainMarginTabletDesktop / 2};
   }
+  .u-blockTabletAndDesktop {
+    padding: $mainMarginTabletDesktop / 2;
+  }
 }

@@ -28,31 +28,19 @@
     </article>
     <div class="developerDetails-skillsContainer u-block">
       <div class="developerDetails-skillsHeader">Focus</div>
-      <div class="u-blueInlineLabel developerDetails-darkLabel" ng-repeat="skill in $ctrl.developer.skills">
+      <div class="u-blueDarkLabel" ng-repeat="skill in $ctrl.developer.skills">
         {{skill.name}}
       </div> 
       <div class="developerDetails-skillsHeader">All skills</div>
-      <div class="u-blueInlineLabel developerDetails-lightLabel" ng-repeat="skill in $ctrl.developer.skills">
+      <div class="u-blueLightLabel developerDetails-lightLabel" ng-repeat="skill in $ctrl.developer.skills">
         {{skill.name}}
       </div> 
     </div>
     <div class="u-block">
-      <sr-submit-button 
-        state="$ctrl.contactRequestState"
-        ng-click="$ctrl.showCaptcha()"
-      >Contact {{$ctrl.developer.firstName}}</sr-submit-button>
-      <form
-        ng-show="$ctrl.contactRequestState === 'captchaInProgress'"
-      >
-        <div
-          on-success="$ctrl.requestContact(response)"
-          size="compact"
-          vc-recaptcha
-          key="$ctrl.captchaKey"
-        ></div>
-      </form>
-      <div class="u-error" ng-show="$ctrl.contactRequestError">{{$ctrl.contactRequestError}}</div>
-      <div class="develoeprDetails-contact" ng-if="$ctrl.contacts">Email: {{$ctrl.contacts}}</div>
+      <sr-contact-developer
+        developer-name="$ctrl.developer.firstName"
+        developer-id="$ctrl.developer._id"
+      ></sr-contact-developer>
     </div>
   </section>
   <section class="col-sm-8 developerDetails-repos u-block--mobile u-paper--desktop u-paperVertical--mobile">

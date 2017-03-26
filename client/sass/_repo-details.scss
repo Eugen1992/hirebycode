@@ -1,14 +1,48 @@
-.repoDetails {
-  position: relative;
-  padding-right: 320px;
+.repoDetails-name {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Playfair Display', sans;
+  margin: 0;
+  font-size: fontSize(24px);
+  color: $mainColor3;
+  text-align: center;
+}
+.repoDetails-author {
+  font-weight: 300;
+  font-family: 'Playfair Display', sans;
+  font-size: fontSize(14px);
+}
+.repoDetails-authorName {
+  text-decoration: underline;
+  color: $mainColor2;
+}
+.repoDetails-image {
+  width: 100%;
+}
+.repoDetails-info {
+  background-color: $mainColor1;
+}
+.repoDetails-infoHeader {
+  margin: 0;
+  font-family: 'Playfair Display', sans;
+  font-size: fontSize(18px);
+  border-bottom: solid 1px $mainColor3;
 }
 
-.repoDetails-skill {
-  margin-right: 10px;
-  font-size: 14px;
+.repoDetails-infoKey, .repoDetails-infoValue {
+  font-family: 'Playfair Display', sans;
+  font-weight: 300;
+  color: $mainColor3;
+  font-size: fontSize(18px);
+  vertical-align: top;
 }
-.repoDetails-skillsList {
-  padding-left: 0;
+
+.repoDetails-skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.repoDetails-skill {
+  
 }
 .repoDetails-contacts {
   position: absolute;
@@ -17,6 +51,23 @@
   right: 10px;
 }
 .repoDetails-trainingCenterLogo {
-  height: 25px;
-  margin-bottom: 15px;
+  width: 25px;
+}
+.repoDetails-contact {
+  display: none;
+}
+
+@include tabletAndDesktop {
+  .repoDetails-name {
+    font-size: fontSize(48px);
+  }
+  .repoDetails-author {
+    font-size: fontSize(36px);
+  }
+  .repoDetails-image {
+    width: 30%;
+  }
+  .repoDetails-contact {
+    display: block;
+  }
 }

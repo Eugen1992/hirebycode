@@ -5,5 +5,8 @@ module.exports = function(repoId) {
   return Repo.findOne({_id: ObjectId(repoId)})
   .populate('skills')
   .populate('developer')
-  .populate('trainingCenter');
+  .populate('trainingCenterApproved')
+  .then((repo) => {
+    return repo.toObject();
+  });
 }

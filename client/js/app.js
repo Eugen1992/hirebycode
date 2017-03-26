@@ -23,8 +23,8 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('repo-details', {
       url: '/repo-details/:id?contentPath&contentType',
-      templateUrl: 'client/views/partials/repoDetails.html',
-      controller: 'RepoDetailsController',
+      templateUrl: 'client/views/partials/repo.html',
+      controller: 'RepoController',
       resolve: {
         repo: function (ReposService, $stateParams, $q) {
           return ReposService.getRepoByHbcId($stateParams.id);

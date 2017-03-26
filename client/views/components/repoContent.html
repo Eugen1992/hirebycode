@@ -1,27 +1,39 @@
-<div class="repoContent">
-  <div class="repoContent-fsRow" ng-if="$ctrl.currentPath.length" ng-click="$ctrl.goUpFolders()">
-    <svg class="repoContent-fsIcon">
-        <use xlink:href="#client--svg--back"/>
-    </svg>
-    <span>...</span>
+<h2 class="repoContent-header u-block">Project's sources</h2>
+<div class="repoContent u-paperVertical--mobile">
+  <div class="repoContent-description u-paperVertical--mobile">
+    <p class="u-block">{{$ctrl.repo.description}}</p>
+    <div class="repoDetails-contact u-block">
+      <sr-contact-developer
+        developer-name="$ctrl.repo.developer.firstName"
+        developer-id="$ctrl.repo.developer._id"
+      ></sr-contact-developer>
+    </div>
   </div>
-  <div 
-    ng-if="$ctrl.contentType === 'dir'" 
-    class="repoContent-fsRow" 
-    ng-repeat="item in $ctrl.dirContent" 
-    ng-click="$ctrl.showContent(item)"
-  >
-    <svg class="repoContent-fsIcon">
-      <use xlink:href="{{'#client--svg--' + item.type}}" />
-    </svg>
-    <span>{{item.name}}</span>
-  </div>
-  <div class="repoContent-code" ng-if="$ctrl.contentType === 'file'">
-    <sr-file-content content="$ctrl.fileContent" class="repoContent-fileContent" language={{$ctrl.fileType}}></sr-file-content>
-  </div>
-  <sr-loader shown="$ctrl.loading"></sr-loader>
-  
-  <div class="repoContent-error" ng-show="$ctrl.error">
-    <span class="label label-danger repoContent-errorText">{{$ctrl.error}}</span>
+  <div  class="repoContent-fileSystem u-block u-block--onlyVertical">
+    <div class="repoContent-fsRow" ng-if="$ctrl.currentPath.length" ng-click="$ctrl.goUpFolders()">
+      <svg class="repoContent-fsIcon">
+          <use xlink:href="#client--svg--back"/>
+      </svg>
+      <span>...</span>
+    </div>
+    <div 
+      ng-if="$ctrl.contentType === 'dir'" 
+      class="repoContent-fsRow" 
+      ng-repeat="item in $ctrl.dirContent" 
+      ng-click="$ctrl.showContent(item)"
+    >
+      <svg class="repoContent-fsIcon">
+        <use xlink:href="{{'#client--svg--' + item.type}}" />
+      </svg>
+      <span>{{item.name}}</span>
+    </div>
+    <div class="repoContent-code" ng-if="$ctrl.contentType === 'file'">
+      <sr-file-content content="$ctrl.fileContent" class="repoContent-fileContent" language={{$ctrl.fileType}}></sr-file-content>
+    </div>
+    <sr-loader shown="$ctrl.loading"></sr-loader>
+    
+    <div class="repoContent-error" ng-show="$ctrl.error">
+      <span class="label label-danger repoContent-errorText">{{$ctrl.error}}</span>
+    </div>
   </div>
 </div>

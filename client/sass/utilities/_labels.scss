@@ -1,0 +1,17 @@
+.u-label {
+  padding: 6px 10px;
+  font-size: fontSize(11px);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-family: 'Raleway', 'sans-serif';
+}
+.u-blueLightLabel {
+  @extend .u-label;
+  color: white;
+  background-color: #e1eff0;
+}
+.u-blueDarkLabel {
+  @extend .u-label;
+  color: #f4f5f0;
+  background-color: $emphasizeColor;
+}

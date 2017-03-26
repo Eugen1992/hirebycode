@@ -1,6 +1,22 @@
 .repoContent {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 250px;
+
+}
+.repoContent-header {
+  font-family: 'Playfair Display', sans;
+  color: $mainColor3;
+  font-size: fontSize(24px);
+  margin: 0;
+  background-color: white;
+}
+.repoContent-description {
+  font-family: 'Playfair Display', sans;
+  color: $mainColor3;
+  font-size: fontSize(18px);
+  margin: 0;
 }
 .repoContent-fsIcon {
   vertical-align: middle;
@@ -11,6 +27,7 @@
   padding: 5px 10px;
   cursor: pointer;
   border: solid 1px grey;
+  border-right: none;
   border-top: none;
   background-color: white;
 }
@@ -33,4 +50,21 @@
 
 .repoContent-errorText {
   font-size: 14px;
+}
+
+@include tabletAndDesktop {
+  .repoContent {
+    flex-direction: row;
+  }
+  .repoContent-description {
+    flex: 0 0 30%;
+    order: 2;
+  }
+  .repoContent-fileSystem {
+    flex: 0 0 70%;
+  }
+  .repoContent-fsRow {
+    border-top: none;
+    border-right: solid 1px grey;
+  }
 }

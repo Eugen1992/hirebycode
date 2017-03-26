@@ -1,62 +1,66 @@
 <main class="repoDetails u-block u-paperVertical--mobile">
-  <article class="u-block repoDetails-name"> 
-    {{$ctrl.repo.name}}
-    <div class="repoDetails-author">
-      by
-      <span
-        class="repoDetails-authorName u-actionElement" 
-        ui-sref="developer({id: $ctrl.repo.developer._id})">
-        {{$ctrl.repo.developer.firstName}} {{$ctrl.repo.developer.lastName}}
-      </span>
-    </div>
-  </article>
-  <article class="u-block repoDetails-imageContainer">
-    <img 
-      src="/client/assets/images/screenshot-placeholder.jpg"
-      class="repoDetails-image"
-    />
-  </article>
-  <article class="repoDetails-infoContainer u-block u-block--onlyVertical">
-    <div class="u-block u-paper repoDetails-info">
-      <h3 class="repoDetails-infoHeader u-block">Project info</h3>
-      <div class="repoDetails-infoTableContainer">
-        <table class="repoDetails-infoTable">
-          <tr class="repoDetails-infoRow" ng-if="$ctrl.repo.link">
-            <th class="repoDetails-infoKey u-block">Link: </th>
-            <th class="repoDetails-infoValue u-block">
-              <a 
-                target="_blank"
-                href="{{link}}">{{$ctrl.repo.link}}</a>
-            </th>
-          </tr>
-          <tr class="repoDetails-infoRow">
-            <th class="repoDetails-infoKey u-block">Type: </th>
-            <th class="repoDetails-infoValue u-block">{{$ctrl.repo.type}}</th>
-          </tr>
-          <tr class="repoDetails-infoRow" ng-if="$ctrl.repo.trainingCenterApproved">
-            <th class="repoDetails-infoKey u-block">School:</th>
-            <th class="repoDetails-infoValue u-block">
-              <img 
-                class="repoDetails-trainingCenterLogo" 
-                src="{{$ctrl.repo.trainingCenterApproved.logo}}" 
-              />
-              {{$ctrl.repo.trainingCenterApproved.name}}
-            </th>
-          </tr>
-        </table>
-      </div>
-      <div class="repoDetails-skillsSection repoDetails-infoKey u-block">
-        <span class="repoDetails-skillsHeader">Tech stack:</span>
-        <div class="repoDetails-skillsContainer">
-          <span class="repoDetails-skill u-blueDarkLabel" ng-repeat="skill in $ctrl.repo.skills">{{skill.name}}</span>
+  <div class="repoDetails-desktopContainer u-paper--desktop">
+    <article class="u-block repoDetails-name"> 
+      <div class="repoDetails-nameInner">
+        {{$ctrl.repo.name}}
+        <div class="repoDetails-author">
+            by
+          <span
+            class="repoDetails-authorName u-actionElement" 
+            ui-sref="developer({id: $ctrl.repo.developer._id})">
+            {{$ctrl.repo.developer.firstName}} {{$ctrl.repo.developer.lastName}}
+          </span>
         </div>
       </div>
-    </div>
-  </article>
-  <article class="repoDetails-contact">
-    <sr-contact-developer
-      developer-name="$ctrl.repo.developer.firstName"
-      developer-id="$ctrl.repo.developer._id"
-    ></sr-contact-developer>
-  </article>
+    </article>
+    <article class="u-block repoDetails-imageContainer">
+      <img 
+        src="/client/assets/images/screenshot-placeholder.jpg"
+        class="repoDetails-image"
+      />
+    </article>
+    <article class="repoDetails-infoContainer u-block--mobile u-block--onlyVertical">
+      <div class="u-block u-paper--mobile repoDetails-info">
+        <h3 class="repoDetails-infoHeader u-block">Project info</h3>
+        <div class="repoDetails-infoTableContainer">
+          <table class="repoDetails-infoTable">
+            <tr class="repoDetails-infoRow" ng-if="$ctrl.repo.link">
+              <th class="repoDetails-infoKey u-block">Link: </th>
+              <th class="repoDetails-infoValue u-block">
+                <a 
+                  target="_blank"
+                  href="{{link}}">{{$ctrl.repo.link}}</a>
+              </th>
+            </tr>
+            <tr class="repoDetails-infoRow">
+              <th class="repoDetails-infoKey u-block">Type: </th>
+              <th class="repoDetails-infoValue u-block">{{$ctrl.repo.type}}</th>
+            </tr>
+            <tr class="repoDetails-infoRow" ng-if="$ctrl.repo.trainingCenterApproved">
+              <th class="repoDetails-infoKey u-block">School:</th>
+              <th class="repoDetails-infoValue u-block">
+                <img 
+                  class="repoDetails-trainingCenterLogo" 
+                  src="{{$ctrl.repo.trainingCenterApproved.logo}}" 
+                />
+                {{$ctrl.repo.trainingCenterApproved.name}}
+              </th>
+            </tr>
+          </table>
+        </div>
+        <div class="repoDetails-skillsSection repoDetails-infoKey u-block">
+          <span class="repoDetails-skillsHeader">Tech stack:</span>
+          <div class="repoDetails-skillsContainer">
+            <span class="repoDetails-skill u-blueDarkLabel" ng-repeat="skill in $ctrl.repo.skills">{{skill.name}}</span>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="u-block repoDetails-contact">
+      <sr-contact-developer
+        developer-name="$ctrl.repo.developer.firstName"
+        developer-id="$ctrl.repo.developer._id"
+      ></sr-contact-developer>
+    </article>
+  </div>
 </section>

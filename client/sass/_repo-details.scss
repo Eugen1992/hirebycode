@@ -52,23 +52,36 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .repoDetails-desktopContainer {
+    position: relative;
+    flex-grow: 1;
+    background-color: $mainColor1;
+    padding-right: 30%;
+  }
   .repoDetails-name {
-    font-size: fontSize(48px);
+    font-size: fontSize(30px);
     flex: 0 0 70%;
     order: -1;
+    padding-bottom: 0;
+  }
+  .repoDetails-nameInner {
+    border-bottom: solid 1px $mainColor3;
+    padding-bottom: $mainMarginTabletDesktop/2;
+  }
+  .repoDetails-infoHeader {
+    display: none;
   }
   .repoDetails-author {
-    font-size: fontSize(36px);
+    font-size: fontSize(20px);
   }
   .repoDetails-imageContainer {
-    order: -1;
-    flex: 0 0 30%;
-  }
-  .repoDetails-contact {
-    order: -1;
-    flex: 0 0 70%;
-    padding: 0 20%;
-    margin-top: -7%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: $mainMarginTabletDesktop/2;
+
+    width: calc(30% - #{$mainMargin});
+    box-sizing: border-box;
   }
   .repoDetails-infoKey, .repoDetails-infoValue {
     padding-bottom: 0;
@@ -96,10 +109,7 @@
     display: inline-block;
     margin-bottom: 10px;
   }
-}
-
-@include tablet {
   .repoDetails-contact {
-    margin-top: 0;
+    margin: 0 20%;
   }
 }

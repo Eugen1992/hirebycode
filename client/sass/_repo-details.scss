@@ -41,33 +41,65 @@
   display: flex;
   flex-wrap: wrap;
 }
-.repoDetails-skill {
-  
-}
-.repoDetails-contacts {
-  position: absolute;
-  width: 300px;
-  top: 10px;
-  right: 10px;
-}
+
 .repoDetails-trainingCenterLogo {
   width: 25px;
 }
-.repoDetails-contact {
-  display: none;
-}
+
 
 @include tabletAndDesktop {
+  .repoDetails {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .repoDetails-name {
     font-size: fontSize(48px);
+    flex: 0 0 70%;
+    order: -1;
   }
   .repoDetails-author {
     font-size: fontSize(36px);
   }
-  .repoDetails-image {
-    width: 30%;
+  .repoDetails-imageContainer {
+    order: -1;
+    flex: 0 0 30%;
   }
   .repoDetails-contact {
-    display: block;
+    order: -1;
+    flex: 0 0 70%;
+    padding: 0 20%;
+    margin-top: -7%;
+  }
+  .repoDetails-infoKey, .repoDetails-infoValue {
+    padding-bottom: 0;
+    padding-top: 11px;
+  }
+  .repoDetails-infoContainer {
+    flex: 0 0 70%;
+  }
+  .repoDetails-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-conent: space-between;
+  }
+  .repoDetails-infoHeader {
+    flex: 0 0 100%;
+  }
+  .repoDetails-infoTableContainer {
+    flex: 1 1 50%;
+  }
+  .repoDetails-skillsSection {
+    flex: 1 1 50%;
+  }
+  .repoDetails-skillsHeader {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}
+
+@include tablet {
+  .repoDetails-contact {
+    margin-top: 0;
   }
 }

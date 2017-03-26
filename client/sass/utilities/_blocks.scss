@@ -5,6 +5,7 @@
     padding-right: 0;
   }
 }
+
 .u-fullWidthBlock {
   margin: 0 #{-$mainMargin/2};
 }
@@ -12,6 +13,12 @@
 @include phone {
   .u-block--mobile {
     padding: $mainMargin / 2;
+  }
+  .u-block--mobile {
+    &--onlyVertical {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 @include tabletAndDesktop {

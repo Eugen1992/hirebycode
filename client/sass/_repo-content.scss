@@ -5,13 +5,6 @@
   min-height: 250px;
 
 }
-.repoContent-header {
-  font-family: 'Playfair Display', sans;
-  color: $mainColor3;
-  font-size: fontSize(24px);
-  margin: 0;
-  background-color: white;
-}
 .repoContent-description {
   font-family: 'Playfair Display', sans;
   color: $mainColor3;
@@ -52,6 +45,10 @@
   font-size: 14px;
 }
 
+.repoContent-contact {
+  display: none;
+}
+
 @include tabletAndDesktop {
   .repoContent {
     flex-direction: row;
@@ -66,5 +63,8 @@
   .repoContent-fsRow {
     border-top: none;
     border-right: solid 1px grey;
+  }
+  .repoContent-contact {
+    display: block;
   }
 }

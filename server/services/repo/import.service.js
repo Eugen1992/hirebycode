@@ -8,6 +8,7 @@ module.exports = function importService (data, userId) {
     contents_url: data.contents_url,
     developer: userId,
     description: data.description,
+    link: data.link,
     plans: data.plans,
     skills: data.skills,
     createdAt: new Date().getTime(),

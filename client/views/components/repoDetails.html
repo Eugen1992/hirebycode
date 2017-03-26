@@ -21,12 +21,12 @@
       <h3 class="repoDetails-infoHeader u-block">Project info</h3>
       <div class="repoDetails-infoTableContainer">
         <table class="repoDetails-infoTable">
-          <tr class="repoDetails-infoRow">
+          <tr class="repoDetails-infoRow" ng-if="$ctrl.repo.link">
             <th class="repoDetails-infoKey u-block">Link: </th>
             <th class="repoDetails-infoValue u-block">
               <a 
                 target="_blank"
-                href="https://www.similarweb.com/">https://www.similarweb.com/</a>
+                href="{{link}}">{{$ctrl.repo.link}}</a>
             </th>
           </tr>
           <tr class="repoDetails-infoRow">

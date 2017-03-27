@@ -9,10 +9,7 @@ const storage = cloudinaryStorage({
   folder: 'folder-name',
   allowedFormats: ['jpg', 'png'],
   filename: function (req, file, cb) {
-    const extension = extensionLookup.exec(file.originalname)[1];
-    const fileName = req.userId + extension;
-    console.log(extension);
-    req.imageFileName = fileName;
+    req.imageFileName = req.userId;
     cb(null, req.userId);
   }
 });

@@ -6,27 +6,31 @@
   function EditDeveloperProfileController ($scope, userService) {
     var vm = this;
     vm.state = 'idle';
-    $scope.autocompleteOptions = {types: ['(cities)']};
+    vm.autocompleteOptions = {types: ['(cities)']};
     userService.fetchDeveloperDetails().then(function (info) {
       handleUserInfo(info);
     });
-    $scope.submit = function () {
+    vm.submit = function () {
+      if (!vm.form.$valid) {
+        console.log(vm.form.$error);
+        return;
+      }
       vm.state = 'loading';
-      userService.updateDeveloperDetails($scope.info)
+      userService.updateDeveloperDetails(vm.info)
         .then(function(userInfo) {
           vm.state = 'success';
           handleUserInfo(userInfo);
         }, function () {
           vm.state = 'error';
-          $scope.error = true;
+          vm.error = true;
         });
     }
 
     function handleUserInfo (info) {
       var hasLocation = info.city && info.country;
-      $scope.info = info;
+      vm.info = info;
 
-      $scope.location = hasLocation ? (info.city + ', ' + info.country) : null;
+      vm.location = hasLocation ? (info.city + ', ' + info.country) : null;
     }
   }
 })();

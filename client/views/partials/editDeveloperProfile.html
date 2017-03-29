@@ -1,58 +1,88 @@
 <main>
   <section class="u-block">
     <h2 class="u-block">Your profile</h2>
-    <b ng-if="!info.profileReadyForPublic" class="alert alert-warning editDeveloper-warning">We do not show projects of users without name, location or contacts. We will include your account and projects into our search results once you complete your profile.</b>
+    <b ng-if="!$ctrl.info.profileReadyForPublic" class="alert alert-warning editDeveloper-warning">We do not show projects of users without name, location and contacts. We will include your account and projects into our search results once you complete your profile.</b>
   </section>
   <section class="col-sm-8 u-fullWidthColumn u-block">
-    <div class="u-block">
-      <h3 class="editDeveloper-subsectionHeader">Contact info</h3>
-      <div class="form-group">
-        <label>
-          First Name
-          <input class="form-control" name="name" ng-model="info.firstName" />
-        </label>
-        <label>
-          Last name
-          <input class="form-control" name="lastName" ng-model="info.lastName" />
-        </label>
-        <label>
-          Position
-          <input class="form-control" name="position" ng-model="info.position" />
-        </label>
+    <form name="$ctrl.form" novalidate>
+      <div class="u-block">
+        <div class="form-group">
+          <sr-input
+            name="'firstName'"
+            form="$ctrl.form"
+            ng-model="$ctrl.info.firstName"
+            label="'First name'"
+            required="true"
+          ></sr-input>
+          <sr-input
+            name="'lastName'"
+            form="$ctrl.form"
+            ng-model="$ctrl.info.lastName"
+            label="'Last name'"
+            required="true"
+          ></sr-input>
+        </div>
+        <div class="form-group">
+          <sr-input
+            name="'position'"
+            form="$ctrl.form"
+            ng-model="$ctrl.info.position"
+            label="'Position'"
+          ></sr-input>
+        </div>
+        <div class="form-group">
+          <sr-input
+            name="'email'"
+            required="true"
+            form="$ctrl.form"
+            ng-pattern="'^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$'"
+            ng-model="$ctrl.info.email"
+            pattern-error="'It looks like you have provided an invalid email'"
+            label="'Email (when someone will want to hire, they will need a way to reach to you)'"
+          ></sr-input>
+        </div>
       </div>
-      <div class="form-group">
-        <label>When someone will want to hire, they will need a way to reach you out</label>
-        <textarea  class="form-control" ng-model="info.contacts" placeholder="Enter email, skype or a link to your CV">
-        </textarea>
+      <div class="u-block">
+        <div class="form-group">
+          <label class="u-inputContainer">
+            Location
+            <sr-red-star></sr-red-star>
+          
+            <input
+              vs-google-autocomplete="$ctrl.autocompleteOptions"
+              ng-model="$ctrl.location"
+              name="location"
+              required
+              vs-city="$ctrl.info.city" 
+              vs-country="$ctrl.info.country" 
+              vs-place-id="$ctrl.info.placeId"
+              type="text" 
+              class="form-control" 
+              placeholder="Enter city name"
+            >
+            <div
+              class="u-error"
+              ng-show="$ctrl.form.$submitted || $ctrl.form.location.$touched">
+              <div 
+                ng-show="$ctrl.form.location.$error.required">This field is required</div>
+            </div>
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="u-block">
-      <h3 class="editDeveloper-subsectionHeader">Location</h3>
-      <div class="form-group">
-        <input
-         vs-google-autocomplete="autocompleteOptions"
-         ng-model="location"
-         vs-city="info.city" 
-         vs-country="info.country" 
-         vs-place-id="info.placeId"
-         type="text" 
-         class="form-control" 
-         placeholder="Enter city name">
+      <div class="u-block editDeveloper-buttons">
+        <sr-submit-button 
+          error-text="'Something went wrong'"
+          success-text="'Your account was updated'"
+          class="editDeveloper-submitButton"
+          state="$ctrl.state"
+          ng-click="$ctrl.submit(info)"
+        >
+          Update profile
+        </sr-submit-button>
+        <button type="button" class="editDeveloper-cancelButton u-whiteButton" ui-sref="user-home">
+          I will do this later
+        </button>
       </div>
-    </div>
-    <div class="u-block editDeveloper-buttons">
-      <sr-submit-button 
-        error-text="'Something went wrong'"
-        success-text="'Your account was updated'"
-        class="editDeveloper-submitButton"
-        state="$ctrl.state"
-        ng-click="submit()"
-      >
-        Update profile
-      </sr-submit-button>
-      <button type="button" class="editDeveloper-cancelButton u-whiteButton" ui-sref="user-home">
-        I will do this later
-      </button>
-    </div>
+    </form>
   </section>
 </main>

@@ -19,10 +19,13 @@
       {{$ctrl.info.firstName}} {{$ctrl.info.lastName}}
     </div>
     <div>
-        <b>Location:</b> {{$ctrl.info.city}}, {{$ctrl.info.country}}
+        <b>Contact info:</b> {{$ctrl.info.email}}
+    </div>
+    <div ng-if="$ctrl.info.position">
+        <b>Position:</b> {{$ctrl.info.positison}}
     </div>
     <div>
-        <b>Contact info:</b> {{$ctrl.info.contacts}}
+        <b>Location:</b> {{$ctrl.info.city}}, {{$ctrl.info.country}}
     </div>
     <br/>
     <button type="button" class="btn btn-primary" ui-sref="edit-developer-profile">Edit profile</button>

@@ -6,7 +6,7 @@ module.exports = function (userId, data) {
     _id: ObjectId(userId)
   }
   const uQuery = {
-    contacts: data.contacts,
+    email: data.email,
     firstName: data.firstName,
     lastName: data.lastName,
     placeId: data.placeId,
@@ -20,6 +20,6 @@ module.exports = function (userId, data) {
 }
 
 function checkIsReadyForPublic (user) {
-  const { firstName, lastName, contacts, placeId } = user;
-  return firstName && lastName && contacts && placeId;
+  const { firstName, lastName, email, placeId } = user;
+  return firstName && lastName && email && placeId;
 }

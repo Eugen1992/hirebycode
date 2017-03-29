@@ -15,7 +15,7 @@ const userSchema = new Schema({
   githubLogin: String,
   githubToken: String,
   token: String,
-  contacts: String,
+  email: String,
   website: String,
   description: String,
   hasLogo: Boolean,
@@ -64,7 +64,6 @@ userSchema.statics.getDeveloperPublicProfile = function (id) {
   .populate('trainingCenters')
   .then(function ([user]) {
     return {
-      contacts: user.contacts,
       firstName: user.firstName,
       lastName: user.lastName,
       avatar: user.avatar,
@@ -85,7 +84,7 @@ userSchema.statics.getContactsById = function (userId) {
   return this.find({ 
     '_id': ObjectId(userId)
   }).limit(1).then(function (user) {
-    return user[0].contacts;
+    return user[0].email;
   });
 }
 userSchema.statics.getTrainingCenter = function (userId) {

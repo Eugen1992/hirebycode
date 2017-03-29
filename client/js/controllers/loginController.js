@@ -4,9 +4,9 @@ angular.module('showroom').controller('LoginController',  LoginController);
 function LoginController ($scope, $state, auth) {
   $scope.logInAsDeveloper = function () {
     auth.github().then(function (login) {
-        $state.go('user-home');
+        $state.go('edit-developer-profile');
     }, function (err) {
-        console.log('error');
+        console.log(err);
     });
   }
 }

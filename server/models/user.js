@@ -37,7 +37,7 @@ const userSchema = new Schema({
 userSchema.statics.createDeveloper = function (data) {
   var createQuery = Object.assign(
     data,
-    { type: 'developer', avatar: 'placeholder.png', repos: [], hidden: false });
+    { type: 'developer', repos: [], hidden: false });
 
   return this.create(createQuery);
 }

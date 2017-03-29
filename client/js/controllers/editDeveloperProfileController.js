@@ -23,8 +23,10 @@
     }
 
     function handleUserInfo (info) {
+      var hasLocation = info.city && info.country;
       $scope.info = info;
-      $scope.location = info.city + ', ' + info.country;
+
+      $scope.location = hasLocation ? (info.city + ', ' + info.country) : null;
     }
   }
 })();

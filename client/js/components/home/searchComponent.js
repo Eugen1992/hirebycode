@@ -4,8 +4,8 @@
     controller: SearchController
   });
 
-  SearchController.$inject = ['$q', '$state','$stateParams', 'FiltersService', 'SkillsService', 'TrainingCentersService'];
-  function SearchController ($q, $state, $stateParams, filtersService,  skills, trainingCenters) {
+  SearchController.$inject = ['$q', '$state','$stateParams', 'FiltersService', 'SkillsService', 'TrainingCentersService', 'Analytics'];
+  function SearchController ($q, $state, $stateParams, filtersService,  skills, trainingCenters, analyticsProvider) {
     var vm = this;
 
     vm.$onInit = function () {
@@ -58,6 +58,8 @@
     vm.addSchoolToFilters = function (school) {
       filtersService.addSchoolToFilters(school).then(function(newFilters) {
         vm.filters = angular.extend({}, newFilters);
+        console.log('adding school');
+        analyticsProvider.trackEvent('filtering', 'school', school.name);
         vm.updateState();
       });
     };

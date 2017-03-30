@@ -1,11 +1,12 @@
 <label class="u-inputContainer">
   <span class="u-inputLabel">{{$ctrl.label}}</span>
   <sr-red-star ng-if="$ctrl.required"></sr-red-star>
-  <input 
+  <textarea 
     placeholder="{{$ctrl.placeholder}}"
     class="form-control"
     ng-pattern="$ctrl.ngPattern" 
-    ng-model="$ctrl.ngModel" name="{{$ctrl.name}}" ng-required="$ctrl.required" />
+    ng-model="$ctrl.ngModel" name="{{$ctrl.name}}" ng-required="$ctrl.required">
+  </textarea>
   <div
     class="u-error"
     ng-show="$ctrl.form.$submitted || $ctrl.form[$ctrl.name].$touched">

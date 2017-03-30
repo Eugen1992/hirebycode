@@ -12,7 +12,6 @@
     });
     vm.submit = function () {
       if (!vm.form.$valid) {
-        console.log(vm.form.$error);
         return;
       }
       vm.state = 'loading';

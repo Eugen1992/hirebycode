@@ -12,18 +12,23 @@
   });
   RepoFormController.$inject = ['$scope', 'SkillsService', 'TrainingCentersService'];
   function RepoFormController ($scope, SkillsService, TrainingCentersService) {
-    this.$onInit = function () {
+    var vm = this;
+    vm.$onInit = function () {
       TrainingCentersService.getAll().then(function (centers) {
-        this.trainingCenters = centers;
-      }.bind(this));
+        vm.trainingCenters = centers;
+      });
       SkillsService.getSkills().then(function (skills) {
-        this.skills = SkillsService.skillsToStrings(skills, this.repo);
-      }.bind(this));
-      this.enteredSkills = SkillsService.skillsToStrings(this.repo.skills);
+        vm.skills = SkillsService.skillsToStrings(skills, vm.repo);
+      });
+      vm.enteredSkills = SkillsService.skillsToStrings(vm.repo.skills);
     }
-    this.submit = function () {
-      this.repo.skills = SkillsService.skillsToObjects(this.enteredSkills);
-      this.submitCallback();
+    vm.submit = function () {
+      if (!vm.form.$valid) {
+        console.log(vm.form.$error);
+        return;
+      }
+      vm.repo.skills = SkillsService.skillsToObjects(vm.enteredSkills);
+      vm.submitCallback();
     }
   }
 

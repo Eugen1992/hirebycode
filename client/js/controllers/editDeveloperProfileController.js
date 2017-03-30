@@ -1,9 +1,9 @@
 (function () {
   angular.module('showroom').controller('editDeveloperProfileController', EditDeveloperProfileController);
 
-  EditDeveloperProfileController.$inject = ['$scope', 'UserService'];
+  EditDeveloperProfileController.$inject = ['$scope', '$state', 'UserService'];
 
-  function EditDeveloperProfileController ($scope, userService) {
+  function EditDeveloperProfileController ($scope, $state, userService) {
     var vm = this;
     vm.state = 'idle';
     vm.autocompleteOptions = {types: ['(cities)']};
@@ -17,6 +17,7 @@
       vm.state = 'loading';
       userService.updateDeveloperDetails(vm.info)
         .then(function(userInfo) {
+          $state.go('user-home');
           vm.state = 'success';
           handleUserInfo(userInfo);
         }, function () {

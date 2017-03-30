@@ -11,8 +11,9 @@ const AuthController = {
       if (user === null) {
         res.send(401);
       } else {
-        
+
         res.status(200).json({
+          isNewUser: req.user.isNewUser,
           githubToken: req.user.accessToken,
           token: req.token,
           user: user

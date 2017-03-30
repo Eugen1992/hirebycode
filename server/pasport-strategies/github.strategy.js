@@ -21,12 +21,13 @@ module.exports = function () {
           console.log('User already exists');
 
           return done(null, {
+            isNewUser: false,
             id: user._id,
             accessToken
           });
         } else {
           registerDeveloper(profile.id, profile.username).then((newUser) => {
-            return done(null, newUser);
+            return done(null, Object.assign(newUser.toObject(), { isNewUser: true }));
           });
         }
       });

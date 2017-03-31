@@ -1,5 +1,6 @@
 const User = require('../../models/user.js');
 const ObjectId = require('mongodb').ObjectId;
+const trainingCenterStatus = require('../../models/constants/training-center-status.constants');
 
 module.exports = function updateTrainingCenters (developerId) {
   const sQuery = { _id: ObjectId(developerId) };
@@ -8,11 +9,16 @@ module.exports = function updateTrainingCenters (developerId) {
     .populate('repos')
     .then((user) => {
       return user.repos.reduce((allTrainingCenters, repo) => {
-        const trainingCenterAllreadyPresent = allTrainingCenters.indexOf(repo.trainingCenterApproved) > -1;
-        if (repo.hidden || trainingCenterAllreadyPresent) {
+        if (!repo.trainingCenter) {
           return allTrainingCenters;
         }
-        return repo.trainingCenterApproved ? [...allTrainingCenters, repo.trainingCenterApproved] : allTrainingCenters;
+        const trainingCenterAllreadyPresent = allTrainingCenters.indexOf(repo.trainingCenter) > -1;
+        const trainingCenterNotApproved = repo.trainingCenterStatus !== trainingCenterStatus.APPROVED;
+
+        if (trainingCenterNotApproved || repo.hidden || trainingCenterAllreadyPresent) {
+          return allTrainingCenters;
+        }
+        return [...allTrainingCenters, repo.trainingCenter];
       }, []);
     })
     .then((trainingCenters) => {

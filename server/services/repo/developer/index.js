@@ -1,3 +1,3 @@
 module.exports = {
-  updateRepo: require('./update-repo')
+  updateRepo: require('./update-repo.service')
 };

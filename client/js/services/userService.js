@@ -1,8 +1,8 @@
 (function () {
   angular.module('showroom').service('UserService', UserService);
 
-  UserService.$inject = ['$http', '$q', 'Upload', 'UserLocalService'];
-  function UserService ($http, $q, upload, userLocal) {
+  UserService.$inject = ['$http', '$q', 'Upload', 'UserLocalService', 'Analytics'];
+  function UserService ($http, $q, upload, userLocal, analytics) {
     var userData;
     var developerFetched = false;
     var trainingCenterFetched = false;
@@ -52,9 +52,11 @@
         method: 'PUT',
         data: { userImage: avatar }
       }).then(function(response) {
+        analytics.trackEvent('Developer', 'Upload avatar', 'success');
         userData.avatar = response.data.avatar;
         return userData;
       }, function (error) {
+        analytics.trackEvent('Developer', 'Upload avatar', 'error', error.status);
         console.log(error);
       });
     }

@@ -11,11 +11,11 @@ const RepoTrainingCenterController = {
       res.sendStatus(500);
     });
   },
-  toggleApprove: (req, res, next) => {
-    RepoServices.toggleTrainingCenterStatus({
+  changeStatus: (req, res, next) => {
+    RepoServices.TrainingCenter.changeTrainingCenterStatus({
       repoId: req.body.repoId,
       trainingCenterId: req.userId,
-      approved: req.body.approved
+      status: req.body.status
     })
     .then((repo) => {
       return UserServices.updateTrainingCenters(repo.developer)

@@ -181,7 +181,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 });
 
 angular.module('showroom').config(['AnalyticsProvider', function (AnalyticsProvider) {
-   AnalyticsProvider.setAccount('UA-94102105-1');
+  AnalyticsProvider.setAccount('UA-94102105-1');
 }]).run(['Analytics', function(Analytics) { }]);
 
 angular.module('showroom').run(function($rootScope, $state, UserLocalService) {

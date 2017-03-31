@@ -1,7 +1,14 @@
 angular.module('showroom').controller('TrainingCenterHomeController',  TrainingCenterHomeController);
 
-TrainingCenterHomeController.$inject = ['$scope', '$state', 'UserLocalService', 'TrainingCentersService', 'UserService', 'Upload'];
-function TrainingCenterHomeController ($scope, $state, user, trainingCenter, userService, upload) {
+TrainingCenterHomeController.$inject = [
+  '$scope', 
+  '$state', 
+  'UserLocalService', 
+  'TrainingCentersService', 
+  'UserService', 
+  'Upload',
+  'Analytics'];
+function TrainingCenterHomeController ($scope, $state, user, trainingCenter, userService, upload, analytics) {
   var vm = this;
   vm.profileFormState = 'idle';
 
@@ -13,7 +20,7 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
     $scope.approvedRepos = repos.approved;
   });
   $scope.approveRepo = function (repo) {
-    trainingCenter.approveRepo(repo)
+    trainingCenter.changeRepoStatus(repo, 'approved')
       .then(
         function (response) {}, 
         function (error) {
@@ -21,7 +28,7 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
       });
   }
   $scope.disapproveRepo = function (repo) {
-    trainingCenter.disapproveRepo(repo).then(function (response) {
+    trainingCenter.changeRepoStatus(repo, 'pending').then(function (response) {
     }, function (error) {
       console.log(error);
     });
@@ -30,8 +37,10 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
     vm.profileFormState = 'loading';
     userService.updateTrainingCenterDetails(vm.profile, $scope.newLogo)
       .then(function () {
+        analytics.trackEvent('Training Center', 'Edit profile', 'success');
         vm.profileFormState = 'success';
-      }, function () {
+      }, function (error) {
+        analytics.trackEvent('Training Center', 'Edit profile', 'error', error.status);
         vm.profileFormState = 'error';
       });
   }

@@ -3,14 +3,15 @@ const ObjectId = require('mongodb').ObjectId;
 const Schema = mongoose.Schema;
 const Promise = require('promise');
 const User = require('./user.js');
+const trainingCenterStatus = require('./constants/training-center-status.constants.js');
 
 const utils = require('./utils/repo.utils.js');
 
 const repoSchema = new Schema({
   name: String,
-  developer: {type: String, ref: 'User'},
+  developer: { type: String, ref: 'User' },
   providerId: Number,
-  skills: [{type: String, ref: 'Skill'}],
+  skills: [{ type: String, ref: 'Skill' }],
   description: String,
   link: String,
   type: String,
@@ -18,8 +19,14 @@ const repoSchema = new Schema({
   hidden: Boolean,
   contents_url: String,
   createdAt: Number,
-  trainingCenter: String,
-  trainingCenterApproved: {type: String, ref: 'User'}
+  trainingCenter: { type: String, ref: 'User' },
+  trainingCenterStatus: { type: String, $in: [ 
+    trainingCenterStatus.PENDING,
+    trainingCenterStatus.DECLINED,
+    trainingCenterStatus.APPROVED,
+    trainingCenterStatus.NONE 
+    ]
+  }
 });
 
 repoSchema.statics.getTrainingCenterRepos = function (trainingCenterId) {

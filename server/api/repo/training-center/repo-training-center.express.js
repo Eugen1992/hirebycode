@@ -12,7 +12,7 @@ router.get('/',
 router.put('/',
   jwtMidleware.decodeToken,
   authorizeMiddleware({userType: 'trainingCenter'}),
-  RepoTrainingCenterController.toggleApprove
+  RepoTrainingCenterController.changeStatus
 );
 
 router.delete('/:id',

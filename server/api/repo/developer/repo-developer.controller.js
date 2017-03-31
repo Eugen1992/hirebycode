@@ -34,7 +34,7 @@ const RepoDeveloperController = {
 
     SkillServices.registerNewSkills(req.body.skills)
     .then((skills) => {
-    req.body.skills = skills;
+      req.body.skills = skills;
       return RepoServices.import(req.body, req.userId);
     })
     .then((importedRepo) => {

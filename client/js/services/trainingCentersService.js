@@ -15,24 +15,15 @@
         return response.data;
      });
     }
-    this.approveRepo = function (repo) {
+    this.changeRepoStatus = function (repo, newStatus) {
       return $http.put('api/repo/training-center', {
         repoId: repo._id,
-        approved: true
+        status: newStatus
       }).then(function () {
-        trainingCenterRepos.pending.splice(trainingCenterRepos.pending.indexOf(repo), 1);
-        trainingCenterRepos.approved.push(repo);
-      }, function () {
-
-      });
-    }
-    this.disapproveRepo = function (repo) {
-      return $http.put('api/repo/training-center', {
-        repoId: repo._id,
-        approved: false
-      }).then(function () {
-        trainingCenterRepos.approved.splice(trainingCenterRepos.pending.indexOf(repo), 1);
-        trainingCenterRepos.pending.push(repo);
+        var oldStatus = repo.trainingCenterStatus;
+        repo.trainingCenterStatus = newStatus;
+        trainingCenterRepos[oldStatus].splice(trainingCenterRepos[oldStatus].indexOf(repo), 1);
+        trainingCenterRepos[newStatus].push(repo);
       }, function () {
 
       });

@@ -1,5 +1,6 @@
 const Repo = require('../../models/repo');
 const ObjectId = require('mongodb').ObjectId;
+const trainingCenterStatus = require('../../models/constants/training-center-status.constants');
 
 module.exports = function importService (data, userId) {
   const repo = new Repo({
@@ -14,6 +15,9 @@ module.exports = function importService (data, userId) {
     createdAt: new Date().getTime(),
     contactInfo: data.contactInfo,
     trainingCenter: data.trainingCenter,
+    trainingCenterStatus: data.trainingCenter 
+      ? trainingCenterStatus.PENDING 
+      : trainingCenterStatus.NONE,
     hidden: false
   });
 

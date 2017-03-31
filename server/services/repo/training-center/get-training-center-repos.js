@@ -1,25 +1,27 @@
 const Repo = require('../../../models/repo.js');
 const utils = require('../../../models/utils/repo.utils.js');
+const trainingCenterStatus = require('../../../models/constants/training-center-status.constants');
 
 module.exports = function getTrainingCenterRepos (trainingCenterId) {
     return Promise.all([
       Repo.find({
         trainingCenter: trainingCenterId,
-        trainingCenterApproved: { $ne: trainingCenterId },
+        trainingCenterStatus: trainingCenterStatus.PENDING,
         hidden: { $ne: true },
       })
           .populate('skills')
           .populate('developer'),
       Repo.find({
-        trainingCenterApproved: trainingCenterId,
+        trainingCenter: trainingCenterId,
+        trainingCenterStatus: trainingCenterStatus.APPROVED,
         hidden: { $ne: true },
       })
         .populate('skills')
         .populate('developer')
-        .populate('trainingCenterApproved')
+        .populate('trainingCenter')
         .then((repos) => {
           return repos.map((repo) => {
-            repo.trainingCenterApproved = repo.trainingCenterApproved.toObject({ getters: true });
+            repo.trainingCenter = repo.trainingCenter.toObject({ getters: true });
 
             return repo;
           });

@@ -1,4 +1,5 @@
 const Repo = require('../../../models/repo.js');
+const trainingCenterStatus = require('../../../models/constants/training-center-status.constants');
 
 module.exports = function derigesterTrainingCenterFromAll (id) {
   const sQuery = {
@@ -6,7 +7,8 @@ module.exports = function derigesterTrainingCenterFromAll (id) {
   };
   const uQuery = {
     $unset: {
-      trainingCenterApproved: null
+      trainingCenter: null,
+      trainingCenterStatus: trainingCenterStatus.NONE,
     }
   };
 

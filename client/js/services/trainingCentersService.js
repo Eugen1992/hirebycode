@@ -18,7 +18,8 @@
     this.changeRepoStatus = function (repo, newStatus) {
       return $http.put('api/repo/training-center', {
         repoId: repo._id,
-        status: newStatus
+        status: newStatus,
+        message: repo.trainingCenterMessage
       }).then(function () {
         var oldStatus = repo.trainingCenterStatus;
         repo.trainingCenterStatus = newStatus;

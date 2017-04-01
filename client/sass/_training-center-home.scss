@@ -2,14 +2,24 @@
   margin: 0;
 }
 .trainingCenterHome-requestDetails {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-content: top;
   margin-top: 20px; 
   margin-bottom: -25px;
 }
-
+.trainingCenterHome-declineMessage {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  z-index: 1;
+  border: solid 1px $mainColor3;
+}
+.trainingCenterHome-declineMessageInput {
+  display: block;
+}
 .trainingCenterHome-logo {
   width: 350px;
 }

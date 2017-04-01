@@ -15,7 +15,8 @@ const RepoTrainingCenterController = {
     RepoServices.TrainingCenter.changeTrainingCenterStatus({
       repoId: req.body.repoId,
       trainingCenterId: req.userId,
-      status: req.body.status
+      status: req.body.status,
+      message: req.body.message,
     })
     .then((repo) => {
       return UserServices.updateTrainingCenters(repo.developer)

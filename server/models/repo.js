@@ -19,6 +19,7 @@ const repoSchema = new Schema({
   hidden: Boolean,
   contents_url: String,
   createdAt: Number,
+  trainingCenterMessage: String,
   trainingCenter: { type: String, ref: 'User' },
   trainingCenterStatus: { type: String, $in: [ 
     trainingCenterStatus.PENDING,

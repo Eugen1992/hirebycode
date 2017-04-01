@@ -18,6 +18,7 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
   trainingCenter.getTrainingCenterRepos(user).then(function (repos) {
     $scope.pendingRepos = repos.pending;
     $scope.approvedRepos = repos.approved;
+    $scope.declinedRepos = repos.declined;
   });
   $scope.approveRepo = function (repo) {
     trainingCenter.changeRepoStatus(repo, 'approved')
@@ -29,6 +30,18 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
   }
   $scope.disapproveRepo = function (repo) {
     trainingCenter.changeRepoStatus(repo, 'pending').then(function (response) {
+    }, function (error) {
+      console.log(error);
+    });
+  }
+  $scope.startDecliningRepo = function (repo) {
+    repo.isDeclining = true;
+  }
+  $scope.cancelDecliningRepo = function (repo) {
+    repo.isDeclining = false;
+  }
+  $scope.declineRepo = function (repo) {
+    trainingCenter.changeRepoStatus(repo, 'declined').then(function (response) {
     }, function (error) {
       console.log(error);
     });

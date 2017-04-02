@@ -45,6 +45,16 @@
   display: flex;
   align-items: stretch;
 }
+.userHome-repoPreview {
+  &:hover {
+    .repoPreview-button {
+      position: relative;
+      z-index: 1;
+      @extend .u-greenButton;
+      @extend .u-paper;
+    }
+  }
+}
 .userHome-repoAdminPanel {
   position: absolute;
   justify-content: flex-end;
@@ -59,6 +69,7 @@
     display: flex;
   }
 }
+
 .userHome-adminButton {
   margin-left: 12px;
 }

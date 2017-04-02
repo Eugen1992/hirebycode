@@ -60,10 +60,10 @@
         console.log(error);
       });
     }
-    this.updateDeveloperAccountStatus = function (data) {
-      return $http.put('api/user/developer/account-status', data).then(function(response) {
-        userData = response.data;
-        return userData;
+    this.updateDeveloperAccountStatus = function (params) {
+      var hidden = params.hidden;
+      return $http.put('api/user/developer/account-status', params).then(function () {
+        userData.hidden = hidden;
       });
     }
     this.updateTrainingCenterDetails = function (data, logo) {

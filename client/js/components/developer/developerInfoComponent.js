@@ -39,7 +39,7 @@
       });
     }
     vm.handleStatusChange = function () {
-      userService.updateDeveloperAccountStatus({hidden: !vm.accountShown}).then();
+      userService.updateDeveloperAccountStatus({hidden: !vm.accountShown});
     }
   }
 })();

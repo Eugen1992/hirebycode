@@ -8,8 +8,15 @@
 .userHome-projectsList {
   max-width: 100%;
 }
-.userHome-projectsListHeader {
-  margin: 0;
+.userHome-notImported {
+}
+.userHome-notImportedAmount {
+  font-family: Raleway, 'sans-serif';
+  display: flex;
+  justify-content: center;
+  background-color: #c4cfd0;
+  color: $mainColor3;
+  cursor: pointer;
 }
 .userHome-message {
   padding: 20px;
@@ -17,11 +24,41 @@
 .userHome-importedRepos {
   margin: 20px;
 }
-.userHome-importedLabel {
-  margin: 0 12px;
-  padding: 6px 12px;
+
+.userHome-notImportedList {
+  list-style-type: none;
+  padding: 0;
 }
+.userHome-notImportedItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px;
+  margin-bottom: 11px;
+  background-color: $mainColor1;
+  font-family: 'Playfair Display', sans;
+  font-size: fontSize(26px);
+}
+
 .userHome-developerInfo {
+  padding: 0;
+  margin-right: 30px;
   display: flex;
   align-items: stretch;
+}
+.userHome-repoAdminPanel {
+  position: absolute;
+  justify-content: flex-end;
+  align-items: flex-start;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#a6aeaf, 0.49);
+  .userHome-repoPreview:hover & {
+    display: flex;
+  }
+}
+.userHome-adminButton {
+  margin-left: 12px;
 }

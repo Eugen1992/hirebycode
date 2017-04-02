@@ -1,6 +1,6 @@
 (function () {
   angular.module('showroom').component('srDeveloperList', {
-    templateUrl: 'client/views/components/developerList.html',
+    templateUrl: 'client/views/components/developer/developerList.html',
     bindings: {
       filters: '<'
     },

@@ -1,26 +1,35 @@
 <main class="userHome u-block">
-  <section class="col-md-8 u-block u-paper userHome-projectsList">
-    <h2 class="u-block userHome-projectsListHeader">Your Github projects</h2>
-    <sr-repo-preview 
-      ng-repeat="repo in userImportedRepos"
-      mode="'admin'" 
-      repo="repo.hbcData"
-      on-edit="editRepo(repo)"
-      on-delete="deleteRepo(repo)"
-      on-hide="hideRepo(repo)"
-      on-unhide="unhideRepo(repo)"
+  <developer-info class="col-md-3 userHome-developerInfo"></developer-info>
+  <section class="col-md-9 u-block u-paper userHome-projectsList">
+    <article 
+      class="userHome-notImported u-block" 
+      ng-if="$ctrl.userGithubRepos.length > 0"
     >
+      <div class="userHome-notImportedAmount u-block" 
+        ng-click="$ctrl.openNotImported()"
+        ng-if="!$ctrl.notImportedOpened">
+        <b>{{$ctrl.userGithubRepos.length}}</b>&nbsp;<span>more available for import projects</span>
+      </div>
+      <ul class="userHome-notImportedList" ng-if="$ctrl.notImportedOpened">
+        <li class="userHome-notImportedItem" ng-repeat="repo in $ctrl.userGithubRepos">
+          {{repo.name}}
+          <button class="u-whiteButton" ng-click="$ctrl.import(repo)">Import</button>
+        </li>
+      </ul>
+    </article>
+    <sr-repo-preview
+      class="userHome-repoPreview"
+      ng-repeat="repo in $ctrl.userImportedRepos"
+      repo="repo.hbcData"
+    >
+      <div class="userHome-repoAdminPanel u-block">
+        <button class="u-greyWhiteButton userHome-adminButton" ng-click="$ctrl.editRepo(repo)">Edit</button>
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isDeleting}" ng-click="$ctrl.deleteRepo(repo)">Remove</button>
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-show="repo.hbcData.hidden" ng-click="$ctrl.unhideRepo(repo)">Show</button>
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-hide="repo.hbcData.hidden" ng-click="$ctrl.hideRepo(repo)">Hide</button>
+      </div>
     </sr-repo-preview>
-    <ul class="list-group" ng-show="reposState === 'loaded'">
-      <li class="list-group-item clearfix" ng-repeat="repo in userGithubRepos">
-        {{repo.name}}
-        <button class="btn btn-primary pull-right" ng-click="import(repo)" ng-hide="repo.imported">Import</button>
-        <span ng-show="repo.imported" class="pull-right">
-
-        </span>
-        
-      </li>
-    </ul>
+    
     <div class="panel userHome-message panel-primary" ng-show="reposState === 'loading'">
       Loading...
     </div>
@@ -28,5 +37,4 @@
       Sorry, no user found.
     </div>
   </section>
-  <developer-info class="col-md-4 userHome-developerInfo"></developer-info>
 </main>

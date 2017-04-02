@@ -1,47 +1,51 @@
-.developerInfo {
-  padding: 20px;
-  margin-left: 20px;
-}
 .developerInfo-header {
   margin-top: 0;
 }
-.developerInfo-logo {
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-  margin-top: 20px;
+.developerInfo-avatar {
+  display: block;
+  margin: 0 auto;
+  width: 43%;
+  border-radius: 50%;
 }
 .developerInfo-avatarSubmit {
   display: inline-block;
   width: auto;
 }
-.developerInfo-row {
-  margin: 5px 0 20px;
-}
+
 .developerInfo-avatarControlButton {
   margin-right: 15px;
 }
 .developerInfo-name {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: fontSize(22.7px);
+  font-family: 'Playfair Display', sans;
+  text-align: center;
   margin: 5px 0 10px;
 }
-.developerInfo-hideAccount {
-  border-top: dashed 1px #ababab;
-  margin: 10px 0;
+.developerInfo-showProfile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: Raleway, 'sans-serif';
+  color: $mainColor3;
 }
-.developerInfo-hideButton {
-  margin: 20px 0 10px;
+.developerInfo-showProfileControl {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  margin-left: 4px;
 }
-.developerInfo-hideExplanation {
-  display: block;
+.developerInfo-showProfileValue {
+  font-weight: 600;
+  visibility: hidden;
+  &.is-visible {
+    visibility: visible;
+  }
 }
-.developerInfo-unhideExplanation {
-  display: block;
-  margin: 10px 0 0;
+.developerInfo-showProfileToggle {
+  margin: 0 4px;
 }
-.developerInfo-unhideAccount {
-  padding: 10px 0;
-  border-top: dashed 1px black;
-  border-bottom: dashed 1px black;
+
+.developerInfo-skills {
+  border-top: solid 1px $mainColor3;
 }

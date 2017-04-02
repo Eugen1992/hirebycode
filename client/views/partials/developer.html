@@ -27,14 +27,7 @@
       </table>
     </article>
     <div class="developerDetails-skillsContainer u-block">
-      <div class="developerDetails-skillsHeader">Focus</div>
-      <div class="u-blueDarkLabel" ng-repeat="skill in $ctrl.developer.skills">
-        {{skill.name}}
-      </div> 
-      <div class="developerDetails-skillsHeader">All skills</div>
-      <div class="u-blueLightLabel developerDetails-lightLabel" ng-repeat="skill in $ctrl.developer.skills">
-        {{skill.name}}
-      </div> 
+      <sr-developer-skills skills="$ctrl.developer.skills"></sr-developer-skills> 
     </div>
     <div class="u-block">
       <sr-contact-developer

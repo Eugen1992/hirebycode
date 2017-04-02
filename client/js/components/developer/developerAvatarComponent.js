@@ -1,6 +1,6 @@
 (function () {
   angular.module('showroom').component('developerAvatar', {
-    templateUrl: 'client/views/components/developerAvatar.html',
+    templateUrl: 'client/views/components/developer/developerAvatar.html',
     bindings: {
       avatarUrl: '<',
       onSubmit: '&',

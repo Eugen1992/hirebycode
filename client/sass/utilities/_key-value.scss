@@ -1,0 +1,16 @@
+.u-keyValueTable {
+  font-family: 'Playfair Display', sans;
+  margin: 0 auto;
+}
+
+.u-keyValueTable-key {
+  padding-right: 10px;
+}
+.u-keyValueTable-key, .u-keyValueTable-value {
+  padding-top: 0;
+  padding-bottom: 5px;
+  font-weight: 300;
+  color: $mainColor3;
+  font-size: fontSize(16px);
+  vertical-align: top;
+}

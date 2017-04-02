@@ -1,6 +1,6 @@
 (function () {
   angular.module('showroom').component('srContactDeveloper', {
-    templateUrl: 'client/views/components/contactDeveloper.html',
+    templateUrl: 'client/views/components/developer/contactDeveloper.html',
     bindings: {
       developerName: '<',
       state: '<',

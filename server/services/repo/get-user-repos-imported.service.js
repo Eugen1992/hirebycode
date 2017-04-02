@@ -7,10 +7,10 @@ module.exports = function getUserReposImported (userId) {
   return Repo.find({developer: userId})
   .populate('skills')
   .populate('developer')
-  .populate('trainingCenterApproved')
+  .populate('trainingCenter')
   .then((repos) => {
     return repos.map((repo) => {
-      repo.trainingCenterApproved = repo.trainingCenterApproved && repo.trainingCenterApproved.toObject();
+      repo.trainingCenter = repo.trainingCenter && repo.trainingCenter.toObject();
       return repo;
     });
   });

@@ -1,6 +1,7 @@
 (function () {
   angular.module('showroom').component('srRepoPreview', {
     templateUrl: 'client/views/components/repoPreview.html',
+    transclude: true,
     bindings: {
       repo: '<',
       hideAuthorName: '<',

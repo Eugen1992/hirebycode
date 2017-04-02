@@ -2,7 +2,8 @@
   angular.module('showroom').component('srRepoContent', {
     templateUrl: 'client/views/components/repoContent.html',
     bindings: {
-      repo: '<'
+      repo: '<',
+      hideDescription: '<',
     },
     controller: RepoContentController
   });

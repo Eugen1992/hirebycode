@@ -45,15 +45,7 @@
   display: flex;
   flex-wrap: wrap;
 }
-.developerDetails-skillsHeader {
-  flex: 1 1 100%;
-  font-family: 'Playfair Display', sans;
-  color: $mainColor3;
-  font-size: fontSize(18px);
-  border-bottom: solid 1px $mainColor3;
-  padding: 4px 0;
-  margin-bottom: 11px;
-}
+
 .developerDetails-darkLabel {
   background-color: #385571;
   color: white;

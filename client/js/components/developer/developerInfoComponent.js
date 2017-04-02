@@ -1,6 +1,6 @@
 (function () {
   angular.module('showroom').component('developerInfo', {
-    templateUrl: 'client/views/components/developerInfo.html',
+    templateUrl: 'client/views/components/developer/developerInfo.html',
     bindings: {
       user: '<'
     },
@@ -15,6 +15,7 @@
       vm.avatarState = 'idle';
       userService.fetchDeveloperDetails().then(function (info) {
         vm.info = info;
+        vm.accountShown = !info.hidden;
       });
     }
     vm.hideAccount = function () {
@@ -36,6 +37,9 @@
       }, function (error) {
         vm.avatarState = 'error';
       });
+    }
+    vm.handleStatusChange = function () {
+      userService.updateDeveloperAccountStatus({hidden: !vm.accountShown}).then();
     }
   }
 })();

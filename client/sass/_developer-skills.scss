@@ -1,0 +1,12 @@
+.developerSkills {
+  display: flex;
+  flex-wrap: wrap;
+}
+.developerSkills-skillsHeader {
+  flex: 1 1 100%;
+  font-family: 'Playfair Display', sans;
+  color: $mainColor3;
+  font-size: fontSize(18px);
+  padding: 0 0 4px;
+  margin-bottom: 11px;
+}

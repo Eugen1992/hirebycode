@@ -1,0 +1,51 @@
+<div class="u-block u-paper">
+  <div class="alert alert-warning" ng-if="!$ctrl.info.profileReadyForPublic">
+    <b>Your profile is not included in search.</b> Please fill in contacts and location info and we will add your profile to search results.
+  </div>
+  <section class="u-block u-block--onlyVertical">
+    <developer-avatar
+      avatar-url="$ctrl.info.avatar"
+      state="$ctrl.avatarState"
+      on-submit="$ctrl.updateAvatar(avatar)"
+    ></developer-avatar>
+    <div class="developerInfo-name">
+      {{$ctrl.info.firstName}} {{$ctrl.info.lastName}}
+    </div>
+    <table class="u-keyValueTable">
+      <tr>
+        <td class="u-keyValueTable-key">Contact info:</td>
+        <td class="u-keyValueTable-value">{{$ctrl.info.email}}</td>
+      </tr>
+      <tr ng-if="$ctrl.info.position" ng-if="$ctrl.info.position">
+        <td class="u-keyValueTable-key">Position:</td>
+        <td class="u-keyValueTable-value">{{$ctrl.info.position}}</td>
+      </tr>
+      <tr>
+        <td class="u-keyValueTable-key">Location:</td>
+        <td class="u-keyValueTable-value">{{$ctrl.info.city}}, {{$ctrl.info.country}}</td>
+      </tr>
+      <tr ng-if="$ctrl.info.trainingCenter">
+        <td class="u-keyValueTable-key">School:</td>
+        <td class="u-keyValueTable-value">{{$ctrl.info.trainingCenter.name}}</td>
+      </tr>
+    </table>
+    <div
+      class="developerInfo-showProfile u-block u-block--onlyVertical" 
+      ng-if="$ctrl.info.profileReadyForPublic"
+    >
+      <span>Show profile in search results:</span>
+      <label class="developerInfo-showProfileControl">
+        <span class="developerInfo-showProfileValue" ng-class="{'is-visible': !$ctrl.accountShown}">No</span>
+        <span class="developerInfo-showProfileToggle toggle-switch">
+          <input type="checkbox" ng-model="$ctrl.accountShown" ng-change="$ctrl.handleStatusChange()">
+          <span class="toggle-slider" ng-class="{'is-checked': $ctrl.accountShown}"></span>
+        </span>
+        <span class="developerInfo-showProfileValue" ng-class="{'is-visible': $ctrl.accountShown}">Yes</span>
+      </label>
+    </div>
+    <button type="button" class="u-whiteButton" ui-sref="edit-developer-profile">Edit profile</button>
+  </section>
+  <div class="u-block u-block--onlyVertical developerInfo-skills">
+    <sr-developer-skills skills="$ctrl.info.skills"></sr-developer-skills>
+  </div>
+</div>

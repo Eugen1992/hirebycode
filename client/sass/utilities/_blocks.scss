@@ -24,6 +24,10 @@
 @include tabletAndDesktop {
   .u-block {
     padding: $mainMarginTabletDesktop / 2;
+    &--onlyVertical {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
   .u-fullWidthBlock {
     margin: 0 #{-$mainMarginTabletDesktop / 2};

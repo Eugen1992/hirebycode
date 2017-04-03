@@ -9,7 +9,7 @@ module.exports = ({ userType }) => (req, res, next) => {
       type: userType,
       token
     };
-
+    console.log(userType);
     User.findOne(sQuery, (err, user) => {
       if (err) {
         res.sendStatus(500);

@@ -1,2 +1,14 @@
-<sr-developer-preview ng-repeat="developer in $ctrl.developers" developer="developer"></sr-developer-preview>
+<sr-developer-preview ng-repeat="developer in $ctrl.developersToShow" developer="developer"></sr-developer-preview>
 <sr-loader shown="$ctrl.state==='loading'"></sr-loader>
+<div 
+  class="developerList-pagination"
+  ng-if="$ctrl.hasMoreDevelopers"
+>
+  <svg class="developerList-loadMoreIcon" ng-click="$ctrl.loadMore()">
+    <use xlink:href="#client--svg--refresh" />
+  </svg>
+  <span class="developerList-loadMoreText" ng-click="$ctrl.loadMore()">More developers</span>
+</div>
+<div class="developerList-amountIndicator">
+  Showing {{$ctrl.developersToShow.length}} of {{$ctrl.developers.length}}
+</div>

@@ -60,7 +60,7 @@ const DeveloperController = {
       school: req.query.school,
       location: req.query.location,
     };
-    UserServices.getActiveDevelopers(filters)
+    DeveloperServices.getActive(filters)
     .then((developers) => {
       res.send(developers);
     })

@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "grunt build",
     "start": "cd build && node server.js",
-    "env-setup": "node env-variables-setup.js"
+    "env-setup": "node env-variables-setup.js",
+    "migration": "node server/migrations/runner"
   },
   "repository": {
     "type": "git",
@@ -59,6 +60,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "mongodb-migrations": "^0.8.5",
     "multer-storage-cloudinary": "^2.2.1"
   }
 }

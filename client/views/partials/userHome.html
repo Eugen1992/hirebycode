@@ -23,10 +23,27 @@
       repo="repo.hbcData"
     >
       <div class="userHome-repoAdminPanel u-block">
-        <button class="u-greyWhiteButton userHome-adminButton" ng-click="$ctrl.editRepo(repo)">Edit</button>
-        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isDeleting}" ng-click="$ctrl.deleteRepo(repo)">Remove</button>
-        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-show="repo.hbcData.hidden" ng-click="$ctrl.unhideRepo(repo)">Show</button>
-        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-hide="repo.hbcData.hidden" ng-click="$ctrl.hideRepo(repo)">Hide</button>
+        <button class="u-greyWhiteButton userHome-adminButton" ng-click="$ctrl.editRepo(repo)">
+          Edit
+          <svg class="userHome-adminButtonIcon">
+            <use xlink:href="#client--svg--pencil" />
+          </svg>
+        </button>
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isDeleting}" ng-click="$ctrl.deleteRepo(repo)">
+          Delete
+          <svg class="userHome-adminButtonIcon">
+            <use xlink:href="#client--svg--trash" />
+          </svg>
+        </button>
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-show="repo.hbcData.hidden" ng-click="$ctrl.unhideRepo(repo)">
+          Show
+        </button>
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-hide="repo.hbcData.hidden" ng-click="$ctrl.hideRepo(repo)">
+          Hide
+          <svg class="userHome-adminButtonIcon">
+            <use xlink:href="#client--svg--hidden" />
+          </svg>
+        </button>
       </div>
     </sr-repo-preview>
     <sr-loader shown="$ctrl.reposState === 'loading'"></sr-loader>

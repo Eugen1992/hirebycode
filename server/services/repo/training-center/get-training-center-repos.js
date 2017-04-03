@@ -14,8 +14,10 @@ module.exports = function getTrainingCenterRepos (trainingCenterId) {
       })
       .populate('skills')
       .populate('developer')
+      .populate('trainingCenter')
       .then((repos) => {
         return repos.reduce((sortedRepos, repo) => {
+          repo.trainingCenter = repo.trainingCenter.toObject();
           sortedRepos[repo.trainingCenterStatus].push(repo);
           return sortedRepos;
         }, sortedRepos);

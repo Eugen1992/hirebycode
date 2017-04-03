@@ -1,6 +1,6 @@
 <main class="userHome u-block">
-  <developer-info class="col-md-3 userHome-developerInfo"></developer-info>
-  <section class="col-md-9 u-block u-paper userHome-projectsList">
+  <developer-info class="col-md-4 userHome-developerInfo"></developer-info>
+  <section class="col-md-8 u-block u-paper userHome-projectsList">
     <article 
       class="userHome-notImported u-block" 
       ng-if="$ctrl.userGithubRepos.length > 0"
@@ -13,7 +13,7 @@
       <ul class="userHome-notImportedList" ng-if="$ctrl.notImportedOpened">
         <li class="userHome-notImportedItem" ng-repeat="repo in $ctrl.userGithubRepos">
           {{repo.name}}
-          <button class="u-whiteButton" ng-click="$ctrl.import(repo)">Import</button>
+          <button class="u-greenButton" ng-click="$ctrl.import(repo)">Import</button>
         </li>
       </ul>
     </article>
@@ -29,11 +29,8 @@
         <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-hide="repo.hbcData.hidden" ng-click="$ctrl.hideRepo(repo)">Hide</button>
       </div>
     </sr-repo-preview>
-    
-    <div class="panel userHome-message panel-primary" ng-show="reposState === 'loading'">
-      Loading...
-    </div>
-    <div class="panel userHome-message panel-warning" ng-show="reposState === 'failed'">
+    <sr-loader shown="$ctrl.reposState === 'loading'"></sr-loader>
+    <div class="panel userHome-message panel-warning" ng-show="$ctrl.reposState === 'failed'">
       Sorry, no user found.
     </div>
   </section>

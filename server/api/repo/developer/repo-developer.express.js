@@ -8,7 +8,11 @@ router.get('/',
   authorizeMiddleware({userType: 'developer'}),
   RepoDeveloperController.get
 );
-
+router.get('/for-edit/:id',
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'developer'}),
+  RepoDeveloperController.getForEdit
+);
 router.post('/',
   jwtMiddleware.decodeToken,
   authorizeMiddleware({userType: 'developer'}),

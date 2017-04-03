@@ -101,7 +101,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       controllerAs: '$ctrl',
       resolve: {
         repo: function (UserReposService, $stateParams, $q) {
-          return UserReposService.getRepoByHbcId($stateParams.id);
+          return UserReposService.getRepoToEdit($stateParams.id);
         }
       }
     })
@@ -112,7 +112,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       controller: 'EditController',
       resolve: {
         repo: function (UserReposService, $stateParams, $q) {
-          return UserReposService.getRepoByHbcId($stateParams.id);
+          return UserReposService.getRepoToEdit($stateParams.id);
         }
       }
     })

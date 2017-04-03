@@ -13,7 +13,7 @@ const DeveloperController = {
     let result;
     Promise.all([
       UserServices.getDeveloperProfile({ userId: req.params.id }),
-      RepoServices.getUserReposImported(req.params.id)
+      RepoServices.getUserReposImported(req.params.id, { onlyApprovedTrainingCenter: true })
     ])
     .then(function(results) {
       result = {

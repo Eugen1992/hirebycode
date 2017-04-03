@@ -1,19 +1,8 @@
+.developerInfo {
+  width: 100%;
+}
 .developerInfo-header {
   margin-top: 0;
-}
-.developerInfo-avatar {
-  display: block;
-  margin: 0 auto;
-  width: 43%;
-  border-radius: 50%;
-}
-.developerInfo-avatarSubmit {
-  display: inline-block;
-  width: auto;
-}
-
-.developerInfo-avatarControlButton {
-  margin-right: 15px;
 }
 .developerInfo-name {
   font-size: fontSize(22.7px);

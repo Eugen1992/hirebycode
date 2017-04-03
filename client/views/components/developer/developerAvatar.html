@@ -1,31 +1,34 @@
-<div class="developerInfo-formLine">
+<article>
   <div 
     ng-if="$ctrl.newAvatar"
     ngf-drop 
     ng-model="picFile" 
     ngf-pattern="image/*"
-    class="developerInfo-logo"
+    class="developerAvatar-newAvatar"
   >
     <img-crop 
-      image="$ctrl.newAvatar  | ngfDataUrl"
+      image="$ctrl.newAvatar | ngfDataUrl"
       result-image="$ctrl.croppedDataUrl"
       area-type="square"
       ng-init="$ctrl.croppedDataUrl=''">
     </img-crop>
   </div>
-  <img class="developerInfo-avatar" ng-hide="$ctrl.newAvatar" src="{{$ctrl.avatarUrl}}" />
-  <div class="developerInfo-row">
-    <button class="btn btn-default developerInfo-avatarControlButton" ngf-select ng-model="$ctrl.newAvatar">Choose new picture</button>
-    <button class="btn btn-default developerInfo-avatarControlButton" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">
+  <div class="developerAvatar-avatarContainer" ng-if="!$ctrl.newAvatar">
+    <img class="developerAvatar-avatar" src="{{$ctrl.avatarUrl}}" />
+
+    <svg class="developerAvatar-newPhotoIcon" ngf-select ng-model="$ctrl.newAvatar">
+      <use xlink:href="#client--svg--photo" />
+    </svg>
+  </div>
+  <div class="developerAvatar-buttonsSection">
+    <button class="btn btn-default developerAvatar-avatarControlButton" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">
       Cancel
       <svg class="u-buttonIcon is-black">
         <use xlink:href="#client--svg--cross"/>
       </svg>
     </button>
-  </div>
-  <div class="developerInfo-row">
     <sr-submit-button 
-      button-class="'developerInfo-avatarSubmit'"
+      button-class="'developerAvatar-avatarSubmit'"
       state="$ctrl.state"
       success-text="'Avatar updated'"
       error-text="'Something went wrong'"
@@ -35,4 +38,4 @@
       Save new logo
     </sr-submit-button>
   </div>
-</div>
+</article>

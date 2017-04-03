@@ -32,11 +32,12 @@
 .userHome-notImportedItem {
   display: flex;
   justify-content: space-between;
-  padding: 22px;
+  align-items: center;
+  padding: 14px 18px;
   margin-bottom: 11px;
   background-color: $mainColor1;
   font-family: 'Playfair Display', sans;
-  font-size: fontSize(26px);
+  font-size: fontSize(22px);
 }
 
 .userHome-developerInfo {

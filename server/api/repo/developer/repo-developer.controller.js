@@ -12,7 +12,18 @@ const RepoDeveloperController = {
         res.send(JSON.stringify(data));
       });
     } else {
-      res.sendStatus(500);
+      res.sendStatus(401);
+    }
+  },
+  getForEdit: (req, res, next) => {
+    var userId =  req.userId;
+    var repoId = req.params.id;
+    if (userId) {
+      RepoServices.Developer.getUserRepoToEdit(repoId).then(function (data) {
+        res.send(JSON.stringify(data));
+      });
+    } else {
+      res.sendStatus(401);
     }
   },
   deleteById: (req, res, next) => {

@@ -98,23 +98,10 @@ function UserReposService ($q, $http, $filter) {
     
     return promise;
   }
-  this.getRepoByHbcId = function (hbcId) {
-    var defer = $q.defer();
-    var promise = defer.promise;
-
-    var repo;
-    
-    if (fetched) {
-      repo = $filter('filter')(repos, {hbcId: hbcId}, true)[0];
-      defer.resolve(repo);
-    } else {
-      this.getUserRepos().then(function () {
-        repo = $filter('filter')(repos, {hbcId: hbcId}, true)[0];
-        defer.resolve(repo);
-      });
-    }
-    
-    return promise;
+  this.getRepoToEdit = function (hbcId) {
+    return $http.get(baseUrl + '/for-edit/' + hbcId).then(function(response) {
+      return response.data;
+    });
   }
   function fetch () {
     return $http.get(baseUrl);

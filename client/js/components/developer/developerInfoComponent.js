@@ -18,6 +18,8 @@
         vm.accountShown = !info.hidden;
       });
     }
+    vm.$onChanges = function (changes) {
+    }
     vm.hideAccount = function () {
       userService.updateDeveloperAccountStatus({hidden: true}).then(function(newInfo) {
         vm.info.hidden = true;
@@ -33,7 +35,7 @@
       userService.updateDeveloperAvatar(avatar).then(function(info) {
         vm.avatarState = 'success';
         vm.info = info;
-        console.log(vm.avatarState);
+        vm.info.avatar += '?' + new Date().getTime();
       }, function (error) {
         vm.avatarState = 'error';
       });

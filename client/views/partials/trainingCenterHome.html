@@ -24,9 +24,11 @@
         <button class="btn btn-warning" ng-click="startDecliningRepo(repo)">Decline</button>
         <div class="trainingCenterHome-declineMessage"  ng-show="repo.isDeclining">
           <label>
-            <textarea ng-model="repo.trainingCenterMessage"></textarea>
-          </label>
-          <button class="btn btn-danger" ng-click="startDecliningRepo(repo)">Confirm decline</button>
+            Please, explain a reason of decline to a developer
+            <textarea class="trainingCenterHome-declineMessageInput" ng-model="repo.trainingCenterMessage"></textarea>
+          </label><br/>
+          <button class="btn btn-default" ng-click="cancelDecliningRepo(repo)">Cancel</button>
+          <button class="btn btn-danger" ng-click="declineRepo(repo)">Confirm decline</button>
         </div>
       </div>
       <sr-repo-preview repo="repo"></sr-repo-preview>

@@ -1,0 +1,38 @@
+.developerAvatar-avatarContainer {
+  position: relative;
+}
+.developerAvatar-newAvatar {
+  height: 200px;
+  &:after {
+    content: '';
+    padding-top: 100%;
+    display: block;
+  }
+}
+.developerAvatar-avatar {
+  display: block;
+  margin: 0 auto;
+  width: 43%;
+  border-radius: 50%;
+}
+.developerAvatar-avatarSubmit {
+  display: inline-block;
+  width: auto;
+}
+
+.developerAvatar-avatarControlButton {
+  margin-right: 15px;
+}
+.developerAvatar-newPhotoIcon {
+  width: 44px;
+  height: 33px;
+  position: absolute;
+  bottom: 0;
+  left: 62%;
+  cursor: pointer;
+}
+.developerAvatar-buttonsSection {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}

@@ -1,10 +1,10 @@
 %svg-common {
-	background: url("svg/sprite.css-410c4c76.svg") no-repeat;
+	background: url("svg/sprite.css-cc1e07cb.svg") no-repeat;
 }
 
 .svg-client--svg--back {
 	@extend %svg-common;
-	background-position: 99.90248655913977% 53.74149659863946%;
+	background-position: 99.6203007518797% 41.68575063613231%;
 }
 
 .svg-client--svg--back-dims {
@@ -24,7 +24,7 @@
 
 .svg-client--svg--cross {
 	@extend %svg-common;
-	background-position: 100% 0;
+	background-position: 84.80202578268877% 54.91697416974169%;
 }
 
 .svg-client--svg--cross-dims {
@@ -34,7 +34,7 @@
 
 .svg-client--svg--dir {
 	@extend %svg-common;
-	background-position: 98.261543715847% 54.861111111111114%;
+	background-position: 98.70637329286798% 42.332041343669246%;
 }
 
 .svg-client--svg--dir-dims {
@@ -44,7 +44,7 @@
 
 .svg-client--svg--file {
 	@extend %svg-common;
-	background-position: 98.261543715847% 59.02777777777778%;
+	background-position: 96.88543247344461% 42.332041343669246%;
 }
 
 .svg-client--svg--file-dims {
@@ -54,7 +54,7 @@
 
 .svg-client--svg--gears {
 	@extend %svg-common;
-	background-position: 0 100%;
+	background-position: 94.76247987117553% 42.643266475644694%;
 }
 
 .svg-client--svg--gears-dims {
@@ -64,7 +64,7 @@
 
 .svg-client--svg--gears-single {
 	@extend %svg-common;
-	background-position: 99.07362258953168% 44.91228070175438%;
+	background-position: 97.32850609756098% 38.756510416666664%;
 }
 
 .svg-client--svg--gears-single-dims {
@@ -74,7 +74,7 @@
 
 .svg-client--svg--gears-single-white {
 	@extend %svg-common;
-	background-position: 99.07362258953168% 50.175438596491226%;
+	background-position: 99.61509146341463% 38.756510416666664%;
 }
 
 .svg-client--svg--gears-single-white-dims {
@@ -84,7 +84,7 @@
 
 .svg-client--svg--github {
 	@extend %svg-common;
-	background-position: 93.15748925661255% 67.24004564968725%;
+	background-position: 82.02806474066902% 95.66711679371308%;
 }
 
 .svg-client--svg--github-dims {
@@ -92,13 +92,53 @@
 	height: 438.549px;
 }
 
+.svg-client--svg--hidden {
+	@extend %svg-common;
+	background-position: 99.98914282612236% 0;
+}
+
+.svg-client--svg--hidden-dims {
+	width: 841.9px;
+	height: 595.3px;
+}
+
+.svg-client--svg--pencil {
+	@extend %svg-common;
+	background-position: 45.70327343792411% 99.93004896572398%;
+}
+
+.svg-client--svg--pencil-dims {
+	width: 841.9px;
+	height: 595.3px;
+}
+
+.svg-client--svg--photo {
+	@extend %svg-common;
+	background-position: 0 99.93004896572398%;
+}
+
+.svg-client--svg--photo-dims {
+	width: 841.9px;
+	height: 595.3px;
+}
+
 .svg-client--svg--thick-cross {
 	@extend %svg-common;
-	background-position: 99.70147551978538% 55.59322033898305%;
+	background-position: 99.50807360120166% 43.10279187817259%;
 }
 
 .svg-client--svg--thick-cross-dims {
 	width: 21px;
 	height: 20px;
+}
+
+.svg-client--svg--trach {
+	@extend %svg-common;
+	background-position: 54.28586938819826% 0;
+}
+
+.svg-client--svg--trach-dims {
+	width: 841.9px;
+	height: 595.3px;
 }
 

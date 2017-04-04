@@ -89,7 +89,7 @@ const RepoDeveloperController = {
         return UserServices.updateSkills(req.userId);
       })
       .then(function() {
-        res.sendStatus(200);
+        res.send(repo);
       })
       .catch(function(err) {
         console.log(err);

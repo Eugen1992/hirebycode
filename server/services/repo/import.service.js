@@ -19,6 +19,9 @@ module.exports = function importService (data, userId) {
     trainingCenterStatus: data.trainingCenter 
       ? trainingCenterStatus.PENDING 
       : trainingCenterStatus.NONE,
+    trainingCenterMessage: data.trainingCenter
+      ? trainingCenterStatus.PENDING_MESSAGE
+      : null,
     hidden: false
   });
 

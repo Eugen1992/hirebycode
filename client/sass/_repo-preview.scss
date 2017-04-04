@@ -35,6 +35,35 @@
 .repoPreview-trainingCenterLogo {
   height: 25px;
 }
+.repoPreview-trainingCenterStatus {
+  text-transform: uppercase;
+  font-family: Raleway, 'sans-serif';
+  &.is-pending {
+    color: $warningColor;
+  }
+  &.is-declined {
+    color: $errorWarning;
+  }
+  &.is-approved {
+    color: $mainColor2;
+  }
+}
+.repoPreview-trainingCenterMessage {
+  margin-top: -15px;
+  padding: 11px;
+  font-family: Raleway, 'sans-serif';
+  color: white;
+  font-size: fontSize(11px);
+  &.is-pending {
+    background-color: $warningColor;
+  }
+  &.is-declined {
+    background-color: $errorWarning;
+  }
+  &.is-approved {
+    display: none;
+  }
+}
 
 .repoPreview-adminPanel {
   border-top: solid 1px $mainColor3;

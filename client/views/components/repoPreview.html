@@ -18,10 +18,18 @@
             <th class="repoPreview-detailValue u-block">
               <img class="repoPreview-trainingCenterLogo" src="{{$ctrl.repo.trainingCenter.logo}}"/>
               {{$ctrl.repo.trainingCenter.name}}
+              <span class="repoPreview-trainingCenterStatus is-{{$ctrl.repo.trainingCenterStatus}}">{{$ctrl.repo.trainingCenterStatus}}</span>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2" class="u-block">
+              <div 
+                ng-if="$ctrl.repo.trainingCenterMessage"
+                class="repoPreview-trainingCenterMessage is-{{$ctrl.repo.trainingCenterStatus}}">{{$ctrl.repo.trainingCenterMessage}}
+              </div>
             </th>
           </tr>
         </table>
-      </article>
       <div class="u-block repoPreview-skillsContainer">
         <div class="u-blueDarkLabel" ng-repeat="skill in $ctrl.repo.skills">
           {{skill.name}}

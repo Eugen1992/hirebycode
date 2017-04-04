@@ -20,6 +20,7 @@
     }
     vm.$onChanges = function (changeObject) {
       if (changeObject.filters) {
+        console.log(changeObject.filters);
         vm.fetch();
       }
     }

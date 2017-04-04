@@ -12,10 +12,15 @@ module.exports = function updateRepo (repoId, data) {
     .then((repo) => {
       if (!data.trainingCenter) {
         uQuery.$set.trainingCenterStatus = trainingCenterStatus.NONE;
+        delete uQuery.$set.trainingCenterMessage;
+        uQuery.$unset ={
+          trainingCenterMessage: null
+        };
       } else if (repo.trainingCenter !== data.trainingCenter) {
         uQuery.$set.trainingCenterStatus = trainingCenterStatus.PENDING;
+        uQuery.$set.trainingCenterMessage = trainingCenterStatus.PENDING_MESSAGE;
       }
 
-      return Repo.update(sQuery, uQuery,  { new: true });
+      return Repo.update(sQuery, uQuery, { new: true });
     });
 }

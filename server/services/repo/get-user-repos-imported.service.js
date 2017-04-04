@@ -4,7 +4,10 @@ const utils = require('../../models/utils/repo.utils.js');
 const trainingCenterStatus = require('../../models/constants/training-center-status.constants');
 
 module.exports = function getUserReposImported (userId, { onlyApprovedTrainingCenter } = {}) {
-  return Repo.find({developer: userId})
+  const projection = onlyApprovedTrainingCenter
+    ?  { trainingCenterStatus: 0, trainingCenterMessage: 0 }
+    :  {};
+  return Repo.find({developer: userId}, projection)
   .populate('skills')
   .populate('developer')
   .populate('trainingCenter')

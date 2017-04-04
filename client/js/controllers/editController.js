@@ -3,21 +3,21 @@ angular.module('showroom').controller('EditController', EditController);
 
 function EditController ($scope, $element, $state, $stateParams, repo, skills, repos) {
   var vm = this;
-  $scope.repo = repo;
+  vm.repo = repo;
 
   vm.state = 'idle';
-  $scope.submit = function () {
+  vm.submit = function () {
     vm.state = 'loading';
-    repos.update($scope.repo).then(function () {
+    repos.update(vm.repo).then(function () {
       vm.state = 'success';
     }, function () {
       vm.state = 'error';
     });
   }
-  $scope.switchToPreview = function () {
-    $state.go('edit-preview', {id: repo.hbcId});
+  vm.switchToPreview = function () {
+    $state.go('edit-preview', {id: vm.repo.hbcId});
   }
-  $scope.switchToEdit = function () {
-    $state.go('edit', {id: repo.hbcId});
+  vm.switchToEdit = function () {
+    $state.go('edit', {id: vm.repo.hbcId});
   }
 }

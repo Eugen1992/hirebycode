@@ -76,8 +76,7 @@ function UserReposService ($q, $http, $filter) {
     });
   }
   this.update = function (repo) {
-    var dataToSend = repo.hbcData;
-    return $http.put(baseUrl + '/' + repo.hbcId, dataToSend);
+    return $http.put(baseUrl + '/' + repo._id, repo);
   }
   this.getByProviderId = function (repoProviderId) {
     var defer = $q.defer();

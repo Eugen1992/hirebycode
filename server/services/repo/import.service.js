@@ -6,6 +6,7 @@ module.exports = function importService (data, userId) {
   const repo = new Repo({
     name: data.name,
     providerId: data.providerId,
+    type: data.type,
     contents_url: data.contents_url,
     developer: userId,
     description: data.description,
@@ -25,6 +26,12 @@ module.exports = function importService (data, userId) {
   return repo.save().then((repo) => {
     return Repo.findOne({ _id: ObjectId(repo._id)})
       .populate('skills')
-      .populate('developer');;
+      .populate('trainingCenter')
+      .populate('developer')
+      .then((repo) => {
+        repo.trainingCenter = repo.trainingCenter.toObject();
+
+        return repo;
+      });
   });
 }

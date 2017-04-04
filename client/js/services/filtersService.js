@@ -3,6 +3,7 @@ app.service('FiltersService', FiltersService);
 
 function FiltersService ($http, $q, skillsService, trainingCentersService, locationService) {
   var fetched;
+  var stateParsed;
   var filtersList ={};
   var filters =  {
     skill: {},
@@ -41,10 +42,13 @@ function FiltersService ($http, $q, skillsService, trainingCentersService, locat
     });
   };
   this.createFiltersFromState = function (stateParams) {
+    if (stateParsed) {
+      return $q.resolve(filters);
+    }
     this.createSkillFiltersFromState(stateParams);
     this.createSchoolFiltersFromState(stateParams);
     this.createLocationFiltersFromState(stateParams);
-
+    stateParsed = true;
     return $q.resolve(filters);
   };
   this.createSkillFiltersFromState = function (stateParams) {

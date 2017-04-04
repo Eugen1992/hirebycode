@@ -27,6 +27,7 @@
         return;
       }
       vm.repo.skills = SkillsService.skillsToObjects(vm.enteredSkills);
+      vm.repo.trainingCenter = vm.trainingCenter || null;
       vm.submitCallback();
     }
   }

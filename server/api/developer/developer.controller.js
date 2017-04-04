@@ -57,7 +57,7 @@ const DeveloperController = {
     const skillFilter = req.query.skill ? req.query.skill.split(',') : null;
     const filters = {
       skill: skillFilter,
-      school: req.query.school,
+      trainingCenter: req.query.school,
       location: req.query.location,
     };
     DeveloperServices.getActive(filters)

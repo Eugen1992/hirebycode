@@ -8,8 +8,14 @@ const RepoDeveloperController = {
     var userId =  req.userId;
     var providerLogin = req.login;
     if (userId) {
-      RepoServices.getUserReposFull(userId, providerLogin).then(function (data) {
+      RepoServices.getUserReposFull(userId, providerLogin)
+      .then(function (data) {
         res.send(JSON.stringify(data));
+        return data;
+      })
+      .catch((error) => {
+        console.log(error);
+        res.send(error);
       });
     } else {
       res.sendStatus(401);
@@ -27,7 +33,7 @@ const RepoDeveloperController = {
     }
   },
   deleteById: (req, res, next) => {
-    Repo.find({ _id: req.params.id}).remove()
+    Repo.findByIdAndRemove(req.params.id)
     .then(() => {
       return UserServices.deregisterRepo(req.userId, req.params.id);
     })

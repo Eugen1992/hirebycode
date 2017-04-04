@@ -24,14 +24,8 @@ module.exports = function getUserRepos (userId, providerLogin) {
         }
       });
       resolveListFormed(reposFromGithub);
-    })
-    .catch((err) => {
-      console.log(err);
     });
-    
-  }).catch((err) => {
-      console.log(err);
-    });;
+  });
   return promise;
 }
 

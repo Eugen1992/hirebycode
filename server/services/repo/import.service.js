@@ -32,7 +32,7 @@ module.exports = function importService (data, userId) {
       .populate('trainingCenter')
       .populate('developer')
       .then((repo) => {
-        repo.trainingCenter = repo.trainingCenter.toObject();
+        repo.trainingCenter = repo.trainingCenter && repo.trainingCenter.toObject();
 
         return repo;
       });

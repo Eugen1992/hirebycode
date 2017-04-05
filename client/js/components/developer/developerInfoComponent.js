@@ -34,9 +34,8 @@
       vm.avatarState = 'loading';
       userService.updateDeveloperAvatar(avatar).then(function(info) {
         vm.avatarState = 'success';
-        vm.info = info;
         vm.info.avatar += '?' + new Date().getTime();
-      }, function (error) {
+      }).catch(function (error) {
         vm.avatarState = 'error';
       });
     }

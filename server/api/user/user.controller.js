@@ -74,9 +74,10 @@ const UserController = {
       UserServices.updateDeveloperAvatar(req.userId, req.imageFileName)
       .then(function (avatarData) {
         res.send(avatarData);
-      }, function (err) {
-        console.log(err);
-        res.status(500).send(err);
+      })
+      .catch(function (error) {
+        console.log(error);
+        res.send(error);
       });
     } else {
       res.send(400);

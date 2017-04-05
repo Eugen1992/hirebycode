@@ -42,7 +42,6 @@
         userData = response.data;
         return userData;
       }, function (error) {
-        console.log(error);
         return error;
       });
     }
@@ -57,7 +56,7 @@
         return userData;
       }, function (error) {
         analytics.trackEvent('Developer', 'Upload avatar', 'error', error.status);
-        console.log(error);
+        return $q.reject(error);
       });
     }
     this.updateDeveloperAccountStatus = function (params) {

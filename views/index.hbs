@@ -102,11 +102,7 @@
 
     <!-- endbuild -->
     <script>
-    {{#if isProduction}}
-        window.env = 'production';
-    {{else}}
-        window.env = 'local';
-    {{/if}}
+    window.env = '{{{env}}}' || 'local';
     </script>
   </head>
   <body ng-app="showroom" class="root-body">

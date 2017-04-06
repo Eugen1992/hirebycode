@@ -57,14 +57,14 @@ function AuthService ($q, $http, $window, userLocalService) {
 
   function buildUrl () {
     var url = 'https://github.com/login/oauth/authorize';
-    var localClientId = '11ab72fc5d5b195ee720';
-    var productionClientId = '46704eae5252da4bc665';
-    var clientId = window.env === 'local' ? localClientId : productionClientId;
-    var redirectUrl = 'http://www.hirebycode.me/api/auth/github-login';
+    var clientIds = {
+      local: '11ab72fc5d5b195ee720',
+      test: 'eb5f166749f8dd122fb0',
+      production: '46704eae5252da4bc665'
+    };
+    var clientId = clientIds[window.env];
 
     url += '?client_id=' + clientId;
-    url += '&scope=user';
-    url += '&redirectUrl=' + redirectUrl;
 
     return url;
   }

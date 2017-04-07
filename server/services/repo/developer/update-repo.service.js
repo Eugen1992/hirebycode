@@ -21,6 +21,8 @@ module.exports = function updateRepo (repoId, data) {
         uQuery.$set.trainingCenterMessage = trainingCenterStatus.PENDING_MESSAGE;
       }
 
-      return Repo.update(sQuery, uQuery, { new: true });
+      return Repo.findOneAndUpdate(sQuery, uQuery, { new: true })
+        .populate('skills')
+        .populate('trainingCenter');
     });
 }

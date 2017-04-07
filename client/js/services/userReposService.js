@@ -76,7 +76,11 @@ function UserReposService ($q, $http, $filter) {
     });
   }
   this.update = function (repo) {
-    return $http.put(baseUrl + '/' + repo._id, repo);
+    return $http.put(baseUrl + '/' + repo._id, repo)
+      .then(function (response) {
+        replaceWithUpdate(response.data);
+        return response.data;
+      });
   }
   this.getByProviderId = function (repoProviderId) {
     var defer = $q.defer();
@@ -113,6 +117,14 @@ function UserReposService ($q, $http, $filter) {
   function deleteByModel(repo) {
     return $http.delete(baseUrl + '/' + repo.hbcId).then(function () {
       repo.imported = false;
+      return repo;
+    });
+  }
+  function replaceWithUpdate(newRepo) {
+    repos = repos.map((repo) => {
+      if (repo.hbcId === newRepo._id) {
+        repo.hbcData = newRepo;
+      }
       return repo;
     });
   }

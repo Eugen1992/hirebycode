@@ -80,7 +80,11 @@ const RepoDeveloperController = {
       SkillServices.registerNewSkills(req.body.skills)
       .then((skills) => {
         req.body.skills = skills;
-        return RepoServices.Developer.updateRepo(req.params.id, req.body)
+        return RepoServices.Developer.updateRepo(req.params.id, req.body).
+          then((updatedRepo) => {
+            repo = updatedRepo;
+            return updatedRepo;
+          });
       })
       .then(() => {
         return UserServices.updateTrainingCenters(req.userId)

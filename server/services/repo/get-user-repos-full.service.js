@@ -32,7 +32,13 @@ module.exports = function getUserRepos (userId, providerLogin) {
 function getReposFromGithub (userName) {
   var githubReposPromise = new Promise(function (resolve, reject) {
     var options = {
-      url: 'https://api.github.com/users/' + userName + '/repos' + '?client_id=11ab72fc5d5b195ee720&client_secret=3ab8338e26b13934fdefb7b59aa70b549651dcff',
+      url: 'https://api.github.com/users/' + 
+        userName + 
+        '/repos' + 
+        '?client_id=' +
+        process.env.GITHUB_CLIENT_ID +
+        '&client_secret=' +
+        process.env.GITHUB_SECRET,
       headers: {
         'User-Agent': 'HireByCode',
       }

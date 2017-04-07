@@ -7,7 +7,7 @@ module.exports = {
         iss: req.hostname,
         userId: req.user.id
       };
-      req.token = jwt.encode(payload, 'secret');
+      req.token = jwt.encode(payload, process.env.JWT_SECRET);
     }
     next();
   },
@@ -15,7 +15,7 @@ module.exports = {
     const token = req.headers.authorization;
 
     if (req.headers.authorization) {
-      const decodedToken = jwt.decode(token, 'secret');
+      const decodedToken = jwt.decode(token, process.env.JWT_SECRET);
 
       req.userId = decodedToken.userId;
     }

@@ -43,16 +43,13 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       }
     })
     .state('training-center', {
-      url: '/school/:id',
+      url: '/school/:id?searchType&skillFilter&schoolFilter&locationFilter',
       templateUrl: 'client/views/partials/trainingCenter.html',
       controller: 'TrainingCenterController',
       controllerAs: '$ctrl',
       resolve: {
         trainingCenter: function (TrainingCentersService, $stateParams) {
           return TrainingCentersService.getTrainingCenterDetailsById($stateParams.id);
-        },
-        developers: function (DeveloperService, $stateParams) {
-          return DeveloperService.getDevelopersByTrainingCenter($stateParams.id);
         }
       }
     })

@@ -1,9 +1,14 @@
-TrainingCenterController.$inject = ['$scope', 'developers', 'trainingCenter'];
+TrainingCenterController.$inject = ['$scope', 'trainingCenter'];
 angular.module('showroom').controller('TrainingCenterController', TrainingCenterController);
 
-function TrainingCenterController ($scope, developers, trainingCenter) {
+function TrainingCenterController ($scope, trainingCenter) {
   var vm = this;
 
   vm.trainingCenter = trainingCenter;
-  vm.developers = developers;
+  vm.predefinedFilters = {
+    school: trainingCenter
+  };
+  vm.hiddenFilters = {
+    school: true
+  };
 }

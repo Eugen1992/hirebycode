@@ -22,10 +22,13 @@ function DeveloperService ($http) {
       return response.data;
     });
   } 
-  this.getActiveDevelopers = function (filters) {
+  this.getActiveDevelopers = function (filters, canceller) {
     filters = filters || {};
 
-    return $http.get('/api/developer/active', {
+    return $http({
+        method: 'GET',
+        url: '/api/developer/active',
+        timeout: canceller.promise,
         params: {
           skill: Object.keys(filters.skill).join(','),
           location: filters.location && filters.location.placeId,

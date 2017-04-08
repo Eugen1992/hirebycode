@@ -1,7 +1,12 @@
 (function () {
   angular.module('showroom').component('srSearch', {
     templateUrl: 'client/views/components/search.html',
-    controller: SearchController
+    controller: SearchController,
+    bindings: {
+      predefinedFilters: '<',
+      hiddenFilters: '<',
+      header: '<',
+    }
   });
 
   SearchController.$inject = ['$q', '$state','$stateParams', 'FiltersService', 'SkillsService', 'TrainingCentersService', 'Analytics'];
@@ -9,6 +14,11 @@
     var vm = this;
 
     vm.$onInit = function () {
+      vm.hiddenFilters = angular.merge({
+        skill: false,
+        school: false,
+        location: false,
+      }, vm.hiddenFilters);
       vm.searchType = $stateParams.searchType || 'developers';
       vm.filters = {
         skill: {},
@@ -16,15 +26,22 @@
         location: {},
         flattenFilters: []
       };
-
       vm.loadFiltersLists()
         .then(function () {
           return filtersService.createFiltersFromState($stateParams);
         })
         .then(function (filters) {
-          vm.filters = filters;
+          return filtersService.addPredefinedFilters(vm.predefinedFilters);
+        })
+        .then(function (filters) {
+          filters.flattenFilters = filters.flattenFilters.filter(function (filter) {
+            return vm.hiddenFilters[filter.type] === false;
+          });
+          console.log(filters.school);
+          vm.filters = angular.extend({}, filters);
         });
     };
+
     vm.loadFiltersLists = function () {
       return filtersService.loadFiltersLists().then(function (filtersLists) {
         vm.skillsList = filtersLists.skills;
@@ -75,8 +92,8 @@
       var newParams = {
         searchType: vm.searchType,
         skillFilter: Object.keys(vm.filters.skill).join(),
-        schoolFilter: vm.filters.school ? vm.filters.school._id : null,
-        locationFilter: vm.filters.location ? vm.filters.location._id : null
+        schoolFilter: (vm.filters.school && !vm.hiddenFilters.school) ? vm.filters.school._id : null,
+        locationFilter: (vm.filters.location && !vm.hiddenFilters.location) ? vm.filters.location._id : null
       };
       $state.go(
         $state.current.name,

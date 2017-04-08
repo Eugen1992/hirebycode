@@ -1,6 +1,8 @@
 <section class="search">
   <div class="col-md-4 u-columnFullWidth">
+    <h3 class="u-blockTitle u-textCenter">{{$ctrl.header || 'Find Developers'}}</h3>
     <sr-search-filters
+      hidden-filters="$ctrl.hiddenFilters" 
       skills="$ctrl.skillsList"
       locations="$ctrl.locationsList"
       schools="$ctrl.schoolsList"

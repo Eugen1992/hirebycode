@@ -62,7 +62,14 @@ const DeveloperController = {
     };
     DeveloperServices.getActive(filters)
     .then((developers) => {
-      res.send(developers);
+      if (!req.query.school) {
+        setTimeout(() => {
+          res.send(developers);
+        }, 3000)
+      } else {
+        res.send(developers);
+      }
+      
     })
     .catch((err) => {
       console.log(err);

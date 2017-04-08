@@ -7,12 +7,13 @@
     controller: DeveloperListController
   });
 
-  DeveloperListController.$inject = ['DeveloperService'];
+  DeveloperListController.$inject = ['$q', 'DeveloperService'];
 
-  function DeveloperListController (developerService) {
+  function DeveloperListController ($q, developerService) {
     var vm = this;
     var ITEMS_PER_PAGE = 10;
     var shownDevelopersAmount = 0;
+    var canceller = $q.defer();;
 
     vm.$onInit = function () {
       vm.fetch();
@@ -25,9 +26,11 @@
     }
     vm.fetch = function () {
       vm.state = 'loading';
-      developerService.getActiveDevelopers(vm.filters).then(function (developers) {
+      canceller.resolve();
+      canceller = $q.defer();
+      developerService.getActiveDevelopers(vm.filters, canceller).then(function (developers) {
         vm.state = 'idle';
-        vm.developers = developers;
+        vm.developers = developers.slice();
         vm.showAmountOfDevelopers(ITEMS_PER_PAGE);
       }, function () {
         vm.state = 'error';

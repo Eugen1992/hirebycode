@@ -9,11 +9,12 @@
       skills: '<',
       schools: '<',
       locations: '<',
-      filtersLoaded: '<'
+      filtersLoaded: '<',
+      hiddenFilters: '<',
     }
   });
 
   function SearchFiltersController () {
-
+    
   }
 })();

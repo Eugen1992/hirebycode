@@ -143,8 +143,19 @@ function FiltersService ($http, $q, skillsService, trainingCentersService, locat
       _id: location._id,
       type: 'location'
     });
+
     return $q.resolve(filters);
   };
+
+  this.addPredefinedFilters = function (predefinedFilters) {
+    if (predefinedFilters) {
+      predefinedFilters.school && this.addSchoolToFilters(predefinedFilters.school);
+      predefinedFilters.skills && this.addSkillToFilters(predefinedFilters.skills);
+      predefinedFilters.location && this.addLocationToFilters(predefinedFilters.location);
+    }
+
+    return $q.resolve(filters);
+  }
 
   this.removeFilter = function(filter) {
     switch (filter.type) {

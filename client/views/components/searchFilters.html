@@ -1,5 +1,4 @@
 <section class="u-paperVertical searchFilters">
-  <h3 class="u-blockTitle u-textCenter">Find Developers</h3>
   <ui-select 
     ng-model="$ctrl.skill"
     theme="select2"
@@ -14,6 +13,7 @@
   </ui-select>
 
   <ui-select 
+    ng-hide="$ctrl.hiddenFilters.school"
     ng-model="$ctrl.school" 
     theme="select2" 
     class="searchFilters-filterContainer"

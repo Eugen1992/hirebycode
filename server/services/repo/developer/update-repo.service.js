@@ -13,7 +13,7 @@ module.exports = function updateRepo (repoId, data) {
       if (!data.trainingCenter) {
         uQuery.$set.trainingCenterStatus = trainingCenterStatus.NONE;
         delete uQuery.$set.trainingCenterMessage;
-        uQuery.$unset ={
+        uQuery.$unset = {
           trainingCenterMessage: null
         };
       } else if (repo.trainingCenter !== data.trainingCenter) {

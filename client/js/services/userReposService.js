@@ -78,7 +78,7 @@ function UserReposService ($q, $http, $filter) {
   this.update = function (repo) {
     return $http.put(baseUrl + '/' + repo._id, repo)
       .then(function (response) {
-        replaceWithUpdate(response.data);
+        replaceWithUpdated(response.data);
         return response.data;
       });
   }
@@ -120,10 +120,10 @@ function UserReposService ($q, $http, $filter) {
       return repo;
     });
   }
-  function replaceWithUpdate(newRepo) {
+  function replaceWithUpdated(updatedRepo) {
     repos = repos.map((repo) => {
-      if (repo.hbcId === newRepo._id) {
-        repo.hbcData = newRepo;
+      if (repo.hbcId === updatedRepo._id) {
+        repo.hbcData = updatedRepo;
       }
       return repo;
     });

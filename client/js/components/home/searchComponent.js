@@ -37,7 +37,6 @@
           filters.flattenFilters = filters.flattenFilters.filter(function (filter) {
             return vm.hiddenFilters[filter.type] === false;
           });
-          console.log(filters.school);
           vm.filters = angular.extend({}, filters);
         });
     };

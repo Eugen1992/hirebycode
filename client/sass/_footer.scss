@@ -3,8 +3,64 @@
   margin-bottom: -$footerHeight;
   height: $footerHeight;
   background-color: #3E474F;
+  display: flex;
+  font-family: Raleway, 'sans-serif';
+  color: #929497;
+  font-size: fontSize(24px);
 }
 
 .footer-column {
-  
+  border-right: solid 1px $mainColor1;
+  display: flex;
+  flex-direction: column;
+  &--first {
+    flex-basis: 22.2%;
+    padding: 24px 39px 35px;
+  }
+  &--second {
+    flex-basis: 24.6%;
+    padding: 42px 20px 35px;
+    align-items: center;
+  }
+  &--third {
+    padding: 42px 20px 35px;
+    flex-basis: 24.1%;
+  }
+  &--fourth {
+    padding: 24px 20px 35px;
+    flex-basis: 29%;
+    border-right: none;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.footer-subColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-logo {
+  width: 90px;
+  margin-bottom: 25px;
+}
+
+.footer-smallText {
+  font-size: fontSize(18px);
+}
+.footer-smallerText {
+  font-size: fontSize(14px);
+}
+
+.footer-email {
+  margin-top: 50px;
+}
+
+.footer-button {
+  padding: 6px 25px;
+  border: solid 1px #f4f5f0;
+  font-size: fontSize(26px);
+}
+
+.footer-loginHelp {
+  margin-top:4px;
 }

@@ -1,5 +1,5 @@
 (function () {
   angular.module('showroom').component('srHeader', {
-    templateUrl: 'client/views/components/header.html'
+    templateUrl: 'client/views/components/root/header.html'
   });
 })();

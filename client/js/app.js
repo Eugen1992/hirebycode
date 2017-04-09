@@ -113,11 +113,6 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         }
       }
     })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'client/views/partials/login.html',
-      controller: 'LoginController'
-    })
     .state('github-login', {
       url: '/github-login',
       templateUrl: 'client/views/partials/githubLogin.html',

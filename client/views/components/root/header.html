@@ -5,16 +5,16 @@
       src="http://res.cloudinary.com/hjpyahjus/image/upload/v1491387723/logo_thm96v.png">
   </a>
   <div class="header-buttonsGroup">
-    <button 
-      class="u-greenButton u-greenButton--small" 
-      ng-hide="isLoggedIn" 
-      ui-sref="login"
-    >
-      <span class="header-buttonText">Login</span>
-      <svg class="u-buttonIcon header-githubIcon">
-        <use xlink:href="#client--svg--github"/>
-      </svg>
-    </button>
+    <sr-github-login-button
+      class="header-button"
+      ng-hide="isLoggedIn"
+      text="'Login'"
+    ></sr-github-login-button>
+    <sr-github-login-button
+      class="header-button"
+      ng-hide="isLoggedIn"
+      text="'Sign up'"
+    ></sr-github-login-button>
     <button class="u-whiteButton u-whiteButton--small" ng-show="isLoggedIn" ng-click="logOut()">Log Out</button>
     <button class="u-greenButton u-greenButton--small" ng-show="isLoggedIn" ui-sref="account">My Account</button>
   </div>

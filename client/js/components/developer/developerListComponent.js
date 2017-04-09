@@ -17,7 +17,6 @@
 
     vm.$onInit = function () {
       vm.fetch();
-      vm.state = 'loading';
     }
     vm.$onChanges = function (changeObject) {
       if (changeObject.filters) {
@@ -25,15 +24,14 @@
       }
     }
     vm.fetch = function () {
-      vm.state = 'loading';
       canceller.resolve();
       canceller = $q.defer();
+      vm.state = 'loading';
       developerService.getActiveDevelopers(vm.filters, canceller).then(function (developers) {
-        vm.state = 'idle';
+        vm.state = 'success';
+        console.log('received');
         vm.developers = developers.slice();
         vm.showAmountOfDevelopers(ITEMS_PER_PAGE);
-      }, function () {
-        vm.state = 'error';
       });
     }
     vm.loadMore = function () {

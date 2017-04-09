@@ -9,6 +9,6 @@
   </svg>
   <span class="developerList-loadMoreText" ng-click="$ctrl.loadMore()">More developers</span>
 </div>
-<div class="developerList-amountIndicator">
+<div class="developerList-amountIndicator" ng-if="$ctrl.state==='success'">
   Showing {{$ctrl.developersToShow.length}} of {{$ctrl.developers.length}}
 </div>

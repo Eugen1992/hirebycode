@@ -1,9 +1,8 @@
 .search-content {
   background-color: white;
-}
-.search-listContainer {
   min-height: 350px;
 }
+
 @include phone {
   .search-listContainer, .search-content {
     padding-right: 0;

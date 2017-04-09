@@ -39,7 +39,7 @@ function UserHomeController (userRepos, filter, $http, $state) {
     userRepos.getUserRepos()
       .then(function (repos) {
         handleRepos(repos);
-        vm.notImportedOpened = vm.userImportedRepos === 0;
+        vm.notImportedOpened = vm.userImportedRepos.length === 0;
         vm.reposState = 'loaded';
       }, function () {
         vm.reposState = 'failed';

@@ -6,7 +6,7 @@
     ngf-pattern="image/*"
     class="developerAvatar-newAvatar"
   >
-    <img-crop 
+    <img-crop
       image="$ctrl.newAvatar | ngfDataUrl"
       result-image="$ctrl.croppedDataUrl"
       area-type="square"
@@ -14,14 +14,14 @@
     </img-crop>
   </div>
   <div class="developerAvatar-avatarContainer" ng-if="!$ctrl.newAvatar">
-    <img class="developerAvatar-avatar" src="{{$ctrl.avatarUrl}}" />
+    <img class="developerAvatar-avatar {{$ctrl.imageClassName}}" src="{{$ctrl.avatarUrl}}" />
 
-    <svg class="developerAvatar-newPhotoIcon" ngf-select ng-model="$ctrl.newAvatar">
+    <svg class="developerAvatar-newPhotoIcon {{$ctrl.iconClassName}}" ngf-select ng-model="$ctrl.newAvatar">
       <use xlink:href="#client--svg--photo" />
     </svg>
   </div>
-  <div class="developerAvatar-buttonsSection">
-    <button class="btn btn-default developerAvatar-avatarControlButton" ng-show="$ctrl.newAvatar" ng-click="$ctrl.clearAvatar()">
+  <div class="developerAvatar-buttonsSection" ng-show="$ctrl.newAvatar">
+    <button class="btn btn-default developerAvatar-avatarControlButton" ng-click="$ctrl.clearAvatar()">
       Cancel
       <svg class="u-buttonIcon is-black">
         <use xlink:href="#client--svg--cross"/>
@@ -33,7 +33,6 @@
       success-text="'Avatar updated'"
       error-text="'Something went wrong'"
       ng-click="$ctrl.submit()"
-      ng-show="$ctrl.newAvatar"
     >
       Save new logo
     </sr-submit-button>

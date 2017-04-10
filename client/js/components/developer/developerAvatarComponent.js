@@ -1,26 +1,33 @@
 (function () {
-  angular.module('showroom').component('developerAvatar', {
+  angular.module('showroom').component('srDeveloperAvatar', {
     templateUrl: 'client/views/components/developer/developerAvatar.html',
     bindings: {
-    avatarUrl: '<',
-      onSubmit: '&',
-      state: '<'
+      avatarUrl: '<',
+      imageClassName: '<',
+      iconClassName: '<',
     },
     controller: DeveloperAvatarController
   });
-  DeveloperAvatarController.$inject = ['Upload'];
+  DeveloperAvatarController.$inject = ['Upload', 'UserService'];
 
-  function DeveloperAvatarController (Upload) {
-    this.$onChanges = function (changes) {
-      if (changes.state && changes.state.currentValue === 'success') {
-        this.newAvatar = null;
-      }
+  function DeveloperAvatarController (Upload, userService) {
+    var vm = this;
+
+    vm.clearAvatar = function () {
+      vm.newAvatar = null;
     }
-    this.clearAvatar = function () {
-      this.newAvatar = null;
+    vm.submit = function () {
+      vm.updateAvatar(Upload.dataUrltoBlob(vm.croppedDataUrl));
     }
-    this.submit = function () {
-      this.onSubmit({avatar: Upload.dataUrltoBlob(this.croppedDataUrl)});
+    vm.updateAvatar = function (avatar) {
+      vm.state = 'loading';
+      userService.updateDeveloperAvatar(avatar).then(function() {
+        vm.state = 'success';
+        vm.newAvatar = null;
+        vm.avatarUrl += '?' + new Date().getTime();
+      }).catch(function (error) {
+        vm.state = 'error';
+      });
     }
   }
 })();

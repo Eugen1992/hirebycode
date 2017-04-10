@@ -30,15 +30,6 @@
         vm.info.hidden = false;
       });
     }
-    vm.updateAvatar = function (avatar) {
-      vm.avatarState = 'loading';
-      userService.updateDeveloperAvatar(avatar).then(function(info) {
-        vm.avatarState = 'success';
-        vm.info.avatar += '?' + new Date().getTime();
-      }).catch(function (error) {
-        vm.avatarState = 'error';
-      });
-    }
     vm.handleStatusChange = function () {
       userService.updateDeveloperAccountStatus({hidden: !vm.accountShown});
     }

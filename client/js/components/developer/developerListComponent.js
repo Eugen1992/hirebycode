@@ -29,7 +29,6 @@
       vm.state = 'loading';
       developerService.getActiveDevelopers(vm.filters, canceller).then(function (developers) {
         vm.state = 'success';
-        console.log('received');
         vm.developers = developers.slice();
         vm.showAmountOfDevelopers(ITEMS_PER_PAGE);
       });

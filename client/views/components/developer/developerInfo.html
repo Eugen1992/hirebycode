@@ -3,11 +3,9 @@
     <b>Your profile is not included in search.</b> Please fill in contacts and location info and we will add your profile to search results.
   </div>
   <section class="u-block u-block--onlyVertical">
-    <developer-avatar
+    <sr-developer-avatar
       avatar-url="$ctrl.info.avatar"
-      state="$ctrl.avatarState"
-      on-submit="$ctrl.updateAvatar(avatar)"
-    ></developer-avatar>
+    ></sr-developer-avatar>
     <div class="developerInfo-name">
       {{$ctrl.info.firstName}} {{$ctrl.info.lastName}}
     </div>

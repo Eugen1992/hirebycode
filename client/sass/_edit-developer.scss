@@ -1,3 +1,30 @@
+.editDeveloper-topPart {
+  display: flex;
+}
+.editDeveloper-inputsColumn {
+  flex: 1 1 auto;
+}
+.editDeveloper-imageColumn {
+  flex: 0 0 246px;
+}
+.editDeveloper-avatar {
+  width: 100%;
+}
+.editDeveloper-avatarImage {
+  width: 100%;
+}
+.editDeveloper-avatarIcon {
+  right: 0;
+  width: 80px;
+  height: 68px;
+  left: auto;
+}
+.editDeveloper-header {
+  font-size: fontSize(30px);
+  font-weight: 300;
+  font-family: Raleway, 'sans-serif';
+  margin: 0;
+}
 .editDeveloper-warning {
   display: inline-block;
   margin: 20px 0 -10px;
@@ -13,5 +40,6 @@
 }
 .editDeveloper-buttons {
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
+  justify-content: flex-end;
 }

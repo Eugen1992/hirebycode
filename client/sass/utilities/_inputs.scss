@@ -5,10 +5,29 @@
   padding-bottom: 20px;
 }
 .u-inputLabel {
-  font-weight: 600;
+  display: block;
+  font-weight: 300;
+  font-family: Raleway, 'sans-serif';
+  color: #929497;
+  font-size: fontSize(22px);
+}
+.u-input {
+  border: none;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  font-size: fontSize(22px);
+  font-family: 'Playfair-Display', sans;
+  border-bottom: solid 1px #abaca9;
+  &:focus {
+    outline: none;
+    border-bottom: solid 2px $mainColor2;
+    margin-bottom: -1px;
+  }
 }
 .u-error {
   position: absolute;
   bottom: 0;
   color: red;
+  font-family: Raleway, 'sans-serif';
 }

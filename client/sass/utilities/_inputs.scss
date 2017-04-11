@@ -2,21 +2,22 @@
   position: relative;
   display: block;
   font-weight: 300;
-  padding-bottom: 20px;
+  padding: 20px 0;
 }
 .u-inputLabel {
   display: block;
   font-weight: 300;
   font-family: Raleway, 'sans-serif';
   color: #929497;
-  font-size: fontSize(22px);
+  font-size: fontSize(20px);
 }
 .u-input {
   border: none;
   display: block;
   width: 100%;
   margin-top: 5px;
-  font-size: fontSize(22px);
+  line-height: 1;
+  font-size: fontSize(20px);
   font-family: 'Playfair-Display', sans;
   border-bottom: solid 1px #abaca9;
   &:focus {

@@ -1,15 +1,25 @@
 %svg-common {
-	background: url("svg/sprite.css-61648019.svg") no-repeat;
+	background: url("svg/sprite.css-4b35a140.svg") no-repeat;
 }
 
 .svg-client--svg--back {
 	@extend %svg-common;
-	background-position: 99.52620967741936% 38.88024883359253%;
+	background-position: 99.52620967741936% 40.25563763608087%;
 }
 
 .svg-client--svg--back-dims {
 	width: 24px;
 	height: 24px;
+}
+
+.svg-client--svg--back-sharp {
+	@extend %svg-common;
+	background-position: 99.3396140985179% 39.05296558457408%;
+}
+
+.svg-client--svg--back-sharp-dims {
+	width: 18.41px;
+	height: 35.375px;
 }
 
 .svg-client--svg--checkmark {
@@ -64,7 +74,7 @@
 
 .svg-client--svg--gears-single {
 	@extend %svg-common;
-	background-position: 98.70408163265306% 39.43217665615142%;
+	background-position: 96.66326530612245% 39.43217665615142%;
 }
 
 .svg-client--svg--gears-single-dims {
@@ -74,7 +84,7 @@
 
 .svg-client--svg--gears-single-white {
 	@extend %svg-common;
-	background-position: 96.66326530612245% 39.43217665615142%;
+	background-position: 98.70408163265306% 39.43217665615142%;
 }
 
 .svg-client--svg--gears-single-white-dims {
@@ -134,7 +144,7 @@
 
 .svg-client--svg--thick-cross {
 	@extend %svg-common;
-	background-position: 99.42598187311178% 39.75155279503105%;
+	background-position: 98.62034239677745% 41.149068322981364%;
 }
 
 .svg-client--svg--thick-cross-dims {

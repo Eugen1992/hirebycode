@@ -1,7 +1,7 @@
 .toggle-switch {
   position: relative;
   display: inline-block;
-  width: 42px;
+  width: 56px;
   height: 24px;
 }
 .toggle-switch input {
@@ -15,31 +15,26 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #929497;
   -webkit-transition: .4s;
   transition: .4s;
-  border-radius: 34px;
 }
 
 .toggle-slider:before {
   position: absolute;
   content: '';
-  height: 17px;
-  width: 17px;
-  left: 4px;
-  bottom: 4px;
+  height: 24px;
+  width: 25px;
+  border: solid 1px #929497;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
-  border-radius: 50%;
 }
 
 .toggle-slider.is-checked {
-  background-color: #2196F3;
+  background-color: $mainColor2;
 }
 
 .toggle-slider.is-checked:before {
-  -webkit-transform: translateX(18px);
-  -ms-transform: translateX(18px);
-  transform: translateX(18px);
+  transform: translateX(32px);
 }

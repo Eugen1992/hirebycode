@@ -21,12 +21,6 @@
     </svg>
   </div>
   <div class="developerAvatar-buttonsSection" ng-show="$ctrl.newAvatar">
-    <button class="btn btn-default developerAvatar-avatarControlButton" ng-click="$ctrl.clearAvatar()">
-      Cancel
-      <svg class="u-buttonIcon is-black">
-        <use xlink:href="#client--svg--cross"/>
-      </svg>
-    </button>
     <sr-submit-button 
       button-class="'developerAvatar-avatarSubmit'"
       state="$ctrl.state"
@@ -34,7 +28,11 @@
       error-text="'Something went wrong'"
       ng-click="$ctrl.submit()"
     >
-      Save new logo
+      Save
     </sr-submit-button>
+    <button class="u-whiteButton developerAvatar-avatarControlButton" ng-click="$ctrl.clearAvatar()">
+      Cancel
+    </button>
+
   </div>
 </article>

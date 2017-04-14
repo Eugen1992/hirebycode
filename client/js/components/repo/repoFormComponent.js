@@ -10,8 +10,8 @@
     },
     controller: RepoFormController
   });
-  RepoFormController.$inject = ['$scope', 'SkillsService', 'TrainingCentersService'];
-  function RepoFormController ($scope, SkillsService, TrainingCentersService) {
+  RepoFormController.$inject = ['$scope', '$q', 'SkillsService', 'TrainingCentersService'];
+  function RepoFormController ($scope, $q, SkillsService, TrainingCentersService) {
     var vm = this;
     vm.$onInit = function () {
       TrainingCentersService.getAll().then(function (centers) {
@@ -29,6 +29,11 @@
       vm.repo.skills = SkillsService.skillsToObjects(vm.enteredSkills);
       vm.repo.trainingCenter = vm.repo.trainingCenter || null;
       vm.submitCallback();
+    }
+    vm.autocompleteSkills = function (skillSymbols) {
+      return $q.resolve(vm.skills.filter(function (skill) {
+        return skill.indexOf(skillSymbols) > -1;
+      }));
     }
   }
 

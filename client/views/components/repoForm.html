@@ -1,85 +1,95 @@
-<form name="$ctrl.form" novalidate>
-  <div class="form-group repoForm-inputBlock">
-    <label class="u-inputContainer">
-      <span class="u-inputLabel">Type of the project:</span>
+<section class="repoForm">
+  <sr-loader shown="$ctrl.state === 'repoLoading'" class="repoForm-loader"></sr-loader>
+  <form name="$ctrl.form" 
+    novalidate 
+    class="repoForm-form"
+    ng-class="{'is-hidden': $ctrl.state !== 'repoLoaded'}"
+  >
+    <sr-input
+      label="'Type of the project'"
+      type="'text'"
+      form="$ctrl.form"
+      ng-model="$ctrl.repo.type"
+      required="true"
+    ></sr-input>
+    <sr-input
+      ng-pattern="'@^(https?|ftp)://[^\s/$.?#].[^\s]*$@iS'"
+      pattern-error="'It looks like your url is not valid'"
+      label="'Link (if your project is hosted)'"
+      name="'link'"
+      form="$ctrl.form"
+      ng-model="$ctrl.repo.link"
+    ></sr-input>
+    <sr-textarea
+      name="'description'"
+      form="$ctrl.form"
+      label="'What I did and what I learned with this project:'"
+      planeholder="'Description...'"
+      ng-model="$ctrl.repo.description"
+      required="true"
+    ></sr-textarea>
+    <label class="u-inputLabel">
+      Skills:
       <sr-red-star></sr-red-star>
-      <textarea 
-        name="type"
-        required=""
-        class="form-control" 
-        placeholder="Web application, desktop, tool, so on" ng-model="$ctrl.repo.type"
-      ></textarea>
+    </label>
+    <tags-input
+      ng-model="$ctrl.enteredSkills"
+      placeholder="Start typing skills"
+      tag-class="'u-inputTag'"
+      class="u-tagInput"
+    >
+      <auto-complete
+        min-length="1"
+        class="u-autocompolete"
+        source="$ctrl.autocompleteSkills($query)"
+      ></auto-complete>
+    </tags-input>
+    <div class="form-group repoForm-inputBlock">
+      <div class="repoForm-inputBlock u-inputContainer">
+        <label>
+          Skills:
+          <sr-red-star></sr-red-star>
+        </label>
+        <ui-select 
+          multiple
+          required
+          name="skills"
+          tagging
+          tagging-label=""
+          ng-model="$ctrl.enteredSkills"
+          theme="bootstrap"
+          sortable="true"
+          ng-disabled="disabled"
+          style="width: 300px;"
+          title="Add a skill"
+        >
+        <ui-select-match placeholder="Add skills...">{{$item}}</ui-select-match>
+        <ui-select-choices repeat="skill in $ctrl.skills | filter:$select.search track by $index ">
+          <div ng-bind-html="skill | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
       <div
         class="u-error"
-        ng-show="$ctrl.form.$submitted || $ctrl.form.type.$touched"
+        ng-show="$ctrl.form.$submitted || $ctrl.form.skills.$touched"
       >
-        <div ng-show="$ctrl.form.type.$error.required">This field is required</div>
+        <div ng-show="$ctrl.form.skills.$error.required">This field is required</div>
       </div>
-    </label>
-    <div class="form-group repoForm-inputBlock">
-      <sr-input
-        ng-pattern="'@^(https?|ftp)://[^\s/$.?#].[^\s]*$@iS'"
-        pattern-error="'It looks like your url is not valid'"
-        label="'Link'"
-        placeholder="'If your project is hosted, you may provide a link'"
-        name="'link'"
-        form="$ctrl.form"
-        ng-model="$ctrl.repo.link"
-      ></sr-input>
     </div>
-  
     <div class="form-group repoForm-inputBlock">
-      <sr-textarea
-        name="'description'"
-        form="$ctrl.form"
-        label="'What I did and what I learned with this project:'"
-        planeholder="'Description...'"
-        ng-model="$ctrl.repo.description"
-        required="true"
-      ></sr-textarea>
+      <label class="repoForm-inlineInput">Project was done during studying in the training center:
+        <select class="form-control" ng-model="$ctrl.repo.trainingCenter">
+          <option value="">None</option>
+          <option ng-repeat="center in $ctrl.trainingCenters" value={{center._id}}>{{center.name}}</option>
+        </select>
+      </label>
     </div>
-    <div class="repoForm-inputBlock u-inputContainer">
-      <label>Skills:</label>
-      <sr-red-star></sr-red-star>
-      <ui-select 
-        multiple
-        required
-        name="skills"
-        tagging
-        tagging-label=""
-        ng-model="$ctrl.enteredSkills"
-        theme="bootstrap"
-        sortable="true"
-        ng-disabled="disabled"
-        style="width: 300px;"
-        title="Add a skill"
-      >
-      <ui-select-match placeholder="Add skills...">{{$item}}</ui-select-match>
-      <ui-select-choices repeat="skill in $ctrl.skills | filter:$select.search track by $index ">
-        <div ng-bind-html="skill | highlight: $select.search"></div>
-      </ui-select-choices>
-    </ui-select>
-    <div
-      class="u-error"
-      ng-show="$ctrl.form.$submitted || $ctrl.form.skills.$touched"
+    <sr-submit-button 
+      state="$ctrl.state"
+      success-text="$ctrl.successText"
+      error-text="$ctrl.errorText"
+      ng-click="$ctrl.submit()"
     >
-      <div ng-show="$ctrl.form.skills.$error.required">This field is required</div>
-    </div>
-  </div>
-  <div class="form-group repoForm-inputBlock">
-    <label class="repoForm-inlineInput">Project was done during studying in the training center:
-      <select class="form-control" ng-model="$ctrl.repo.trainingCenter">
-        <option value="">None</option>
-        <option ng-repeat="center in $ctrl.trainingCenters" value={{center._id}}>{{center.name}}</option>
-      </select>
-    </label>
-  </div>
-  <sr-submit-button 
-    state="$ctrl.state"
-    success-text="$ctrl.successText"
-    error-text="$ctrl.errorText"
-    ng-click="$ctrl.submit()"
-  >
-    Submit
-  </sr-submit-button>
-</form>
+      Submit
+    </sr-submit-button>
+  </form>
+</section>

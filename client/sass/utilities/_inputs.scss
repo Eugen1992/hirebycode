@@ -26,6 +26,84 @@
     margin-bottom: -1px;
   }
 }
+.u-tagInput {
+  height: 32px;
+  & > div > div {
+    border-bottom: solid 1px $mainColor3;
+    overflow: hidden;
+    height: 32px;
+    & > ul {
+      float: left;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      & > li {
+        & .remove-button {
+          color: $mainColor3;
+        }
+        &.selected {
+          background-color: #74AFE7;
+          color: white;
+          & .remove-button {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  & input {
+    margin: 4px;
+    float: left;
+    border: none;
+    line-height: 1.2;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.u-inputTag {
+  display: inline-block;
+  padding: 2px;
+  margin: 2px;
+  background-color: white;
+  color: $mainColor3;
+  border-radius: 0;
+  border: solid 1px $mainColor3;
+  .remove-button {
+    cursor: pointer;
+  }
+}
+.u-autocompolete {
+  ul {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    list-style-type: none;
+    border: solid 1px $mainColor3;
+    & li {
+      padding: 5px;
+      border-bottom: solid 1px $mainColor3;
+      &:last-child {
+        border-bottom: none;
+      }
+      & em {
+        font-weight: 600;
+        font-style: normal;
+      }
+    }
+    & li.selected {
+      color: white;
+      background-color: #74AFE7;
+    }
+  }
+}
+.u-autocompleteMatch {
+
+}
+.u-textarea {
+  @extend .u-input;
+  height: 70px;
+}
 .u-error {
   position: absolute;
   bottom: 0;

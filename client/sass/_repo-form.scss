@@ -1,3 +1,9 @@
+.repoForm {
+  position: relative;
+}
+.repoForm-loader {
+  z-index: 1;
+}
 .repoForm-inputBlock {
   margin-bottom: 20px;
 }
@@ -8,4 +14,7 @@
   &:first-child {
     margin-left: 0;
   }
+}
+.repoForm-form.is-hidden {
+  visibility: hidden;
 }

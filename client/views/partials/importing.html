@@ -1,10 +1,9 @@
-<section class="repoEdit-container well">
+<section class="repoEdit-container u-block u-paper">
   <h2>{{repo.name}}</h2>
-  <h3>Please tell us about your project</h3>
+  <h3>Importing project</h3>
   <repo-form 
-    ng-if="repo" 
     repo="repo.hbcData"
-    state="$ctrl.formState" 
+    state="$ctrl.repoState" 
     success-state="'Imported'"
     error-state="'Something went wrong'"
     submit-callback="submit()"></repo-form>

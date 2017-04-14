@@ -1,9 +1,11 @@
 <label class="u-inputContainer">
-  <span class="u-inputLabel">{{$ctrl.label}}</span>
-  <sr-red-star ng-if="$ctrl.required"></sr-red-star>
+  <span class="u-inputLabel">
+    {{$ctrl.label}}
+    <sr-red-star ng-if="$ctrl.required"></sr-red-star>
+  </span>
   <textarea 
     placeholder="{{$ctrl.placeholder}}"
-    class="form-control"
+    class="u-textarea"
     ng-pattern="$ctrl.ngPattern" 
     ng-model="$ctrl.ngModel" name="{{$ctrl.name}}" ng-required="$ctrl.required">
   </textarea>

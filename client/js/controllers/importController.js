@@ -3,15 +3,16 @@ angular.module('showroom').controller('ImportController',  ImportController);
 
 function ImportController ($scope, $q, user, repos, $state, $stateParams) {
   var vm = this;
-
+  vm.repoState = 'repoLoading';
   repos.getByProviderId($stateParams.id).then(function (receivedRepo) {
-    $scope.repo = receivedRepo;
-    $scope.repo.hbcData = {
+    //vm.repoState = 'repoLoaded';
+    //$scope.repo = receivedRepo;
+    /*$scope.repo.hbcData = {
       languages: [],
       description: '',
       plans: '',
       contactInfo: ''
-    };
+    };*/
   });
   $scope.submit = function () {
     $q.all([user.fetchDeveloperDetails(), repos.import($scope.repo)])

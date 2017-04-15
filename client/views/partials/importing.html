@@ -1,11 +1,12 @@
 <section class="repoEdit-container u-block u-paper">
-  <h2>{{repo.name}}</h2>
-  <h3>Importing project</h3>
+  <h3 class="repoEdit-header u-block u-block--onlyVertical">Import project</h3>
+  <h2 class="repoEdit-repoName u-block u-block--onlyVertical">{{repo.name}}</h2>
   <repo-form 
     repo="repo.hbcData"
-    state="$ctrl.repoState" 
-    success-state="'Imported'"
-    error-state="'Something went wrong'"
+    repo-state="$ctrl.repoState"
+    success-text="'Imported'"
+    error-text="'Something went wrong'"
+    button-text="'Import'"
     submit-callback="submit()"></repo-form>
   <sr-repo-content ng-if="repo" repo="repo" hide-description="true"></sr-repo-content>
 </section>

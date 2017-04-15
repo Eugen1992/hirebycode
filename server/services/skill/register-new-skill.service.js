@@ -3,12 +3,9 @@ const Promise = require('bluebird');
 
 module.exports = function (skills) {
   const newSkills = skills.filter((skill) => {
-    return skill.isNew;
-  }).map((skill) => {
-    return {
-      name: skill.name
-    };
+    return  !skill._id;
   });
+
   const oldIds = skills.reduce((ids, skill) => {
     return skill._id ? [...ids, skill._id] : ids;
   }, []);

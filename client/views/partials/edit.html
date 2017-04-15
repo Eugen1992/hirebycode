@@ -1,17 +1,19 @@
-<section class="repoEdit-container well">
-  <h2>{{$ctrl.repo.name}}</h2>
-  <div class="clearfix">
-    <button class="btn btn-primary pull-right" ng-click="$ctrl.switchToPreview()">See public version</button>
-  </div>
+<section class="repoEdit-container u-block u-paper">
+  <button class="btn btn-primary pull-right" ng-click="$ctrl.switchToPreview()">See public version</button>
+  <h3 class="repoEdit-header u-block">Edit project</h3>
+  <h2 class="repoEdit-repoName u-block">{{$ctrl.repo.name}}</h2>
   <repo-form 
     repo="$ctrl.repo"
-    state="$ctrl.state"
-    success-state="'Updated'"
-    error-state="'Something went wrong'"
+    repo-state="$ctrl.repoState"
+    submit-state="$ctrl.submitState"
+    success-text="'Updated'"
+    error-text="'Something went wrong'"
+    button-text="'Update project'"
     submit-callback="$ctrl.submit()"></repo-form>
-</section>
-<section class="repoEdit-container well">
   <div class="repoEdit-content">
-    <sr-repo-content repo="$ctrl.repo"></sr-repo-content>
+    <sr-repo-content 
+      repo="$ctrl.repo"
+      hide-description="true"
+    ></sr-repo-content>
   </div>
 </section>

@@ -5,14 +5,14 @@ function ImportController ($scope, $q, user, repos, $state, $stateParams) {
   var vm = this;
   vm.repoState = 'repoLoading';
   repos.getByProviderId($stateParams.id).then(function (receivedRepo) {
-    //vm.repoState = 'repoLoaded';
-    //$scope.repo = receivedRepo;
-    /*$scope.repo.hbcData = {
-      languages: [],
+    vm.repoState = 'repoLoaded';
+    $scope.repo = receivedRepo;
+    $scope.repo.hbcData = {
+      skills: [],
       description: '',
       plans: '',
       contactInfo: ''
-    };*/
+    };
   });
   $scope.submit = function () {
     $q.all([user.fetchDeveloperDetails(), repos.import($scope.repo)])

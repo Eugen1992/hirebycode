@@ -3,10 +3,12 @@
     templateUrl: 'client/views/components/repoForm.html',
     bindings: {
       repo: '=',
-      state: '<',
+      repoState: '<',
+      submitState: '<',
       submitCallback: '&',
       errorText: '<',
-      successText: '<'
+      successText: '<',
+      buttonText: '<'
     },
     controller: RepoFormController
   });
@@ -18,21 +20,19 @@
         vm.trainingCenters = centers;
       });
       SkillsService.getSkills().then(function (skills) {
-        vm.skills = SkillsService.skillsToStrings(skills, vm.repo);
+        vm.skills = skills;
       });
-      vm.enteredSkills = SkillsService.skillsToStrings(vm.repo.skills);
     }
     vm.submit = function () {
       if (!vm.form.$valid) {
         return;
       }
-      vm.repo.skills = SkillsService.skillsToObjects(vm.enteredSkills);
       vm.repo.trainingCenter = vm.repo.trainingCenter || null;
       vm.submitCallback();
     }
     vm.autocompleteSkills = function (skillSymbols) {
       return $q.resolve(vm.skills.filter(function (skill) {
-        return skill.indexOf(skillSymbols) > -1;
+        return skill.name.indexOf(skillSymbols) > -1;
       }));
     }
   }

@@ -1,27 +1,29 @@
-<button class="submitButton {{$ctrl.buttonClass}}" type="submit">
-<span 
-  ng-transclude
-  class="submitButton-text" 
-  ng-class="{'is-hidden': $ctrl.state === 'loading'}"
-></span>
-<span 
-  class="submitButton-loader"
-  ng-class="{'is-hidden': $ctrl.state !== 'loading'}"
->
-  <svg class="submitButton-loaderIcon">
-    <use xlink:href="#client--svg--gears-single-white" />
-  </svg>
-</span>
-</div>
-<div class="submitButton-notification is-success" ng-if="$ctrl.state==='success'">
-<svg class="submitButton-icon is-success">
-  <use xlink:href="#client--svg--checkmark" />
-</svg>
-<span class="submitButton-notificationText">{{$ctrl.successText}}</span>
-</div>
-<div class="submitButton-notification is-error" ng-if="$ctrl.state==='error'">
-<svg class="submitButton-icon is-error">
-  <use xlink:href="#client--svg--cross" />
-</svg>
-<span class="submitButton-notificationText">{{$ctrl.errorText}}</span>
-</button>
+<article class="submitButton-container">
+  <button class="submitButton {{$ctrl.buttonClass}}" type="submit">
+    <span 
+      ng-transclude
+      class="submitButton-text" 
+      ng-class="{'is-hidden': $ctrl.state === 'loading'}"
+    ></span>
+    <span 
+      class="submitButton-loader"
+      ng-class="{'is-hidden': $ctrl.state !== 'loading'}"
+    >
+      <svg class="submitButton-loaderIcon">
+        <use xlink:href="#client--svg--gears-single-white" />
+      </svg>
+    </span>
+  </button>
+  <div class="submitButton-notification submitButton-notification--{{$ctrl.notificationPosition}} is-success" ng-if="$ctrl.state==='success'">
+    <svg class="submitButton-icon is-success">
+      <use xlink:href="#client--svg--checkmark" />
+    </svg>
+    <span class="submitButton-notificationText">{{$ctrl.successText}}</span>
+  </div>
+  <div class="submitButton-notification submitButton-notification--{{$ctrl.notificationPosition}} is-error" ng-if="$ctrl.state==='error'">
+    <svg class="submitButton-icon is-error">
+      <use xlink:href="#client--svg--cross" />
+    </svg>
+    <span class="submitButton-notificationText">{{$ctrl.errorText}}</span>
+  </div>
+</article>

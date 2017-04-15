@@ -6,7 +6,8 @@
       state: '<',
       successText: '<',
       errorText: '<',
-      buttonClass: '<'
+      buttonClass: '<',
+      notificationPosition: '<'
     },
     controller: SubmitButtonController
   });

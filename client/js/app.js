@@ -7,7 +7,7 @@ var app = angular.module('showroom', [
   'ngImgCrop',
   'vcRecaptcha',
   'angular-google-analytics',
-  /*'ngTagsInput'*/
+  'ngTagsInput'
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {

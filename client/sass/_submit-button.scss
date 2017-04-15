@@ -1,4 +1,4 @@
-.submitButton-wrapper {
+.submitButton-container {
   position: relative;
 }
 .submitButton {
@@ -47,6 +47,10 @@
   }
   &.is-error {
     color: red;
+  }
+  &--right {
+    left: calc(100% + 16px);
+    bottom: 0;
   }
 }
 .submitButton-notificationText {

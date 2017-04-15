@@ -3,10 +3,10 @@ angular.module('showroom').controller('UserHomeController',  UserHomeController)
 
 function UserHomeController (userRepos, filter, $http, $state) {
   var vm = this;
-  vm.searchedUser = $state.params.login;
+  
   vm.reposState = 'loading';
-
   getRepos();
+
   vm.import = function (repo) {
     $state.go('importing', {id: repo.id, name: repo.name, data: repo});
   }

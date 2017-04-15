@@ -2,6 +2,7 @@ UserReposService.$inject = ['$q', '$http', '$filter'];
 app.service('UserReposService', UserReposService);
 
 function UserReposService ($q, $http, $filter) {
+  var vm = this;
   var baseUrl = '/api/repo/developer';
   var fetched = false;
   var repos;
@@ -30,7 +31,7 @@ function UserReposService ($q, $http, $filter) {
   this.import = function (repo) {
     var dataToSend = repo.hbcData;
     
-    dataToSend.providerId = repo.id;  
+    dataToSend.providerId = repo.id;
     dataToSend.name = repo.name;
     dataToSend.contents_url = repo.contents_url;
     dataToSend.createdAt = new Date().getTime();
@@ -121,11 +122,15 @@ function UserReposService ($q, $http, $filter) {
     });
   }
   function replaceWithUpdated(updatedRepo) {
-    repos = repos.map((repo) => {
-      if (repo.hbcId === updatedRepo._id) {
-        repo.hbcData = updatedRepo;
-      }
-      return repo;
-    });
+    if (fetched) {
+      repos = repos.map((repo) => {
+        if (repo.hbcId === updatedRepo._id) {
+          repo.hbcData = updatedRepo;
+        }
+        return repo;
+      });
+    } else {
+      vm.getUserRepos();
+    }
   }
 }

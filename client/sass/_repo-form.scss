@@ -1,5 +1,6 @@
 .repoForm {
   position: relative;
+  min-height: 350px;
 }
 .repoForm-loader {
   z-index: 1;
@@ -17,4 +18,12 @@
 }
 .repoForm-form.is-hidden {
   visibility: hidden;
+}
+.repoForm-skillsInput {
+  font-size: 16px;
+}
+.repoForm-submitButton {
+  display: block;
+  width: 240px;
+  margin: 0 auto;
 }

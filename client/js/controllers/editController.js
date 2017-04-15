@@ -4,14 +4,14 @@ angular.module('showroom').controller('EditController', EditController);
 function EditController ($scope, $element, $state, $stateParams, repo, skills, repos) {
   var vm = this;
   vm.repo = repo;
-
-  vm.state = 'idle';
+  vm.repoState = 'repoLoaded';
+  vm.submitState = 'idle';
   vm.submit = function () {
-    vm.state = 'loading';
+    vm.submitState = 'loading';
     repos.update(vm.repo).then(function () {
-      vm.state = 'success';
+      vm.submitState = 'success';
     }, function () {
-      vm.state = 'error';
+      vm.submitState = 'error';
     });
   }
   vm.switchToPreview = function () {

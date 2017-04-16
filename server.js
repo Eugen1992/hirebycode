@@ -17,8 +17,13 @@ const isHeroku = process.env.ENV === 'production' || process.env.ENV === 'test';
 mongoose.connect(dbUrl);
 
 if (isProduction) {
-  server.use('*', function(req, res) {
-      res.redirect('https://' + req.headers.host + req.url);
+  server.use('*', function(req, res, next) {
+    if (req.headers['x-forwarded-proto'] != 'https') {
+      return res.redirect('https://' + req.headers.host + req.url);
+    }
+    else {
+      next();
+    }
   });
 }
 

@@ -41,7 +41,7 @@
         <span class="developerInfo-showProfileValue" ng-class="{'is-visible': $ctrl.accountShown}">Yes</span>
       </label>
     </div>
-    <button type="button" class="u-whiteButton" ui-sref="edit-developer-profile">Edit profile</button>
+    <button type="button" class="u-whiteButton" ui-sref="edit-developer-profile({initial: true})">Edit profile</button>
   </section>
   <div class="u-block u-block--onlyVertical developerInfo-skills">
     <sr-developer-skills skills="$ctrl.info.skills"></sr-developer-skills>

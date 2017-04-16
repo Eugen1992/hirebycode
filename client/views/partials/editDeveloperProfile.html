@@ -1,6 +1,6 @@
 <main class="u-block">
   <section class="u-block u-paper">
-    <div>
+    <div ng-if="$ctrl.hasBackButton">
       <svg class="editDeveloper-backIcon" ui-sref="user-home">
         <use xlink:href="#client--svg--back-sharp" />
       </svg>
@@ -9,7 +9,7 @@
     <form name="$ctrl.form" novalidate>
       <div class="editDeveloper-topPart">
         <div class="editDeveloper-inputsColumn">
-          <h2 class="editDeveloper-header">Edit profile</h2>
+          <h2 class="editDeveloper-header">{{$ctrl.headerText}}</h2>
           <sr-input
             name="'firstName'"
             form="$ctrl.form"
@@ -76,10 +76,10 @@
           state="$ctrl.state"
           ng-click="$ctrl.submit(info)"
         >
-          Update profile
+          {{$ctrl.submitButtonText}}
         </sr-submit-button>
         <button type="button" class="editDeveloper-cancelButton u-whiteButton" ui-sref="user-home">
-          I will do this later
+          {{$ctrl.cancelButtonText}}
         </button>
       </div>
     </form>

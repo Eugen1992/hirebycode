@@ -1,12 +1,17 @@
 (function () {
   angular.module('showroom').controller('editDeveloperProfileController', EditDeveloperProfileController);
 
-  EditDeveloperProfileController.$inject = ['$scope', '$state', 'UserService', 'Analytics'];
+  EditDeveloperProfileController.$inject = ['$scope', '$state', '$stateParams', 'UserService', 'Analytics'];
 
-  function EditDeveloperProfileController ($scope, $state, userService, analytics) {
+  function EditDeveloperProfileController ($scope, $state, $stateParams, userService, analytics) {
     var vm = this;
     vm.state = 'idle';
-    vm.autocompleteOptions = {types: ['(cities)']};
+    vm.isInitial = $stateParams.isInitial;
+    vm.hasBackButton = !vm.isInitial;
+    vm.headerText = vm.isInitial ? 'Competing registration' : 'Edit profile';
+    vm.cancelButtonText = vm.isInitial ? 'I will do this later' : 'Cancel';
+    vm.submitButtonText = vm.isInitial ? 'Create profile' : 'Update profile';
+    vm.autocompleteOptions = { types: ['(cities)'] };
     userService.fetchDeveloperDetails().then(function (info) {
       handleUserInfo(info);
     });

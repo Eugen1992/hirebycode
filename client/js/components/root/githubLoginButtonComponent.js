@@ -19,7 +19,7 @@
             $state.go('edit-developer-profile');
           } else {
             analytics.trackEvent('Developer', 'Login', 'success');
-            $state.go('user-home');
+            $state.go('user-home', { isInitial: true });
           }
           
       }, function (err) {

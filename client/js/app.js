@@ -71,7 +71,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('edit-developer-profile', {
       parent: 'authorized',
-      url: '/edit-developer-profile',
+      url: '/edit-developer-profile?isInitial',
       templateUrl: 'client/views/partials/editDeveloperProfile.html',
       controller: 'editDeveloperProfileController',
       controllerAs: '$ctrl'

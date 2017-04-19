@@ -5,7 +5,7 @@
   padding: 15px 0;
   font-family: Raleway, 'sans-serif';
   &--small {
-    padding: 6px 12px;
+    padding: 6px 8px;
   }
   &--shadow {
     box-shadow: 0px 4px 0 0 #8e9697;
@@ -53,6 +53,9 @@
   .u-greenButton {
     font-size: fontSize(18px);
     padding: 8px 20px;
+    &--small {
+      padding: 8px 12px;
+    }
   }
   .u-whiteButton {
     font-size: fontSize(18px);

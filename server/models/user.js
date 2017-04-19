@@ -8,7 +8,7 @@ const userSchema = new Schema({
   name: String,
   firstName: String,
   lastName: String,
-  placeId: {type: String, ref: 'Location'},
+  placeId: { type: String, ref: 'Location' },
   position: String,
   type: String,
   githubId: String,

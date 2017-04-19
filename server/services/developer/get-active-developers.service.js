@@ -14,8 +14,7 @@ module.exports = function getActiveDevelopers (filters = { skill: [], location: 
     sQuery.skills = { $all: filters.skill };
   }
   if (trainingCenter) {
-    console.log(trainingCenter);
-    sQuery.trainingCenters = { $elemMatch: { $eq :trainingCenter } };
+    sQuery.trainingCenters = { $elemMatch: { $eq: trainingCenter } };
   }
   if (location) {
     sQuery.placeId = location;

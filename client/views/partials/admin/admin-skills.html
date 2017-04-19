@@ -10,10 +10,11 @@
   <h3>Merge</h3>
   <h4>Merging to "{{$ctrl.mergingTo.name}}"</h4>
   <ul>
-    <li ng-repeat="skill in $ctrl.skills | filter:{mergingIn: true}">
+    <li ng-repeat="skill in $ctrl.skillsToMerge">
       {{skill.name}}
     </li>
   </ul>
+  <button class="btn btn-primary" ng-click="$ctrl.merge()">Merge</button>
 </article>
 <div class="u-block">
   <table class="table table-striped">
@@ -38,6 +39,7 @@
           <input 
             type="checkbox" 
             ng-model="skill.mergingIn"
+            ng-change="$ctrl.onMergeInChange(skill)"
             ng-disabled="skill.mergingTo"
           />
         </th>

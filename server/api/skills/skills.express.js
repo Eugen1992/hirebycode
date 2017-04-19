@@ -14,6 +14,12 @@ router.post('/',
   SkillsController.create
 );
 
+router.put('/merge',
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'admin'}),
+  SkillsController.merge
+);
+
 router.delete('/:id',
   jwtMiddleware.decodeToken,
   authorizeMiddleware({userType: 'admin'}),

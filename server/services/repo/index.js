@@ -7,5 +7,6 @@ module.exports = {
   getUserReposFull: require('./get-user-repos-full.service.js'),
   getUserReposImported: require('./get-user-repos-imported.service.js'),
   TrainingCenter: require('./training-center'),
-  Developer: require('./developer')
+  Developer: require('./developer'),
+  replaceSkillsInRepos: require('./replace-skills-in-repos.service.js')
 }

@@ -15,6 +15,9 @@
         vm.skills = skills;
       });
     }
+    vm.onMergeToChange = function (skill) {
+      vm.mergingTo = skill;
+    }
     function getSkills () {
       SkillsService.getSkills().then(function (skills) {
         vm.skills = skills;

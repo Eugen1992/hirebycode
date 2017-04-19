@@ -1,4 +1,4 @@
-<form>
+<form class="u-block">
   <div class="form-group">
     <label>New skill
       <input class="form-control" placeholder="Input name" ng-model="$ctrl.newSkillName" />
@@ -6,19 +6,47 @@
   </div>
   <button ng-click="$ctrl.addSkill()" class="btn btn-primary">Add</button>
 </form>
-<table class="table table-striped">
-  <thead>
-    <th>
-      Name
-    </th>
-    <th class="adminSkills-narrowColumn">Remove</th>
-  </thead>
-  <tbody>
-    <tr ng-repeat="skill in $ctrl.skills">
-      <th>{{skill.name}}</th>
-      <th class="adminSkills-narrowColumn u-textCenter">
-        <span class="glyphicon glyphicon-remove adminSkill-actionElement" ng-click="$ctrl.removeSkill(skill)"></span>
-      </th>
-    </tr>
-  </tbody>
-</table>
+<article class="u-block" ng-if="$ctrl.mergingTo">
+  <h3>Merge</h3>
+  <h4>Merging to "{{$ctrl.mergingTo.name}}"</h4>
+  <ul>
+    <li ng-repeat="skill in $ctrl.skills | filter:{mergingIn: true}">
+      {{skill.name}}
+    </li>
+  </ul>
+</article>
+<div class="u-block">
+  <table class="table table-striped">
+    <thead>
+      <th>Name</th>
+      <th class="adminSkills-narrowColumn">Merge to this skill</th>
+      <th class="adminSkills-narrowColumn">Merge this skill in</th>
+      <th class="adminSkills-narrowerColumn">Remove</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="skill in $ctrl.skills">
+        <th>{{skill.name}}</th>
+        <th class="adminSkills-narrowColumn">
+          <input 
+            type="checkbox" 
+            ng-model="skill.mergingTo" 
+            ng-change="$ctrl.onMergeToChange(skill)" 
+            ng-disabled="$ctrl.mergingTo && !skill.mergingTo"
+          />
+        </th>
+        <th class="adminSkills-narrowColumn">
+          <input 
+            type="checkbox" 
+            ng-model="skill.mergingIn"
+            ng-disabled="skill.mergingTo"
+          />
+        </th>
+        <th class="adminSkills-narrowerColumn u-textCenter">
+          <svg class="u-buttonIcon adminSkills-icon u-actionElement" ng-click="$ctrl.removeSkill(skill)">
+            <use xlink:href="#client--svg--cross"/>
+          </svg>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>

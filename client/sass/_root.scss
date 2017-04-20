@@ -5,7 +5,6 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-bottom: $footerHeight;
   background-color: $mainColor1;
 }
 
@@ -13,4 +12,10 @@ html {
   margin: 0;
   flex-grow: 1;
   padding: 0;
+}
+
+@include tabletAndDesktop {
+  .root-body {
+    padding-bottom: $footerHeightTabletAndDesktop;
+  }
 }

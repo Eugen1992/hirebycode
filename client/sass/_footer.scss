@@ -1,38 +1,27 @@
 .footer {
   box-sizing: border-box;
-  margin-bottom: -$footerHeight;
-  height: $footerHeight;
   background-color: #3E474F;
   display: flex;
+  flex-direction: column;
   font-family: Raleway, 'sans-serif';
   color: #929497;
   font-size: fontSize(24px);
 }
 
 .footer-column {
-  border-right: solid 1px $mainColor1;
+  @extend .u-block;
+  box-sizing: content-box;
+  border-bottom: solid 1px $mainColor1;
   display: flex;
+  flex: 0 1 25%;
   flex-direction: column;
-  &--first {
-    flex-basis: 22.2%;
-    padding: 24px 22px 35px;
+  justify-content: space-between;
+  &:last-child {
+    border-bottom: none;
   }
-  &--second {
-    flex-basis: 24.6%;
-    padding: 42px 20px 35px;
-    align-items: center;
-  }
-  &--third {
-    padding: 42px 20px 35px;
-    flex-basis: 24.1%;
-  }
-  &--fourth {
-    padding: 24px 20px 35px;
-    flex-basis: 29%;
-    border-right: none;
-    align-items: center;
-    justify-content: space-between;
-  }
+}
+.footer-line {
+  flex: 0 1 auto;
 }
 .footer-subColumn {
   display: flex;
@@ -41,18 +30,15 @@
 }
 .footer-logo {
   width: 90px;
-  margin-bottom: 25px;
 }
-
+.footer-email {
+  flex: 0 1 50%;
+}
 .footer-smallText {
   font-size: fontSize(18px);
 }
 .footer-smallerText {
   font-size: fontSize(14px);
-}
-
-.footer-email {
-  margin-top: 50px;
 }
 
 .footer-button {
@@ -62,5 +48,25 @@
 }
 
 .footer-loginHelp {
-  margin-top:4px;
+  padding: 8px 0;
+}
+
+@include tabletAndDesktop {
+  .footer {
+    margin-bottom: -$footerHeightTabletAndDesktop;
+    height: $footerHeightTabletAndDesktop;
+    flex-direction: row;
+  }
+  .footer-column {
+    border-right: solid 1px $mainColor1;
+    flex: 0 1 25%;
+    border-bottom: none;
+    justify-content: space-between;
+    &:last-child {
+      border-right: none;
+    }
+  }
+  .footer-line {
+    flex: 0 1 50%;
+  }
 }

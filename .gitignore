@@ -5,3 +5,4 @@ build/
 client/application.css
 client/application.css.map
 client/assets/images/user-images/
+npm-debug.log

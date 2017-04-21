@@ -11,16 +11,18 @@ var app = angular.module('showroom', [
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-  //
-  // For any unmatched url, redirect to /state1
+
   $urlRouterProvider.otherwise('/');
-  //
-  // Now set up the states
+
   $stateProvider
     .state('home', {
       url: '/?searchType&skillFilter&schoolFilter&locationFilter',
       templateUrl: 'client/views/partials/home.html',
       controller: 'HomeController'
+    })
+    .state('how-it-works', {
+      url: '/how-it-works',
+      templateUrl: 'client/views/partials/howItWorks.html'
     })
     .state('repo-details', {
       url: '/repo-details/:id?contentPath&contentType',

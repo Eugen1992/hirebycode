@@ -98,7 +98,8 @@ userSchema.statics.getTrainingCenter = function (userId) {
       website: user.website,
       description: user.description,
       hasLogo: user.hasLogo,
-      isPublic: user.isPublic
+      isPublic: user.isPublic,
+      _id: user._id,
     };
   });
 }

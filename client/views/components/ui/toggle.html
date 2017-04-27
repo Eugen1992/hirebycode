@@ -1,0 +1,11 @@
+<div class="u-block">
+  <span class="toggle-label">{{$ctrl.label}}</span>
+  <label class="toggle-switch">
+    <input type="checkbox" ng-model="$ctrl.ngModel" ng-change="$ctrl.ngChange()">
+    <span class="toggle-slider" ng-class="{'is-checked': $ctrl.ngModel}"></span>
+  </label>
+  <sr-error-message
+    on-close="$ctrl.hideNotification()"
+    ng-if="$ctrl.state === 'error'"
+  ></sr-error-message>
+</div>

@@ -39,5 +39,10 @@ router.put('/developer/account-status',
   authorizeMiddleware({userType: 'developer'}),
   UserController.updateDeveloperAccountStatus
 );
+router.put('/training-center/account-status',
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware({userType: 'trainingCenter'}),
+  UserController.updateTrainingCenterAccountStatus
+);
 
 module.exports = router;

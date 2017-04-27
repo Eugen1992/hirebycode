@@ -1,14 +1,13 @@
 angular.module('showroom').controller('TrainingCenterHomeController',  TrainingCenterHomeController);
 
 TrainingCenterHomeController.$inject = [
-  '$scope', 
   '$state', 
   'UserLocalService', 
   'TrainingCentersService', 
   'UserService', 
   'Upload',
   'Analytics'];
-function TrainingCenterHomeController ($scope, $state, user, trainingCenter, userService, upload, analytics) {
+function TrainingCenterHomeController ($state, user, trainingCenter, userService, upload, analytics) {
   var vm = this;
   vm.profileFormState = 'idle';
 
@@ -16,11 +15,11 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
     vm.profile = trainingCenter;
   });
   trainingCenter.getTrainingCenterRepos(user).then(function (repos) {
-    $scope.pendingRepos = repos.pending;
-    $scope.approvedRepos = repos.approved;
-    $scope.declinedRepos = repos.declined;
+    vm.pendingRepos = repos.pending;
+    vm.approvedRepos = repos.approved;
+    vm.declinedRepos = repos.declined;
   });
-  $scope.approveRepo = function (repo) {
+  vm.approveRepo = function (repo) {
     trainingCenter.changeRepoStatus(repo, 'approved')
       .then(
         function (response) {}, 
@@ -28,27 +27,27 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
         console.log(error);
       });
   }
-  $scope.disapproveRepo = function (repo) {
+  vm.disapproveRepo = function (repo) {
     trainingCenter.changeRepoStatus(repo, 'pending').then(function (response) {
     }, function (error) {
       console.log(error);
     });
   }
-  $scope.startDecliningRepo = function (repo) {
+  vm.startDecliningRepo = function (repo) {
     repo.isDeclining = true;
   }
-  $scope.cancelDecliningRepo = function (repo) {
+  vm.cancelDecliningRepo = function (repo) {
     repo.isDeclining = false;
   }
-  $scope.declineRepo = function (repo) {
+  vm.declineRepo = function (repo) {
     trainingCenter.changeRepoStatus(repo, 'declined').then(function (response) {
     }, function (error) {
       console.log(error);
     });
   }
-  $scope.submitDetails = function () {
+  vm.submitDetails = function () {
     vm.profileFormState = 'loading';
-    userService.updateTrainingCenterDetails(vm.profile, $scope.newLogo)
+    userService.updateTrainingCenterDetails(vm.profile, vm.newLogo)
       .then(function () {
         analytics.trackEvent('Training Center', 'Edit profile', 'success');
         vm.profileFormState = 'success';
@@ -57,7 +56,14 @@ function TrainingCenterHomeController ($scope, $state, user, trainingCenter, use
         vm.profileFormState = 'error';
       });
   }
-  $scope.clearLogo = function () {
-    $scope.newLogo = null;
+  vm.toggleAccountStatus = function () {
+    userService.updateTrainingCenterAccountStatus({ isPublic: !vm.profile.isPublic })
+      .catch(function (error) {
+        vm.profile.isPublic = !vm.profile.isPublic;
+        vm.accountToggleState = 'error';
+      });
+  }
+  vm.clearLogo = function () {
+    vm.newLogo = null;
   }
 }

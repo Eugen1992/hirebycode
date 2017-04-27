@@ -1,3 +1,6 @@
+.toggle-label {
+  @extend .u-inputLabel;
+}
 .toggle-switch {
   position: relative;
   display: inline-block;

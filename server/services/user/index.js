@@ -8,4 +8,5 @@ module.exports = {
   getDeveloperSkills: require('./get-developer-skills.service'),
   updateSkills: require('./update-skills.service'),
   updateTrainingCenters: require('./update-training-centers.service.js'),
+  updateTrainingCenterAccountStatus: require('./update-training-center-account-status.service.js'),
 }

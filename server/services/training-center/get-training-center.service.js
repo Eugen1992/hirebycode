@@ -7,9 +7,7 @@ module.exports = function getTrainingCenter (id) {
   };
 
   const projection = 'name logo hasLogo website description';
-
   return User.findOne(sQuery, projection).then((user) => {
-    console.log(user);
     return user.toObject();
   });
 }

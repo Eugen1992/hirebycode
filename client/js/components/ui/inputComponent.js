@@ -10,11 +10,6 @@
       placeholder: '<',
       ngPattern: '<',
       patternError: '<'
-    },
-    controller: InputController
+    }
   });
-
-  function InputController () {
-
-  }
 })();

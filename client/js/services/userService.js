@@ -65,6 +65,9 @@
         userData.hidden = hidden;
       });
     }
+    this.updateTrainingCenterAccountStatus = function (params) {
+      return $http.put('api/user/training-center/account-status', params);
+    }
     this.updateTrainingCenterDetails = function (data, logo) {
       if (logo) {
         data.userImage = logo; 

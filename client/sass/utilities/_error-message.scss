@@ -1,0 +1,43 @@
+.u-errorMessage {
+  position: relative;
+  display: flex;
+  font-family: Raleway, 'sans-serif';
+  padding: 9px 11px;
+  background-color: $errorBackgroundColor;
+  color: white;
+}
+.u-errorMessage-errorIconContainer {
+  flex: 0 0 auto;
+  position: relative;
+  padding: 7px;
+  align-self: center;
+  margin-right: 10px;
+  background-color: #FF3939;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.u-errorMessage-errorIcon {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+.u-errorMessage-closeIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 9px;
+  height: 9px;
+  fill: white;
+}
+.u-errorMessage-textContainer {
+  display: flex;
+  flex-direction: column;
+}
+.u-errorMessage-header {
+  font-size: fontSize(16px);
+}
+.u-errorMessage-text {
+  font-size: fontSize(13px);
+}

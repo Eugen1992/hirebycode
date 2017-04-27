@@ -1,6 +1,6 @@
 (function () {
   angular.module('showroom').component('srSubmitButton', {
-    templateUrl: 'client/views/components/submitButton.html',
+    templateUrl: 'client/views/components/ui/submitButton.html',
     transclude: true,
     bindings: {
       state: '<',
@@ -8,11 +8,6 @@
       errorText: '<',
       buttonClass: '<',
       notificationPosition: '<'
-    },
-    controller: SubmitButtonController
+    }
   });
-
-  function SubmitButtonController () {
-
-  }
 })();

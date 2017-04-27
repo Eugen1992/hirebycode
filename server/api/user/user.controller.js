@@ -15,7 +15,6 @@ const UserController = {
       wasUpdated: req.imageUpdated,
       fileName: req.imageUpdated ? req.imageFileName : null
     };
-    console.log(req.body);
     User.updateTrainingCenter(req.body, logoInfo, req.userId).then(function (user) {
       res.send(user);
     }, function () {
@@ -85,6 +84,14 @@ const UserController = {
   },
   updateDeveloperAccountStatus: (req, res, next) => {
     UserServices.updateAccountStatus(req.userId, req.body)
+    .then((user) => {
+      res.send(200);
+    }, (err) => {
+      res.status(500).send(err);
+    });
+  },
+  updateTrainingCenterAccountStatus: (req, res, next) => {
+    UserServices.updateTrainingCenterAccountStatus(req.userId, req.body)
     .then((user) => {
       res.send(200);
     }, (err) => {

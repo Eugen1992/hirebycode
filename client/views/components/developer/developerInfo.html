@@ -31,15 +31,15 @@
       class="developerInfo-showProfile u-block u-block--onlyVertical" 
       ng-if="$ctrl.info.profileReadyForPublic"
     >
-      <span>Show profile in search results:</span>
-      <label class="developerInfo-showProfileControl">
-        <span class="developerInfo-showProfileValue" ng-class="{'is-visible': !$ctrl.accountShown}">No</span>
-        <span class="developerInfo-showProfileToggle toggle-switch">
-          <input type="checkbox" ng-model="$ctrl.accountShown" ng-change="$ctrl.handleStatusChange()">
-          <span class="toggle-slider" ng-class="{'is-checked': $ctrl.accountShown}"></span>
-        </span>
-        <span class="developerInfo-showProfileValue" ng-class="{'is-visible': $ctrl.accountShown}">Yes</span>
-      </label>
+      <sr-toggle
+        label="'Show profile in search results:'"
+        ng-model="$ctrl.accountShown"
+        ng-change="$ctrl.handleStatusChange()"
+        state="$ctrl.accountToggleState"
+        on-notification-close="$ctrl.hideStatusChangeNotification()"
+        label-class="'developerInfo-showProfileLabel'"
+        container-class="'developerInfo-showProfile'"
+      ></sr-toggle>
     </div>
     <button type="button" class="u-whiteButton" ui-sref="edit-developer-profile({initial: true})">Edit profile</button>
   </section>

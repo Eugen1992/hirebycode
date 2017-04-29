@@ -59,6 +59,7 @@
             state="$ctrl.accountToggleState"
             ng-model="$ctrl.profile.isPublic"
             ng-change="$ctrl.toggleAccountStatus()"
+            on-notification-close="$ctrl.hideAccountStatusNotification()"
           ></sr-toggle>
         </div>
         <sr-input

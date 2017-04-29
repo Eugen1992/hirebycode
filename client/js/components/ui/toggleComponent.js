@@ -7,16 +7,10 @@
       state: '<',
       errorText: '<',
       ngChange: '&',
-      notificationClass: '<'
-    },
-    controller: ToggleController
-  });
-
-  function ToggleController () {
-    var vm = this;
-
-    vm.hideNotification = function () {
-      state = 'idle';
+      notificationClass: '<',
+      onNotificationClose: '&',
+      labelClass: '<',
+      containerClass: '<',
     }
-  }
+  });
 })();

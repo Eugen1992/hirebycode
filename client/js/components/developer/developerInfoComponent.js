@@ -18,20 +18,15 @@
         vm.accountShown = !info.hidden;
       });
     }
-    vm.$onChanges = function (changes) {
-    }
-    vm.hideAccount = function () {
-      userService.updateDeveloperAccountStatus({hidden: true}).then(function(newInfo) {
-        vm.info.hidden = true;
-      });
-    }
-    vm.showAccount = function () {
-      userService.updateDeveloperAccountStatus({hidden: false}).then(function(newInfo) {
-        vm.info.hidden = false;
-      });
-    }
     vm.handleStatusChange = function () {
-      userService.updateDeveloperAccountStatus({hidden: !vm.accountShown});
+      userService.updateDeveloperAccountStatus({hidden: !vm.accountShown})
+      .catch(function () {
+        vm.accountShown = !vm.accountShown;
+        vm.accountToggleState = 'error';
+      });
+    }
+    vm.hideStatusChangeNotification = function () {
+      vm.accountToggleState = 'idle';
     }
   }
 })();

@@ -1,4 +1,4 @@
-<div class="u-errorMessage">
+<div class="u-errorMessage" ng-if="$ctrl.isOpen">
   <div class="u-errorMessage-errorIconContainer">
     <svg class="u-errorMessage-errorIcon">
       <use xlink:href="#client--svg--close"/>
@@ -6,7 +6,7 @@
   </div>
   <div class="u-errorMessage-textContainer">
     <span class="u-errorMessage-header">Oops...</span>
-    <span class="u-errorMessage-text">Something went wrong. Please try again or contact us</span>
+    <span class="u-errorMessage-text">{{text || 'Something went wrong. Please try again or contact us'}}</span>
   </div>
   <svg class="u-errorMessage-closeIcon" ng-click="$ctrl.onClose()">
       <use xlink:href="#client--svg--close"/>

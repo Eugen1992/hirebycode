@@ -12,10 +12,14 @@
 }
 .developerInfo-showProfile {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  align-items: center;
+}
+.developerInfo-showProfileLabel {
   font-family: Raleway, 'sans-serif';
   color: $mainColor3;
+  font-size: fontSize(14px);
+  margin-right: 20px;
 }
 .developerInfo-showProfileControl {
   flex: 0 0 auto;

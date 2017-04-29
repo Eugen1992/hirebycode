@@ -3,6 +3,7 @@
     templateUrl: 'client/views/components/ui/errorMessage.html',
     bindings: {
       text: '<',
+      isOpen: '<',
       onClose: '&',
     }
   });

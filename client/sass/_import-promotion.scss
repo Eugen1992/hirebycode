@@ -2,15 +2,13 @@
   display: none;
 }
 .importPromotion-button {
-  display: block;
   background-color: transparent;
   border: solid 2px white;
   color: white;
   outline: none;
   font-size: fontSize(20px);
   margin: 30px auto 0;
-  position: relative;
-  left: -30px;
+  align-self: flex-start;
 }
 
 @include tabletAndDesktop {

@@ -63,6 +63,9 @@ function TrainingCenterHomeController ($state, user, trainingCenter, userService
         vm.accountToggleState = 'error';
       });
   }
+  vm.hideAccountStatusNotification = function () {
+    vm.accountToggleState = 'idle';
+  }
   vm.clearLogo = function () {
     vm.newLogo = null;
   }

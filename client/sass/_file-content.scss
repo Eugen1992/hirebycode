@@ -1,10 +1,20 @@
 .fileContent {
-  display: flex;
+  & code {
+    white-space: pre;
+    border: none;
+    background-color: transparent;
+    padding-left: 20px;
+  }
 }
-.fileContent-code {
-  flex: 1 1 auto;
-}
-.hljs-line-numbers {
+code.hljs-line-numbers {
   border-right: none;
   padding: 10px;
+  padding-left: 0px;
+  padding-top: 10px;
+  width: 45px;
+}
+.hljs {
+  display: inline-block;
+  padding: 0.5em;
+  max-width: 100%;
 }

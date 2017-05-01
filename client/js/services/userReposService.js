@@ -123,7 +123,7 @@ function UserReposService ($q, $http, $filter) {
   }
   function replaceWithUpdated(updatedRepo) {
     if (fetched) {
-      repos = repos.map((repo) => {
+      repos = repos.map(function(repo) {
         if (repo.hbcId === updatedRepo._id) {
           repo.hbcData = updatedRepo;
         }

@@ -1,11 +1,12 @@
-LocationsService.$inject = ['$http', '$q'];
-app.service('AnalyticService', AnalyticService);
+(function () {
+  app.service('AnalyticService', AnalyticService);
 
-AnalyticService.$inject = ['$http'];
+  AnalyticService.$inject = ['$http'];
 
-function AnalyticService ($http) {
-  
-  this.sendEvent = function (data) {
+  function AnalyticService ($http) {
+    
+    this.sendEvent = function (data) {
 
+    }
   }
-}
+})();

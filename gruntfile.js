@@ -68,6 +68,24 @@ module.exports = function(grunt) {
         // explicitly specify the temp directory you are working in 
         // this is the the base of your links ( "/" ) 
         temp: 'build'
+    },
+    ngAnnotate: {
+      options: {
+        singleQuotes: true
+      },
+      prod: {
+        files: {
+          'build/client/app.annotated.js': ['build/client/app.min.js']
+        }
+      }
+    }, 
+    uglify: {
+      prod: {
+        files: {
+            'build/client/app.min.js': ['build/client/app.annotated.js'],
+            'build/client/vendor.min.js': 'build/client/vendor.min.js'
+        }
+      }
     }
   });
   
@@ -81,11 +99,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-svg-sprite');
   grunt.loadNpmTasks('grunt-svginjector');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-ng-annotate'); 
 
   grunt.registerTask('default', ['sass', 'watch:sass']);
   grunt.registerTask('svg-icons', ['svg_sprite', 'svginjector']);
 
   grunt.registerTask('build', 
-    ['clean:build', 'sass', 'svg-icons', 'copy:build', 'useref', 'concat', 'clean:postBuild']);
+    ['clean:build', 'sass', 'svg-icons', 'copy:build', 'useref', 'concat', 'ngAnnotate:prod', 'uglify:prod', 'clean:postBuild']);
 
 };

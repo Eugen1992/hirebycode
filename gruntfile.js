@@ -80,10 +80,17 @@ module.exports = function(grunt) {
       }
     }, 
     uglify: {
-      prod: {
+      js: {
         files: {
             'build/client/app.min.js': ['build/client/app.annotated.js'],
             'build/client/vendor.min.js': 'build/client/vendor.min.js'
+        }
+      }
+    },
+    cssmin: {
+      target: {
+        files: {
+          'build/client/application.css': 'build/client/application.css'
         }
       }
     }
@@ -101,11 +108,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-svginjector');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-ng-annotate'); 
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.registerTask('default', ['sass', 'watch:sass']);
   grunt.registerTask('svg-icons', ['svg_sprite', 'svginjector']);
 
   grunt.registerTask('build', 
-    ['clean:build', 'sass', 'svg-icons', 'copy:build', 'useref', 'concat', 'ngAnnotate:prod', 'uglify:prod', 'clean:postBuild']);
+    ['clean:build', 'sass', 'svg-icons', 'copy:build', 'useref', 'concat', 'ngAnnotate:prod', 'cssmin', 'uglify:js', 'clean:postBuild']);
 
 };

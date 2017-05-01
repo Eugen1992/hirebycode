@@ -1,8 +1,10 @@
-var express = require('express');
+const express = require('express');
+const compression = require('compression')
 
 module.exports = function (app) {
   var expressHbs = require('express3-handlebars');
 
+  app.use(compression());
   app.engine('hbs', expressHbs({extname:'hbs'}));
   app.set('view engine', 'hbs');
 

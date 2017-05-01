@@ -1,4 +1,13 @@
+* {
+  -moz-hyphens:none;
+  -ms-hyphens:none;
+  -webkit-hyphens: none;
+  hyphens:none;
+  word-break:keep-all!important;
+}
 .fileContent {
+  overflow-x: auto;
+  background-color: inherit;
   & code {
     white-space: pre;
     border: none;
@@ -16,5 +25,4 @@ code.hljs-line-numbers {
 .hljs {
   display: inline-block;
   padding: 0.5em;
-  max-width: 100%;
 }

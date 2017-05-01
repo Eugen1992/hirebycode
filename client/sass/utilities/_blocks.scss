@@ -34,5 +34,9 @@
   }
   .u-blockTabletAndDesktop {
     padding: $mainMarginTabletDesktop / 2;
+    &--onlyVertical {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }

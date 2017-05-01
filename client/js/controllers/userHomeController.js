@@ -46,6 +46,7 @@ function UserHomeController (userRepos, filter, $http, $state) {
       });
   }
   function handleRepos(repos) {
+    console.log(repos);
     vm.userGithubRepos = repos.filter(function(repo) {
       return !repo.imported;
     });

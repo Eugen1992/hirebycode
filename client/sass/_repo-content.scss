@@ -35,6 +35,7 @@
   cursor: pointer;
   border: solid 1px grey;
   border-right: none;
+  border-left: none;
   margin-top: -1px;
   background-color: white;
 }
@@ -78,6 +79,7 @@
   }
   .repoContent-fsRow {
     border-right: solid 1px grey;
+    border-left: solid 1px grey;
   }
   .repoContent-contact {
     display: block;

@@ -8,8 +8,8 @@
       ></sr-contact-developer>
     </div>
   </div>
-  <div  class="repoContent-fileSystem u-block">
-    <div class="repoContent-path u-block  u-block--onlyVertical" ng-if="$ctrl.currentPath.length">
+  <div  class="repoContent-fileSystem u-blockTabletAndDesktop">
+    <div class="repoContent-path u-block u-block-mobile u-blockTabletAndDesktop--onlyVertical" ng-if="$ctrl.currentPath.length">
       <span class="repoContent-pathItem" ng-click="$ctrl.goUpFolders(0)">{{$ctrl.repo.name}}</span>
       <span ng-repeat="pathItem in $ctrl.currentPath.split('/')">
         /<span 

@@ -66,9 +66,11 @@
         );
       });
     }
-    this.goUpFolders = function () {
+    this.goUpFolders = function (step) {
+
       var pathParts = this.currentPath.split('/');
-      var path = pathParts.slice(0, pathParts.length - 1).join('/'); 
+      var step = step === 'undefined' ? pathParts.length - 1 : step;
+      var path = pathParts.slice(0, step).join('/'); 
 
       this.loading = true;
       github.getRepoContent(this.repo, path).then(function (content) {

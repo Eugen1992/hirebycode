@@ -1,9 +1,9 @@
 <button 
-  class="u-greenButton u-greenButton--small"
+  class="u-greenButton u-greenButton--small {{$ctrl.buttonClass}}"
   ng-click="$ctrl.login()"
 >
   <span class="header-buttonText">{{$ctrl.text}}</span>
-  <svg class="u-buttonIcon header-githubIcon">
+  <svg class="u-buttonIcon header-githubIcon" ng-hide="$ctrl.hideIcon">
     <use xlink:href="#client--svg--github"/>
   </svg>
 </button>

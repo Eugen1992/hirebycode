@@ -3,7 +3,9 @@
     templateUrl: 'client/views/components/root/githubLoginButton.html',
     controller: GithubLoginButtonController,
     bindings: {
-      text: '<'
+      text: '<',
+      buttonClass: '<',
+      hideIcon: '<',
     }
   });
 

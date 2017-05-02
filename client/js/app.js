@@ -10,10 +10,10 @@ var app = angular.module('showroom', [
   'ngTagsInput'
 ]);
 
-app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 
   $urlRouterProvider.otherwise('/');
-
+  $locationProvider.html5Mode(true);
   $stateProvider
     .state('home', {
       url: '/?searchType&skillFilter&schoolFilter&locationFilter',
@@ -23,6 +23,10 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     .state('how-it-works', {
       url: '/how-it-works',
       templateUrl: 'client/views/partials/howItWorks.html'
+    })
+    .state('search', {
+      url: '/search',
+      templateUrl: 'client/views/partials/search.html'
     })
     .state('repo-details', {
       url: '/repo-details/:id?contentPath&contentType',

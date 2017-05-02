@@ -58,6 +58,9 @@ $howItWorksCircleSize: 155px;
     margin-left: -4px;
     border-left: solid 4px $mainColor1;
   }
+  .howItWorks-articleLine--last & {
+    padding-bottom: 58px;
+  }
 }
 
 .howItWorks-circle {
@@ -171,4 +174,13 @@ $howItWorksCircleSize: 155px;
   text-align: center;
   font-size: fontSize(14px);
   padding: 8px;
+}
+.howItWorks-actionButtonContainer {
+  width: 55%;
+  align-self: center;
+}
+.howItWorks-actionButton {
+  width: 100%;
+  padding: 18px 0;
+  font-size: fontSize(24px);
 }

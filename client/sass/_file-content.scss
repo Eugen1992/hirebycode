@@ -1,18 +1,14 @@
-* {
-  -moz-hyphens:none;
-  -ms-hyphens:none;
-  -webkit-hyphens: none;
-  hyphens:none;
-  word-break:keep-all!important;
-}
 .fileContent {
   overflow-x: auto;
   background-color: inherit;
+  white-space: pre;
+  word-wrap: normal;
   & code {
     white-space: pre;
+    word-break: keep-all;
     border: none;
     background-color: transparent;
-    padding-left: 20px;
+    padding-left: 10px;
   }
 }
 code.hljs-line-numbers {
@@ -20,9 +16,18 @@ code.hljs-line-numbers {
   padding: 10px;
   padding-left: 0px;
   padding-top: 10px;
-  width: 45px;
+  width: 35px;
 }
 .hljs {
   display: inline-block;
   padding: 0.5em;
+}
+
+@include tabletAndDesktop {
+  .fileContent code {
+    padding-left: 20px;
+  }
+  code.hljs-line-numbers {
+    width: 45px;
+  }
 }

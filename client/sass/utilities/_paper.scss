@@ -7,7 +7,9 @@
   background-color: white;
   box-shadow: 2px 3.5px 0 0 #bcbaba;
 }
-
+.u-paperShadow {
+  box-shadow: 2px 3.5px 0 0 #bcbaba;
+}
 @include phone {
   .u-paperVertical--mobile {
     background-color: white;
@@ -23,6 +25,9 @@
 @include tabletAndDesktop {
   .u-paper--desktop {
     background-color: white;
+    box-shadow: 2px 3.5px 0 0 #bcbaba;
+  }
+  .u-paperShadow--desktop {
     box-shadow: 2px 3.5px 0 0 #bcbaba;
   }
 }

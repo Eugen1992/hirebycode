@@ -1,7 +1,7 @@
-AuthService.$inject = ['$q', '$http', '$window', 'UserLocalService'];
+AuthService.$inject = ['$q', '$http', '$window', 'UserLocalService', 'UserService'];
 app.service('AuthService', AuthService);
 
-function AuthService ($q, $http, $window, userLocalService) {
+function AuthService ($q, $http, $window, userLocalService, userService) {
   this.github = function () {
     var deferred = $q.defer();
     userLocalService.logOut();

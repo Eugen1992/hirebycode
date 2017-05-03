@@ -17,7 +17,7 @@ module.exports = function () {
           return done(err);
         }
         // already exists
-        if (user) {
+        if (!user) {
           console.log('User already exists');
 
           return done(null, {
@@ -26,7 +26,8 @@ module.exports = function () {
             accessToken
           });
         } else {
-          registerDeveloper(profile.id, profile.username).then((newUser) => {
+          console.log(profile);
+          registerDeveloper(profile).then((newUser) => {
             return done(null, Object.assign(newUser.toObject(), { isNewUser: true }));
           });
         }
@@ -34,9 +35,19 @@ module.exports = function () {
   });
 }
 
-function registerDeveloper (githubId, githubUsername) {
+function registerDeveloper (profile) {
+  let firstName, lastName;
+
+  if (profile._json.name && profile._json.name.split) {
+    firstName = profile._json.name.split(' ')[0];
+    lastName = profile._json.name.split(' ')[1];
+  }
+  
   return User.createDeveloper({
-    githubId: githubId,
-    githubLogin: githubUsername
+    githubId: profile.id,
+    githubLogin: profile.username,
+    email: profile._json.email,
+    firstName,
+    lastName,
   });
 }

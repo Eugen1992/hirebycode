@@ -28,7 +28,8 @@ const userSchema = new Schema({
   hidden: Boolean,
   login: String,
   password: String,
-  skills: [ { type: String, ref: 'Skill' }]
+  skills: [ { type: String, ref: 'Skill' }],
+  isEmailVerified: Boolean,
 }, {
   toObject: { getters: true }
 });

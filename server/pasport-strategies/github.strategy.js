@@ -17,7 +17,7 @@ module.exports = function () {
           return done(err);
         }
         // already exists
-        if (!user) {
+        if (user) {
           console.log('User already exists');
 
           return done(null, {
@@ -26,7 +26,6 @@ module.exports = function () {
             accessToken
           });
         } else {
-          console.log(profile);
           registerDeveloper(profile).then((newUser) => {
             return done(null, Object.assign(newUser.toObject(), { isNewUser: true }));
           });
@@ -47,6 +46,7 @@ function registerDeveloper (profile) {
     githubId: profile.id,
     githubLogin: profile.username,
     email: profile._json.email,
+    isEmailVerfied: !!profile._json.email,
     firstName,
     lastName,
   });

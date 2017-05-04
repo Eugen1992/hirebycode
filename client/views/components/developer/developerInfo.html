@@ -1,7 +1,8 @@
 <div class="u-block u-paper developerInfo">
-  <div class="alert alert-warning" ng-if="!$ctrl.info.profileReadyForPublic">
-    <b>Your profile is not included in search.</b> Please fill in contacts and location info and we will add your profile to search results.
-  </div>
+  <sr-info-notification 
+    ng-if="!$ctrl.info.profileReadyForPublic" 
+    text="'<b>Your profile is not included in search.</b> We show profiles only with contact info and personal information.'"
+  ></sr-info-notification>
   <section class="u-block u-block--onlyVertical">
     <sr-developer-avatar
       avatar-url="$ctrl.info.avatar"
@@ -10,15 +11,18 @@
       {{$ctrl.info.firstName}} {{$ctrl.info.lastName}}
     </div>
     <table class="u-keyValueTable">
-      <tr>
-        <td class="u-keyValueTable-key">Contact info:</td>
-        <td class="u-keyValueTable-value">{{$ctrl.info.email}}</td>
+      <tr ng-if="$ctrl.info.email">
+        <td class="u-keyValueTable-key">Email:</td>
+        <td class="u-keyValueTable-value">
+          {{$ctrl.info.email}}
+          <button>Verify</button>
+        </td>
       </tr>
       <tr ng-if="$ctrl.info.position" ng-if="$ctrl.info.position">
         <td class="u-keyValueTable-key">Position:</td>
         <td class="u-keyValueTable-value">{{$ctrl.info.position}}</td>
       </tr>
-      <tr>
+      <tr ng-if="$ctrl.info.city && $ctrl.info.country">
         <td class="u-keyValueTable-key">Location:</td>
         <td class="u-keyValueTable-value">{{$ctrl.info.city}}, {{$ctrl.info.country}}</td>
       </tr>

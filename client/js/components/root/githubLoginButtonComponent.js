@@ -18,10 +18,10 @@
       auth.github().then(function (user) {
           if (user.isNewUser) {
             analytics.trackEvent('Developer', 'Signup', 'success');
-            $state.go('edit-developer-profile');
+            $state.go('edit-developer-profile', { isInitial: true });
           } else {
             analytics.trackEvent('Developer', 'Login', 'success');
-            $state.go('user-home', { isInitial: true });
+            $state.go('user-home');
           }
           
       }, function (err) {

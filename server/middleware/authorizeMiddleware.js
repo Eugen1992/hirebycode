@@ -1,14 +1,17 @@
 const User = require('../models/user.js');
 const ObjectId = require('mongodb').ObjectId;
 
-module.exports = ({ userType }) => (req, res, next) => {
+module.exports = ({ userType } = {}) => (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const sQuery = {
       _id: ObjectId(req.userId),
-      type: userType,
       token
     };
+
+    if (userType) {
+      sQuery.type = userType;
+    }
 
     User.findOne(sQuery, (err, user) => {
       if (err) {

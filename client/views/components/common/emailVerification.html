@@ -1,0 +1,6 @@
+{{$ctrl.user.email}}
+<button 
+  ng-if="$ctrl.user.emailVerificationStatus === 'non-verified'"
+  class="u-whiteButton u-whiteButton--small"
+  ng-click="$ctrl.startEmailVerification()"
+>Verify</button>

@@ -82,6 +82,9 @@
       }, function (error) {
         console.log(error);
       });
+    },
+    this.startEmailVerification = function () {
+      return $http.get('api/user/start-email-verification');
     }
   }
 })();

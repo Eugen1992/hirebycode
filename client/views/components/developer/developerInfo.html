@@ -12,10 +12,9 @@
     </div>
     <table class="u-keyValueTable">
       <tr ng-if="$ctrl.info.email">
-        <td class="u-keyValueTable-key">Email:</td>
+        <td class="u-keyValueTable-key developerInfo-emailKey">Email:</td>
         <td class="u-keyValueTable-value">
-          {{$ctrl.info.email}}
-          <button>Verify</button>
+          <sr-email-verification></sr-email-verification>
         </td>
       </tr>
       <tr ng-if="$ctrl.info.position" ng-if="$ctrl.info.position">

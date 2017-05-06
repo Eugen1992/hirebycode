@@ -97,6 +97,9 @@ const UserController = {
     }, (err) => {
       res.status(500).send(err);
     });
+  },
+  startEmailVerification: (req, res, next) => {
+    res.sendStatus(200);
   }
 }
 

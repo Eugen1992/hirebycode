@@ -17,7 +17,7 @@ module.exports = function () {
           return done(err);
         }
         // already exists
-        if (user) {
+        if (!user) {
           console.log('User already exists');
 
           return done(null, {
@@ -46,7 +46,7 @@ function registerDeveloper (profile) {
     githubId: profile.id,
     githubLogin: profile.username,
     email: profile._json.email,
-    isEmailVerfied: !!profile._json.email,
+    emailVerificationStatus: profile._json.email ? 'verified' : 'non-verified',
     firstName,
     lastName,
   });

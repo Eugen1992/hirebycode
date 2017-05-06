@@ -29,7 +29,7 @@ const userSchema = new Schema({
   login: String,
   password: String,
   skills: [ { type: String, ref: 'Skill' }],
-  isEmailVerified: Boolean,
+  emailVerificationStatus: String,
 }, {
   toObject: { getters: true }
 });
@@ -37,8 +37,8 @@ const userSchema = new Schema({
 
 userSchema.statics.createDeveloper = function (data) {
   var createQuery = Object.assign(
-    data,
-    { type: 'developer', repos: [], hidden: false });
+    { type: 'developer', repos: [], hidden: false, emailVerificationStatus: 'non-verified' },
+    data);
 
   return this.create(createQuery);
 }

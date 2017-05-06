@@ -44,5 +44,9 @@ router.put('/training-center/account-status',
   authorizeMiddleware({userType: 'trainingCenter'}),
   UserController.updateTrainingCenterAccountStatus
 );
-
+router.get('/start-email-verification',
+  jwtMiddleware.decodeToken,
+  authorizeMiddleware(),
+  UserController.startEmailVerification
+);
 module.exports = router;

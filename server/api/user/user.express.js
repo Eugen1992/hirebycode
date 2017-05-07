@@ -3,8 +3,8 @@ const UserController = require('./user.controller');
 
 const userImageUpload = require('../../middleware/user-image-upload');
 
-const jwtMiddleware = require('../../middleware/jwtMiddleware');
-const authorizeMiddleware = require('../../middleware/authorizeMiddleware');
+const jwtMiddleware = require('../../middleware/jwt.middleware');
+const authorizeMiddleware = require('../../middleware/authorize.middleware');
 
 router.get('/training-center/details',
   jwtMiddleware.decodeToken,

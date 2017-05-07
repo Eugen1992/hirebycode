@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const SkillsController = require('./skills.controller.js');
 const passport = require('passport');
-const jwtMiddleware = require('../../middleware/jwtMiddleware.js');
-const authorizeMiddleware = require('../../middleware/authorizeMiddleware.js');
+const jwtMiddleware = require('../../middleware/jwt.middleware.js');
+const authorizeMiddleware = require('../../middleware/authorize.middleware.js');
 
 router.get('/',
   SkillsController.get

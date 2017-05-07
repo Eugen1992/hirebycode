@@ -1,0 +1,27 @@
+.emailVerification {
+  display: flex;
+  align-items: center;
+}
+.emailVerification-successIconContainer {
+  padding: 4px;
+  border-radius: 50%;
+  background-color: $successBackgroundColor;
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+.emailVerification-button {
+  margin-left: 5px;
+}
+.emailVerification-successIcon {
+  width: 15px;
+  height: 15px;
+  fill: white;
+}
+.emailVerification-notification {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  margin-top: -5px;
+}

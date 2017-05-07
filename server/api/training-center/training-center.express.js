@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
 const TrainingCenterController = require('./training-center.controller');
-const authorizeMiddleware = require('../../middleware/authorizeMiddleware');
-const jwtMiddleware = require('../../middleware/jwtMiddleware');
+const authorizeMiddleware = require('../../middleware/authorize.middleware');
+const jwtMiddleware = require('../../middleware/jwt.middleware');
 
 router.get('/full',
   jwtMiddleware.decodeToken,

@@ -84,7 +84,19 @@
       });
     },
     this.startEmailVerification = function () {
-      return $http.get('api/user/start-email-verification');
+      return $http.get('api/user/start-email-verification')
+        .then(function (response) {
+          var emailVerificationStatus = response.data.emailVerificationStatus;
+
+          userData.emailVerificationStatus = emailVerificationStatus;
+          return emailVerificationStatus;
+        },
+        function (response) {
+          var emailVerificationStatus = response.data.emailVerificationStatus;
+
+          userData.emailVerificationStatus = emailVerificationStatus;
+          return $q.reject(emailVerificationStatus);
+        });
     }
   }
 })();

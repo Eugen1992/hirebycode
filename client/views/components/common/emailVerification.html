@@ -1,6 +1,27 @@
-{{$ctrl.user.email}}
-<button 
-  ng-if="$ctrl.user.emailVerificationStatus === 'non-verified'"
-  class="u-whiteButton u-whiteButton--small"
-  ng-click="$ctrl.startEmailVerification()"
->Verify</button>
+<div class="emailVerification">
+  <span ng-hide="$ctrl.hideEmail">{{$ctrl.user.email}}</span>
+  <button 
+    ng-hide="$ctrl.user.emailVerificationStatus === 'verified'"
+    class="u-whiteButton u-whiteButton--small emailVerification-button"
+    ng-click="$ctrl.startEmailVerification()"
+  >{{$ctrl.buttonTexts[$ctrl.user.emailVerificationStatus]}}</button>
+  <span class="emailVerification-successIconContainer" ng-if="$ctrl.user.emailVerificationStatus === 'verified'">
+    <svg class="emailVerification-successIcon">
+      <use xlink:href="#client--svg--checkmark" />
+    </svg>
+  </span>
+  <sr-notification-label
+    class="emailVerification-notification u-paperShadow"
+    on-close="$ctrl.onNotificationClose()"
+    is-open="$ctrl.notificationStatus === 'error'"
+    mode="'error'"
+  ></sr-notification-label>
+  <sr-notification-label
+    class="emailVerification-notification u-paperShadow"
+    on-close="$ctrl.onNotificationClose()"
+    is-open="$ctrl.notificationStatus === 'success'"
+    mode="'info'"
+    header-text="'Please, check your inbox'"
+    text="'We have sent you a verfication email'"
+  ></sr-notification-label>
+</div>

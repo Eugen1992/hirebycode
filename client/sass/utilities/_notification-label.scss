@@ -1,0 +1,59 @@
+.u-notificationLabel {
+  position: relative;
+  display: flex;
+  font-family: Raleway, 'sans-serif';
+  padding: 9px 11px;
+  color: white;
+  &--error {
+    background-color: $errorBackgroundColor;
+  }
+  &--success {
+    background-color: $successBackgroundColor;
+  }
+  &--info {
+    background-color: $infoBackgroundColor;
+  }
+}
+.u-notificationLabel-iconContainer {
+  flex: 0 0 auto;
+  position: relative;
+  padding: 7px;
+  align-self: center;
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  .u-notificationLabel--error & {
+    background-color: #FF3939;
+  }
+  .u-notificationLabel--success & {
+    background-color: $successColor;
+  }
+  .u-notificationLabel--info & {
+    background-color: $infoColor;
+  }
+}
+.u-notificationLabel-icon {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+.u-notificationLabel-closeIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 11px;
+  height: 11px;
+  fill: white;
+}
+.u-notificationLabel-textContainer {
+  display: flex;
+  flex-direction: column;
+}
+.u-notificationLabel-header {
+  font-size: fontSize(16px);
+}
+.u-notificationLabel-text {
+  font-size: fontSize(13px);
+}

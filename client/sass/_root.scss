@@ -5,7 +5,9 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: $mainColor1;
+  background: url('/client/assets/images/background.jpg');
+  background-size: 100% auto;
+  background-repeat-x: no-repeat;
 }
 
 .root-wrapper {

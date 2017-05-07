@@ -1,6 +1,8 @@
 const User = require('../../models/user.js');
-const UserServices = require('../../services/user');
+const UserService = require('../../services/user');
 const LocationService = require('../../services/location');
+const EmailService = require('../../services/email');
+const TokenService = require('../../services/token');
 
 const UserController = {
   getTrainingCenterDetails: (req, res, next) => {
@@ -23,7 +25,7 @@ const UserController = {
   },
   getDeveloperDetails: (req, res, next) => {
     let userDetails;
-    UserServices.getDeveloperProfile({ userId: req.userId, withContacts: true })
+    UserService.getDeveloperProfile({ userId: req.userId, withContacts: true })
       .then(function (details) {
         userDetails = details;
       })
@@ -50,10 +52,10 @@ const UserController = {
       city: req.body.city,
       country: req.body.country
     }).then((location) => {
-      return UserServices.updateDeveloperProfile(req.userId, req.body);
+      return UserService.updateDeveloperProfile(req.userId, req.body);
     })
     .then((user) => {
-      return UserServices.getDeveloperProfile({ userId: req.userId, withContacts: true });
+      return UserService.getDeveloperProfile({ userId: req.userId, withContacts: true });
     })
     .then(function (details) {
       return LocationService.getLocationData(details.placeId).then((location) => {
@@ -70,7 +72,7 @@ const UserController = {
   },
   updateDeveloperAvatar: (req, res, next) => {
     if (req.imageUpdated) {
-      UserServices.updateDeveloperAvatar(req.userId, req.imageFileName)
+      UserService.updateDeveloperAvatar(req.userId, req.imageFileName)
       .then(function (avatarData) {
         res.send(avatarData);
       })
@@ -83,7 +85,7 @@ const UserController = {
     }
   },
   updateDeveloperAccountStatus: (req, res, next) => {
-    UserServices.updateAccountStatus(req.userId, req.body)
+    UserService.updateAccountStatus(req.userId, req.body)
     .then((user) => {
       res.send(200);
     }, (err) => {
@@ -91,7 +93,7 @@ const UserController = {
     });
   },
   updateTrainingCenterAccountStatus: (req, res, next) => {
-    UserServices.updateTrainingCenterAccountStatus(req.userId, req.body)
+    UserService.updateTrainingCenterAccountStatus(req.userId, req.body)
     .then((user) => {
       res.send(200);
     }, (err) => {
@@ -99,7 +101,20 @@ const UserController = {
     });
   },
   startEmailVerification: (req, res, next) => {
-    res.sendStatus(200);
+    UserService.getById(req.userId)
+      .then((user) => {
+        const token = TokenService.generate(req.userId);
+        return EmailService.sendVerificationEmail({ email: user.email, token });
+      })
+      .then(({ status }) => {
+        return UserService.setEmailVerificationStatus(req.userId, { status });
+      })
+      .then((user) => {
+        res.send({ emailVerificationStatus: user.emailVerificationStatus });
+      })
+      .catch((error) => {
+        res.status(500);
+      });
   }
 }
 

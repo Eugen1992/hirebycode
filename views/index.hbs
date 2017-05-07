@@ -57,6 +57,7 @@
     <script src="/client/js/controllers/trainingCenterController.js"></script>
     <script src="/client/js/controllers/trainingCenterLoginController.js"></script>
     <script src="/client/js/controllers/trainingCenterHomeController.js"></script>
+    <script src="/client/js/controllers/verificationResultController.js"></script>
     <script src="/client/js/controllers/githubLoginController.js"></script>
     <script src="/client/js/controllers/editDeveloperProfileController.js"></script>
     <script src="/client/js/controllers/adminLoginController.js"></script>
@@ -99,7 +100,7 @@
     <script src="/client/js/components/ui/selectComponent.js"></script>
     <script src="/client/js/components/ui/textareaComponent.js"></script>
     <script src="/client/js/components/ui/toggleComponent.js"></script>
-    <script src="/client/js/components/ui/errorMessageComponent.js"></script>
+    <script src="/client/js/components/ui/notificationLabelComponent.js"></script>
     <script src="/client/js/components/ui/infoNotificationComponent.js"></script>
 
     <script src="/client/js/components/root/headerComponent.js"></script>
@@ -107,7 +108,10 @@
     <script src="/client/js/components/root/githubLoginButtonComponent.js"></script>
     <!-- endbuild -->
     <script>
-    window.env = '{{{env}}}' || 'local';
+        window.env = '{{{env}}}' || 'local';
+        {{#if preloadedData}}
+            window.preloadedData = {{{preloadedData}}}
+        {{/if}}
     </script>
   </head>
   <body ng-app="showroom" class="root-body">

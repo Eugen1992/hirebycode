@@ -43,7 +43,7 @@
     color: $warningColor;
   }
   &.is-declined {
-    color: $errorWarning;
+    color: $errorColor;
   }
   &.is-approved {
     color: $mainColor2;
@@ -59,7 +59,7 @@
     background-color: $warningColor;
   }
   &.is-declined {
-    background-color: $errorWarning;
+    background-color: $errorColor;
   }
   &.is-approved {
     display: none;

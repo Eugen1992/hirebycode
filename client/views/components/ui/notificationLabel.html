@@ -1,0 +1,16 @@
+<div class="u-notificationLabel u-notificationLabel--{{$ctrl.mode}}" ng-if="$ctrl.isOpen">
+  <div class="u-notificationLabel-iconContainer">
+    <svg class="u-notificationLabel-icon">
+      <use xlink:href="#client--svg--close" ng-if="$ctrl.mode === 'error'" />
+      <use xlink:href="#client--svg--checkmark" ng-if="$ctrl.mode === 'success'" />
+      <use xlink:href="#client--svg--checkmark" ng-if="$ctrl.mode === 'info'" />
+    </svg>
+  </div>
+  <div class="u-notificationLabel-textContainer">
+    <span class="u-notificationLabel-header">{{$ctrl.headerText || $ctrl.defaultHeaders[$ctrl.mode]}}</span>
+    <span class="u-notificationLabel-text">{{$ctrl.text || $ctrl.defaultTexts[$ctrl.mode]}}</span>
+  </div>
+  <svg class="u-notificationLabel-closeIcon" ng-click="$ctrl.onClose()">
+      <use xlink:href="#client--svg--close"/>
+  </svg>
+</div>

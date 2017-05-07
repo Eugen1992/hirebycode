@@ -1,0 +1,13 @@
+<section class="u-block">
+  <div class="u-paper u-block">
+    <div ng-if="$ctrl.emailVerificationStatus === 'verified'" class="emailVerification-contentContainer">
+      <div class="emailVerification-header u-block">You have successfully verified your email</div>
+      <button class="u-greenButton" ui-sref="user-home">Go to dashboard</button>
+    </div>
+    <div ng-if="$ctrl.emailVerificationStatus !== 'verified'" class="emailVerification-contentContainer">
+      <div class="emailVerification-header u-block">We couldn't verify your email yet, please try again or contact us</div>
+      <sr-email-verification hide-email="true"></sr-email-verification>
+    </div>
+    
+  </div>
+</section>

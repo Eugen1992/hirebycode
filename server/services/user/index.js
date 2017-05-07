@@ -9,4 +9,6 @@ module.exports = {
   updateSkills: require('./update-skills.service'),
   updateTrainingCenters: require('./update-training-centers.service.js'),
   updateTrainingCenterAccountStatus: require('./update-training-center-account-status.service.js'),
+  getById: require('./get-by-id.service.js'),
+  setEmailVerificationStatus: require('./set-email-verification-status.service.js'),
 }

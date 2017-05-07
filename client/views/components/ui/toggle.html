@@ -4,9 +4,10 @@
     <input type="checkbox" ng-model="$ctrl.ngModel" ng-change="$ctrl.ngChange()">
     <span class="toggle-slider" ng-class="{'is-checked': $ctrl.ngModel}"></span>
   </label>
-  <sr-error-message
+  <sr-notification-label
     class="toggle-error"
     on-close="$ctrl.onNotificationClose()"
     is-open="$ctrl.state==='error'"
-  ></sr-error-message>
+    mode="'error'"
+  ></sr-notification-label>
 </div>

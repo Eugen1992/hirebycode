@@ -75,6 +75,17 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $location
       controller: 'UserHomeController',
       controllerAs: '$ctrl',
     })
+    .state('verify-email', {
+      url: '/verify-email/:token',
+      redirectTo: 'verification-result',
+    })
+    .state('verification-result', {
+      parent: 'authorized',
+      url: '/verification-result',
+      templateUrl: 'client/views/partials/verificationResult.html',
+      controller: 'VerificationResultController',
+      controllerAs: '$ctrl',
+    })
     .state('edit-developer-profile', {
       parent: 'authorized',
       url: '/edit-developer-profile?isInitial',
@@ -195,6 +206,11 @@ angular.module('showroom').run(function($rootScope, $state, UserLocalService) {
     }
   });
   $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
+    if (to.redirectTo) {
+      ev.preventDefault();
+      $state.go(to.redirectTo, toParams, { location: 'replace' });
+      return;
+    }
     if (to.name === 'account') {
       ev.preventDefault();
       switch (UserLocalService.getUser().type) {

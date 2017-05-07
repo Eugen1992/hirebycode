@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const RepoDeveloperController = require('./repo-developer.controller');
-const authorizeMiddleware = require('../../../middleware/authorizeMiddleware.js');
-const jwtMiddleware = require('../../../middleware/jwtMiddleware.js');
+const authorizeMiddleware = require('../../../middleware/authorize.middleware.js');
+const jwtMiddleware = require('../../../middleware/jwt.middleware.js');
 
 router.get('/',
   jwtMiddleware.decodeToken,

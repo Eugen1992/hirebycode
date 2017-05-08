@@ -60,10 +60,26 @@
 }
 
 .develoeprDetails-contact {
+  text-align: center;
   font-family: 'Playfair Display', sans;
   font-size: 18px;
 }
-
+.developerDetails-verifiedSign {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 3px 10px;
+  color: white;
+  border-radius: 10px;
+  font-size: fontSize(14px);
+  letter-spacing: 0.5px;
+  font-family: Raleway, 'sans-serif';
+  &--true {
+    background-color: $successBackgroundColor;
+  }
+  &--false {
+    background-color: $warningColor;
+  }
+}
 @include tabletAndDesktop {
   .developerDetails {
     display: flex;

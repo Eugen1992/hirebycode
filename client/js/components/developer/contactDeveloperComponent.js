@@ -5,6 +5,7 @@
       developerName: '<',
       state: '<',
       developerId: '<',
+      isEmailVerified: '<',
     },
     controller: ContactDeveloperController
   });

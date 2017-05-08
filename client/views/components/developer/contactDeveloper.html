@@ -13,4 +13,8 @@
   ></div>
 </form>
 <div class="u-error" ng-show="$ctrl.contactRequestError">{{$ctrl.contactRequestError}}</div>
-<div class="develoeprDetails-contact" ng-if="$ctrl.contacts">Email: {{$ctrl.contacts}}</div>
+<div class="develoeprDetails-contact" ng-if="$ctrl.contacts">
+  Email: {{$ctrl.contacts}}
+  <span class="developerDetails-verifiedSign developerDetails-verifiedSign--true" ng-if="$ctrl.isEmailVerified">veirified</span>
+  <span class="developerDetails-verifiedSign developerDetails-verifiedSign--false" ng-if="!$ctrl.isEmailVerified">non-verified</span>
+</div>

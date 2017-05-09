@@ -3,6 +3,10 @@
     ng-if="!$ctrl.info.profileReadyForPublic" 
     text="'<b>Your profile is not included in search.</b> We show profiles only with contact info and personal information.'"
   ></sr-info-notification>
+  <sr-info-notification 
+    ng-if="!$ctrl.accountShown && $ctrl.info.profileReadyForPublic" 
+    text="'<b>Your profile is hidden and not included in search.</b> You may change it by toggling your status.'"
+  ></sr-info-notification>
   <section class="u-block u-block--onlyVertical">
     <sr-developer-avatar
       avatar-url="$ctrl.info.avatar"

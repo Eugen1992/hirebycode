@@ -19,7 +19,8 @@
       });
     }
     vm.handleStatusChange = function () {
-      userService.updateDeveloperAccountStatus({hidden: !vm.accountShown})
+      var newHiddenValue = vm.accountShown;
+      userService.updateDeveloperAccountStatus({ hidden: newHiddenValue })
       .catch(function () {
         vm.accountShown = !vm.accountShown;
         vm.accountToggleState = 'error';

@@ -54,6 +54,7 @@
     "multer": "^1.2.1",
     "multer-storage-cloudinary": "2.2.1",
     "nodemailer": "^4.0.1",
+    "nodemailer-express-handlebars": "^2.0.0",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
     "passport-local": "^1.0.0",

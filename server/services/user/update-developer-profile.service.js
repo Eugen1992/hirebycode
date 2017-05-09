@@ -6,12 +6,17 @@ module.exports = function (userId, data) {
     _id: ObjectId(userId)
   }
   const uQuery = {
-    email: data.email,
-    firstName: data.firstName,
-    lastName: data.lastName,
-    placeId: data.placeId,
-    position: data.position,
-  }
+    $set: {
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      placeId: data.placeId,
+      position: data.position,
+    }
+  };
+  if (data.emailChanged) {
+    uQuery.emailVerificationStatus = 'non-verified';
+  };
 
   return User.findOneAndUpdate(sQuery, uQuery, { new: true })
     .then((user) => {

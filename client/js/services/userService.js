@@ -34,6 +34,7 @@
       }
     }
     this.updateDeveloperDetails = function (data) {
+      data.emailChanged = userData.email === data.email;
       return $http({
         method: 'PUT',
         url: 'api/user/developer/details',

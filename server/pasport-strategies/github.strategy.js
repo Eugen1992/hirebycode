@@ -17,7 +17,7 @@ module.exports = function () {
           return done(err);
         }
         // already exists
-        if (!user) {
+        if (user) {
           console.log('User already exists');
 
           return done(null, {

@@ -62,7 +62,8 @@
           angular.extend(
             state.params,
             { contentPath: vm.currentPath, contentType: vm.contentType }
-          )
+          ),
+          { notify: false }
         );
       });
     }
@@ -83,7 +84,8 @@
           angular.extend(
             state.params,
             { contentPath: this.currentPath, contentType: this.contentType }
-          )
+          ),
+          { notify: false }
         );
       }.bind(this)); 
     }

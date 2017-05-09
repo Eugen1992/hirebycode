@@ -102,7 +102,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $location
     })
     .state('importing', {
       parent: 'authorized',
-      url: '/import/:id',
+      url: '/import/:id?contentPath&contentType',
       templateUrl: 'client/views/partials/importing.html',
       controller: 'ImportController',
       controllerAs: '$ctrl',

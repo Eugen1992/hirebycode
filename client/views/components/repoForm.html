@@ -13,7 +13,7 @@
       required="true"
     ></sr-input>
     <sr-input
-      ng-pattern="'@^(https?|ftp)://[^\s/$.?#].[^\s]*$@iS'"
+      ng-pattern="$ctrl.urlRegex"
       pattern-error="'It looks like your url is not valid'"
       label="'Link (if your project is hosted)'"
       name="'link'"

@@ -15,6 +15,7 @@
   RepoFormController.$inject = ['$scope', '$q', 'SkillsService', 'TrainingCentersService'];
   function RepoFormController ($scope, $q, SkillsService, TrainingCentersService) {
     var vm = this;
+    vm.urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,10}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
     vm.$onInit = function () {
       TrainingCentersService.getAll().then(function (centers) {
         vm.trainingCenters = centers;

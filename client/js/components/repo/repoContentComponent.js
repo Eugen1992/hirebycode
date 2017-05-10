@@ -70,7 +70,7 @@
     this.goUpFolders = function (step) {
 
       var pathParts = this.currentPath.split('/');
-      var step = step === 'undefined' ? pathParts.length - 1 : step;
+      var step = (step === undefined) ? pathParts.length - 1 : step;
       var path = pathParts.slice(0, step).join('/'); 
 
       this.loading = true;

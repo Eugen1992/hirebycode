@@ -33,6 +33,15 @@
         });
     }
 
+    vm.englishLevels = [
+      'Elementary', 
+      'Pre-intermediate', 
+      'Intermediate', 
+      'Advanced', 
+      'Native speaker'
+    ];
+
+
     function handleUserInfo (info) {
       var hasLocation = info.city && info.country;
       vm.info = info;

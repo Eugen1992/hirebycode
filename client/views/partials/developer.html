@@ -14,6 +14,14 @@
           <th class="developerDetails-detailKey u-block">Location: </th>
           <th class="developerDetails-detailValue u-block">{{$ctrl.developer.city}}, {{$ctrl.developer.country}}</th>
         </tr>
+        <tr class="developerDetails-detailRow">
+          <th class="developerDetails-detailKey u-block">English level: </th>
+          <th class="developerDetails-detailValue u-block">{{$ctrl.developer.englishLevel}}</th>
+        </tr>
+        <tr class="developerDetails-detailRow" ng-if="$ctrl.developer.relocateReady !== undefined">
+          <th class="developerDetails-detailKey u-block">Ready to relocate: </th>
+          <th class="developerDetails-detailValue u-block">{{$ctrl.developer.relocateReady ? 'Yes' : 'No' }}</th>
+        </tr>
         <tr class="developerDetails-detailRow" ng-if="$ctrl.developer.trainingCenters.length">
           <th class="developerDetails-detailKey u-block">School:</th>
           <th class="developerDetails-detailValue u-block">

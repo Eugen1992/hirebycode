@@ -28,6 +28,8 @@ const userSchema = new Schema({
   hidden: Boolean,
   login: String,
   password: String,
+  englishLevel: { type: String, enum: ['Elementary', 'Pre-intermediate', 'Intermediate', 'Advanced', 'Native speaker'] },
+  relocateReady: Boolean,
   skills: [ { type: String, ref: 'Skill' }],
   emailVerificationStatus: String,
 }, {

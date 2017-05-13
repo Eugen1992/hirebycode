@@ -33,6 +33,14 @@
         <td class="u-keyValueTable-key">School:</td>
         <td class="u-keyValueTable-value">{{$ctrl.info.trainingCenter.name}}</td>
       </tr>
+      <tr ng-if="$ctrl.info.englishLevel">
+        <td class="u-keyValueTable-key">English level:</td>
+        <td class="u-keyValueTable-value">{{$ctrl.info.englishLevel}}</td>
+      </tr>
+      <tr ng-if="$ctrl.info.englishLevel">
+        <td class="u-keyValueTable-key">Ready to relocate:</td>
+        <td class="u-keyValueTable-value">{{$ctrl.info.relocateReady ? 'Yes' : 'No'}}</td>
+      </tr>
     </table>
     <div
       class="developerInfo-showProfile u-block u-block--onlyVertical" 

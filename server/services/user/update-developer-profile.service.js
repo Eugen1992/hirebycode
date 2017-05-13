@@ -12,6 +12,8 @@ module.exports = function (userId, data) {
       lastName: data.lastName,
       placeId: data.placeId,
       position: data.position,
+      englishLevel: data.englishLevel,
+      relocateReady: data.relocateReady,
     }
   };
   if (data.emailChanged) {

@@ -1,6 +1,6 @@
 <div class="u-block {{$ctrl.containerClass}}">
   <span class="toggle-label {{$ctrl.labelClass}}">{{$ctrl.label}}</span>
-  <label class="toggle-switch">
+  <label class="toggle-switch {{$ctrl.toggleClass}}">
     <input type="checkbox" ng-model="$ctrl.ngModel" ng-change="$ctrl.ngChange()">
     <span class="toggle-slider" ng-class="{'is-checked': $ctrl.ngModel}"></span>
   </label>

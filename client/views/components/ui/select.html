@@ -1,5 +1,4 @@
 <label class="u-inputContainer u-selectContainer u-block">
-
   <span class="u-inputLabel">
     {{$ctrl.label}}
     <sr-red-star ng-if="$ctrl.required"></sr-red-star>
@@ -7,8 +6,8 @@
   <span class="u-selectArrow"></span>
   <select class="u-input u-select" ng-model="$ctrl.ngModel">
     <option class="u-selectOption" value="{{$ctrl.defaultValue}}">{{$ctrl.defaultText}}</option>
-    <option class="u-selectOption" ng-repeat="option in $ctrl.options" value="{{option[$ctrl.valueField]}}">
-      {{option[$ctrl.displayField]}}
+    <option class="u-selectOption" ng-repeat="option in $ctrl.options" value="{{option[$ctrl.valueField] || option}}">
+      {{option[$ctrl.displayField] || option}}
     </option>
   </select>
   <div

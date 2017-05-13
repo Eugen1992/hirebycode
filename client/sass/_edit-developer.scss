@@ -47,3 +47,16 @@
   align-items: stretch;
   justify-content: flex-end;
 }
+.editDeveloper-toggleLabelContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.editDeveloper-toggleLabel {
+  white-space: nowrap;
+  margin-right: 15px;
+  display: inline-block;
+}
+.editDeveloper-toggle {
+  margin: 0;
+}

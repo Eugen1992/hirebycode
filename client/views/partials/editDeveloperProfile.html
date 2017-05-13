@@ -72,6 +72,23 @@
             ng-show="$ctrl.form.location.$error.required">This field is required</div>
         </div>
       </label>
+      <sr-select
+        label="'English level'"
+        name="'englishLevel'"
+        form="$ctrl.form"
+        ng-model="$ctrl.info.englishLevel"
+        options="$ctrl.englishLevels"
+        default-text="'Select your English level'"
+      ></sr-select>
+      <sr-toggle
+        label="'Ready to relocate'"
+        label-class="'editDeveloper-toggleLabel'"
+        toggle-class="'editDeveloper-toggle'"
+        container-class="'editDeveloper-toggleLabelContainer'"
+        name="'englishLevel'"
+        form="$ctrl.form"
+        ng-model="$ctrl.info.relocateReady"
+      ></sr-toggle>
       <div class="u-block editDeveloper-buttons">
         <sr-submit-button 
           error-text="'Something went wrong'"

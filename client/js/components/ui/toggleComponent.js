@@ -11,6 +11,7 @@
       onNotificationClose: '&',
       labelClass: '<',
       containerClass: '<',
+      toggleClass: '<',
     }
   });
 })();

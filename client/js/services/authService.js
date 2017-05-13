@@ -58,7 +58,7 @@ function AuthService ($q, $http, $window, userLocalService, userService) {
   function buildUrl () {
     var url = 'https://github.com/login/oauth/authorize';
     var clientIds = {
-      local: '11ab72fc5d5b195ee720',
+      dev: '11ab72fc5d5b195ee720',
       test: 'eb5f166749f8dd122fb0',
       production: '46704eae5252da4bc665'
     };

@@ -5,10 +5,15 @@ module.exports = function ReplaceSkillsInRepos (skillsToRemove, skillToInsert) {
     skills: { $in: skillsToRemove }
   };
 
-  const uQuery = {
-    $pullAll: { skills: skillsToRemove }, 
+  const uQueryFirst = {
     $addToSet: { skills: skillToInsert }
   };
   
-  Repo.update(sQuery, uQuery, { multi: true });
+  const uQuerySecond = {
+    $pullAll: { skills: skillsToRemove }, 
+  };
+
+  Repo.update(sQuery, uQueryFirst, { multi: true }).then(() => {
+    return Repo.update(sQuery, uQuerySecond, { multi: true });
+  });
 }

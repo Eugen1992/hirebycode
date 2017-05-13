@@ -5,10 +5,15 @@ module.exports = function ReplaceSkillsInDevelopers (skillsToRemove, skillToInse
     skills: { $in: skillsToRemove }
   };
 
-  const uQuery = {
-    $pullAll: { skills: skillsToRemove }, 
+  const uQueryFirst = {
     $addToSet: { skills: skillToInsert }
   };
   
-  User.update(sQuery, uQuery, { multi: true });
+  const uQuerySecond = {
+    $pullAll: { skills: skillsToRemove }, 
+  };
+
+  User.update(sQuery, uQueryFirst, { multi: true }).then(() => {
+    return User.update(sQuery, uQuerySecond, { multi: true });
+  });
 }

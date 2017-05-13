@@ -13,10 +13,10 @@
       ng-init="$ctrl.croppedDataUrl=''">
     </img-crop>
   </div>
-  <div class="developerAvatar-avatarContainer" ng-if="!$ctrl.newAvatar">
+  <div class="developerAvatar-avatarContainer" ng-if="!$ctrl.newAvatar" ngf-select ng-model="$ctrl.newAvatar">
     <img class="developerAvatar-avatar {{$ctrl.imageClassName}}" src="{{$ctrl.avatarUrl}}" />
 
-    <svg class="developerAvatar-newPhotoIcon {{$ctrl.iconClassName}}" ngf-select ng-model="$ctrl.newAvatar">
+    <svg class="developerAvatar-newPhotoIcon {{$ctrl.iconClassName}}" width="44px" height="33px" viewBox="0 0 935 720">
       <use xlink:href="#client--svg--photo" />
     </svg>
   </div>

@@ -11,9 +11,10 @@ const RepoController = {
   },
   getById: (req, res, next) => {
     RepoServices.getRepo(req.params.id).then(function (repo) {
-      res.send(JSON.stringify(repo));
+      setTimeout(() => {
+        res.send(JSON.stringify(repo));
+      }, 3000);
     }, function (error) {
-      console.log(error);
       res.sendStatus(500);
     });
   }

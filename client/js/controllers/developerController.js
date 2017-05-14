@@ -4,7 +4,6 @@
   function DeveloperController (scope, developer, analyticService) {
     var vm = this;
     vm.repos = developer.repos;
-    console.log(developer);
     vm.developer = developer.info;
   }
 })();

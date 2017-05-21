@@ -9,10 +9,11 @@ module.exports = function () {
     },
     function(accessToken, refreshToken, profile, done) {
       profile.accessToken = accessToken;
-      
+
        User.findOne({ githubId: profile.id }, function(err, user) {
       // In case of any error return
         if (err) {
+
           console.log('Error in SignUp: '+err);
           return done(err);
         }

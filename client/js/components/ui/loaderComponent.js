@@ -4,6 +4,7 @@
     bindings: {
       shown: '<',
       containerClass: '<',
+      iconClass: '<',
     }
   });
 })();

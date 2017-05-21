@@ -6,9 +6,11 @@
       name: '<',
       label: '<',
       ngModel: '=',
+      ngChange: '&',
       required: '<',
       placeholder: '<',
       ngPattern: '<',
+      ngPaste: '&',
       patternError: '<'
     }
   });

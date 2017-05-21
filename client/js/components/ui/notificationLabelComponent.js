@@ -7,6 +7,7 @@
       isOpen: '<',
       onClose: '&',
       mode: '<',
+      noCloseButton: '<',
     },
     controller: NotificationLabelController
   });

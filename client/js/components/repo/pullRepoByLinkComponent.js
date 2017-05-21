@@ -21,7 +21,7 @@
           vm.onPullSuccess({ repo: repo });
         })
         .catch(function () {
-
+          vm.pullState = 'error';
         });
     }
   }

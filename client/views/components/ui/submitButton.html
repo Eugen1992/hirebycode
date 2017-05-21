@@ -14,13 +14,19 @@
       </svg>
     </span>
   </button>
-  <div class="submitButton-notification submitButton-notification--{{$ctrl.notificationPosition}} is-success" ng-if="$ctrl.state==='success'">
+  <div class="submitButton-notification submitButton-notification--{{$ctrl.notificationPosition}} is-success"
+       ng-if="$ctrl.state==='success'"
+       ng-hide="$ctrl.hideResult"
+  >
     <svg class="submitButton-icon is-success">
       <use xlink:href="#client--svg--checkmark" />
     </svg>
     <span class="submitButton-notificationText">{{$ctrl.successText}}</span>
   </div>
-  <div class="submitButton-notification submitButton-notification--{{$ctrl.notificationPosition}} is-error" ng-if="$ctrl.state==='error'">
+  <div class="submitButton-notification submitButton-notification--{{$ctrl.notificationPosition}} is-error"
+       ng-if="$ctrl.state==='error'"
+       ng-hide="$ctrl.hideResult"
+  >
     <svg class="submitButton-icon is-error">
       <use xlink:href="#client--svg--cross" />
     </svg>

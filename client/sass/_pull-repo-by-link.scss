@@ -1,10 +1,14 @@
 .pullRepoByLink {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .pullRepoByLink-input {
   display: inline-block;
 }
 .pullRepoByLink-button {
   flex: 1 1 auto;
+}
+.pullRepoByLink-notification {
+  flex: 0 0 100%;
 }

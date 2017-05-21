@@ -25,6 +25,9 @@ const GithubProxyController = {
       if (!error && response.statusCode == 200) {
         res.send(body);
       }
+      if (error) {
+        res.status(500).send(error);
+      }
     });
   }
 }

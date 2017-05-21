@@ -7,7 +7,8 @@
       successText: '<',
       errorText: '<',
       buttonClass: '<',
-      notificationPosition: '<'
+      notificationPosition: '<',
+      hideResult: '<',
     }
   });
 })();

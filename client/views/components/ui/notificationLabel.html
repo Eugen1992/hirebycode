@@ -10,7 +10,7 @@
     <span class="u-notificationLabel-header">{{$ctrl.headerText || $ctrl.defaultHeaders[$ctrl.mode]}}</span>
     <span class="u-notificationLabel-text">{{$ctrl.text || $ctrl.defaultTexts[$ctrl.mode]}}</span>
   </div>
-  <svg class="u-notificationLabel-closeIcon" ng-click="$ctrl.onClose()">
+  <svg class="u-notificationLabel-closeIcon" ng-click="$ctrl.onClose()" ng-hide="$ctrl.noCloseButton">
       <use xlink:href="#client--svg--close"/>
   </svg>
 </div>

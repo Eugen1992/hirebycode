@@ -7,6 +7,13 @@
     <sr-submit-button
         class="pullRepoByLink-button"
         state="$ctrl.pullState"
+        hide-result="true"
         ng-click="$ctrl.onSubmit()"
     >Import</sr-submit-button>
+    <sr-notification-label
+        mode="'error'"
+        is-open="$ctrl.pullState === 'error'"
+        сlass="pullRepoByLink-notification u-block"
+        no-close-button="true"
+    ></sr-notification-label>
 </div>

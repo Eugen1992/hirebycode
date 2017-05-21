@@ -21,10 +21,15 @@
           <sr-email-verification></sr-email-verification>
         </td>
       </tr>
-      <tr ng-if="$ctrl.info.position" ng-if="$ctrl.info.position">
+      <tr ng-if="$ctrl.info.position && !$ctrl.info.desiredPosition">
         <td class="u-keyValueTable-key">Position:</td>
         <td class="u-keyValueTable-value">{{$ctrl.info.position}}</td>
       </tr>
+      <tr ng-if="$ctrl.info.desiredPosition">
+        <td class="u-keyValueTable-key">Desired position:</td>
+        <td class="u-keyValueTable-value">{{$ctrl.info.desiredPosition}}</td>
+      </tr>
+
       <tr ng-if="$ctrl.info.city && $ctrl.info.country">
         <td class="u-keyValueTable-key">Location:</td>
         <td class="u-keyValueTable-value">{{$ctrl.info.city}}, {{$ctrl.info.country}}</td>

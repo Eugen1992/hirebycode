@@ -11,7 +11,7 @@ module.exports = function (userId, data) {
       firstName: data.firstName,
       lastName: data.lastName,
       placeId: data.placeId,
-      position: data.position,
+      desiredPosition: data.desiredPosition,
       englishLevel: data.englishLevel,
       relocateReady: data.relocateReady,
     }

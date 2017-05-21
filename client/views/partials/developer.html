@@ -4,9 +4,13 @@
     <div class="u-block">
       <h2 class="developerDetails-name">{{$ctrl.developer.firstName}} {{$ctrl.developer.lastName}}</h2>
       <div 
-        ng-if="$ctrl.developer.position"
+        ng-if="$ctrl.developer.position && !$ctrl.developer.desiredPosition"
         class="developerDetails-position u-block u-textCenter"
       >{{$ctrl.developer.position}}</div>
+      <div
+        ng-if="$ctrl.developer.desiredPosition"
+        class="developerDetails-position u-block u-textCenter"
+      >{{$ctrl.developer.desiredPosition}}</div>
     </div>
     <article class="u-block developerDetails-personalInfo">
       <table class="developerDetails-detailsTable">

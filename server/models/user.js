@@ -10,6 +10,7 @@ const userSchema = new Schema({
   lastName: String,
   placeId: { type: String, ref: 'Location' },
   position: String,
+  desiredPosition: String,
   type: String,
   githubId: String,
   githubLogin: String,

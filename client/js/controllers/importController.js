@@ -1,11 +1,12 @@
-ImportController.$inject = ['$scope', '$q', 'UserService', 'UserReposService', '$state', '$stateParams'];
+ImportController.$inject = ['$scope', '$q', 'UserService', 'UserReposService', 'GithubRepoService', '$state', '$stateParams'];
 angular.module('showroom').controller('ImportController',  ImportController);
 
-function ImportController ($scope, $q, user, repos, $state, $stateParams) {
+function ImportController ($scope, $q, user, repos, githubRepos, $state, $stateParams) {
   var vm = this;
   vm.repoState = 'repoLoading';
-  repos.getByProviderId($stateParams.id).then(function (receivedRepo) {
+  githubRepos.getByProviderId($stateParams.id).then(function (receivedRepo) {
     vm.repoState = 'repoLoaded';
+    console.log(receivedRepo);
     $scope.repo = receivedRepo;
     $scope.repo.hbcData = {
       skills: [],

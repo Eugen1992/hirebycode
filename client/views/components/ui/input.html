@@ -6,7 +6,9 @@
   <input 
     placeholder="{{$ctrl.placeholder}}"
     class="u-input"
-    ng-pattern="$ctrl.ngPattern" 
+    ng-pattern="$ctrl.ngPattern"
+    ng-change="$ctrl.ngChange()"
+    ng-paste="$ctrl.ngPaste()"
     ng-model="$ctrl.ngModel" name="{{$ctrl.name}}" ng-required="$ctrl.required" />
   <div
     class="u-error"

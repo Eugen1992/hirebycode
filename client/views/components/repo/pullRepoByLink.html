@@ -1,0 +1,12 @@
+<div class="pullRepoByLink">
+    <sr-input
+        label="'Not owning repository? Just insert a repository link to start importing'"
+        ng-model="$ctrl.link"
+        class="pullRepoByLink-input"
+    ></sr-input>
+    <sr-submit-button
+        class="pullRepoByLink-button"
+        state="$ctrl.pullState"
+        ng-click="$ctrl.onSubmit()"
+    >Import</sr-submit-button>
+</div>

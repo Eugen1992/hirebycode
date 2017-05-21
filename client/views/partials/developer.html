@@ -14,7 +14,7 @@
           <th class="developerDetails-detailKey u-block">Location: </th>
           <th class="developerDetails-detailValue u-block">{{$ctrl.developer.city}}, {{$ctrl.developer.country}}</th>
         </tr>
-        <tr class="developerDetails-detailRow">
+        <tr class="developerDetails-detailRow" ng-if="$ctrl.developer.englishLevel">
           <th class="developerDetails-detailKey u-block">English level: </th>
           <th class="developerDetails-detailValue u-block">{{$ctrl.developer.englishLevel}}</th>
         </tr>

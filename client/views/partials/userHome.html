@@ -15,6 +15,11 @@
           {{repo.name}}
           <button class="u-greenButton" ng-click="$ctrl.import(repo)">Import</button>
         </li>
+        <li>
+          <sr-pull-repo-by-link
+              on-pull-success="$ctrl.import(repo)"
+          ></sr-pull-repo-by-link>
+        </li>
       </ul>
     </article>
     <sr-repo-preview

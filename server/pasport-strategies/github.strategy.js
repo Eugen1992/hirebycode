@@ -9,7 +9,7 @@ module.exports = function () {
     },
     function(accessToken, refreshToken, profile, done) {
       profile.accessToken = accessToken;
-
+        console.log(profile.id);
        User.findOne({ githubId: profile.id }, function(err, user) {
       // In case of any error return
         if (err) {

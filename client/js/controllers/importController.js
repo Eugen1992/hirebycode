@@ -6,7 +6,6 @@ function ImportController ($scope, $q, user, repos, githubRepos, $state, $stateP
   vm.repoState = 'repoLoading';
   githubRepos.getByProviderId($stateParams.id).then(function (receivedRepo) {
     vm.repoState = 'repoLoaded';
-    console.log(receivedRepo);
     $scope.repo = receivedRepo;
     $scope.repo.hbcData = {
       skills: [],

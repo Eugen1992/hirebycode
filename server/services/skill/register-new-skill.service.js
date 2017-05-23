@@ -33,7 +33,7 @@ module.exports = function (skills) {
       }
     });
   } else {
-    return Promise.resolve(oldIds);
+    return Promise.resolve(skills.map((skill) => { return skill._id }));
   }
   
 };

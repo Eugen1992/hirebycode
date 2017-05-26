@@ -17,10 +17,10 @@
     vm.captchaKey = configService.googleCaptchaKey;
     vm.requestState = 'idle';
     this.showCaptcha = function () {
-      analyticsProvider.trackEvent('Contacts request', 'captcha', 'started');
       if (vm.contacts) {
         return;
       }
+      analyticsProvider.trackEvent('Contacts request', 'captcha', 'started');
       vm.requestState = 'captchaInProgress';
     };
     vm.requestContact = function (captcha) {
@@ -28,7 +28,7 @@
       analyticsProvider.trackEvent('Contacts request', 'captcha', 'completed');
       developerService.getContactsById(vm.developerId, captcha)
         .then(function (contacts) {
-          analyticsProvider.trackEvent('Contacts request', 'received', 'success', contacts);
+          analyticsProvider.trackEvent('Contacts request', 'received', 'success');
           vm.contacts = contacts;
           vm.requestState = 'idle';
         }, function (error) {

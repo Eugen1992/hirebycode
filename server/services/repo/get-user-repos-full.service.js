@@ -9,21 +9,16 @@ module.exports = function getUserRepos (userId, providerLogin) {
   var promise = new Promise(function (resolveListFormed, rejectListFormed) {
     var dbPromise = getReposFromDb(userId);
     var githubReposPromise = getReposFromGithub(providerLogin);
-    var importedRepos;
+
     Promise.all([dbPromise, githubReposPromise]).then(function (responses) {
+
       var importedRepos = responses[0];
       var reposFromGithub = responses[1];
-      importedRepos.forEach(function (importedRepo) {
-        var githubRepo = _.find(reposFromGithub, function (repo) {
-          return repo.id === importedRepo.providerId;
-        });
-        if (githubRepo) {
-          githubRepo.imported = true;
-          githubRepo.hbcId = importedRepo._id;
-          githubRepo.hbcData = importedRepo;
-        }
+
+      resolveListFormed({
+        userGithubRepos: reposFromGithub,
+        userImportedRepos: importedRepos
       });
-      resolveListFormed(reposFromGithub);
     });
   });
   return promise;

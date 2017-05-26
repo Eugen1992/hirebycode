@@ -37,20 +37,12 @@ function UserReposService ($q, $http, $filter) {
     dataToSend.createdAt = new Date().getTime();
 
     return $http.post(baseUrl, dataToSend).then(function (response) {
-      var hbcData = response.data;
-      var githubId = hbcData.providerId;
-      var repo;
+      var importedRepo = response.data;
       if (repos) {
-        previousRepoIndex = repos.findIndex(function(repo) {
-          return repo.id === githubId;
+        repos.userImportedRepos.push(importedRepo);
+        var repoIndex = repos.userGithubRepos.findIndex(function (repo) {
+          return repo.id = importedRepo.providerId;
         });
-        repo = repos[previousRepoIndex];
-        repo.imported = true;
-        repos.splice(previousRepoIndex, 1);
-        repos.unshift(repo);
-        repo.hbcData = hbcData;
-        repo.hbcId = hbcData._id;
-        return repo;
       } else {
         return this.getUserRepos();
       }
@@ -58,8 +50,6 @@ function UserReposService ($q, $http, $filter) {
     }.bind(this));
   }
   this.delete = function (options) {
-    var deletePromise;
-
     if (options.repo) {
       return deleteByModel(options.repo);
     } else if (options.hbcId) {
@@ -67,17 +57,17 @@ function UserReposService ($q, $http, $filter) {
     }
   }
   this.hide = function (options) {
-    var repo = $filter('filter')(repos, {hbcId: options.hbcId}, true)[0];
+    var repo = $filter('filter')(repos.userImportedRepos, {_id: options.hbcId}, true)[0];
 
-    return $http.put(baseUrl + '/hide/' + repo.hbcId).then(function () {
-      repo.hbcData.hidden = true;
+    return $http.put(baseUrl + '/hide/' + repo._id).then(function () {
+      repo.hidden = true;
     });
   }
   this.unhide = function (options) {
-    var repo = $filter('filter')(repos, {hbcId: options.hbcId}, true)[0];
+    var repo = $filter('filter')(repos.userImportedRepos, {_id: options.hbcId}, true)[0];
 
-    return $http.put(baseUrl + '/unhide/' + repo.hbcId).then(function () {
-      repo.hbcData.hidden = false;
+    return $http.put(baseUrl + '/unhide/' + repo._id).then(function () {
+      repo.hidden = false;
     });
   }
   this.update = function (repo) {
@@ -115,21 +105,23 @@ function UserReposService ($q, $http, $filter) {
     return $http.get(baseUrl);
   }
   function deleteById(repoId) {
-    var repo = $filter('filter')(repos, {hbcId: repoId}, true)[0];
+    var repo = $filter('filter')(repos.userImportedRepos, {_id: repoId}, true)[0];
     
     return deleteByModel(repo);
   }
   function deleteByModel(repo) {
-    return $http.delete(baseUrl + '/' + repo.hbcId).then(function () {
-      repo.imported = false;
+    return $http.delete(baseUrl + '/' + repo._id).then(function () {
+      repos.userImportedRepos = repos.userImportedRepos.filter(function (importedRepo) {
+        return repo._id !== importedRepo._id;
+      });
       return repo;
     });
   }
   function replaceWithUpdated(updatedRepo) {
     if (fetched) {
-      repos = repos.map(function(repo) {
-        if (repo.hbcId === updatedRepo._id) {
-          repo.hbcData = updatedRepo;
+      repos.userImportedRepos = repos.userImportedRepos.map(function(repo) {
+        if (repo._id === updatedRepo._id) {
+          return updatedRepo;
         }
         return repo;
       });

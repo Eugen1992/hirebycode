@@ -14,25 +14,25 @@ function UserHomeController (userRepos, filter, $http, $state) {
     vm.notImportedOpened = true;
   }
   vm.deleteRepo = function (repoToDelete) {
-    userRepos.delete({hbcId: repoToDelete.hbcId})
-      .then(function () {
+    userRepos.delete({hbcId: repoToDelete._id})
+      .then(function (repos) {
         getRepos();
       });
   }
   vm.hideRepo = function (repoToHide) {
-    userRepos.hide({hbcId: repoToHide.hbcId})
+    userRepos.hide({hbcId: repoToHide._id})
       .then(function () {
         getRepos();
       });
   }
   vm.unhideRepo = function (repoToHide) {
-    userRepos.unhide({hbcId: repoToHide.hbcId})
+    userRepos.unhide({hbcId: repoToHide._id})
       .then(function () {
         getRepos();
       });
   }
   vm.editRepo = function (repo) {
-    $state.go('edit', {id: repo.hbcId});
+    $state.go('edit', {id: repo._id});
   }
   
   function getRepos() {
@@ -46,11 +46,11 @@ function UserHomeController (userRepos, filter, $http, $state) {
       });
   }
   function handleRepos(repos) {
-    vm.userGithubRepos = repos.filter(function(repo) {
-      return !repo.imported;
+    vm.userGithubRepos = repos.userGithubRepos.filter(function (repo) {
+      return !repos.userImportedRepos.find(function (importedRepo) {
+        return repo.id === importedRepo.providerId;
+      });
     });
-    vm.userImportedRepos = repos.filter(function(repo) {
-      return repo.imported;
-    });
+    vm.userImportedRepos = repos.userImportedRepos;
   }
 }

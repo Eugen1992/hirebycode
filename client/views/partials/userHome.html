@@ -16,16 +16,16 @@
           <button class="u-greenButton" ng-click="$ctrl.import(repo)">Import</button>
         </li>
         <li>
-          <!--<sr-pull-repo-by-link
+          <sr-pull-repo-by-link
               on-pull-success="$ctrl.import(repo)"
-          ></sr-pull-repo-by-link>-->
+          ></sr-pull-repo-by-link>
         </li>
       </ul>
     </article>
     <sr-repo-preview
       class="userHome-repoPreview"
       ng-repeat="repo in $ctrl.userImportedRepos"
-      repo="repo.hbcData"
+      repo="repo"
     >
       <div class="userHome-repoAdminPanel u-block">
         <button class="u-greyWhiteButton userHome-adminButton" ng-click="$ctrl.editRepo(repo)">
@@ -34,16 +34,16 @@
             <use xlink:href="#client--svg--pencil" />
           </svg>
         </button>
-        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isDeleting}" ng-click="$ctrl.deleteRepo(repo)">
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.isDeleting}" ng-click="$ctrl.deleteRepo(repo)">
           Delete
           <svg class="userHome-adminButtonIcon">
             <use xlink:href="#client--svg--trash" />
           </svg>
         </button>
-        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-show="repo.hbcData.hidden" ng-click="$ctrl.unhideRepo(repo)">
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.isHiding}" ng-show="repo.hidden" ng-click="$ctrl.unhideRepo(repo)">
           Show
         </button>
-        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.hbcData.isHiding}" ng-hide="repo.hbcData.hidden" ng-click="$ctrl.hideRepo(repo)">
+        <button class="u-greyWhiteButton userHome-adminButton" ng-class="{disabled: repo.isHiding}" ng-hide="repo.hidden" ng-click="$ctrl.hideRepo(repo)">
           Hide
           <svg class="userHome-adminButtonIcon">
             <use xlink:href="#client--svg--hidden" />

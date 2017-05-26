@@ -1,7 +1,7 @@
-FiltersService.$inject = ['$http', '$q', 'SkillsService', 'TrainingCentersService', 'LocationsService'];
+FiltersService.$inject = ['$q', 'SkillsService', 'TrainingCentersService', 'LocationsService'];
 app.service('FiltersService', FiltersService);
 
-function FiltersService ($http, $q, skillsService, trainingCentersService, locationService) {
+function FiltersService ($q, skillsService, trainingCentersService, locationService) {
   var fetched;
   var stateParsed;
   var filtersList ={};

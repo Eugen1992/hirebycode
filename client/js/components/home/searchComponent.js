@@ -9,8 +9,8 @@
     }
   });
 
-  SearchController.$inject = ['$q', '$state','$stateParams', 'FiltersService', 'SkillsService', 'TrainingCentersService', 'Analytics'];
-  function SearchController ($q, $state, $stateParams, filtersService,  skills, trainingCenters, analyticsProvider) {
+  SearchController.$inject = ['$state','$stateParams', 'FiltersService', 'Analytics'];
+  function SearchController ($state, $stateParams, filtersService, analyticsProvider) {
     var vm = this;
 
     vm.$onInit = function () {

@@ -9,29 +9,33 @@
     },
     controller: ContactDeveloperController
   });
-  ContactDeveloperController.$inject = ['ConfigService', 'DeveloperService'];
+  ContactDeveloperController.$inject = ['ConfigService', 'DeveloperService', 'Analytics'];
 
-  function ContactDeveloperController (configService, developerService) {
+  function ContactDeveloperController (configService, developerService, analyticsProvider) {
     var vm = this;
 
     vm.captchaKey = configService.googleCaptchaKey;
     vm.requestState = 'idle';
     this.showCaptcha = function () {
+      analyticsProvider.trackEvent('Contacts request', 'captcha', 'started');
       if (vm.contacts) {
         return;
       }
       vm.requestState = 'captchaInProgress';
-    }
+    };
     vm.requestContact = function (captcha) {
       vm.requestState = 'loading';
+      analyticsProvider.trackEvent('Contacts request', 'captcha', 'completed');
       developerService.getContactsById(vm.developerId, captcha)
         .then(function (contacts) {
+          analyticsProvider.trackEvent('Contacts request', 'received', 'success', contacts);
           vm.contacts = contacts;
           vm.requestState = 'idle';
         }, function (error) {
+          analyticsProvider.trackEvent('Contacts request', 'received', 'error');
           vm.requestError = error.data;
           vm.requestState = 'idle';
         });
-    }
+    };
   }
 })();

@@ -78,16 +78,15 @@
           Training center logo:
           </label>
         <div class="trainingCenterHome-formLine">
-          <button type="button" class="btn btn-default" ngf-select ng-model="newLogo">Upload</button>
-          <button type="button" class="btn btn-default" ng-show="newLogo" ng-click="clearLogo()">
+          <button type="button" class="btn btn-default" ngf-select ng-model="$ctrl.newLogo">Upload</button>
+          <button type="button" class="btn btn-default" ng-show="$ctrl.newLogo" ng-click="$ctrl.clearLogo()">
             Clear logo
-            <i class="glyphicon glyphicon-remove"></i>
           </button>
         </div>
-        <img class="trainingCenterHome-logo trainingCenterHome-formLine" ng-if="!$ctrl.profile.hasLogo || newLogo" ngf-thumbnail="newLogo || '/client/assets/images/placeholder.svg'" />
-        <img class="trainingCenterHome-logo trainingCenterHome-formLine" ng-show="$ctrl.profile.hasLogo && !newLogo" src="{{$ctrl.profile.logo}}" />
+        <img class="trainingCenterHome-logo trainingCenterHome-formLine" ng-if="!$ctrl.profile.hasLogo || $ctrl.newLogo" ngf-thumbnail="$ctrl.newLogo || '/client/assets/images/placeholder.svg'" />
+        <img class="trainingCenterHome-logo trainingCenterHome-formLine" ng-show="$ctrl.profile.hasLogo && !$ctrl.newLogo" src="{{$ctrl.profile.logo}}" />
         <sr-submit-button 
-          ng-click="submitDetails()"
+          ng-click="$ctrl.submitDetails()"
           error-text="'Something went wrong'"
           success-text="'Account updated'"
           state="$ctrl.profileFormState"

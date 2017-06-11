@@ -3,17 +3,17 @@
     <h2>Projects</h2>
     <div class="u-paper u-block">
       <h3>Pending projects</h3>
-      <div ng-repeat="repo in pendingRepos">
+      <div ng-repeat="repo in $ctrl.pendingRepos">
         <div class="trainingCenterHome-requestDetails u-block">
-          <button class="btn btn-success" ng-click="approveRepo(repo)">Approve</button>
-          <button class="btn btn-warning" ng-click="startDecliningRepo(repo)">Decline</button>
+          <button class="btn btn-success" ng-click="$ctrl.approveRepo(repo)">Approve</button>
+          <button class="btn btn-warning" ng-click="$ctrl.startDecliningRepo(repo)">Decline</button>
           <div class="trainingCenterHome-declineMessage u-block u-paper" ng-show="repo.isDeclining">
             <label>
               Please, explain a reason of decline to a developer
               <textarea class="trainingCenterHome-declineMessageInput" ng-model="repo.trainingCenterMessage"></textarea>
             </label><br/>
-            <button class="btn btn-default" ng-click="cancelDecliningRepo(repo)">Cancel</button>
-            <button class="btn btn-danger" ng-click="declineRepo(repo)">Confirm decline</button>
+            <button class="btn btn-default" ng-click="$ctrl.cancelDecliningRepo(repo)">Cancel</button>
+            <button class="btn btn-danger" ng-click="$ctrl.declineRepo(repo)">Confirm decline</button>
           </div>
         </div>
         <sr-repo-preview repo="repo"></sr-repo-preview>
@@ -21,10 +21,10 @@
     </div>
     <div class="u-paper u-block">
       <h3>Approved projects</h3>
-      <div ng-repeat="repo in approvedRepos">
+      <div ng-repeat="repo in $ctrl.approvedRepos">
         <div class="trainingCenterHome-requestDetails u-block">
-          <button class="btn btn-warning" ng-click="disapproveRepo(repo)">Move to pending</button>
-          <button class="btn btn-warning" ng-click="startDecliningRepo(repo)">Decline</button>
+          <button class="btn btn-warning" ng-click="$ctrl.disapproveRepo(repo)">Move to pending</button>
+          <button class="btn btn-warning" ng-click="$ctrl.startDecliningRepo(repo)">Decline</button>
           <div class="trainingCenterHome-declineMessage"  ng-show="repo.isDeclining">
             <label>
               Please, explain a reason of decline to a developer
@@ -39,10 +39,10 @@
     </div>
     <div class="u-block u-paper">
       <h3>Declined projects</h3>
-      <div ng-repeat="repo in declinedRepos">
+      <div ng-repeat="repo in $ctrl.declinedRepos">
         <div class="trainingCenterHome-requestDetails u-block">
-          <button class="btn btn-warning" ng-click="disapproveRepo(repo)">Move to pending</button>
-          <button class="btn btn-danger" ng-click="approveRepo(repo)">Approve</button>
+          <button class="btn btn-warning" ng-click="$ctrl.disapproveRepo(repo)">Move to pending</button>
+          <button class="btn btn-danger" ng-click="$ctrl.approveRepo(repo)">Approve</button>
         </div>
         <sr-repo-preview repo="repo"></sr-repo-preview>
       </div>
